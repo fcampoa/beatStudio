@@ -20,7 +20,7 @@ export function getServicesSettings(): GlobalServiceSettings {
 imports: [HttpClientModule]
 })
 export class GlobalServiceModule {
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders<GlobalServiceModule> {
     return {
       ngModule: GlobalServiceModule,
       providers: [
