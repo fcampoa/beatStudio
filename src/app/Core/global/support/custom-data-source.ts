@@ -18,14 +18,14 @@ export class CustomDataSource implements DataSource<any> {
     }
 
     loadData(id?: number,
-                filter?: string,
-                sortDirection?: string,
-                pageIndex?: number,
-                pageSize?: number,
-                mod?: string) {
+             filter?: string,
+             sortDirection?: string,
+             pageIndex?: number,
+             pageSize?: number,
+             mod?: string) {
 
         this.loadingSubject.next(true);
-        this.apiSvc.routes[mod].getPages()<any>({id: id, search: filter, order: sortDirection,
+        this.apiSvc.routes[mod].getPages()<any>({id, search: filter, order: sortDirection,
           start: pageIndex, perPage: pageSize}).pipe(
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))

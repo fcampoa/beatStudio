@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Location} from '@angular/common';
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'navbar-cmp',
     templateUrl: 'navbar.component.html',
     styleUrls: ['./navbar.component.scss']
@@ -18,10 +19,11 @@ export class NavbarComponent implements OnInit{
     private sidebarVisible: boolean;
 
     public isCollapsed = true;
-    @ViewChild("navbar-cmp") button;
+    @ViewChild('navbar-cmp') button;
 
     constructor(location: Location, private renderer: Renderer2, private element: ElementRef, private router: Router,
-      private auth: AuthenticationService) {
+               // private auth: AuthenticationService
+                ) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
@@ -29,19 +31,21 @@ export class NavbarComponent implements OnInit{
 
     ngOnInit(){
         this.listTitles = ROUTES.filter(listTitle => listTitle);
-        var navbar : HTMLElement = this.element.nativeElement;
+        // tslint:disable-next-line: prefer-const
+        let navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
         this.router.events.subscribe((event) => {
           this.sidebarClose();
        });
     }
     getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if(titlee.charAt(0) === '#'){
+      let titlee = this.location.prepareExternalUrl(this.location.path());
+      if (titlee.charAt(0) === '#'){
           titlee = titlee.slice( 1 );
       }
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
+      // tslint:disable-next-line: prefer-for-of
+      for (let item = 0; item < this.listTitles.length; item++){
+          if (this.listTitles[item].path === titlee){
               return this.listTitles[item].title;
           }
       }
@@ -57,7 +61,8 @@ export class NavbarComponent implements OnInit{
       sidebarOpen() {
           const toggleButton = this.toggleButton;
           const html = document.getElementsByTagName('html')[0];
-          const mainPanel =  <HTMLElement>document.getElementsByClassName('main-panel')[0];
+          const mainPanel =   document.getElementsByClassName('main-panel')[0] as HTMLElement;
+          // tslint:disable-next-line: only-arrow-functions
           setTimeout(function(){
               toggleButton.classList.add('toggled');
           }, 500);
@@ -67,11 +72,12 @@ export class NavbarComponent implements OnInit{
             mainPanel.style.position = 'fixed';
           }
           this.sidebarVisible = true;
-      };
+      }
       sidebarClose() {
           const html = document.getElementsByTagName('html')[0];
-          const mainPanel =  <HTMLElement>document.getElementsByClassName('main-panel')[0];
+          const mainPanel =   document.getElementsByClassName('main-panel')[0] as HTMLElement;
           if (window.innerWidth < 991) {
+            // tslint:disable-next-line: only-arrow-functions
             setTimeout(function(){
               mainPanel.style.position = '';
             }, 500);
@@ -79,7 +85,7 @@ export class NavbarComponent implements OnInit{
           this.toggleButton.classList.remove('toggled');
           this.sidebarVisible = false;
           html.classList.remove('nav-open');
-      };
+      }
       collapse(){
         this.isCollapsed = !this.isCollapsed;
         const navbar = document.getElementsByTagName('nav')[0];
@@ -95,7 +101,7 @@ export class NavbarComponent implements OnInit{
       }
 
       logout(): void {
-        this.auth.logout();
+       // this.auth.logout();
       }
 
 }

@@ -1,4 +1,4 @@
-import { UserService } from './../services/user.service';
+
 import { Component, OnInit } from '@angular/core';
 
 
@@ -37,13 +37,13 @@ export class SidebarComponent implements OnInit {
     public role: string;
 
 
-    constructor(private userService: UserService) {
-        this.user = this.userService.getUser();
-        this.role = this.userService.getRole();
+    constructor() {
+       // this.user = this.userService.getUser();
+       // this.role = this.userService.getRole();
     }
     validatepermison(level, name) {
         return true;
-        return this.userService.hasPermission(level, name);
+      //  return this.userService.hasPermission(level, name);
     }
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);

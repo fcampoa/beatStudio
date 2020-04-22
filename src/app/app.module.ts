@@ -1,3 +1,6 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AdminComponent } from './components/admin/admin.component';
 import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
@@ -19,7 +22,8 @@ import { AppRoutes } from './app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import { AppRoutes } from './app.routing';
     FooterModule,
     FixedPluginModule,
     FormsModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
+    NgbModule,
     GlobalServiceModule.forRoot(),
   ],
   providers: [GlobalApiService,

@@ -11,6 +11,7 @@ export class UserService implements OnInit {
     }
   }
 
+  // tslint:disable-next-line: contextual-lifecycle
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('currentUser'));
 

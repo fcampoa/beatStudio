@@ -14,7 +14,7 @@ export function getServicesSettings(): GlobalServiceSettings {
       return new GlobalServiceSettings(`${ baseElements[0].href }api`, GLOBAL_SERVICE_DEFINITION);
     }
   }
-  return new GlobalServiceSettings(config.base_url, GLOBAL_SERVICE_DEFINITION)
+    return new GlobalServiceSettings(config.base_url, GLOBAL_SERVICE_DEFINITION);
 }
 @NgModule({
 imports: [HttpClientModule]
@@ -27,6 +27,6 @@ export class GlobalServiceModule {
         { provide: GlobalServiceSettings, useFactory: getServicesSettings },
         GlobalApiService
       ]
-    }
-  };
+    };
+  }
 }
