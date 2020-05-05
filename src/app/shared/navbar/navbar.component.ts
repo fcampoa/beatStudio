@@ -1,8 +1,10 @@
+import { UserService } from './../../services/user.service';
 import { AuthenticationService } from './../../services/authentication.service';
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
 import { ROUTES } from '../../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 import { Location} from '@angular/common';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
     // tslint:disable-next-line: component-selector
@@ -17,13 +19,29 @@ export class NavbarComponent implements OnInit{
     private nativeElement: Node;
     private toggleButton;
     private sidebarVisible: boolean;
-    private logged = false;
-
     public isCollapsed = true;
+    public logged = false;
+    public sections = [
+      { nombre: 'Coach', url: 'coach' },
+      { nombre: 'Contacto', url: 'contact'},
+      { nombre: 'Nosotros', url: 'about' },
+      { nombre: 'Clases', url: 'discipline' },
+      { nombre: 'Reservaciones', url: 'booking' }
+    ];
+
+    // Inputs
+    @Input() set isLogged(value: any) {
+       this.logged = value !== undefined || value !== null;
+      }
+
     @ViewChild('navbar-cmp') button;
 
-    constructor(location: Location, private renderer: Renderer2, private element: ElementRef, private router: Router,
-               // private auth: AuthenticationService
+    constructor(location: Location,
+              //  private renderer: Renderer2,
+                private element: ElementRef,
+                private router: Router,
+                private userSvc: UserService,
+                private auth: AuthenticationService
                 ) {
         this.location = location;
         this.nativeElement = element.nativeElement;
@@ -36,8 +54,11 @@ export class NavbarComponent implements OnInit{
         let navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
         this.router.events.subscribe((event) => {
-          this.sidebarClose();
-       });
+         // this.sidebarClose();
+        });
+        this.userSvc.getUser().subscribe(res => {
+          this.logged = (res !== undefined && res !== null);
+        });
     }
     getTitle(){
       let titlee = this.location.prepareExternalUrl(this.location.path());
@@ -102,7 +123,10 @@ export class NavbarComponent implements OnInit{
       }
 
       logout(): void {
-       // this.auth.logout();
+      this.auth.logout();
       }
 
+      goToProfile(): void {
+        this.router.navigate(['/profile']);
+      }
 }

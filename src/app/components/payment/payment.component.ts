@@ -1,3 +1,4 @@
+import { FormaPago } from './../../model/forma-pago';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
+  public formasPago: FormaPago[];
   constructor() { }
 
   ngOnInit() {

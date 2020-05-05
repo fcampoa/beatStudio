@@ -74,14 +74,18 @@ export class GlobalApiService {
 
   private routesDictionary: IGlobalServiceDefinition = {};
 
-  constructor (private settings: GlobalServiceSettings, private http: HttpClient) {
+  public headers = new HttpHeaders()
+    .set('content-type', 'application/json');
+
+  constructor(private settings: GlobalServiceSettings, private http: HttpClient) {
     if (settings.definition) {
       this.liftDefinition(settings.definition);
     }
   }
   public create(controllerRoute: string) {
-    const actual = new GlobalServiceContainer(this.settings.url + '/' + controllerRoute, this);
+    const actual = new GlobalServiceContainer(this.settings.url + 'items/' + controllerRoute, this);
     const trigger = () => actual;
+    // tslint:disable-next-line: no-string-literal
     actual['setTrigger'](trigger);
     this.routesDictionary[controllerRoute] = trigger;
     return this.routesDictionary[controllerRoute]() as GlobalServiceContainer;
@@ -121,7 +125,7 @@ export class GlobalApiService {
 
   private post(url: string, data: any, paramsDictionary?: any) {
     const params = this.setParams(paramsDictionary);
-    return this.http.post(url, data, {params}).pipe(catchError(this.handleError));
+    return this.http.post(url, data, { headers: this.headers, params}).pipe(catchError(this.handleError));
   }
 
   private put(url: string, data: any, paramsDictionary?: any) {

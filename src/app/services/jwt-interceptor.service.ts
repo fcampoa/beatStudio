@@ -7,18 +7,21 @@ import { Observable } from 'rxjs';
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private userSvc: UserService) { }
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // add authorization header with jwt token if available
-        const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        if (currentUser && currentUser.data.access_token) {
-          this.userSvc.user = currentUser;
-            request = request.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${currentUser.data.access_token}`
-                }
-            });
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // add authorization header with jwt token if available
+    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    //  if (currentUser !== null) {
+    if (currentUser && currentUser.data.token) {
+      this.userSvc.user = currentUser;
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.data.token}`
         }
-
-        return next.handle(request);
+      });
     }
+    // }
+
+    return next.handle(request);
+  }
 }

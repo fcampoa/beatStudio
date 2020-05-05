@@ -1,11 +1,28 @@
 <app-view>
-<form novalidate>
+<form #form="ngForm" [formGroup]="userGroup" (ngSubmit)="doLogin()"  novalidate>
     <div class="form-group">
         <label for="txtEmail">Correo</label>
-        <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="txtEmail" formControlName="txtEmail" aria-describedby="emailHelp">
         <label for="txtPassword">Contraseña</label>
-        <input type="password" class="form-control" id="txtPassword" aria-describedby="passwordHelp">
-        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <input type="password" class="form-control" id="txtPassword" formControlName="txtPassword" aria-describedby="passwordHelp">
+        <!-- <a href="" [ngbPopover]="popResetContent"
+                   [popoverTitle]="popResetTitle"
+                   >¿Olvidaste tu contrañse?</a> -->
+        <a href="">¿Olvidaste tu contrañse?</a>
+        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
     </div>
   </form>
 </app-view>
+<ng-template #popResetContent>
+  <app-view>
+    <p>Escribe tu correo y te enviaremos instrucciones <br> para recuperar tu contraseña.</p>
+    <form novalidate>
+      <div class="form-group">
+        <label for="txtReset">Correo</label>
+        <input type="email" class="form-control" id="txtReset" aria-describedby="resetHelp">
+        <button class="btn btn-success my-2 my-sm-0" type="button">Enviar</button>
+      </div>
+    </form>
+  </app-view>
+</ng-template>
+<ng-template #popResetTitle>Recuperar contraseña</ng-template>
