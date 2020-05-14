@@ -26,4 +26,17 @@ export interface IGlobalServiceDefinition {
     buscarCliente: () => VERBS.IGetCall;
     buscarFecha: () => VERBS.IGetCall;
   };
+  disciplina?: {
+    agregar: () => VERBS.IpostCall;
+    actualizar: () => VERBS.IPutCall;
+    buscar: () => VERBS.IGetByIdCall;
+    lista: () => VERBS.IGetCall;
+  };
+  horario?: {
+    agregar: () => VERBS.IpostCall;
+    actualizar: () => VERBS.IPutCall;
+    buscar: () => VERBS.IGetByIdCall;
+    lista: () => VERBS.IGetCall;
+    buscarDisciplinaRango: (id: number, desde: any, hasta: any) => VERBS.IGetCall;
+  };
 }

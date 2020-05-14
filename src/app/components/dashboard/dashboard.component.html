@@ -1,3 +1,119 @@
-<p>
-  dashboard works!
-</p>
+<div fxLayout="column" fxFlex="100%">
+  <!-- Secciòn principal -->
+  <div fxLayout="row" fxFlex="100%">
+    <div id="seciton1" fxLayout="column" class="container-fluid home-image" fxFlex="100%">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h1 style="font-size: 7.567em">Ride. Tone. Stretch.</h1>
+      </div>
+      <div fxLayout="row" fxLayout-fxLayoutAlign.lt-sm="column" fxLayoutAlign="center center">
+        <button mat-stroked-button>Reservar</button>
+        <span fxFlex="3em"></span>
+        <button mat-stroked-button>Comprar</button>
+      </div>
+    </div>
+  </div>
+  <!-- Secciòn de disciplinas-->
+  <div fxLayout="row" fxFlex="100%">
+    <div id="section2" class="container-fluid seccion-disciplinas" fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="row" fxLayout-fxLayoutAlign.lt-sm="column" fxLayoutAlign="center center">
+        <h1 style="font-size: 3.567em">Nuestras disciplinas</h1>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 2.3em; font-size: 1.6em;">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit,<br />
+        sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+      </div>
+      <div id="coversDiv" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
+        style="margin-top: 2.3em;">
+        <div *ngFor="let i of covers; let x = index" style="margin: 1.5em;"
+          class="contenedor div-degradado cambiar-color">
+          <div fxLayout="column" class="centrado" style="width: 100%;">
+            <div fxLayout="row">
+              <p class="text-color" style="font-size: 28px;">BEAT</p>
+              <p class="titulo-color" style="font-size: 28px;">{{i.title}}</p>
+            </div>
+            <div style="margin: 0; padding: 0;" fxLayout="row" fxLayoutAlign="center start">
+              <p class="ocultar">Ver más ></p>
+            </div>
+          </div>
+          <img [src]="i.url" class="desvanecer" />
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <a href="#" style="color: #000000;"><b>Conoce más de nuestras disciplinas aquí</b></a>
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+    </div>
+  </div>
+  <!-- video cover -->
+  <div fxLayout="row" fxFlex="100%">
+    <div id="section3" fxFlex="100%" fxLayout="column" class="seccion-videos" fxLayoutAlign="center center">
+      <div fxLayout="row" class="cover-video" fxLayoutAlign="center center">
+        <img src="../../../assets/img/play.png" />
+      </div>
+    </div>
+  </div>
+  <!-- Secciones de coaches y rutinas -->
+  <div fxLayout="row" fxFlex="100%">
+    <div id="section4" class="seccion-rutinas" fxLayout="column" fxFlex="100%">
+      <div fxLayout="row" fxLayout.fxFlex.lt-md="column" fxFlex="100%">
+        <img style="width: 46em; padding-left: 2%;" src="../../../assets/img/rutina1.png" />
+        <div fxLayout="column" style="padding-top: 8%;">
+          <h1>Las mejores rutinas</h1>
+          <div style=" margin-top: 5%;">
+            Lorem ipsum dolor sit amet, consectetuer ading<br />
+            elit, sed diam nonummy nibh euismod tincidunt<br />
+            laoreet lore sed dam it amet elit, sed euis diam. <br />
+          </div>
+          <div fxFlex="10%" style="margin-top:15%;"><button>Conócelas</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- seccion de redes sociales -->
+  <div fxLayout="row" fxFlex="100%">
+    <div id="section5" class="seccion-coaches" fxLayout="column" fxFlex="100%">
+      <div fxLayout="row" fxFlex="100%" style="padding-left: 12%;">
+        <div fxLayout="column" fxLayout.fxFlex.lt-md="column" fxLayoutAlign="center end">
+          <h1>Los mejores coaches</h1>
+          <div>
+            Lorem ipsum dolor sit amet, consectetuer ading<br />
+            elit, sed diam nonummy nibh euismod tincidunt<br />
+            laoreet lore sed dam it amet elit, sed euis diam. <br />
+          </div>
+          <div style="margin-top:15%;"><button>Conócelos</button></div>
+        </div>
+        <img style="width: 49em;" src="../../../assets/img/rutina2.png" />
+      </div>
+    </div>
+  </div>
+  <div fxFlex="row" fxFlex="100%">
+    <div id="section6" class="seccion-social" fxLayout="column" fxFlex="100%">
+      <div fxLayout="row" fxLayoutAlign="center start">
+        <p class="primary-color">Nuestra</p> &nbsp; Comunidad
+      </div>
+      <div style="color: #ffffff; font-size: 18px;" fxLayout="row" fxLayoutAlign="center start">
+        <b>Etiquétanos en instagram y usa el hashtag #beat..? @BeatStudio</b>
+      </div>
+      <div fxLayout="row" fxLayout.fxFlex.lt-md="column" fxLayoutAlign="center center">
+        <div fxLayout="column" *ngFor="let i of socialMedia" style="padding: 1.5em;">
+          <img [src]="i.imageUrl" />
+          <p class="primary-color">{{ i.fecha | date:"longDate" }}</p>
+          {{ i.descripcion }}
+          <br />
+          <a [href]="i.profileUrl">{{ i.usuario }}</a>
+        </div>
+        <mat-icon class="primary-color" style="padding-bottom: 10%;">arrow_forward</mat-icon>
+      </div>
+    </div>
+  </div>
+  <!-- seeción de imagen de gym -->
+  <div fxFlex="row" fxFlex="100%">
+    <div id="section7" class="work-section" fxFlex="100%"></div>
+  </div>
+  <!-- Sección de música -->
+  <div fxLayout="row" fxFlex="100%">
+    <div id="section8" fxLayout="column" fxFlex="100%">
+
+    </div>
+  </div>
+</div>

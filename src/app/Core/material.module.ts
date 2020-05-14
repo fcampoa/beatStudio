@@ -22,12 +22,12 @@ import {
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    // MatNativeDateModule,
+    MatNativeDateModule,
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-   // MatRippleModule,
+    MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
     MatSliderModule,
@@ -38,7 +38,8 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTreeModule,
 } from '@angular/material';
 
 @NgModule({
@@ -57,12 +58,12 @@ import {
         MatInputModule,
         MatListModule,
         MatMenuModule,
-       // MatNativeDateModule,
+        MatNativeDateModule,
         MatPaginatorModule,
         MatProgressBarModule,
         MatProgressSpinnerModule,
         MatRadioModule,
-      //  MatRippleModule,
+        MatRippleModule,
         MatSelectModule,
         MatSidenavModule,
         MatSliderModule,
@@ -73,7 +74,8 @@ import {
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule,
-        MatStepperModule
+        MatStepperModule,
+        MatTreeModule
     ],
     exports: [
         MatAutocompleteModule,
@@ -90,12 +92,12 @@ import {
         MatInputModule,
         MatListModule,
         MatMenuModule,
-       // MatNativeDateModule,
+        MatNativeDateModule,
         MatPaginatorModule,
         MatProgressBarModule,
         MatProgressSpinnerModule,
         MatRadioModule,
-      //  MatRippleModule,
+        MatRippleModule,
         MatSelectModule,
         MatSidenavModule,
         MatSliderModule,
@@ -106,7 +108,8 @@ import {
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule,
-        MatStepperModule
+        MatStepperModule,
+        MatTreeModule
     ],
 })
 export class QuickAppProMaterialModule { }

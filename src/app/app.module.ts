@@ -1,3 +1,4 @@
+import { FixedBarDirective } from './Core/directives/fixed-bar.directive';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -23,7 +24,7 @@ import { GlobalServiceModule } from './Core/global/globa-service.module';
 import { RouterModule } from '@angular/router';
 import { GlobalApiService } from './Core/global/global-service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -36,6 +37,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 import { ParamsService } from './Core/global/params-service.service';
 import { GenericApiCallService } from './Core/global/generic-api-call.service';
+import { ErrorsHandler } from './services/errors-handler.service';
+import { EventsService } from './services/events.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import { GenericApiCallService } from './Core/global/generic-api-call.service';
     RegisterComponent,
     NavbarComponent,
     DashboardComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    // directive
+    FixedBarDirective
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,6 @@ import { GenericApiCallService } from './Core/global/generic-api-call.service';
     GlobalServiceModule.forRoot(),
     CommonModule,
     MDBBootstrapModule.forRoot(),
-    NgbModule,
     QuickAppProMaterialModule,
     UtilitiesModule
     // AdminModule
@@ -78,9 +82,10 @@ import { GenericApiCallService } from './Core/global/generic-api-call.service';
   exports: [
   ],
   providers: [GlobalApiService, UserService, NotificationsService,
-     ToastrService, ParamsService, GenericApiCallService,
+     ToastrService, ParamsService, GenericApiCallService, EventsService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: ErrorsHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,16 +1,18 @@
 <app-view>
 <form #form="ngForm" [formGroup]="userGroup" (ngSubmit)="doLogin()"  novalidate>
-    <div class="form-group">
-        <label for="txtEmail">Correo</label>
-        <input type="email" class="form-control" id="txtEmail" formControlName="txtEmail" aria-describedby="emailHelp">
-        <label for="txtPassword">Contraseña</label>
-        <input type="password" class="form-control" id="txtPassword" formControlName="txtPassword" aria-describedby="passwordHelp">
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" id="txtEmail" formControlName="txtEmail">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" id="txtPassword" formControlName="txtPassword">
+      </mat-form-field>
         <!-- <a href="" [ngbPopover]="popResetContent"
                    [popoverTitle]="popResetTitle"
                    >¿Olvidaste tu contrañse?</a> -->
         <a href="">¿Olvidaste tu contrañse?</a>
         <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
-    </div>
   </form>
 </app-view>
 <ng-template #popResetContent>

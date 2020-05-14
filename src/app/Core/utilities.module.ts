@@ -1,3 +1,4 @@
+import { QuickAppProMaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoaderComponent } from './utilities/loader/loader.component';
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    RouterModule
+    RouterModule,
+    QuickAppProMaterialModule
   ],
   declarations: [
     TaskCardComponent,

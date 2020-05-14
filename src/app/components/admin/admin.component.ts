@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FixedBarDirective} from '../../Core/directives/fixed-bar.directive';
 
 @Component({
   selector: 'app-admin',

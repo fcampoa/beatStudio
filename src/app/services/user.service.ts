@@ -5,12 +5,14 @@ import { Injectable, OnInit } from '@angular/core';
 @Injectable()
 export class UserService implements OnInit {
   userValue: BehaviorSubject<any>;
+  cUser: BehaviorSubject<any>;
   loggedUser: any;
   permissions: any[];
   constructor() {
-    // this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    // this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
     this.userValue = new BehaviorSubject<any>(this.loggedUser);
+    this.cUser = new BehaviorSubject<any>(null);
     if (this.loggedUser !== undefined && this.loggedUser !== null) {
       this.permissions = this.loggedUser.data.permissions;
     }
@@ -18,8 +20,8 @@ export class UserService implements OnInit {
 
   // tslint:disable-next-line: contextual-lifecycle
   ngOnInit() {
-    // this.user = JSON.parse(sessionStorage.getItem('currentUser'));
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+    // this.user = JSON.parse(localStorage.getItem('currentUser'));
 
   }
 
@@ -29,15 +31,19 @@ export class UserService implements OnInit {
     return this.userValue.asObservable();
   }
 
+  getCustomUser(): Observable<any> {
+    return this.cUser.asObservable();
+  }
+
   getUserName(): string {
-    // this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    // this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
     return this.loggedUser.data.user.first_name;
   }
 
   getUsserId(): number {
-    // this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    // this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
     return this.loggedUser.data.user.id;
   }
 
@@ -57,8 +63,11 @@ export class UserService implements OnInit {
     return false;
   }
 
-  set user(u: any) {
+  public set user(u: any) {
     this.loggedUser = u;
     this.userValue.next(u);
+  }
+  public set customUser(u: any) {
+    this.cUser.next(u);
   }
 }

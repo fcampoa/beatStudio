@@ -17,14 +17,30 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     actualizar: { method: GlobalServiceMethodType.PUT, url: '' },
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
     lista: { method: GlobalServiceMethodType.GET, url: '' },
-    buscarCorreo: { method: GlobalServiceMethodType.GET, url: '?filters[correo][eq]=$correo'}
+    buscarCorreo: { method: GlobalServiceMethodType.GET, url: '?filters[correo][eq]=$correo' }
   },
   reservacion: {
     agregar: { method: GlobalServiceMethodType.POST, url: '' },
     actualizar: { method: GlobalServiceMethodType.PUT, url: '' },
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
     lista: { method: GlobalServiceMethodType.GET, url: '' },
-    buscarCliete: { method: GlobalServiceMethodType.GET, url: ''},
-    buscarFecha: { method: GlobalServiceMethodType.GET, url: ''}
+    buscarCliete: { method: GlobalServiceMethodType.GET, url: '' },
+    buscarFecha: { method: GlobalServiceMethodType.GET, url: '' }
+  },
+  disciplina: {
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PUT, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+  },
+  horario: {
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PUT, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscarDisciplinaRango: {
+      method: GlobalServiceMethodType.GET,
+      url: '?filter[disciplina][eq]=$id&filter[fecha][between]=$desde,$hasta&fields=*,coach.nombre&sort=fecha'
+    }
   }
 };

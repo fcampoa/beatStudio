@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/authGuard.service';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CoachComponent } from './components/coach/coach.component';
@@ -11,16 +12,19 @@ import { Routes } from '@angular/router';
 
 export const AppRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-  { path: 'dashboard', component: AdminComponent,
+  {
+    path: 'dashboard', component: AdminComponent,
     children: [
-  { path: 'panel', component: UserPanelComponent },
-  { path: 'booking', component: BookingComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'payment', component: PaymentComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'discipline', component: DisciplineComponent },
-  { path: 'coach', component: CoachComponent },
- ]},
+      { path: '', component: DashboardComponent },
+      { path: 'panel', component: UserPanelComponent, canActivate: [AuthGuard] },
+      { path: 'booking', component: BookingComponent, canActivate: [AuthGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      { path: 'payment', component: PaymentComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'discipline', component: DisciplineComponent },
+      { path: 'coach', component: CoachComponent },
+    ]
+  },
   // {
   //   path: 'dashboard',
   //   component: AdminComponent,

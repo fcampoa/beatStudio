@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Usuario } from './../../model/usuario';
@@ -18,14 +18,19 @@ export class LoginComponent implements OnInit {
   public userName = '';
   public password = '';
   public userGroup: FormGroup;
+  returnUrl: string;
 
   constructor(private auth: AuthenticationService,
               private userSvc: UserService,
               private formBuilder: FormBuilder,
-              private Route: Router) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    // reset login status
+   // this.auth.logout();
   }
 
   doLogin(): void {
@@ -33,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.userName, this.password).subscribe(
       response => {
         this.userSvc.loggedUser = response;
-        this.Route.navigate(['/dashboard/panel']);
+        this.router.navigate(['/dashboard/panel']);
         // this.loginSuccess.emit(true);
       },
       error => console.log(error)
