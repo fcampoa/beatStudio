@@ -1,4 +1,6 @@
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Component } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'beatStudio';
+
+  constructor(private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
+    this.matIconRegistry
+    .addSvgIcon('remove', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Basura_rojo.svg'))
+    .addSvgIcon('menu_user', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Usuario(menu)-01.svg'))
+    .addSvgIcon('twitter', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Twitter(Layout contacto).svg'))
+    ;
+  }
+
 }

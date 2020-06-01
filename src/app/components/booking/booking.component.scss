@@ -1,0 +1,22 @@
+.remove-border-bottom ::ng-deep .mat-tab-header {
+  border-bottom: none;
+  padding-bottom: 5%;
+}
+
+.button-style:hover {
+  background: #9865ff !important;
+  color: #ffffff !important;
+}
+
+.button-style {
+  color: #9865ff !important;
+}
+
+.wait-list {
+  color: red;
+  text-decoration: underline;
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow: hidden !important;
+}

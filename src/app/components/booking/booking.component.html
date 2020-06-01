@@ -1,26 +1,26 @@
-<div class="justify-content-center">
-  <div fxFlex.lt-sm="100%" fxFlex.gt-xs="80%">
-    <app-view>
-      <div fxLayout="row">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item" *ngFor="let d of disciplinas; let i = index">
-            <a class="nav-link" [ngClass]="i == 0 ? 'active':''" id="pills-home-{{d.nombre}}" data-toggle="pill"
-              href="#pills-home" role="tab" (click)="getHorarios(d.id)">{{d.nombre}}</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div fxLayout="row">
-              <div fxLayout="column">
-                <div class="container-fluid"></div>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div> -->
-        </div>
-
-      </div>
-    </app-view>
+<div class="container-fluid" style="padding-top: 10%; padding-bottom: 10%;">
+  <div class="row d-flex justify-content-center primary-color">
+    PASO 1 DE 3
+  </div>
+  <div class="row d-flex justify-content-center">
+    <h2>Elige tu clase y horario</h2>
+  </div>
+  <div class="row d-flex justify-content-center" style="color:gray; font-size: 12px; padding-bottom: 10%;">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+  </div>
+  <div class="row d-flex justify-content-center">
+    <mat-tab-group #tabs mat-stretch-tabs mat-align-tabs="center"
+     class="remove-border-bottom" style="width: 90%; overflow: hidden;">
+      <mat-tab *ngFor="let d of disciplinas">
+        <ng-template mat-tab-label style="padding-bottom: 5%;">
+          <p class="primary-color">BEAT</p>
+          <p>{{d.nombre.toUpperCase()}}</p>
+        </ng-template>
+        <app-schedule [idDisciplina]="d.id"></app-schedule>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="row d-flex justify-content-center" style="padding-top: 10%;">
+    <button (click)="siguientePaso()">SIGUIENTE &gt;</button>
   </div>
 </div>

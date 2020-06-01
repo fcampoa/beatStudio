@@ -2,3 +2,6 @@
   flex-direction: row;
 }
 
+::ng-deep mat-card{
+  background: rgb(16,16,16) !important;
+}

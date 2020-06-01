@@ -1,3 +1,13 @@
+import { SeatSelectionComponent } from './components/booking/seat-selection/seat-selection.component';
+import { SelectCardComponent } from './components/select-card/select-card.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
+import { ScheduleComponent } from './components/booking/schedule/schedule.component';
+import { CheckoutResultComponent } from './components/checkout/checkout-result/checkout-result.component';
+import { CheckoutDetailsComponent } from './components/checkout/checkout-details/checkout-details.component';
+import { CreditCardPipe } from './Core/pipes/credit-card.pipe';
+import { AddPaymentComponent } from './components/payment/add-payment/add-payment.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { FixedBarDirective } from './Core/directives/fixed-bar.directive';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -19,7 +29,6 @@ import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterModule } from './shared/footer/footer.module';
-import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
 import { GlobalServiceModule } from './Core/global/globa-service.module';
 import { RouterModule } from '@angular/router';
 import { GlobalApiService } from './Core/global/global-service';
@@ -38,10 +47,14 @@ import { CommonModule } from '@angular/common';
 import { ParamsService } from './Core/global/params-service.service';
 import { GenericApiCallService } from './Core/global/generic-api-call.service';
 import { ErrorsHandler } from './services/errors-handler.service';
-import { EventsService } from './services/events.service';
+import { CustomDatePipe } from './Core/pipes/custom-date.pipe';
+import { TextMaskModule } from 'angular2-text-mask';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog/public-api';
+import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
 
 @NgModule({
   declarations: [
+    // Componentes
     AppComponent,
     AdminComponent,
     BookingComponent,
@@ -55,8 +68,22 @@ import { EventsService } from './services/events.service';
     NavbarComponent,
     DashboardComponent,
     UserPanelComponent,
-    // directive
-    FixedBarDirective
+    FooterComponent,
+    AddPaymentComponent,
+    CheckoutDetailsComponent,
+    CheckoutResultComponent,
+    ScheduleComponent,
+    AboutComponent,
+    ContactComponent,
+    DisciplineComponent,
+    SelectCardComponent,
+    SeatSelectionComponent,
+    // directives
+    FixedBarDirective,
+    // pipes
+    CustomDatePipe,
+    CreditCardPipe,
+    ScheduleDatePipe
   ],
   imports: [
     BrowserModule,
@@ -67,7 +94,6 @@ import { EventsService } from './services/events.service';
     }),
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule,
     FormsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
@@ -76,13 +102,14 @@ import { EventsService } from './services/events.service';
     CommonModule,
     MDBBootstrapModule.forRoot(),
     QuickAppProMaterialModule,
-    UtilitiesModule
+    UtilitiesModule,
+    TextMaskModule
     // AdminModule
   ],
   exports: [
   ],
   providers: [GlobalApiService, UserService, NotificationsService,
-     ToastrService, ParamsService, GenericApiCallService, EventsService,
+     ToastrService, ParamsService, GenericApiCallService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: ErrorHandler, useClass: ErrorsHandler}],

@@ -1,3 +1,4 @@
+import { GlobalApiService } from './../Core/global/global-service';
 
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Injectable, OnInit } from '@angular/core';
@@ -6,9 +7,10 @@ import { Injectable, OnInit } from '@angular/core';
 export class UserService implements OnInit {
   userValue: BehaviorSubject<any>;
   cUser: BehaviorSubject<any>;
+  cliente: any;
   loggedUser: any;
   permissions: any[];
-  constructor() {
+  constructor(private apiSvc: GlobalApiService) {
     this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
     // this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
     this.userValue = new BehaviorSubject<any>(this.loggedUser);
@@ -23,6 +25,10 @@ export class UserService implements OnInit {
     this.user = JSON.parse(sessionStorage.getItem('currentUser'));
     // this.user = JSON.parse(localStorage.getItem('currentUser'));
 
+  }
+
+  getCurrentUser(): any {
+    return JSON.parse(sessionStorage.getItem('currentUser'));
   }
 
   getUser(): Observable<any> {
@@ -65,9 +71,14 @@ export class UserService implements OnInit {
 
   public set user(u: any) {
     this.loggedUser = u;
+    // this.loggedUser = sessionStorage.getItem('currentUser');
     this.userValue.next(u);
   }
   public set customUser(u: any) {
     this.cUser.next(u);
+  }
+
+  public set setCliente(c: any) {
+    this.cliente = c;
   }
 }

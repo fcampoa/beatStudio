@@ -1,3 +1,4 @@
+import { GLOBAL_SERVICE_ENDPOINTS_DEFINITION } from './endpoints/global-service-endpoints-dictionary';
 import { environment } from './../../../environments/environment';
 import { GLOBAL_SERVICE_DEFINITION } from './global-service-dictionary';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,10 +12,10 @@ export function getServicesSettings(): GlobalServiceSettings {
     if (document && document.getElementsByTagName) {
     const baseElements: HTMLBaseElement[] = Array.from(document.getElementsByTagName('base'));
     if (baseElements && baseElements.length > 0 ) {
-      return new GlobalServiceSettings(`${ baseElements[0].href }`, GLOBAL_SERVICE_DEFINITION);
+      return new GlobalServiceSettings(`${ baseElements[0].href }`, GLOBAL_SERVICE_DEFINITION, GLOBAL_SERVICE_ENDPOINTS_DEFINITION);
     }
   }
-    return new GlobalServiceSettings(config.base_url, GLOBAL_SERVICE_DEFINITION);
+    return new GlobalServiceSettings(config.base_url, GLOBAL_SERVICE_DEFINITION, GLOBAL_SERVICE_ENDPOINTS_DEFINITION);
 }
 @NgModule({
 imports: [HttpClientModule]

@@ -1,9 +1,11 @@
+import { NotificationsService } from './../../services/notifications.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Usuario } from './../../model/usuario';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -24,24 +26,25 @@ export class LoginComponent implements OnInit {
               private userSvc: UserService,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private location: Location,
+              private notify: NotificationsService) { }
 
   ngOnInit() {
     this.initForm();
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
-    // reset login status
-   // this.auth.logout();
   }
 
   doLogin(): void {
     this.parseValues();
     this.auth.login(this.userName, this.password).subscribe(
       response => {
-        this.userSvc.loggedUser = response;
         this.router.navigate(['/dashboard/panel']);
-        // this.loginSuccess.emit(true);
       },
-      error => console.log(error)
+      error => {
+        this.notify.errorMessage('Usuario o contraseña incorrecto.');
+        console.log(error);
+      }
     );
   }
 

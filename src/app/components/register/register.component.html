@@ -1,16 +1,31 @@
 <app-view>
-    <form novalidate>
-        <div class="form-group">
-            <label for="txtName">Nombre</label>
-            <input type="text" id="txtName" class="form-control" aria-describedby="nameHelp">
-            <label for="txtLastName">Apellido</label>
-            <input type="text" id="txtLastName" class="form-control" aria-describedby="nameHelp">
-            <label for="txtEmail">Correo</label>
-            <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp">
-            <label for="txtPassword">Contraseña</label>
-            <input type="password" class="form-control" id="txtPassword" aria-describedby="passwordHelp">
-            <button type="submit" class="btn btn-primary">Registrarse</button>
-        </div>
-      </form>
-    </app-view>
-
+  <form #form="ngForm" (ngSubmit)="registrarCliente()" [formGroup]="group" novalidate>
+    <div fxLayout="row">
+      <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" id="txtName" formControlName="txtName">
+    </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput type="text" id="txtLastName" formControlName="txtLastName">
+    </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input matInput type="email" id="txtEmail" formControlName="txtEmail">
+    </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" id="txtPassword" formControlName="password">
+    </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <button type="submit">Registrarse</button>
+    </div>
+  </form>
+</app-view>

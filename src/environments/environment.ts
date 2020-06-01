@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://localhost/directus/public/directus/'
+  base_url: 'http://localhost/directus/public/beatstudio/'
 };
 
 /*

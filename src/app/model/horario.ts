@@ -1,13 +1,11 @@
-export class Horario {
-  public id?: number;
-  public status?: boolean;
-  // tslint:disable-next-line: variable-name
-  public created_on?: Date;
-  // tslint:disable-next-line: variable-name
-  public modified_on?: Date;
+import { CommonFields } from './common-fields';
+export class Horario extends CommonFields{
   public disciplina?: any;
-  public fecha?: Date;
-  public hora?: Date;
+  public fecha?: string;
   public coach?: any;
-  public constructor() {}
+  public lugares?: number;
+  public lleno?: boolean;
+  public constructor() {
+    super();
+  }
 }

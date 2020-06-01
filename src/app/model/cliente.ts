@@ -1,13 +1,19 @@
-export class Cliente {
-  public id?: number;
-  public nombre?: string;
-  public apellido?: string;
-  public correo?: string;
-  public creditos?: number;
-  public telefono?: string;
-  public calzado?: number;
-  public fechanacimiento?: Date;
-  public contacto?: string;
+import { CommonFields } from './common-fields';
 
-  public constructor() {}
+export class Cliente extends CommonFields {
+
+ public nombre?: string;
+ public apellido?: string;
+ public correo?: string;
+ public creditos?: number;
+ public telefono?: string;
+ public calzado?: number;
+ public fecha_nacimiento?: string;
+ public contacto?: string;
+ public usuario?: any;
+
+ constructor() {
+   super();
+ }
 }
+

@@ -1,10 +1,41 @@
-<div class="justify-content-center">
-  <div fxFlex.lt-sm="100%" fxFlex.gt-xs="80%">
-    <app-view>
-      <div *ngFor="let item of formasPago">
-
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-9">
+      <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;" *ngFor="let p of formasPago">
+        <div class="row d-flex justify-content-between" style="padding: 2%;">
+          <div class="col-sm-1">
+            <mat-radio-button [value]="p.principal" (change)="guardarForma(p)">
+            </mat-radio-button>
+          </div>
+          <div class="col-sm-1">
+            <mat-divider vertical style="padding: 2%; height: 40px;"></mat-divider>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div style="margin-right: 5%;">
+                <img *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" />
+                <img *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
+              </div>
+              <div class="justify-content-start">
+                {{p.titular.toUpperCase()}} <br />
+                <!-- &#x2022; &#x2022; &#x2022; &#x2022; -->
+                 {{ p.numero_tarjeta | creditCard }}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 primary-color" (click)="agregarForma(p)" style="cursor: pointer;">
+            cambiar
+          </div>
+          <div class="col-sm-2" (click)="eliminar(p)">
+            <mat-icon class="remove-icon" svgIcon="remove"></mat-icon>
+          </div>
+        </div>
+      </mat-card>
+      <!-- <mat-card style="background: rgb(24, 24, 24) !important; cursor: pointer;"> -->
+      <div class="row d-flex justify-content-center primary-color" style="cursor: pointer;" (click)="agregarForma()">
+        <mat-icon>add</mat-icon> Agregar forma de pago
       </div>
-    </app-view>
+      <!-- </mat-card> -->
+    </div>
   </div>
 </div>
-

@@ -1,246 +1,176 @@
-<div class="justify-content-center" fxFlex="100%">
-    <form #form="ngForm" (ngSubmit)="saveOrUpdate()" novalidate>
-      <div fxLayout="column">
-        <mat-accordion>
-          <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-            <mat-expansion-panel-header >
-              <mat-panel-title>
-                Nombre
-              </mat-panel-title>
-              <mat-panel-description>
+<div *ngIf="filtersLoaded" class="justify-content-center" fxFlex="100%">
+  <form #form="ngForm" (ngSubmit)="saveOrUpdate()" [formGroup]="userGroup" novalidate>
+    <div fxLayout="column">
+      <mat-accordion>
+        <mat-expansion-panel class="panel-border" [expanded]="step === 0" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Nombre
+            </mat-panel-title>
+            <mat-panel-description>
+              <div fxLayout="row" fxLayoutAlign="center center" style="padding-left: 12%;">
                 {{cliente.nombre}}
-                <span fxFlex></span>
-                <!-- <mat-icon>account_circle</mat-icon> -->
-                <p style="color: #986dff">cambiar</p>
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <div fxLayout="column" fxLayoutAlign="center center" >
+              </div>
+              <span fxFlex></span>
+              <!-- <mat-icon>account_circle</mat-icon> -->
+              <p style="color: #986dff">cambiar</p>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="center center">
             <mat-form-field>
               <mat-label>Tu nombre</mat-label>
-              <input matInput>
+              <input matInput formControlName="txtName">
             </mat-form-field>
             <mat-form-field>
               <mat-label>Tu apellido</mat-label>
-              <input matInput>
+              <input matInput formControlName="txtLastName">
             </mat-form-field>
             <div fxLayout="row" fxLayoutAlign="center center">
               <button mat-stroked-button>Cancelar</button>
               <span fxFlex="3em"></span>
-              <button mat-stroked-button>Guardar</button>
-            </div>
-            </div>
-            <!-- <mat-action-row style="background: rgb(26,26,26)">
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
-            </mat-action-row> -->
-          </mat-expansion-panel>
-          <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-              <mat-expansion-panel-header >
-                  <mat-panel-title>
-                    Correo electrónico
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{cliente.correo}}
-                    <span fxFlex></span>
-                    <!-- <mat-icon>account_circle</mat-icon> -->
-                    <p style="color: #986dff">cambiar</p>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div fxLayout="column" fxLayoutAlign="center center" >
-                <mat-form-field>
-                  <mat-label>Tu Correo</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <div fxLayout="row" fxLayoutAlign="center center">
-                  <button mat-stroked-button>Cancelar</button>
-                  <span fxFlex="3em"></span>
-                  <button mat-stroked-button>Guardar</button>
-                </div>
-                </div>
-            <!-- <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
-            </mat-action-row> -->
-          </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
-              <mat-expansion-panel-header >
-                  <mat-panel-title>
-                    Teléfono de contacto
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{cliente.telefono}}
-                    <span fxFlex></span>
-                    <!-- <mat-icon>account_circle</mat-icon> -->
-                    <p style="color: #986dff">cambiar</p>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div fxLayout="column" fxLayoutAlign="center center" >
-                <mat-form-field>
-                  <mat-label>Teléfono</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <div fxLayout="row" fxLayoutAlign="center center">
-                  <button mat-stroked-button>Cancelar</button>
-                  <span fxFlex="3em"></span>
-                  <button mat-stroked-button>Guardar</button>
-                </div>
-                </div>
-            <!-- <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">End</button>
-            </mat-action-row> -->
-          </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
-              <mat-expansion-panel-header >
-                  <mat-panel-title>
-                    Fecha de nacimiento
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{ cliente.fechanacimiento | date: 'yyyy-MM-dd'}}
-                    <span fxFlex></span>
-                    <!-- <mat-icon>account_circle</mat-icon> -->
-                    <p style="color: #986dff">cambiar</p>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div fxLayout="column" fxLayoutAlign="center center" >
-                    <mat-form-field>
-                        <mat-label>Elige una fecha</mat-label>
-                        <input matInput [matDatepicker]="picker">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                <div fxLayout="row" fxLayoutAlign="center center">
-                  <button mat-stroked-button>Cancelar</button>
-                  <span fxFlex="3em"></span>
-                  <button mat-stroked-button>Guardar</button>
-                </div>
-                </div>
-            <!-- <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">End</button>
-            </mat-action-row> -->
-          </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
-              <mat-expansion-panel-header >
-                  <mat-panel-title>
-                    Talla de calzado(US)
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{cliente.calzado}}
-                    <span fxFlex></span>
-                    <!-- <mat-icon>account_circle</mat-icon> -->
-                    <p style="color: #986dff">cambiar</p>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div fxLayout="column" fxLayoutAlign="center center" >
-                    <mat-form-field>
-                        <mat-label>Teléfono</mat-label>
-                        <input matInput type="number">
-                      </mat-form-field>
-                <div fxLayout="row" fxLayoutAlign="center center">
-                  <button mat-stroked-button>Cancelar</button>
-                  <span fxFlex="3em"></span>
-                  <button mat-stroked-button>Guardar</button>
-                </div>
-                </div>
-            <!-- <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">End</button>
-            </mat-action-row> -->
-          </mat-expansion-panel>
-
-          <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
-              <mat-expansion-panel-header >
-                  <mat-panel-title>
-                    Contacto de emergencia
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    {{cliente.contacto}}
-                    <span fxFlex></span>
-                    <!-- <mat-icon>account_circle</mat-icon> -->
-                    <p style="color: #986dff">cambiar</p>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <div fxLayout="column" fxLayoutAlign="center center" >
-                    <mat-form-field>
-                        <mat-label>Contacto</mat-label>
-                        <input matInput>
-                      </mat-form-field>
-                <div fxLayout="row" fxLayoutAlign="center center">
-                  <button mat-stroked-button>Cancelar</button>
-                  <span fxFlex="3em"></span>
-                  <button mat-stroked-button>Guardar</button>
-                </div>
-                </div>
-            <!-- <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">End</button>
-            </mat-action-row> -->
-          </mat-expansion-panel>
-
-        </mat-accordion>
-      </div>
-    </form>
-</div>
-
-
-
-
-
-
-<!-- <div class="justify-content-center">
-<app-view>
-  <form #form="ngForm" (ngSubmit)="saveOrUpdate()" novalidate>
-    <div fxLayout="column">
-      <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" id="txtNombre" placeholder="nombre">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Apellido</mat-label>
-        <input matInput type="text" class="form-control" id="txtApellido" placeholder="apellido">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Correo</mat-label>
-        <input matInput type="email" class="form-control" id="txtCorreo" placeholder="correo@ejemplo.com">
-      </mat-form-field>
-      <div class="col-sm">
-        <label for="txtTelefono">Teléfono</label>
-        <input type="text" class="form-control" id="txtTelefono" placeholder="(662) 222 22 22">
-      </div>
-      <mat-form-field>
-        <mat-label>Contacto</mat-label>
-        <input matInput type="text" class="form-control" id="txtContacto" placeholder="Juan perez">
-      </mat-form-field>
-      <div class="col-sm">
-        <label for="dp">Fecha de nacimiento</label>
-        <form>
-          <div class="form-group">
-            <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd" name="dp" id="dp" [(ngModel)]="model" ngbDatepicker
-                #d="ngbDatepicker">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-              </div>
+              <button mat-stroked-button type="submit">Guardar</button>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="col-sm">
-        <label for="txtCalzado">Talla de Calzado</label>
-        <input type="text" class="form-control" id="txtCalzado" placeholder="27">
-      </div>
-      <div class="col-sm">
-          <label for="btnChange">Contraseña</label> <br />
-        <button class="btn btn-success my-2 my-sm-0" type="button" id="btnChange">Cambiar contraseña</button>
-      </div>
-    </div>
-    <div fxLayout="row" style="margin-top: 1%; margin-left: 1%;" class="justify-content-end">
-      <button class="btn btn-secondary my-2 my-sm-0" type="button">Cancelar</button>
-      <button class="btn btn-primary my-2 my-sm-0"  style="margin-left: 0.5%;" type="submt">Guardar</button>
+          <!-- <mat-action-row style="background: rgb(26,26,26)">
+              <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row> -->
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panel-border" [expanded]="opened" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Correo electrónico
+            </mat-panel-title>
+            <mat-panel-description>
+              <div fxLayout="row" fxLayoutAlign="center center" style="padding-left: 5%;">
+                {{cliente.correo}}
+              </div>
+              <span fxFlex></span>
+              <!-- <mat-icon>account_circle</mat-icon> -->
+              <p style="color: #986dff">cambiar</p>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-form-field>
+              <mat-label>Tu Correo</mat-label>
+              <input matInput formControlName="txtEmail">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button mat-stroked-button>Cancelar</button>
+              <span fxFlex="3em"></span>
+              <button mat-stroked-button type="submit">Guardar</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panel-border" [expanded]="opened" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Teléfono de contacto
+            </mat-panel-title>
+            <mat-panel-description>
+                <div fxLayout="row" fxLayoutAlign="start center" style="margin-left: -3%">
+              {{cliente.telefono}}
+                </div>
+              <span fxFlex></span>
+              <!-- <mat-icon>account_circle</mat-icon> -->
+              <p style="color: #986dff">cambiar</p>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-form-field>
+              <mat-label>Teléfono</mat-label>
+              <input matInput formControlName="txtPhone">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button mat-stroked-button>Cancelar</button>
+              <span fxFlex="3em"></span>
+              <button mat-stroked-button type="submit">Guardar</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panel-border" [expanded]="opened" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Fecha de nacimiento
+            </mat-panel-title>
+            <mat-panel-description>
+              <div fxLayout="row" fxLayoutAlign="center center" style="padding-left: 1%;" *ngIf="cliente.fecha_nacimiento !== undefined">
+                {{ cliente.fecha_nacimiento | customDate }}
+              </div>
+              <span fxFlex></span>
+              <!-- <mat-icon>account_circle</mat-icon> -->
+              <p style="color: #986dff">cambiar</p>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-form-field>
+              <mat-label>Elige una fecha</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button mat-stroked-button>Cancelar</button>
+              <span fxFlex="3em"></span>
+              <button mat-stroked-button type="submit">Guardar</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panel-border" [expanded]="opened" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Talla de calzado(US)
+            </mat-panel-title>
+            <mat-panel-description>
+               <div fxLayout="row" fxLayoutAlign="center center" style="margin-left: -8%;">
+              {{cliente.calzado}}
+            </div>
+              <span fxFlex></span>
+              <!-- <mat-icon>account_circle</mat-icon> -->
+              <p style="color: #986dff">cambiar</p>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-form-field>
+              <mat-label>Talla</mat-label>
+              <input matInput type="number" formControlName="txtSize">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button mat-stroked-button>Cancelar</button>
+              <span fxFlex="3em"></span>
+              <button mat-stroked-button type="submit">Guardar</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panel-border" [expanded]="opened" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Contacto de emergencia
+            </mat-panel-title>
+            <mat-panel-description>
+                <div fxLayout="row" fxLayoutAlign="center center" style="margin-left: -8%;">
+              {{cliente.contacto}}
+              </div>
+              <span fxFlex></span>
+              <!-- <mat-icon>account_circle</mat-icon> -->
+              <p style="color: #986dff">cambiar</p>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <mat-form-field>
+              <mat-label>Contacto</mat-label>
+              <input matInput formControlName="txtContact">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button mat-stroked-button>Cancelar</button>
+              <span fxFlex="3em"></span>
+              <button mat-stroked-button type="submit">Guardar</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </form>
-</app-view>
-</div> -->
+</div>

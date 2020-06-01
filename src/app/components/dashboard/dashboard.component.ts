@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { EventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,12 +19,40 @@ export class DashboardComponent implements OnInit {
     {fecha: new Date(), descripcion: 'los lunes no son lunes...', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png'},
     {fecha: new Date(), descripcion: 'los lunes no son lunes...', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png'}
   ];
-  constructor(private eventService: EventsService) { }
+
+  // public semana = [
+  //   { titulo: 'take me to church', artista: 'Hozier', url: 'https://open.spotify.com/embed/track/3dYD57lRAUcMHufyqn9GcI' },
+  //   { titulo: 'somebody that i used to know', artista: 'gotye', url: 'https://open.spotify.com/embed/track/4wCmqSrbyCgxEXROQE6vtV' },
+  //   { titulo: 'shape of you', artista: 'Ed Sheeran', url: 'https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3' }
+  // ];
+  public semana = [
+      { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana1.png' },
+      { titulo: 'somebody that i used to know', artista: 'gotye', url: '../../../assets/img/semana2.png' },
+      { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana3.png' },
+      { titulo: 'shape of you', artista: 'Ed Sheeran', url: '../../../assets/img/semana1.png' }
+    ];
+
+  public favoritas = [
+    { titulo: 'Believer', artista: 'Imagine Dragons', url: 'https://open.spotify.com/embed/track/0pqnGHJpmpxLKifKRmU6WP' },
+    { titulo: 'Master of Puppets', artista: 'Metallica', url: 'https://open.spotify.com/embed/track/2MuWTIM3b0YEAskbeeFE1i' },
+    { titulo: 'Hallowed be thy name', artista: 'Iron Maiden', url: 'https://open.spotify.com/embed/track/469rBLYJUZHMJLtq2Wch3h' }
+  ];
+  constructor(private sanitizer: DomSanitizer,
+              private router: Router) { }
 
   ngOnInit() {
     // this.eventService.getEvent().subscribe(
     //   value => this.scrollIntoView(value)
     // );
+  }
+
+  cleanUrl(url: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  goToCoaches(): void {
+    window.scroll(0, 0);
+    this.router.navigate(['dashboard/coach']);
   }
 
   // scrollIntoView(section: any) {

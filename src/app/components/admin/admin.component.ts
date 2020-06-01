@@ -13,4 +13,7 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
+  onActivate(event) {
+    window.scroll(0, 0);
+  }
 }

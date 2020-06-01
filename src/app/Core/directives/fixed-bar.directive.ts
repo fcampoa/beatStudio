@@ -11,6 +11,5 @@ export class FixedBarDirective implements OnInit {
 
   ngOnInit() {
     this.renderer.addClass(this.el.nativeElement, 'fixed-bar');
-   // this.renderer.addClass(this.el.nativeElement, 'fixed-top');
   }
 }

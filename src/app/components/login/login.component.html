@@ -1,4 +1,4 @@
-<app-view>
+<mat-card>
 <form #form="ngForm" [formGroup]="userGroup" (ngSubmit)="doLogin()"  novalidate>
       <mat-form-field>
         <mat-label>Correo</mat-label>
@@ -14,7 +14,7 @@
         <a href="">¿Olvidaste tu contrañse?</a>
         <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
   </form>
-</app-view>
+</mat-card>
 <ng-template #popResetContent>
   <app-view>
     <p>Escribe tu correo y te enviaremos instrucciones <br> para recuperar tu contraseña.</p>

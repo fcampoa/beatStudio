@@ -1,0 +1,50 @@
+<!-- <div *ngIf="loading">
+    <app-loader></app-loader>
+  </div> -->
+<div class="container fluid" style="padding-top: 10%">
+  <div *ngIf="!loading">
+    <div class="row d-flex justify-content-center" style="padding-bottom: 5%;">
+      <h1>Resumen de Compra</h1>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-6">
+        <div class="row d-flex justify-content-between" style="padding: 3%;">
+          <div>
+            PAQUETE/PRODUCTO
+          </div>
+          <div>
+            {{ paquete.creditos }} créditos.<br />
+            <p style="color: gray; font-size: 12px;">Expira en 30 dias.</p>
+          </div>
+        </div>
+        <mat-divider class="divider-class-show"></mat-divider>
+        <div class="row d-flex justify-content-between" style="padding: 3%;">
+          <div>Total</div>
+          <div>{{paquete.precio | currency: 'MXN'}}</div>
+        </div>
+        <mat-divider class="divider-class-show "></mat-divider>
+        <div style="margin-bottom: 10%; margin-top: 10%;">
+        <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;" (click)="cambiarForma()">
+          <div class="row">
+            <div class="col-sm-2" style="font-style: bold;">
+              <img *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" style="height: 80%"/>
+              <img *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" style="height: 80%" />
+            </div>
+            <div class="col-sm-8 d-flex justify-content-start" style="font-size: 1vw;">
+              {{p.titular.toUpperCase()}} <br />
+              &#x2022; &#x2022; &#x2022; &#x2022; {{ p.numero_tarjeta | creditCard }}
+            </div>
+              <div class="col-sm-2 justify-content-end">
+                <p class="primary-color">cambiar</p>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+        <div class="row d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 10%;">
+          <button class="btn brn-outline">Cancelar</button>
+          <button class="btn brn-outline" style="margin-left: 5%;" (click)="pagar()">Pagar Ahora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

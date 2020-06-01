@@ -1,6 +1,8 @@
+import { BehaviorSubject } from 'rxjs';
+
 import { Horario } from './../../model/horario';
 import { GlobalApiService } from './../../Core/global/global-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Disciplina } from 'src/app/model/disciplina';
 import * as m from 'moment';
 
@@ -14,16 +16,17 @@ export class BookingComponent implements OnInit {
   // Variables
   public disciplinas: Disciplina[] = [];
   public horarios: Horario[] = [];
-  // public semana = {dia1: [], dia2: [], dia3: [], dia4: [], dia5: []};
-  public semana = {};
-  public desde: any;
-  public hasta: any;
-  public idDisciplina: number;
-  constructor(private apiSvc: GlobalApiService) { }
+  public seleccion: BehaviorSubject<Horario>;
+  public horarioElegido: Horario;
+
+  constructor(private apiSvc: GlobalApiService) {
+
+    this.seleccion = new BehaviorSubject<Horario>(null);
+   }
 
   ngOnInit() {
     this.getDisciplinas();
-    this.getRango();
+    this.seleccion.subscribe(h => this.horarioElegido = h);
   }
 
   buscarCliente(correo: string): void {
@@ -37,30 +40,21 @@ export class BookingComponent implements OnInit {
     );
   }
 
-  getHorarios(id: number): void {
-    this.idDisciplina = id;
-    this.apiSvc.routes.horario.buscarDisciplinaRango(this.idDisciplina, this.desde, this.hasta)<any>().subscribe(
-      response => {
-        this.horarios = response.data;
-      }
-    );
+  elegirHorario($event: any) {
+    if ($event.action === 1) {
+      this.horarios.push($event.horario);
+    }
+    if ($event.action === 2) {
+      const aux = this.horarios.splice(this.horarios.indexOf($event.horario), 1);
+      this.horarios = aux;
+    }
   }
 
-  splitHorarios(): void {
-    let actual: any;
-    let cont = 0;
-    this.horarios.forEach(x => {
-      const aux = x.fecha.getDate();
-      if (actual !== aux) {
-        cont++;
-        actual = aux;
-
-      }
-    });
+  asignarSeleccion($event: any): void {
+    this.seleccion.next($event);
   }
 
-  getRango(): void {
-    this.desde = m().format('YYYY-MM-DD');
-    this.hasta = m().add(7, 'days').format('YYYY-MM-DD');
+  siguientePaso(): void {
+
   }
 }

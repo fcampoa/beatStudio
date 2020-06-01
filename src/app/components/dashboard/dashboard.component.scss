@@ -7,7 +7,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 43.250em;
+  height: 43.25em;
   width: 100%;
 }
 
@@ -20,6 +20,7 @@
   background: #ffffff !important;
   color: #000000;
   padding-top: 10%;
+  width: 100%;
 }
 .cover-video {
   background-image: url("../../../assets/img/video.png");
@@ -34,11 +35,8 @@
   transition: opacity 0.6s;
 }
 .img-format:hover {
-  opacity: 0.3;
+  opacity: 0.4;
 }
-// #coversDiv > div:hover {
-//   background: linear-gradient(to top, rgb(255, 255, 255), rgb(152, 109, 255));
-// }
 .div-degradado {
   background: #ffffff;
 }
@@ -63,7 +61,7 @@
 }
 
 .desvanecer:hover {
-  opacity: 0.2;
+  opacity: 0.4;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
   -o-transition: opacity 500ms;
@@ -71,34 +69,49 @@
   transition: opacity 500ms;
   cursor: pointer;
 }
+
+.seleccion {
+  color: #000000;
+  font-style: bold;
+}
+.seleccion:hover .text-color .titulo-color {
+  color: #000000;
+  font-style: bold;
+}
 .contenedor {
   position: relative;
   display: inline-block;
   text-align: center;
 }
 
+.contenedor:hover > div > div > p {
+  color: #000000;
+  font-style: bold;
+}
+
 .centrado {
   position: absolute;
   top: 90%;
-  left: 65%;
+  left: 45%;
   transform: translate(-50%, -50%);
 }
+
 .contenedor:hover .ocultar {
   display: inline;
 }
 .ocultar {
   top: 0;
-  right: 15%;
+  // right: 15%;
   display: none;
   padding-right: 5px;
   position: relative;
   width: 200px;
 }
 
-.cambiar-color:hover > div > p {
+.cambiar-color:hover > p{
   color: #000000;
+  font-style: bold;
 }
-
 .titulo-color {
   color: #ffffff;
 }
@@ -106,13 +119,12 @@
 .seccion-rutinas {
   background: #ffffff !important;
   color: #000000;
-  padding-top: 10%;
 }
 .seccion-coaches {
   background: #ffffff !important;
   color: #000000;
   padding-top: 4%;
-  padding-bottom: 10%;
+  padding-bottom: 8%;
 }
 
 .seccion-social {
@@ -126,6 +138,38 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 43.250em;
+  height: 43.25em;
   width: 100%;
+}
+
+.rutinas2-back {
+  background-image: url("../../../assets/img/rutina2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 43.25em;
+  width: 100%;
+}
+
+.seccion-musica {
+  padding-top: 10%;
+}
+
+mat-tab-group {
+  mat-tab {
+    .mat-tab-header {
+      margin-left: 30%;
+    }
+  }
+}
+
+@media only screen and(max-width: 840px) {
+  .seccion-coaches > div > div > a {
+    widows: 18em;
+  }
+}
+
+.sobreponer {
+  position: absolute;
+  margin-top: 55%;
 }
