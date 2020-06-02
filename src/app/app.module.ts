@@ -19,7 +19,6 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { QuickAppProMaterialModule } from './Core/material.module';
-import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { NotificationsService } from './services/notifications.service';
 import { UserService } from './services/user.service';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -48,7 +47,6 @@ import { ParamsService } from './Core/global/params-service.service';
 import { GenericApiCallService } from './Core/global/generic-api-call.service';
 import { ErrorsHandler } from './services/errors-handler.service';
 import { CustomDatePipe } from './Core/pipes/custom-date.pipe';
-import { TextMaskModule } from 'angular2-text-mask';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog/public-api';
 import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
 
@@ -92,7 +90,6 @@ import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
     RouterModule.forRoot(AppRoutes, {
       useHash: true
     }),
-    ToastrModule.forRoot(),
     FooterModule,
     FormsModule,
     FlexLayoutModule,
@@ -103,13 +100,12 @@ import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
     MDBBootstrapModule.forRoot(),
     QuickAppProMaterialModule,
     UtilitiesModule,
-    TextMaskModule
     // AdminModule
   ],
   exports: [
   ],
   providers: [GlobalApiService, UserService, NotificationsService,
-     ToastrService, ParamsService, GenericApiCallService,
+     ParamsService, GenericApiCallService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: ErrorHandler, useClass: ErrorsHandler}],

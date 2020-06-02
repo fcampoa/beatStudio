@@ -1,5 +1,4 @@
 import { ResponseStatus } from './../Core/global/support/response-status.enum';
-import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { validateHorizontalPosition } from '@angular/cdk/overlay';

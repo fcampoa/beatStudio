@@ -20,7 +20,6 @@
 @import 'paper-dashboard/mixins';
 
 // Plugins CSS
-@import "paper-dashboard/plugins/plugin-animate-bootstrap-notify";
 @import "paper-dashboard/plugins/plugin-perfect-scrollbar";
 
 // Core CSS
@@ -52,7 +51,6 @@
 @import "paper-dashboard/cards/card-stats";
 
 // angular differences
-@import "paper-dashboard/angular/plugin-ngx-toastr";
 @import "paper-dashboard/angular/sidebar-and-main-panel";
 @import "paper-dashboard/angular/dropdown";
 @import "paper-dashboard/angular/inputs";
