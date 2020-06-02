@@ -10,14 +10,14 @@
     sed diam nonummy nibh euismod tincidunt ut laoreet
   </div>
   <div class="row">
-    <div class="col-sm-4" style="margin-top: 5%;" *ngFor="let c of coaches; let i = index"
-      >
-      <div style="width: 350px; height: 450px; padding-left: 5%;" (mouseenter)="showDetails(i)" (mouseleave)="hideDetails(i)">
+    <div class="col-sm-4" style="margin-top: 5%;" *ngFor="let c of coaches; let i = index">
+      <div style="width: 350px; height: 450px; padding-left: 5%;" (mouseenter)="showDetails(i)"
+        (mouseleave)="hideDetails(i)">
         <img [id]="i" [src]="c.url" class="front-image" />
         <div class="row" style="padding-top: 2%;">
           <mat-form-field style="margin-left: 3%;">
-            <mat-label>EDAD</mat-label>
-            <input matInput [value]="c.edad" disabled />
+            <mat-label>FRASE FAVORITA</mat-label>
+            <input matInput [value]="c.frase" disabled />
           </mat-form-field>
         </div>
         <div class="row">
@@ -38,6 +38,12 @@
         <mat-form-field style="margin-left: 3%;">
           <mat-label>COACH</mat-label>
           <input id="{{i + 'name'}}" style="color: #9865ff;" formControlName="{{i + 'name'}}" matInput disabled />
+        </mat-form-field>
+      </div>
+      <div class="row" [formGroup]="group" style="padding-top: 2%;">
+        <mat-icon svgIcon="music_note"></mat-icon>
+        <mat-form-field style="margin-left: 3%;">
+          <input id="{{i + 'music'}}" style="color: #9865ff;" formControlName="{{i + 'music'}}" matInput disabled />
         </mat-form-field>
       </div>
     </div>

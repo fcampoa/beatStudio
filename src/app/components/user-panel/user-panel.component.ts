@@ -45,15 +45,21 @@ export class UserPanelComponent implements OnInit {
           }
         );
   }
-
+  /**
+   * Navega a la pantalla de reservaciones
+   */
   goToBooking(): void {
     this.router.navigate(['/dashboard/booking']);
   }
-
+/**
+ * Navega a la pantalla para comprar creditos
+ */
   goToBuy(): void {
     this.router.navigate(['/dashboard/checkout']);
   }
-
+  /**
+   * obtiene los créditos del cliente
+   */
   totalCreditos(): void {
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
       response => {

@@ -20,7 +20,7 @@
     <div class="col-sm">
       <div #profile *ngIf="logged" class="d-flex justify-content-end">
         <mat-icon class="material-icons-outlined" style="padding-top: 2%; cursor: pointer; color:#9865ff;"
-          [ngbPopover]="popLogoutContent" autoClose="outside" [popoverTitle]="popLogoutTitle">account_circle</mat-icon>
+          [ngbPopover]="popLogoutContent" autoClose="outside">account_circle</mat-icon>
         <div style="padding-top: 2%; margin-left: 4%; color:#9865ff;">
           {{ name }}
         </div>
@@ -29,8 +29,9 @@
         <button class="btn btn-outline" type="button" [ngbPopover]="popLoginContent" autoClose="outside"
           [popoverTitle]="popLoginTitle">Iniciar Sesión</button>
         <span style="padding: 2%;"></span>
-        <button class="btn btn-outline" type="button" [ngbPopover]="popRegisterContent" autoClose="outside"
-          [popoverTitle]="popRegisterTitle">Crear Cuenta</button>
+        <button class="btn btn-outline" type="button" [ngbPopover]="popRegisterContent" autoClose="outside">
+          Crear Cuenta
+        </button>
       </form>
     </div>
   </div>

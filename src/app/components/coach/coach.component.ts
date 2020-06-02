@@ -13,16 +13,16 @@ export class CoachComponent implements OnInit {
   public imageClass = 'front-image';
   public coaches = [
     {
-      edad: 30, disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach1.png'
+      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
+      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach1.png', musica: 'BPop, Re ggeaton, R&'
     },
     {
-      edad: 30, disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach2.png'
+      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
+      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach2.png', musica: 'BPop, Re ggeaton, R&'
     },
     {
-      edad: 30, disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png'
+      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
+      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'BPop, Re ggeaton, R&'
     },
   ];
   constructor(private builder: FormBuilder) { }

@@ -38,7 +38,10 @@ export class PaymentComponent implements OnInit {
   agregarForma(f?: any): void {
     this.openDialog(f);
   }
-
+  /**
+   * modifica la tarjeta principal de la cuenta, cambia a false el estado de la anterior
+   * y a true el estado de la tarjeta seleccionada
+   */
   guardarForma(p: FormaPago): void {
     this.formasPago.forEach(x => {
       if (x.principal && x.id !== p.id) {
@@ -58,7 +61,10 @@ export class PaymentComponent implements OnInit {
       error => console.log(error)
     );
   }
-
+/**
+ * abre el modal para agregar o modificar tarjetas
+ * @param f tarjeta que se va a modificar
+ */
   openDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
       width: '250px',
@@ -69,6 +75,9 @@ export class PaymentComponent implements OnInit {
       this.listaFormas();
     });
   }
+  /**
+   * obtiene la lista de tarjetas registradas.
+   */
   listaFormas(): void {
     this.apiSvc.routes.forma_pago.buscarCliente(this.cliente.id)<any>().subscribe(
       response => {
@@ -77,7 +86,9 @@ export class PaymentComponent implements OnInit {
       error => console.log(error)
     );
   }
-
+/**
+ * elimina una tarjeta
+ */
   eliminar(p: FormaPago) {
     this.apiSvc.routes.forma_pago.eliminar()<any>(p.id).subscribe(
       response => {
