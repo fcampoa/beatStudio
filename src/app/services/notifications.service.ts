@@ -35,5 +35,4 @@ export class NotificationsService {
   successMessage(message: string): void {
     this.snackBar.open(message, this.action, this.config);
   }
-
 }
