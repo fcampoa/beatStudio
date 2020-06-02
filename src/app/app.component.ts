@@ -1,6 +1,8 @@
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
+
+declare var $: any;
 
 @Component({
   selector: 'app-root',

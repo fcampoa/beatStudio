@@ -7,7 +7,7 @@ import { GlobalApiService } from './../../Core/global/global-service';
 import { Component, OnInit } from '@angular/core';
 import { Disciplina } from 'src/app/model/disciplina';
 import * as m from 'moment';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
