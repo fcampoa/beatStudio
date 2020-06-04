@@ -16,7 +16,7 @@
           <p class="primary-color">BEAT</p>
           <p>{{d.nombre.toUpperCase()}}</p>
         </ng-template>
-        <app-schedule [idDisciplina]="d.id"></app-schedule>
+        <app-schedule [idDisciplina]="d.id" (Seleccion)=""></app-schedule>
       </mat-tab>
     </mat-tab-group>
   </div>
