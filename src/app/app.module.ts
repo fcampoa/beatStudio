@@ -49,6 +49,7 @@ import { ErrorsHandler } from './services/errors-handler.service';
 import { CustomDatePipe } from './Core/pipes/custom-date.pipe';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog/public-api';
 import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
     DisciplineComponent,
     SelectCardComponent,
     SeatSelectionComponent,
+    PrivacyComponent,
     // directives
     FixedBarDirective,
     // pipes

@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { Routes } from '@angular/router';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 export const AppRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -33,7 +34,8 @@ export const AppRoutes: Routes = [
       { path: 'checkout-result/:idPago', component: CheckoutResultComponent, canActivate: [AuthGuard] },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'disciplines', component: DisciplineComponent, children: [] }
+      { path: 'disciplines', component: DisciplineComponent, children: [] },
+      { path: 'privacy', component: PrivacyComponent },
     ]
   },
 
