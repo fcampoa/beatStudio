@@ -69,7 +69,7 @@ export class BookingComponent implements OnInit {
    * de schedule
    */
   asignarSeleccion($event: any): void {
-    this.seleccion.next($event);
+    this.seleccion.next($event.horario);
   }
 /**
  * navega al siguiente componente booking-seatSelection
