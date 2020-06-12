@@ -1,0 +1,19 @@
+.mainDiv{
+  height:100%;
+  width:100%;
+  background-color:rgba(0,0,0,0.4);
+  position:absolute;
+  z-index: 100000;
+  align-items: center;
+}
+.spinner {
+   text-align:center;
+   width: 327px;
+   height: 60px;
+   margin-top: -23px;
+   margin-left: -158px;
+   left: 60%;
+   top: 50%;
+   position: absolute;
+   align-items: center;
+}

@@ -1,0 +1,51 @@
+<div class="container-fluid" style="padding-top: 10%; padding-bottom: 5%;">
+  <div class="row d-flex justify-content-center">
+    <h1 style="font-size: 3.567em">Nuestros Coaches</h1>
+  </div>
+  <br />
+  <div class="row d-flex justify-content-center">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+  </div>
+  <div class="row d-flex justify-content-center">
+    sed diam nonummy nibh euismod tincidunt ut laoreet
+  </div>
+  <div class="row">
+    <div class="col-sm-4" style="margin-top: 5%;" *ngFor="let c of coaches; let i = index">
+      <div style="width: 350px; height: 450px; padding-left: 5%;" (mouseenter)="showDetails(i)"
+        (mouseleave)="hideDetails(i)">
+        <img [id]="i" [src]="c.url" class="front-image" />
+        <div class="row" style="padding-top: 2%;">
+          <mat-form-field style="margin-left: 3%;">
+            <mat-label>FRASE FAVORITA</mat-label>
+            <input matInput [value]="c.frase" disabled />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field style="margin-left: 3%;">
+            <mat-label>COACH EN</mat-label>
+            <input matInput [value]="c.disciplinas" disabled />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field style="margin-left: 3%;">
+            <mat-label>MOVIMIENTO FAVORITO</mat-label>
+            <input matInput [value]="c.movimiento" disabled />
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-divider id="{{i +'divider'}}" class="divider-class-hide"></mat-divider>
+      <div class="row" [formGroup]="group" style="padding-top: 2%;">
+        <mat-form-field style="margin-left: 3%;">
+          <mat-label>COACH</mat-label>
+          <input id="{{i + 'name'}}" style="color: #9865ff;" formControlName="{{i + 'name'}}" matInput disabled />
+        </mat-form-field>
+      </div>
+      <div class="row" [formGroup]="group" style="padding-top: 2%;">
+        <mat-icon svgIcon="music_note"></mat-icon>
+        <mat-form-field style="margin-left: 3%;">
+          <input id="{{i + 'music'}}" style="color: #9865ff;" formControlName="{{i + 'music'}}" matInput disabled />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>

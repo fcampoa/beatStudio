@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+// @import "./custom-theme.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.fixed-bar {
+  // position: fixed;
+  width: 100%;
+}
+
+// html {
+//   scroll-behavior: smooth;
+// }
+
+.popover-header {
+  background: #000000 !important;
+}
+
+.popover-body {
+  background: #000000;
+}
+
+.app-background {
+  background: #000000;
+}
+
+.register-button {
+  border-color: rgb(152, 109, 255);
+  color: white;
+  border-style: solid;
+  border-radius: 0;
+  border-width: 2px;
+}
+
+.app-button {
+  background: #9865ff;
+  color: #ffffff;
+  border-style: solid;
+  border-radius: 0;
+  border-width: 2px;
+}
+
+button {
+  background: #000000 !important;
+  border-color: rgb(152, 109, 255) !important;
+  color: #ffffff !important;
+  border-style: solid !important;
+  border-radius: 0 !important;
+  border-width: 2px !important;
+}
+
+button:hover {
+  background: #9865ff !important;
+  color: #ffffff !important;
+}
+
+.primary-color {
+  color: #9865ff;
+}
+
+mat-expansion-panel {
+  background: rgb(26, 26, 26) !important;
+}
+mat-expansion-panel-header {
+  background: rgb(26, 26, 26) !important;
+}
+mat-panel-description {
+  background: rgb(26, 26, 26) !important;
+}
+mat-accordion {
+  background: rgb(26, 26, 26) !important;
+}
+// mat-card{
+//   background: rgb(16,16,16) !important;
+// }
+// .mat-divider {
+//   margin-left: 10.78em !important;
+//     width: 53.6em !important;
+// }
+
+@font-face {
+  font-family: "Cedra4F-Wide";
+  src: url("assets/fonts/Cedra\ 4F/Cedra4F-Wide.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Cedra4F-WideItalic";
+  src: url("assets/fonts/Cedra\ 4F/Cedra4F-WideItalic.otf") format("opentype");
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgb(152, 109, 255) !important;
+  width: 31px !important;
+  height: 14px !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #ffffff !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.mat-slide-toggle-thumb-container {
+  position: absolute;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  top: -1px !important;
+  left: 0;
+  transform: translate3d(0, 0, 0);
+  transition: all 80ms linear;
+  transition-property: transform;
+}
+
+.mat-slide-toggle-bar,
+.mat-slide-toggle-thumb {
+  transition: all 80ms linear;
+  transition-property: background-color;
+  transition-delay: 50ms;
+  background-color: #ffffff !important;
+}
+
+.mat-slide-toggle-thumb {
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 50%;
+  background-color: #986dff !important;
+}
+
+mat-slide-toggle-bar {
+  position: relative;
+  width: 28px !important;
+  height: 13px !important;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
