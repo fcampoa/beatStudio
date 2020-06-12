@@ -14,6 +14,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { Routes } from '@angular/router';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
 
 export const AppRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -28,12 +30,14 @@ export const AppRoutes: Routes = [
       { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
       { path: 'discipline', component: DisciplineComponent },
+      { path: 'discipline/beatspin', component: DiciplineBeatspinComponent },
       { path: 'coach', component: CoachComponent },
       { path: 'checkout-details/:idPaquete', component: CheckoutDetailsComponent, canActivate: [AuthGuard] },
       { path: 'checkout-result/:idPago', component: CheckoutResultComponent, canActivate: [AuthGuard] },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'disciplines', component: DisciplineComponent, children: [] }
+      { path: 'disciplines', component: DisciplineComponent, children: [] },
+      { path: 'privacy', component: PrivacyComponent },
     ]
   },
 

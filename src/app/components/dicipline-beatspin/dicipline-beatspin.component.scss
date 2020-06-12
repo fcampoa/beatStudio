@@ -1,0 +1,99 @@
+h1{
+    font-size: 4rem;
+}
+.beatspin-title{
+    span{
+        color: #9865ff;
+    }
+    p{
+        width: 30%;
+        margin: 0 auto;
+        font-size: 1.2rem;
+    }
+}
+.beatspin-video{
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    .video{
+        text-align: center;
+        img{
+            width: 85%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.benefits {
+    margin-top: 12rem;
+    .list-group {
+        .list-group-item {
+            border: none;
+            padding: 0;
+            color: gray;
+            background-color: transparent;
+            span {
+                color: #11e579;
+                font-size: 1.6rem;
+                margin-right: 1.5rem;
+            }
+        }
+    }
+    p{
+        color: gray;
+    }
+    a{
+        color: #ffffff;
+        text-decoration: underline;
+    }
+    .benefits-img{
+        width: 90%;
+    }
+}
+
+.complements{
+    margin-bottom: 5rem;
+    p{
+        color: gray;
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 1120px) {
+    .complements{
+        h1{
+            font-size: 3rem;
+        }
+        p{
+            width: 60%;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .benefits{
+        .benefits-img{
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .complements{
+        h1{
+            font-size: 2rem;
+        }
+        p{
+            width: 70%;
+        }
+    }
+}
+
+@media (max-width: 676px) {
+    .complements{
+        p{
+            width: 80%;
+        }
+    }
+}
