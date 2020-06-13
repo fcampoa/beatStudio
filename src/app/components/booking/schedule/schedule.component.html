@@ -1,30 +1,31 @@
 <div class="row d-flex justify-content-center">
-    <div class="col-sm" *ngFor="let dia of semana">
-      <div *ngIf="dia.horarios.length > 0">
-        <div class="d-flex justify-content-center">
-          <p style="font-size: 18px">{{getFecha(dia.fecha)}}</p>
-        </div>
-        <div class="d-flex justify-content-center">
-          <p style="font-size: 18px">{{getDia(dia.fecha)}}</p>
-        </div>
-        <div class="d-flex justify-content-center">
-          <p style="font-size: 12px; color: gray">{{getMes(dia.fecha)}}</p>
-        </div>
-        <mat-divider style="width: 80%; margin-left: 10%;"></mat-divider>
-        <div class="col-sm"
-         style="border-right: 1px solid gray !important; height: 100%;">
-          <div class="" *ngFor="let h of dia.horarios" style="padding-top: 20%;">
-            <div class="d-flex justify-content-center"
-             style="padding-bottom: 3%; margin-left: 2%; margin-right: 2%;">{{h.horario.coach.nombre}}</div>
-            <div class="button-style d-flex justify-content-center"
-                 [ngClass]="h.selected ? 'selected': ''"
-                 style="margin-bottom: 20%;" (click)="seleccionar(dia, h)">
-              <b>{{getHora(h.horario.fecha)}}</b></div>
-            <div class="wait-list d-flex justify-content-center" style="margin-bottom: 20%;" *ngIf="h.lleno">
-              LISTA DE ESPERA</div>
-            <mat-divider></mat-divider>
-          </div>
+  <div class="col-sm" *ngFor="let dia of semana">
+    <div *ngIf="dia.horarios.length > 0">
+      <div class="d-flex justify-content-center">
+        <p class="day_date">{{getFecha(dia.fecha)}}</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p class="name_day">{{getDia(dia.fecha) | uppercase}}</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p style="font-size: 12px; color: gray">{{getMes(dia.fecha)}}</p>
+      </div>
+      <mat-divider style="width: 80%; margin-left: 10%;"></mat-divider>
+      <div class="col-sm" style="border-right: 1px solid gray !important; height: 100%;">
+        <div class="" *ngFor="let h of dia.horarios; let i = index" style="padding-top: 20%;">
+          <div class="d-flex justify-content-center name_couch" >
+            Coach Name{{h.data}}</div>
+          <div   class="button-style d-flex justify-content-center hourly" [ngClass]="h.selected ? 'selected': ''"
+            style="margin-bottom: 20%;" (click)="seleccionar(dia, h)">
+            <b>{{getHora(h.horario.fecha)}}</b></div>
+          <div class="wait-list d-flex justify-content-center" style="margin-bottom: 20%;" *ngIf="h.lleno">
+            LISTA DE ESPERA</div>
+          <mat-divider></mat-divider>
         </div>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> 5a57050c2f13986193f67941d305b88a545c01e0

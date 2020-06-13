@@ -39,6 +39,10 @@ export class LoginComponent implements OnInit {
     this.parseValues();
     this.auth.login(this.userName, this.password).subscribe(
       response => {
+<<<<<<< HEAD
+=======
+        debugger;
+>>>>>>> 5a57050c2f13986193f67941d305b88a545c01e0
         this.router.navigate(['/dashboard/panel']);
       },
       error => {

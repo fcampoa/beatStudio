@@ -14,8 +14,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { Routes } from '@angular/router';
+<<<<<<< HEAD
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
+=======
+import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
+>>>>>>> 5a57050c2f13986193f67941d305b88a545c01e0
 
 export const AppRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -25,19 +29,31 @@ export const AppRoutes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'panel', component: UserPanelComponent, canActivate: [AuthGuard] },
       { path: 'booking', component: BookingComponent, canActivate: [AuthGuard] },
+<<<<<<< HEAD
       { path: 'booking-select/:idHorario', component: SeatSelectionComponent, canActivate: [AuthGuard] },
+=======
+      { path: 'booking-select', component: SeatSelectionComponent, canActivate: [AuthGuard] },
+      { path: 'booking/select/:idHorario', component: BookingStepTwoComponent, canActivate: [AuthGuard] },
+>>>>>>> 5a57050c2f13986193f67941d305b88a545c01e0
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
       { path: 'discipline', component: DisciplineComponent },
+<<<<<<< HEAD
       { path: 'discipline/beatspin', component: DiciplineBeatspinComponent },
+=======
+>>>>>>> 5a57050c2f13986193f67941d305b88a545c01e0
       { path: 'coach', component: CoachComponent },
       { path: 'checkout-details/:idPaquete', component: CheckoutDetailsComponent, canActivate: [AuthGuard] },
       { path: 'checkout-result/:idPago', component: CheckoutResultComponent, canActivate: [AuthGuard] },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
+<<<<<<< HEAD
       { path: 'disciplines', component: DisciplineComponent, children: [] },
       { path: 'privacy', component: PrivacyComponent },
+=======
+      { path: 'disciplines', component: DisciplineComponent, children: [] }
+>>>>>>> 5a57050c2f13986193f67941d305b88a545c01e0
     ]
   },
 

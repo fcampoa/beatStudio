@@ -51,6 +51,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog/public-api'
 import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
+import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dici
     SeatSelectionComponent,
     PrivacyComponent,
     DiciplineBeatspinComponent,
+    BookingStepTwoComponent,
     // directives
     FixedBarDirective,
     // pipes

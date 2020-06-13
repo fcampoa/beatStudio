@@ -1,0 +1,91 @@
+<div class="container  fix_mobile">
+  <div class="row d-flex justify-content-center primary-color">
+    PASO 2 DE 3
+  </div>
+  <div class="row d-flex justify-content-center">
+    <h2 class="title_h2">Selecciona tu lugar</h2>
+  </div>
+  <div class="row d-flex justify-content-center" style="color:gray; font-size: 12px; padding-bottom: 10%;">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+  </div>
+
+  <div class="row">
+    <div class="col-md-8  col-12 black_color p-1 mb-4">
+      <div class="row">
+        <div class="col-md-3 col-3">
+          <h5 class="title_top_">TU CLASE</h5>
+          <label class="title_down_">{{horario.disciplina.nombre}}</label>
+        </div>
+        <div class="col-md-3 col-3">
+          <h5 class="title_top_">DIA</h5>
+          <label class="title_down_">{{horario.fecha | customDate}}</label>
+        </div>
+        <div class="col-md-3 col-3">
+          <h5 class="title_top_">HORARIO</h5>
+          <label class="title_down_">{{horario.fecha | date:'mediumTime'}}</label>
+        </div>
+        <div class="col-md-3 col-3">
+          <h5 class="title_top_">COACH</h5>
+          <label class="title_down_">{{horario.coach.nombre}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-12 back_color padd_cont ">
+      <div class="row">
+        <div class="col-md-12  col-12 mx-auto">
+          <div class="row fix_margin ">
+            <div class="col-md-12">
+              <div class="row">
+
+                <div class="col-md-12 text-center fix_coach_mobile">
+                  <embed class="cirlce_fix" src="./assets/img/SVG/circle_icon_fill.svg" />
+
+                  <p>COACH</p>
+                </div>
+                <div class="row" *ngFor="let row of distributionType;">
+                  <div (click)="test(item.value)" class="col-md-1   col-1 mx-auto fix_position_mobile "
+                    *ngFor="let item of row;">
+                    <div [ngClass]="{hide_circle: !item.visible }" class="cirlce_fix2">
+                      <svg class="cirlce_fix" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-circle cirlce_fix">
+                        <circle cx="12" cy="12" r="10" /></svg>
+
+
+
+                      <p [ngClass]="{postion_number: item.value < 10, postion_number2: item.value > 9 }">{{item.value}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row  back_color  left_m pad_fix ">
+        <div class="col-md-12 ">
+          <label class="mat_number">17</label>
+          <input class="form-control mat_input" />
+          <label class="border_mat col-md-12"></label>
+        </div>
+        <br>
+        <div class="col-md-12 ">
+          <mat-slide-toggle>Invitar Amigos</mat-slide-toggle>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row d-flex justify-content-center ">
+    <button class="btn_next mr-3">Regresar</button>
+    <button class="btn_next">SIGUIENTE</button>
+  </div>
+</div>

@@ -27,18 +27,18 @@ export class BookingComponent implements OnInit {
   public hasta: any;
 
   constructor(private apiSvc: GlobalApiService,
-              private router: Router,
-              private userSv: UserService) {
+    private router: Router,
+    private userSv: UserService) {
 
     this.seleccion = new BehaviorSubject<Horario>(null);
     this.desde = m().format('YYY-MM-DD');
     this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
-   }
+  }
 
   ngOnInit() {
     this.user = this.userSv.loggedUser.data.user;
     this.getDisciplinas();
-    this.seleccion.subscribe(h => this.horarioElegido = h);
+     this.seleccion.subscribe(h => this.horarioElegido = h);
   }
 
   /**
@@ -55,29 +55,36 @@ export class BookingComponent implements OnInit {
   buscarCliente(): void {
     this.apiSvc.routes.cliente.buscarUsuario(this.user.id)<any>().subscribe(
       response => {
-         this.cliente = response.data[0];
-         this.apiSvc.routes.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
-           respose => {
-             this.creditos = response.creditos;
-           }
-         );
-         }
+        this.cliente = response.data[0];
+        this.apiSvc.routes.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
+          respose => {
+            this.creditos = response.creditos;
+          }
+        );
+      }
     );
   }
   /**
    * guarda el valor del horario seleccionado en el componente
    * de schedule
    */
+ /* asignarSeleccion($event: any): void {
+    this.seleccion.next($event);
+
+  }*/
+
   asignarSeleccion($event: any): void {
     this.seleccion.next($event.horario);
   }
-/**
- * navega al siguiente componente booking-seatSelection
- */
+  /**
+   * navega al siguiente componente booking-seatSelection
+   */
   siguientePaso(): void {
-    if (this.creditos > 0) {
-    this.router.navigate(['booking-select/' + this.horarioElegido.disciplina]);
-    }
+    console.log(this.horarioElegido);
+    console.log(this.horarioElegido.id);
+    // if (this.creditos > 0) {
+    this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+    //}
   }
 
 }
