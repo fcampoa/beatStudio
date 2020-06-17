@@ -1,4 +1,5 @@
-import { SeatSelectionComponent } from './components/booking/seat-selection/seat-selection.component';
+import { BookingConfirmationComponent } from './components/booking/booking-confirmation/booking-confirmation.component';
+import { BookingStepThreeComponent } from './components/booking/booking-step-three/booking-step-three.component';
 import { SelectCardComponent } from './components/select-card/select-card.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
@@ -52,6 +53,7 @@ import { ScheduleDatePipe } from './Core/pipes/schudule-date.pipe';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
 import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
+import { InviteDirective } from './Core/directives/invites.directive';
 
 @NgModule({
   declarations: [
@@ -78,12 +80,14 @@ import { BookingStepTwoComponent } from './components/booking/booking-step-two/b
     ContactComponent,
     DisciplineComponent,
     SelectCardComponent,
-    SeatSelectionComponent,
     PrivacyComponent,
     DiciplineBeatspinComponent,
     BookingStepTwoComponent,
+    BookingStepThreeComponent,
+    BookingConfirmationComponent,
     // directives
     FixedBarDirective,
+    InviteDirective,
     // pipes
     CustomDatePipe,
     CreditCardPipe,

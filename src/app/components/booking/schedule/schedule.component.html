@@ -14,8 +14,8 @@
       <div class="col-sm" style="border-right: 1px solid gray !important; height: 100%;">
         <div class="" *ngFor="let h of dia.horarios; let i = index" style="padding-top: 20%;">
           <div class="d-flex justify-content-center name_couch" >
-            Coach Name{{h.data}}</div>
-          <div   class="button-style d-flex justify-content-center hourly" [ngClass]="h.selected ? 'selected': ''"
+           {{h.horario.coach.nombre}}</div>
+          <div class="button-style d-flex justify-content-center onMouse hourly" [ngClass]="h.selected ? 'selected': ''"
             style="margin-bottom: 20%;" (click)="seleccionar(dia, h)">
             <b>{{getHora(h.horario.fecha)}}</b></div>
           <div class="wait-list d-flex justify-content-center" style="margin-bottom: 20%;" *ngIf="h.lleno">
@@ -25,7 +25,3 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
-=======
-</div>
->>>>>>> 5a57050c2f13986193f67941d305b88a545c01e0

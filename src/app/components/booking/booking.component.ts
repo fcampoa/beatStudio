@@ -27,8 +27,8 @@ export class BookingComponent implements OnInit {
   public hasta: any;
 
   constructor(private apiSvc: GlobalApiService,
-    private router: Router,
-    private userSv: UserService) {
+              private router: Router,
+              private userSv: UserService) {
 
     this.seleccion = new BehaviorSubject<Horario>(null);
     this.desde = m().format('YYY-MM-DD');

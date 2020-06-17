@@ -1,3 +1,28 @@
+.coach-seat {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.seat-format {
+  background: #000000;
+  border-color: #ffffff;
+  border: 2px solid;
+}
+
+
+.background-format {
+  background: #000000 !important;
+}
+.background-format:hover {
+  background: #000000 !important;
+  border: 2px solid !important;
+}
+button:disabled{
+color: #aaa;
+}
+
+/* estilos fily */
+
 .remove-border-bottom ::ng-deep .mat-tab-header {
     border-bottom: none;
     padding-bottom: 5%;
@@ -50,7 +75,9 @@
 .cirlce_fix:hover {
 }
 svg:hover {
-    fill: #986dff;
+    // fill: #986dff;
+    border-color: #986dff;
+    color: #986dff;
 }
 
 .cirlce_fix2 {
@@ -58,7 +85,7 @@ svg:hover {
     cursor: pointer;
 }
 .back_color {
-    background-color: #181818;
+    background-color:rgb(16,16,16);
 }
 
 .fix_margin {
@@ -72,7 +99,6 @@ svg:hover {
     margin-left: 1px;
 }
 .hide_circle {
-    display: block;
     visibility: hidden;
 }
 
@@ -94,14 +120,14 @@ svg:hover {
     box-shadow: none !important;
 }
 .border_mat {
-    background-color: red;
+    background-color: #986dff;
     height: 1px;
     position: relative;
     top: -13px;
 }
 .mat_number {
     position: absolute;
-    color: red;
+    color: #986dff;
     top: 10px;
 }
 .pad_fix {
@@ -109,7 +135,7 @@ svg:hover {
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 27px;
-    
+
 }
 .fix_heihgt {
     height: 450px;

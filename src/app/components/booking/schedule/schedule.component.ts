@@ -144,9 +144,9 @@ export class ScheduleComponent implements OnInit {
 
     $('.hourly').removeClass('selected');
 
-     h.selected = !h.selected;
+    h.selected = !h.selected;
     // deselecciona el que estaba seleccionado antes
-    //d.horarios.forEach(x => x.selected && x.horario.id !== h.id ? false : x.selected);
+    // d.horarios.forEach(x => x.selected && x.horario.id !== h.id ? false : x.selected);
     this.Seleccion.emit(h);
   }
 }
