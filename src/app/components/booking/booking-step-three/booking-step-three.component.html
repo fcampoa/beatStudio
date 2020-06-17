@@ -1,0 +1,43 @@
+<div class="container-fluid" style="padding-top: 10%;">
+  <div class="row d-flex justify-content-center">
+    <p class="primary-color">PASO 3 DE 3</p>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <h2>Resumen de reservación</h2>
+  </div>
+  <div class="row d-flexjustify-content-center" style="padding-bottom: 5%;">
+    <p style="color:grey">Conﬁrma que los datos de tu reservación sean correctos.
+    </p>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10 col-sm-8 col-xs-8 col-10">
+      <app-view>
+        <div *ngIf="horario" class="row">
+          <p class="primary-color">BEAT</p>
+          <p>{{ horario.disciplina.nombre | uppercase }}</p>
+        </div>
+        <div class="row" style="font-size: 10px; color:grey; padding-bottom: 1%;">
+          <div class="col-md-3 col-xs-3 col-3">DIA</div>
+          <div class="col-md-3 col-xs-3 col-3">HORA</div>
+          <div class="col-md-3 col-xs-3 col-3">COACH</div>
+          <div class="col-md-3 col-xs-3 col-3">LUGARES</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div *ngIf="horario" class="row" style="font-size: 18px; padding-top: 2%;">
+          <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha | customDate }}</div>
+          <div class="col-md-3 col-xs-3 col-3">{{ getHora(horario.fecha) }}</div>
+          <div class="col-md-3 col-xs-3 col-3">{{ horario.coach.nombre }}</div>
+          <div class="col-md-3 col-xs-3 col-3">
+            <div class="col col-md col-sm col-xs" *ngFor="let r of reservaciones; let i = index">
+              <b [ngStyle]="{'color' : colors[i]}">{{ r.lugar }}</b> {{ r.nombre }}
+            </div>
+          </div>
+        </div>
+      </app-view>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 10%;">
+    <button class="app-button btn_next" (click)="regresar()">REGRESAR</button>
+    <button class="app-button btn_next" style="margin-left: 2%;" (click)="reservar()">RESERVAR</button>
+  </div>
+</div>

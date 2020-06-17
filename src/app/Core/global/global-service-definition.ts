@@ -24,7 +24,9 @@ export interface IGlobalServiceDefinition {
     lista: () => VERBS.IGetCall;
     buscarCliente: (id: number) => VERBS.IGetCall;
     buscarFecha: () => VERBS.IGetCall;
-    buscarHorario: (id: number) => VERBS.IGetCall
+    buscarHorario: (id: number) => VERBS.IGetCall;
+    buscarPorHorario: (id: number) => VERBS.IGetCall,
+    reservacionesHorario: (id: number) => VERBS.IGetCall
   };
   disciplina?: {
     agregar: () => VERBS.IpostCall;
@@ -37,6 +39,7 @@ export interface IGlobalServiceDefinition {
     actualizar: () => VERBS.IPatchCall;
     buscar: () => VERBS.IGetByIdCall;
     lista: () => VERBS.IGetCall;
+    buscarByid: (id: number) => VERBS.IGetCall;
     buscarDisciplinaRango: (id: number, desde: any, hasta: any) => VERBS.IGetCall;
   };
   roles?: {

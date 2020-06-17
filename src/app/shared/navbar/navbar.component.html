@@ -26,10 +26,10 @@
         </div>
       </div>
       <form class="form-inline my-2 d-flex justify-content-end" *ngIf="!logged" fxShow="true">
-        <button class="btn btn-outline" type="button" [ngbPopover]="popLoginContent" autoClose="outside"
-          [popoverTitle]="popLoginTitle">Iniciar Sesión</button>
+        <button class="btn btn-outline app-button" type="button" [ngbPopover]="popLoginContent" autoClose="outside"
+          >Iniciar Sesión</button>
         <span style="padding: 2%;"></span>
-        <button class="btn btn-outline" type="button" [ngbPopover]="popRegisterContent" autoClose="outside">
+        <button class="btn btn-outline app-button" type="button" [ngbPopover]="popRegisterContent" autoClose="outside">
           Crear Cuenta
         </button>
       </form>
@@ -48,7 +48,7 @@
 
 <ng-template #popLogoutContent>
   <app-view>
-    <button class="btn btn-outline" style="font-size: 12px;" (click)="logout()">Salir</button>
+    <button class="btn btn-outline app-button" style="font-size: 12px;" (click)="logout()">Salir</button>
   </app-view>
 </ng-template>
 <ng-template #popLogoutTitle></ng-template>

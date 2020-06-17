@@ -1,3 +1,13 @@
 .wrapper {
   margin-top: 50px;
 }
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgb(152, 109, 255) !important;
+  width: 31px !important;
+  height: 14px !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgb(152, 109, 255) !important;
+}

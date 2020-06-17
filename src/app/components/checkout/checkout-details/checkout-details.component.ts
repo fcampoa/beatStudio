@@ -72,7 +72,7 @@ export class CheckoutDetailsComponent implements OnInit {
   pagar(): void {
     const hp = new HistorialCompra();
     hp.cliente = this.cliente.id;
-    hp.folio = '0';
+    hp.folio = String(this.cliente.id) + String(this.idUsuario) + String(this.id + this.creditos);
     hp.forma_pago = this.p.id;
     hp.paquete = this.paquete.id;
     hp.status = 'published';
@@ -81,7 +81,6 @@ export class CheckoutDetailsComponent implements OnInit {
     const d = new Date();
     d.setDate(d.getDate() + 30);
     hp.vigencia = m(d).format('YYYY-MM-DD');
-    debugger;
     this.apiSvc.routes.historial_compra.agregar()<any>(hp).subscribe(
       response => {
         const pago = response.data;

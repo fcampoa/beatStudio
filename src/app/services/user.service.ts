@@ -5,11 +5,13 @@ import { Injectable, OnInit } from '@angular/core';
 
 @Injectable()
 export class UserService implements OnInit {
+
   userValue: BehaviorSubject<any>;
   cUser: BehaviorSubject<any>;
   cliente: any;
   loggedUser: any;
   permissions: any[];
+  public aux: any;
   constructor(private apiSvc: GlobalApiService) {
     this.loggedUser = JSON.parse(sessionStorage.getItem('currentUser'));
     // this.loggedUser = JSON.parse(localStorage.getItem('currentUser'));
