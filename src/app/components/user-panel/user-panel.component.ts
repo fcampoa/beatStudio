@@ -27,6 +27,7 @@ export class UserPanelComponent implements OnInit {
 
                 this.desde = m().format('YYYY-MM-DD');
                 this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
+                this.cliente = new Cliente();
                }
 
   ngOnInit() {
@@ -68,5 +69,9 @@ export class UserPanelComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  clienteId($event) {
+    this.cliente.id = $event;
   }
 }

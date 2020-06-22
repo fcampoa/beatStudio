@@ -1,6 +1,7 @@
+import { ReservacionDetalle } from './../../../model/reservacion-detalle';
 import { Location } from '@angular/common';
 import { NotificationsService } from './../../../services/notifications.service';
-import { Reservacion } from 'src/app/model/reservacion';
+import { Reservacion, Custom } from 'src/app/model/reservacion';
 import { Horario } from './../../../model/horario';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../../../services/user.service';
@@ -19,7 +20,8 @@ export class BookingStepThreeComponent implements OnInit {
   private idHorario;
   public horario: Horario;
   public coach = '';
-  public reservaciones: Reservacion[];
+  custom: Custom;
+  public reservaciones: ReservacionDetalle[];
   public cliente: Cliente;
   public desde: any;
   public hasta: any;
@@ -28,7 +30,9 @@ export class BookingStepThreeComponent implements OnInit {
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',
-    '#FF0049', '#FF0083', '#00FF04', '#FFFF00', '#FF8F00'
+    '#FF0049', '#FF0083', '#00FF04', '#FFFF00', '#FF8F00',
+    '#FF00CD', '#DC00FF', '#4600FF', '#00FFCD', '#77CE2A',
+    '#E86E6E', '#C6FF5B', '#02FFC2', '#02AFFF', '#ACA3FF'
   ];
 
   constructor(private apiSvc: GlobalApiService,
@@ -38,13 +42,15 @@ export class BookingStepThreeComponent implements OnInit {
               private notify: NotificationsService,
               private location: Location) {
 
-                this.desde = m().format('YYY-MM-DD');
+                this.desde = m().format('YYYY-MM-DD');
                 this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
               }
 
   ngOnInit() {
+    debugger;
     this.user = this.userSvc.loggedUser.data.user;
-    this.reservaciones = this.userSvc.aux;
+    this.custom = this.userSvc.aux;
+    this.reservaciones = this.custom.detalles;
     this.route.params.subscribe(params => {
       this.idHorario = params.idHorario;
       if (this.idHorario !== undefined) {
@@ -72,7 +78,7 @@ export class BookingStepThreeComponent implements OnInit {
 
   reservar(): void {
     if (this.creditos >= this.reservaciones.length) {
-    this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.reservaciones).subscribe(
+    this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
       response => {
         this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
            this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
@@ -100,7 +106,10 @@ export class BookingStepThreeComponent implements OnInit {
 
   getCreditos(): void {
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
-      response => this.creditos = response.creditos
+      response => {
+         debugger;
+         this.creditos = response.creditos; },
+         error => console.log(error)
     );
   }
 }

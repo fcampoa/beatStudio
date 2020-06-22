@@ -1,3 +1,7 @@
+import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
+import { PaymentDetailComponent } from './Core/utilities/payment-detail/payment-detail.component';
+import { BookingDetailsComponent } from './Core/utilities/booking-details/booking-details.component';
+import { BookingHistoryComponent } from './components/booking-history/booking-history.component';
 import { BookingConfirmationComponent } from './components/booking/booking-confirmation/booking-confirmation.component';
 import { BookingStepThreeComponent } from './components/booking/booking-step-three/booking-step-three.component';
 import { SelectCardComponent } from './components/select-card/select-card.component';
@@ -85,6 +89,10 @@ import { InviteDirective } from './Core/directives/invites.directive';
     BookingStepTwoComponent,
     BookingStepThreeComponent,
     BookingConfirmationComponent,
+    BookingHistoryComponent,
+    BookingDetailsComponent,
+    PaymentDetailComponent,
+    PaymentHistoryComponent,
     // directives
     FixedBarDirective,
     InviteDirective,

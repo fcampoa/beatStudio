@@ -6,9 +6,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Coach } from 'src/app/model/coach';
 import { Horario } from 'src/app/model/horario';
-import { Reservacion } from 'src/app/model/reservacion';
+import { Reservacion, Custom } from 'src/app/model/reservacion';
 import * as $ from 'jquery';
 import * as m from 'moment';
+import { ReservacionDetalle } from 'src/app/model/reservacion-detalle';
 
 @Component({
   selector: 'app-booking-step-two',
@@ -32,7 +33,7 @@ export class BookingStepTwoComponent implements OnInit {
   user: any;
   click = false;
   cliente: Cliente;
-  public reservaciones: Reservacion[] = [];
+  public reservaciones: ReservacionDetalle[] = [];
   public seleccionado = false;
   public seleccion: any;
   public horario: Horario;
@@ -42,7 +43,9 @@ export class BookingStepTwoComponent implements OnInit {
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',
-    '#FF0049', '#FF0083', '#00FF04', '#FFFF00', '#FF8F00'
+    '#FF0049', '#FF0083', '#00FF04', '#FFFF00', '#FF8F00',
+    '#FF00CD', '#DC00FF', '#4600FF', '#00FFCD', '#77CE2A',
+    '#E86E6E', '#C6FF5B', '#02FFC2', '#02AFFF', '#ACA3FF'
   ];
 
   set invitados(value: boolean) {
@@ -51,63 +54,65 @@ export class BookingStepTwoComponent implements OnInit {
     }
   }
 
-  public distributionType;
+  public distributionType: any[] = [];
   public distributionType1 = [
     [
-      { status: 'active', fila: '1', numero: '1', visible: true, value: 1 },
-      { status: 'active', fila: '1', numero: '2', visible: true, value: 2 },
-      { status: 'active', fila: '1', numero: '3', visible: true, value: 3 },
-      { status: 'active', fila: '1', numero: '4', visible: true, value: 4 },
-      { status: 'active', fila: '1', numero: '5', visible: true, value: 5 },
-      { status: 'active', fila: '1', numero: '6', visible: true, value: 6 },
-      { status: 'active', fila: '1', numero: '7', visible: true, value: 7 },
-      { status: 'active', fila: '1', numero: '8', visible: true, value: 8 },
-      { status: 'active', fila: '1', numero: '9', visible: true, value: 9 },
-      { status: 'active', fila: '1', numero: '10', visible: true, value: 10 },
+      { status: 'active', fila: '1', numero: '1', visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: '1', numero: '2', visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: '1', numero: '3', visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: '1', numero: '4', visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: '1', numero: '5', visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: '1', numero: '6', visible: true, value: 6, ocupado: false },
+      { status: 'active', fila: '1', numero: '7', visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: '1', numero: '8', visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: '1', numero: '9', visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: '1', numero: '10', visible: true, value: 10, ocupado: false },
     ],
   ];
 
   public distributionType2 = [
     [
-      { status: 'active', fila: '1', numero: '1', visible: true, value: 1 },
-      { status: 'active', fila: '1', numero: '2', visible: true, value: 2 },
-      { status: 'active', fila: '1', numero: '3', visible: true, value: 3 },
-      { status: 'active', fila: '1', numero: '4', visible: false, value: 4 },
-      { status: 'active', fila: '1', numero: '5', visible: false, value: 5 },
-      { status: 'active', fila: '1', numero: '6', visible: false, value: 6 },
-      { status: 'active', fila: '1', numero: '7', visible: false, value: 7 },
-      { status: 'active', fila: '1', numero: '8', visible: true, value: 8 },
-      { status: 'active', fila: '1', numero: '9', visible: true, value: 9 },
-      { status: 'active', fila: '1', numero: '10', visible: true, value: 10 }
+      { status: 'active', fila: '1', numero: '1', visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: '1', numero: '2', visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: '1', numero: '3', visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: '1', numero: '4', visible: false, value: 4, ocupado: false },
+      { status: 'active', fila: '1', numero: '5', visible: false, value: 5, ocupado: false },
+      { status: 'active', fila: '1', numero: '6', visible: false, value: 6, ocupado: false },
+      { status: 'active', fila: '1', numero: '7', visible: false, value: 7, ocupado: false },
+      { status: 'active', fila: '1', numero: '8', visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: '1', numero: '9', visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: '1', numero: '10', visible: true, value: 10, ocupado: false }
     ],
     [
-      { status: 'active', fila: '2', numero: '11', visible: true, value: 1 },
-      { status: 'active', fila: '2', numero: '12', visible: true, value: 2 },
-      { status: 'active', fila: '2', numero: '13', visible: true, value: 3 },
-      { status: 'active', fila: '2', numero: '14', visible: true, value: 4 },
-      { status: 'active', fila: '2', numero: '15', visible: false, value: 5 },
-      { status: 'active', fila: '2', numero: '16', visible: false, value: 6 },
-      { status: 'active', fila: '2', numero: '17', visible: true, value: 7 },
-      { status: 'active', fila: '2', numero: '18', visible: true, value: 8 },
-      { status: 'active', fila: '2', numero: '19', visible: true, value: 9 },
-      { status: 'active', fila: '2', numero: '20', visible: true, value: 10 }
+      { status: 'active', fila: '2', numero: '11', visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: '2', numero: '12', visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: '2', numero: '13', visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: '2', numero: '14', visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: '2', numero: '15', visible: false, value: 5, ocupado: false },
+      { status: 'active', fila: '2', numero: '16', visible: false, value: 6, ocupado: false },
+      { status: 'active', fila: '2', numero: '17', visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: '2', numero: '18', visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: '2', numero: '19', visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: '2', numero: '20', visible: true, value: 10, ocupado: false }
     ],
     [
-      { status: 'active', fila: '3', numero: '21', visible: true, value: 1 },
-      { status: 'active', fila: '3', numero: '22', visible: true, value: 2 },
-      { status: 'active', fila: '3', numero: '23', visible: true, value: 3 },
-      { status: 'active', fila: '3', numero: '24', visible: true, value: 4 },
-      { status: 'active', fila: '3', numero: '25', visible: true, value: 5 },
-      { status: 'active', fila: '3', numero: '26', visible: true, value: 6 },
-      { status: 'active', fila: '3', numero: '27', visible: true, value: 7 },
-      { status: 'active', fila: '3', numero: '28', visible: true, value: 8 },
-      { status: 'active', fila: '3', numero: '29', visible: true, value: 9 },
-      { status: 'active', fila: '3', numero: '30', visible: true, value: 10 }
+      { status: 'active', fila: '3', numero: '21', visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: '3', numero: '22', visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: '3', numero: '23', visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: '3', numero: '24', visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: '3', numero: '25', visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: '3', numero: '26', visible: true, value: 6, ocupado: false },
+      { status: 'active', fila: '3', numero: '27', visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: '3', numero: '28', visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: '3', numero: '29', visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: '3', numero: '30', visible: true, value: 10, ocupado: false }
     ],
   ];
 
   public idHorario: any;
   public list_places = [];
+  ocupados: any[] = [];
+
   ngOnInit() {
     this.user = this.userSv.loggedUser.data.user;
     this.buscarCliente();
@@ -116,10 +121,26 @@ export class BookingStepTwoComponent implements OnInit {
       params => {
         this.idHorario = params.idHorario;
         this.getHorario();
+        this.obtenerOcupados();
       }
     );
   }
-
+  obtenerOcupados(): void {
+    this.apiSvc.routes.reservacion_detalle.buscarHorarop(this.idHorario)<any>().subscribe(
+      response => {
+        this.ocupados = response.data;
+        this.distributionType.forEach((r: any[]) => {
+          r.forEach(s => {
+            this.ocupados.forEach(o => {
+              if (s.numero === o.lugar) {
+                s.ocupado = true;
+              }
+            });
+          });
+        });
+      }
+    );
+  }
   async buscarCliente() {
     await this.apiSvc.routes.cliente.buscarUsuario(this.user.id)<any>().subscribe(
       response => this.cliente = response.data[0]
@@ -178,35 +199,46 @@ export class BookingStepTwoComponent implements OnInit {
     return el !== null ? el : this.getElement(id);
   }
   siguiente() {
+    debugger;
     let r: Reservacion;
     if (this.seleccionado) {
       r = new Reservacion();
       r.cliente = this.cliente.id;
       r.fecha = m().format('YYYY-MM-DD');
       r.horario = this.idHorario;
-      r.invitado = false;
-      r.lugar = this.seleccion.numero;
+     // r.invitado = false;
+     // r.lugar = this.seleccion.numero;
       r.status = 'published';
-      r.nombre = this.cliente.nombre;
+     // r.nombre = this.cliente.nombre;
       r.folio = this.cliente.id + this.idHorario + this.seleccion.fila + this.seleccion.numero;
-
-      this.reservaciones.push(r);
-
+      r.cancelada = false;
+      let d: ReservacionDetalle = new ReservacionDetalle();
+      d.nombre = this.cliente.nombre;
+      d.invitado = false;
+      d.status = 'published';
+      d.lugar = this.seleccion.numero;
+      this.reservaciones.push(d);
       this.amigos.forEach(x => {
-        r = new Reservacion();
-        r.cliente = this.cliente.id;
-        r.fecha = m().format('YYYY-MM-DD');
-        r.horario = this.idHorario;
-        r.invitado = true;
-        r.lugar = x.lugar;
-        r.status = 'published';
-        r.nombre = x.nombre;
-        r.folio = this.cliente.id + this.idHorario + x.fila + x.lugar;
+        d = new ReservacionDetalle();
+       // d.cliente = this.cliente.id;
+       // d.fecha = m().format('YYYY-MM-DD');
+       // d.horario = this.idHorario;
+        d.invitado = true;
+        d.lugar = x.lugar;
+        d.status = 'published';
+        d.nombre = x.nombre;
+       // d.folio = this.cliente.id + this.idHorario + x.fila + x.lugar;
+       // d.cancelada = false;
 
-        this.reservaciones.push(r);
+
+        this.reservaciones.push(d);
 
       });
-      this.userSv.aux = this.reservaciones;
+      const custom: Custom = {
+        reservacion: r,
+        detalles: this.reservaciones
+      };
+      this.userSv.aux = custom;
       this.router.navigate(['dashboard/booking/summary/' + this.idHorario]);
     }
   }
@@ -230,5 +262,9 @@ export class BookingStepTwoComponent implements OnInit {
 
   checarDisponible(): boolean {
     return true;
+  }
+
+  checkAvailable(): boolean {
+    return false;
   }
 }

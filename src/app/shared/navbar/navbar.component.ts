@@ -71,7 +71,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   goToProfile(): void {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['dashboard/panel']);
   }
 
   navigate(s: string): void {

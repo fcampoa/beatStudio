@@ -4,7 +4,7 @@
       <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;" *ngFor="let p of formasPago">
         <div class="row d-flex justify-content-between" style="padding: 2%;">
           <div class="col-sm-1">
-            <mat-radio-button [value]="p.principal" (change)="guardarForma(p)">
+            <mat-radio-button (change)="guardarForma(p)">
             </mat-radio-button>
           </div>
           <div class="col-sm-1">

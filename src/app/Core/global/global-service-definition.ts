@@ -22,7 +22,8 @@ export interface IGlobalServiceDefinition {
     actualizar: () => VERBS.IPatchCall;
     buscar: () => VERBS.IGetByIdCall;
     lista: () => VERBS.IGetCall;
-    buscarCliente: (id: number) => VERBS.IGetCall;
+    buscarClienteRango: (id: number, desde: string, hasta: string) => VERBS.IGetCall;
+    buscarCliente: (id: number, limit: number) => VERBS.IGetCall;
     buscarFecha: () => VERBS.IGetCall;
     buscarHorario: (id: number) => VERBS.IGetCall;
     buscarPorHorario: (id: number) => VERBS.IGetCall,
@@ -67,5 +68,11 @@ export interface IGlobalServiceDefinition {
     buscarCliente: (id: number) => VERBS.IGetCall;
     buscarPrincipalCliente: (id: number) => VERBS.IGetCall;
     buscarPrincipalUsuario: (id: number) => VERBS.IGetCall;
+  };
+  reservacion_detalle?: {
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+    buscarReservacion: (id: number) => VERBS.IGetCall;
+    buscarHorarop: (id: number) => VERBS.IGetCall;
   };
 }

@@ -48,7 +48,8 @@
 
 <ng-template #popLogoutContent>
   <app-view>
-    <button class="btn btn-outline app-button" style="font-size: 12px;" (click)="logout()">Salir</button>
+    <div class="row" style="font-size: 12px; cursor: pointer" (click)="logout()">Salir</div>
+    <div class="row" style="font-size: 12px; cursor: pointer" (click)="goToProfile()">Mi perfil</div>
   </app-view>
 </ng-template>
 <ng-template #popLogoutTitle></ng-template>

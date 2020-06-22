@@ -32,7 +32,7 @@
             </div>
             <div class="col-sm-8 d-flex justify-content-start" style="font-size: 1vw;">
               {{p.titular.toUpperCase()}} <br />
-              &#x2022; &#x2022; &#x2022; &#x2022; {{ p.numero_tarjeta | creditCard }}
+              {{ p.numero_tarjeta | creditCard }}
             </div>
               <div class="col-sm-2 justify-content-end">
                 <p class="primary-color">cambiar</p>

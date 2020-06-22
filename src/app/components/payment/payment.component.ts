@@ -43,6 +43,8 @@ export class PaymentComponent implements OnInit {
    * y a true el estado de la tarjeta seleccionada
    */
   guardarForma(p: FormaPago): void {
+    debugger;
+    p.principal = true;
     this.formasPago.forEach(x => {
       if (x.principal && x.id !== p.id) {
         x.principal = false;

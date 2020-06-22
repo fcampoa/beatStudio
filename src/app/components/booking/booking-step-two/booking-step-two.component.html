@@ -45,7 +45,7 @@
             [ngClass]="{hide_circle: !item.visible}"
             (mouseenter)="hover(item.numero)"
             (mouseleave)="leave(item.numero)"
-            [disabled]="false"
+            [disabled]="item.ocupado"
             (click)="seleccionarAsiento(item)">
             {{ item.numero }}
           </button>

@@ -2,7 +2,7 @@ import { NotificationsService } from './../../services/notifications.service';
 import { UserService } from './../../services/user.service';
 import { Cliente } from './../../model/cliente';
 import { GlobalApiService } from './../../Core/global/global-service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as m from 'moment';
@@ -29,13 +29,18 @@ export class ProfileComponent implements OnInit {
   step = 0;
   public opened = false;
 
+  @Output() recorded: EventEmitter<any>;
+
   filtersLoaded: Promise<boolean>;
   public cliente: Cliente  = new Cliente();
   public anhos = [];
   constructor(private formBuilder: FormBuilder,
               private apiSvc: GlobalApiService,
               private userSvc: UserService,
-              private notify: NotificationsService) { }
+              private notify: NotificationsService) {
+
+                this.recorded = new EventEmitter<any>();
+               }
 
   ngOnInit() {
     this.initForm();
@@ -68,6 +73,7 @@ export class ProfileComponent implements OnInit {
           this.userSvc.customUser = response.data;
           this.id = response.data.id;
           this.notify.successMessage('Guardado');
+          this.recorded.emit(this.id);
         },
         error => console.log(error)
       );
@@ -78,7 +84,9 @@ export class ProfileComponent implements OnInit {
           this.opened = false;
           this.userSvc.customUser = response.data;
           this.id = response.data.id;
+          this.cliente.id = response.data.id;
           this.notify.successMessage('Guardado');
+          this.recorded.emit(this.id);
         },
         error => console.log(error)
       );

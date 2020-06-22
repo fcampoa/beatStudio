@@ -24,18 +24,30 @@
             <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
               <h3>Mi Perfil</h3>
             </div>
-            <app-profile></app-profile>
+            <app-profile (recorded)="clienteId($event)"></app-profile>
           </app-view>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label style="padding-bottom: 5%;">
             <p class="primary-color">Historial de clases</p>
           </ng-template>
+          <app-view>
+            <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
+              <h3>Reservaciones Agendadas</h3>
+            </div>
+            <app-booking-history [idCliente]="cliente.id"></app-booking-history>
+          </app-view>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label style="padding-bottom: 5%;">
             <p class="primary-color">Historial de Pagos</p>
           </ng-template>
+          <app-view>
+            <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
+              <h3>Mis pagos</h3>
+            </div>
+            <app-payment-history [idCliente]="cliente.id"></app-payment-history>
+          </app-view>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label style="padding-bottom: 5%;">

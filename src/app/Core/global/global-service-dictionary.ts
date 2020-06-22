@@ -1,9 +1,6 @@
 import { GlobalServiceMethodType } from './support/global-service-method-type.enum';
 
 export const GLOBAL_SERVICE_DEFINITION: any = {
-  // auth: {
-  //   authenticate: { method: GlobalServiceMethodType.POST, url: '/authenticate' }
-  // },
   usuario: {
     lista: { method: GlobalServiceMethodType.GET, url: '' },
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
@@ -23,9 +20,10 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     actualizar: { method: GlobalServiceMethodType.PATCH, url: '' },
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
     lista: { method: GlobalServiceMethodType.GET, url: '' },
-    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id' },
+    buscarClienteRango: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&filter[fecha][between]=$desde,$hasta&sort=-fecha&fields=*,horario.*,horario.coach.nombre' },
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?[cliente.id][eq]=$id&sort=-fecha&fields=*,horario.*,horario.coach.nombre,horario.disciplina.nombre&limit=$limit'},
     buscarFecha: { method: GlobalServiceMethodType.GET, url: '' },
-    buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[horario.id][eq]=$id' }
+    buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[horario.id][eq]=$id' },
   },
   disciplina: {
     agregar: { method: GlobalServiceMethodType.POST, url: '' },
@@ -57,7 +55,7 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     lista: { method: GlobalServiceMethodType.GET, url: '' },
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
     agregar: { method: GlobalServiceMethodType.POST, url: '' },
-    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id' },
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id,&fields=*,forma_pago.titular,forma_pago.numero_tarjeta&sort=-id' },
     creditosCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id&filter[vigencia][between]=$desde,$hasta' }
   },
   forma_pago: {
@@ -69,5 +67,11 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     eliminar: { method: GlobalServiceMethodType.DELETE, url: '/$id' },
     buscarPrincipalCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id&filter[principal]=1' },
     buscarPrincipalUsuario: { method: GlobalServiceMethodType.GET, url: '?filter[principal]=1&filter[cliente.usuario.id]=$id' }
+  },
+  reservacion_detalle: {
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
+    buscarReservacion: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion]=$id' },
+    buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion.horario][eq]=$id' }
   }
 };
