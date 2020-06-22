@@ -11,6 +11,7 @@ export class Cliente extends CommonFields {
  public fecha_nacimiento?: string;
  public contacto?: string;
  public usuario?: any;
+ public numero_contacto?: any;
 
  constructor() {
    super();

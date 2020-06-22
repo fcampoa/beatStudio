@@ -47,7 +47,6 @@ export class BookingStepThreeComponent implements OnInit {
               }
 
   ngOnInit() {
-    debugger;
     this.user = this.userSvc.loggedUser.data.user;
     this.custom = this.userSvc.aux;
     this.reservaciones = this.custom.detalles;
@@ -107,7 +106,6 @@ export class BookingStepThreeComponent implements OnInit {
   getCreditos(): void {
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
       response => {
-         debugger;
          this.creditos = response.creditos; },
          error => console.log(error)
     );

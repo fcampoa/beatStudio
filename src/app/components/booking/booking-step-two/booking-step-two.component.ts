@@ -199,7 +199,6 @@ export class BookingStepTwoComponent implements OnInit {
     return el !== null ? el : this.getElement(id);
   }
   siguiente() {
-    debugger;
     let r: Reservacion;
     if (this.seleccionado) {
       r = new Reservacion();
