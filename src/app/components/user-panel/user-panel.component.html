@@ -27,7 +27,7 @@
             <app-profile (recorded)="clienteId($event)"></app-profile>
           </app-view>
         </mat-tab>
-        <mat-tab>
+        <mat-tab [disabled]="cliente.id">
           <ng-template mat-tab-label style="padding-bottom: 5%;">
             <p class="primary-color">Historial de clases</p>
           </ng-template>
@@ -38,7 +38,7 @@
             <app-booking-history [idCliente]="cliente.id"></app-booking-history>
           </app-view>
         </mat-tab>
-        <mat-tab>
+        <mat-tab [disabled]="cliente.id">
           <ng-template mat-tab-label style="padding-bottom: 5%;">
             <p class="primary-color">Historial de Pagos</p>
           </ng-template>
@@ -49,7 +49,7 @@
             <app-payment-history [idCliente]="cliente.id"></app-payment-history>
           </app-view>
         </mat-tab>
-        <mat-tab>
+        <mat-tab [disabled]="cliente.id">
           <ng-template mat-tab-label style="padding-bottom: 5%;">
             <p class="primary-color">Mis métodos de pago</p>
           </ng-template>
