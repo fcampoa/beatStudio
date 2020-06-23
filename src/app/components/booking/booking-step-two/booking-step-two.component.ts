@@ -126,7 +126,7 @@ export class BookingStepTwoComponent implements OnInit {
     );
   }
   obtenerOcupados(): void {
-    this.apiSvc.routes.reservacion_detalle.buscarHorarop(this.idHorario)<any>().subscribe(
+    this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(
       response => {
         this.ocupados = response.data;
         this.distributionType.forEach((r: any[]) => {

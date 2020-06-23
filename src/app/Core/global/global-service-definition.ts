@@ -73,6 +73,6 @@ export interface IGlobalServiceDefinition {
     lista: () => VERBS.IGetCall;
     buscar: () => VERBS.IGetByIdCall;
     buscarReservacion: (id: number) => VERBS.IGetCall;
-    buscarHorarop: (id: number) => VERBS.IGetCall;
+    buscarHorario: (id: number) => VERBS.IGetCall;
   };
 }
