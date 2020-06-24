@@ -21,8 +21,8 @@
         </div>
       </div>
     </div>
-    <div *ngIf="cancel" class="row d-flex justify-content-center">
-      <button class="cancel-button">Cancelar</button>
+    <div *ngIf="cancel && !reservacion.cancelada" class="row d-flex justify-content-center">
+      <button class="cancel-button" (click)="cancelBooking()">Cancelar</button>
     </div>
   </mat-card-content>
 </mat-card>

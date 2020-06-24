@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../services/notifications.service';
 import { Cliente } from './../../model/cliente';
 import { UserService } from './../../services/user.service';
 import { Router } from '@angular/router';
@@ -25,10 +26,12 @@ export class BookingComponent implements OnInit {
   public creditos: number;
   public desde: any;
   public hasta: any;
+  public loading = false;
 
   constructor(private apiSvc: GlobalApiService,
               private router: Router,
-              private userSv: UserService) {
+              private userSv: UserService,
+              private notify: NotificationsService) {
 
     this.seleccion = new BehaviorSubject<Horario>(null);
     this.desde = m().format('YYY-MM-DD');
@@ -36,9 +39,10 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.user = this.userSv.loggedUser.data.user;
     this.getDisciplinas();
-     this.seleccion.subscribe(h => this.horarioElegido = h);
+    this.seleccion.subscribe(h => this.horarioElegido = h);
   }
 
   /**
@@ -47,7 +51,13 @@ export class BookingComponent implements OnInit {
   getDisciplinas(): void {
     this.apiSvc.routes.disciplina.lista()<any>().subscribe(
       response => {
+        this.loading = false;
         this.disciplinas = response.data;
+      },
+      error => {
+        this.notify.errorMessage('Ha ocurrido un error');
+        console.log(error);
+        this.loading = false;
       }
     );
   }
@@ -82,9 +92,9 @@ export class BookingComponent implements OnInit {
   siguientePaso(): void {
     console.log(this.horarioElegido);
     console.log(this.horarioElegido.id);
-    // if (this.creditos > 0) {
+    if (this.horarioElegido.id > 0) {
     this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
-    //}
+    }
   }
 
 }

@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../../services/notifications.service';
 import { GlobalApiService } from './../../../Core/global/global-service';
 import { Disciplina } from 'src/app/model/disciplina';
 import { Horario } from './../../../model/horario';
@@ -26,6 +27,8 @@ export class ScheduleComponent implements OnInit {
 
   public horariosCustom: any[] = [];
 
+  public loading = false;
+
   dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 
   private meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -42,9 +45,11 @@ export class ScheduleComponent implements OnInit {
   public desde: any;
   public hasta: any;
 
-  constructor(private apiSvc: GlobalApiService) { }
+  constructor(private apiSvc: GlobalApiService,
+              private notify: NotificationsService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.getRango();
     this.getHorarios(this.idDisciplina);
   }
@@ -58,6 +63,10 @@ export class ScheduleComponent implements OnInit {
         this.horarios = response.data;
 
         this.splitHorarios();
+      },
+      error => {
+        this.notify.errorMessage('Ha ocurrido un error');
+        this.loading = false;
       }
     );
   }
@@ -130,6 +139,7 @@ export class ScheduleComponent implements OnInit {
       }
       this.semana[cont - 1].horarios.push({ horario: x, selected: false });
     });
+    this.loading = false;
   }
   /**
    * Formatea las fechas del rango para obtener los horarios de la semana

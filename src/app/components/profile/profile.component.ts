@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
           this.userSvc.customUser = response.data;
           this.id = response.data.id;
           this.notify.successMessage('Guardado');
-          this.recorded.emit(this.id);
+          this.recorded.emit(false);
         },
         error => console.log(error)
       );
@@ -86,7 +86,7 @@ export class ProfileComponent implements OnInit {
           this.id = response.data.id;
           this.cliente.id = response.data.id;
           this.notify.successMessage('Guardado');
-          this.recorded.emit(this.id);
+          this.recorded.emit(false);
         },
         error => console.log(error)
       );
