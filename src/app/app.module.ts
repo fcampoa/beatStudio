@@ -1,3 +1,4 @@
+import { MessageModalComponent } from './components/message-modal/message-modal.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { PaymentDetailComponent } from './Core/utilities/payment-detail/payment-detail.component';
 import { BookingDetailsComponent } from './Core/utilities/booking-details/booking-details.component';
@@ -93,6 +94,7 @@ import { InviteDirective } from './Core/directives/invites.directive';
     BookingDetailsComponent,
     PaymentDetailComponent,
     PaymentHistoryComponent,
+    MessageModalComponent,
     // directives
     FixedBarDirective,
     InviteDirective,
