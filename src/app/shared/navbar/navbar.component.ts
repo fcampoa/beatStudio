@@ -23,11 +23,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   mySubscription: any;
 
   public sections = [
-    { nombre: 'About', url: 'section1' },
-    { nombre: 'Clases', url: 'section2' },
-    { nombre: 'Coaches', url: 'dashboard/coach' },
-    { nombre: 'Online Works', url: 'discipline' },
-    { nombre: 'Contacto', url: 'booking' }
+    { nombre: 'ABOUT', url: 'section1' },
+    { nombre: 'CLASES', url: 'section2' },
+    { nombre: 'COACHES', url: 'dashboard/coach' },
+    { nombre: 'ONLINE WORKS', url: 'discipline' },
+    { nombre: 'CONTACTO', url: 'booking' }
   ];
 
   // Inputs
@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.userSvc.getUser().subscribe(res => {
       if (res !== undefined && res !== null && (this.cliente === undefined || this.cliente === null)){
       this.user = res.data.user;
-      this.name = this.user.first_name;
+      this.name = this.user.first_name.toUpperCase();
       }
       this.logged = (res !== undefined && res !== null);
     });

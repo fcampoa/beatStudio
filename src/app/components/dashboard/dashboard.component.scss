@@ -1,23 +1,24 @@
 #section1 img {
   display: block;
   margin: auto;
+  width: 100%;
 }
 .home-image {
   background-image: url("../../../assets/img/home_page.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 43.25em;
+  height: 35.25em;
   width: 100%;
 }
 
 .seccion-disciplinas {
-  background: #ffffff !important;
+  background: #eeeeee !important;
   color: #000000;
   padding-top: 5%;
 }
 .seccion-videos {
-  background: #ffffff !important;
+  background: #eeeeee !important;
   color: #000000;
   padding-top: 5%;
   width: 100%;
@@ -43,6 +44,9 @@
 }
 .div-degradado:hover {
   background: linear-gradient(to top, rgb(255, 255, 255), rgb(152, 109, 255));
+  color: #000000;
+  font-style: bold;
+  cursor: pointer;
 }
 .text-color {
   color: rgb(152, 109, 255);
@@ -76,8 +80,7 @@
   font-style: bold;
 }
 .seleccion:hover .text-color .titulo-color {
-  color: #000000;
-  font-style: bold;
+  
 }
 .contenedor {
   position: relative;
@@ -93,7 +96,7 @@
 .centrado {
   position: absolute;
   top: 90%;
-  left: 45%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -118,11 +121,11 @@
 }
 
 .seccion-rutinas {
-  background: #ffffff !important;
+  background: #eeeeee !important;
   color: #000000;
 }
 .seccion-coaches {
-  background: #ffffff !important;
+  background: #eeeeee !important;
   color: #000000;
   padding-top: 5%;
 }
@@ -130,14 +133,14 @@
 .seccion-social {
   background: #000000;
   color: #ffffff;
-  padding-top: 5%;
+  padding-top: 5%7
 }
 
 .work-section {
   background-image: url("../../../assets/img/work_cover.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 50%;
   height: 43.25em;
   width: 100%;
 }
@@ -174,49 +177,33 @@ mat-tab-group {
   margin-top: 55%;
 }
 
-@font-face {
-  font-family: titlesFont;
-  src: url('../../../assets/fonts/Sharp\ Sans\ No.1/Sharp\ Sans\ No1\ -\ Semibold.otf');
-}
-
-@font-face {
-  font-family: infoTextFont;
-  src: url('../../../assets/fonts/Sharp\ Sans\ No.1/Sharp\ Sans\ No1\ -\ Medium.otf');
-}
-
-@font-face {
-  font-family: newButtonText;
-  src: url('../../../assets/fonts/Cedra\ 4F/Cedra4F-WideUltraLight.otf');
-}
-
 .sections-titles{
-  font-family: titlesFont;
+  font-family: SharpSans-Semibold;
   font-size: 62px;
   padding-bottom: 24px;
 }
 
 .sections-info-text{
-  font-family: infoTextFont;
-  font-size: 16px;
-  color: #beb9b9;
+  font-family: GT-America-Light;
+  font-size: 17px;
+  color: #9c9999;
 }
 
 .button-new{
   background-color: #976cff;
-  font-family: newButtonText;
+  font-family: WideUltraLight;
   color: #ffffff;
   letter-spacing: 1px;
   font-size: 14px;
   padding-left: 40px;
   padding-right: 40px;
-  padding-bottom: 6px;
-  padding-top: 6px;
+  padding-bottom: 8px;
+  padding-top: 8px;
   border-radius: 0px;
   border: 2px solid #976cff;
 }
 
 .button-new:hover{
   background-color: #000000;
-  border-radius: 0px;
   border: 2px solid #976cff;
 }
