@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  @Output() loginSuccess: EventEmitter<any> = new EventEmitter<any>();
+  @Output() loginSuccess: EventEmitter<boolean>;
 
   private usuario: Usuario;
   public userName = '';
@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private location: Location,
-              private notify: NotificationsService) { }
+              private notify: NotificationsService) {
+
+                this.loginSuccess = new EventEmitter<boolean>();
+              }
 
   ngOnInit() {
     this.initForm();
@@ -37,12 +40,15 @@ export class LoginComponent implements OnInit {
 
   doLogin(): void {
     this.parseValues();
+    this.loginSuccess.emit(true);
     this.auth.login(this.userName, this.password).subscribe(
       response => {
+        this.loginSuccess.emit(false);
         this.router.navigate(['/dashboard/panel']);
       },
       error => {
         this.notify.errorMessage('Usuario o contraseña incorrecto.');
+        this.loginSuccess.emit(false);
         console.log(error);
       }
     );

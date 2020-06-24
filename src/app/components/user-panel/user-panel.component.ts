@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../services/notifications.service';
 import { Cliente } from 'src/app/model/cliente';
 import { GlobalApiService } from './../../Core/global/global-service';
 import { Router } from '@angular/router';
@@ -21,9 +22,11 @@ export class UserPanelComponent implements OnInit {
   hasta: any;
   nombre = '';
   creditos = 0;
+  registrado = false;
   constructor(private userSvc: UserService,
               private router: Router,
-              private apiSvc: GlobalApiService) {
+              private apiSvc: GlobalApiService,
+              private notify: NotificationsService) {
 
                 this.desde = m().format('YYYY-MM-DD');
                 this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
@@ -36,6 +39,7 @@ export class UserPanelComponent implements OnInit {
           response => {
             if (response.data.length > 0) {
               this.cliente = response.data[0];
+              this.registrado = true;
               this.created_on = this.cliente.created_on;
               this.nombre = this.cliente.nombre;
               this.totalCreditos();
@@ -50,13 +54,17 @@ export class UserPanelComponent implements OnInit {
    * Navega a la pantalla de reservaciones
    */
   goToBooking(): void {
+    if (this.registrado) {
     this.router.navigate(['/dashboard/booking']);
+    }
   }
 /**
  * Navega a la pantalla para comprar creditos
  */
   goToBuy(): void {
+    if (this.registrado) {
     this.router.navigate(['/dashboard/checkout']);
+    }
   }
   /**
    * obtiene los créditos del cliente
@@ -73,5 +81,6 @@ export class UserPanelComponent implements OnInit {
 
   clienteId($event) {
     this.cliente.id = $event;
+    this.registrado = true;
   }
 }

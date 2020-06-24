@@ -37,19 +37,19 @@
   </div>
 </nav>
 <ng-template #popLoginContent>
-  <app-login></app-login>
+  <app-login (loginSuccess)="checkLogin($event)"></app-login>
 </ng-template>
 <ng-template #popLoginTitle><b>Iniciar Sesión</b></ng-template>
 
 <ng-template #popRegisterContent>
-  <app-register></app-register>
+  <app-register (registerSuccess)="checkLogin($event)"></app-register>
 </ng-template>
 <ng-template #popRegisterTitle><b>Registro de usuario</b></ng-template>
 
 <ng-template #popLogoutContent>
   <app-view>
-    <div class="row" style="font-size: 12px; cursor: pointer" (click)="logout()">Salir</div>
-    <div class="row" style="font-size: 12px; cursor: pointer" (click)="goToProfile()">Mi perfil</div>
+    <div class="row" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()">Salir</div>
+    <div class="row" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="goToProfile()">Mi perfil</div>
   </app-view>
 </ng-template>
 <ng-template #popLogoutTitle></ng-template>

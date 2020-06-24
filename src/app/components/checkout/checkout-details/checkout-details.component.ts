@@ -1,3 +1,6 @@
+import { MatDialog } from '@angular/material/dialog';
+import { AddPaymentComponent } from './../../payment/add-payment/add-payment.component';
+import { Location } from '@angular/common';
 import { HistorialCompra } from './../../../model/historial-compra';
 import { Paquete } from './../../../model/paquete';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,11 +29,14 @@ export class CheckoutDetailsComponent implements OnInit {
   public loading = true;
   public creditos = 0;
   public total = 0;
+  public tieneTarjeta = false;
 
   constructor(private userSvc: UserService,
               private apiSvc: GlobalApiService,
               private router: Router,
               private route: ActivatedRoute,
+              private location: Location,
+              public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -52,8 +58,9 @@ export class CheckoutDetailsComponent implements OnInit {
         this.paquete = response[1].data;
         this.p = response[0].data[0];
         this.cliente = response[2].data[0];
-        // this.creditos = this.paquete.creditos;
-        // this.total = this.paquete.precio;
+        if (response[0].data.length > 0) {
+          this.tieneTarjeta = true;
+        }
         this.loading = false;
       });
   }
@@ -90,7 +97,30 @@ export class CheckoutDetailsComponent implements OnInit {
     );
   }
 
+  back(): void {
+    this.location.back();
+  }
+
   apiBanco(): void {
 
+  }
+
+  agregarForma(f?: any): void {
+    this.openDialog(f);
+  }
+  openDialog(f: any): void {
+    const dialogRef = this.dialog.open(AddPaymentComponent, {
+      width: '250px',
+      data: { fp: f, id: this.cliente.id, details: true }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.apiSvc.routes.forma_pago.buscarPrincipalUsuario(this.idUsuario)<any>().subscribe(
+        response => {
+          this.p = response.data[0];
+          this.tieneTarjeta = true;
+         }
+      );
+    });
   }
 }

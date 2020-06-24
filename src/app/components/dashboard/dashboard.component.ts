@@ -8,6 +8,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+
+
   public covers = [
     {title: 'BARRE', url: '../../../assets/img/beat_barre.png'},
     {title: 'YOGA', url: '../../../assets/img/beat_yoga.png'},

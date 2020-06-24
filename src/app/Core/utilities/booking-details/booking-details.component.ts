@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../../services/notifications.service';
 import { GlobalApiService } from './../../global/global-service';
 import { Reservacion } from 'src/app/model/reservacion';
 import { Horario } from './../../../model/horario';
@@ -27,7 +28,8 @@ export class BookingDetailsComponent implements OnInit {
     '#E86E6E', '#C6FF5B', '#02FFC2', '#02AFFF', '#ACA3FF'
   ];
 
-  constructor(private apiSvc: GlobalApiService) { }
+  constructor(private apiSvc: GlobalApiService,
+              private notify: NotificationsService) { }
 
   ngOnInit() {
     this.horario = this.reservacion.horario;
@@ -49,8 +51,20 @@ export class BookingDetailsComponent implements OnInit {
   }
 
   showCancel(): void {
-    this.cancel =
-    m(this.reservacion.fecha).isAfter(this.hoy)
-     && (m.duration(m(this.hoy).diff(this.reservacion.fecha)).asHours() >= 1);
+    this.cancel = (m.duration(m(this.hoy).diff(this.reservacion.fecha)).asHours() >= 1);
+  }
+
+  cancelBooking(): void {
+    this.reservacion.cancelada = true;
+    this.apiSvc.routes.reservacion.actualizar()<any>(this.reservacion).subscribe(
+      response => {
+        this.reservacion = response;
+        this.cancel = false;
+      },
+      error => {
+        console.log(error);
+        this.notify.errorMessage('Error al tratar de cancelar');
+      }
+    );
   }
 }
