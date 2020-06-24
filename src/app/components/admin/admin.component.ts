@@ -8,6 +8,8 @@ import { FixedBarDirective} from '../../Core/directives/fixed-bar.directive';
 })
 export class AdminComponent implements OnInit {
 
+  public loading = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -15,5 +17,9 @@ export class AdminComponent implements OnInit {
 
   onActivate(event) {
     window.scroll(0, 0);
+  }
+
+  public loader($event: boolean): void {
+    this.loading = $event;
   }
 }

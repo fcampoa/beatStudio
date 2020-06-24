@@ -1,6 +1,6 @@
 import { UserService } from './../../services/user.service';
 import { AuthenticationService } from './../../services/authentication.service';
-import { Component, OnInit, ElementRef, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { Cliente } from 'src/app/model/cliente';
@@ -21,6 +21,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public name = '';
   public cliente: Cliente;
   mySubscription: any;
+
+  @Output() login: EventEmitter<boolean>;
 
   public sections = [
     { nombre: 'ABOUT', url: 'section1' },
@@ -43,9 +45,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
               private auth: AuthenticationService
   ) {
     this.location = location;
+    this.login = new EventEmitter<boolean>();
   }
 
   ngOnInit() {
+    this.name = '';
     this.userSvc.getUser().subscribe(res => {
       if (res !== undefined && res !== null && (this.cliente === undefined || this.cliente === null)){
       this.user = res.data.user;
@@ -88,5 +92,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (s !== null && s !== undefined) {
       s.scrollIntoView();
     }
+  }
+
+  checkLogin($event): void {
+    this.login.emit($event);
   }
 }

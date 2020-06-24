@@ -25,7 +25,7 @@
         <mat-divider class="divider-class-show "></mat-divider>
         <div style="margin-bottom: 10%; margin-top: 10%;">
         <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;" (click)="cambiarForma()">
-          <div class="row">
+          <div *ngIf="tieneTarjeta" class="row">
             <div class="col-sm-2" style="font-style: bold;">
               <img *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" style="height: 80%"/>
               <img *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" style="height: 80%" />
@@ -38,10 +38,13 @@
                 <p class="primary-color">cambiar</p>
             </div>
           </div>
+          <div *ngIf="!tieneTarjeta" class="row d-flex justify-content-center primary-color" style="cursor: pointer;" (click)="agregarForma()">
+              <mat-icon>add</mat-icon> Agregar forma de pago
+          </div>
         </mat-card>
       </div>
         <div class="row d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 10%;">
-          <button class="btn btn-outline app-button">Cancelar</button>
+          <button class="btn btn-outline app-button" (click)="back()">Cancelar</button>
           <button class="btn btn-outline app-button" style="margin-left: 5%;" (click)="pagar()">Pagar Ahora</button>
         </div>
       </div>

@@ -1,6 +1,9 @@
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
 <div class="wrapper">
     <div class="main-panel">
-        <navbar-cmp class="fixed-top"></navbar-cmp>
+        <navbar-cmp class="fixed-top" (login)="loader($event)"></navbar-cmp>
         <div class="content">
             <router-outlet></router-outlet>
         </div>
