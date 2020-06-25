@@ -8,25 +8,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./app-view.component.scss']
 })
 export class AppViewComponent implements OnInit {
-  @Input() title: string;
-  @Input() addRoute: string;
-  @Input() showAdd = false;
-  @Input() showDelete = false;
 
-  constructor(
-    private route: Router,
-    private locaton: Location,
-
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-
-  goToAdd(): void {
-    this.route.navigate([this.addRoute]);
-  }
-  gotoBack(): void {
-    this.locaton.back();
-  }
 }

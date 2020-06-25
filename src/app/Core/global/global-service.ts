@@ -5,6 +5,7 @@ import { IGlobalServiceMethodDefinition, GlobalServiceMethodType} from './suppor
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { GlobalServiceSettings } from './global-service-settings';
+import { IGlobalServiceEndPointsDefinition } from './endpoints/globa-service-endpoints-definition';
 
 
 export class GlobalServiceContainer {
@@ -72,25 +73,57 @@ export class GlobalApiService {
     return this.routesDictionary;
   }
 
-  private routesDictionary: IGlobalServiceDefinition = {};
+  public get endPoints() {
+    return this.endPointsDictionary;
+  }
 
-  constructor (private settings: GlobalServiceSettings, private http: HttpClient) {
+  private routesDictionary: IGlobalServiceDefinition = {};
+  private endPointsDictionary: IGlobalServiceEndPointsDefinition = {};
+
+  public headers = new HttpHeaders()
+    .set('content-type', 'application/json');
+
+  constructor(private settings: GlobalServiceSettings, private http: HttpClient) {
     if (settings.definition) {
       this.liftDefinition(settings.definition);
     }
+    if (settings.endPoints) {
+      this.liftEndPointsDefinition(settings.endPoints);
+    }
   }
   public create(controllerRoute: string) {
-    const actual = new GlobalServiceContainer(this.settings.url + '/' + controllerRoute, this);
+    const actual = new GlobalServiceContainer(this.settings.url + 'items/' + controllerRoute, this);
     const trigger = () => actual;
+    // tslint:disable-next-line: no-string-literal
     actual['setTrigger'](trigger);
     this.routesDictionary[controllerRoute] = trigger;
     return this.routesDictionary[controllerRoute]() as GlobalServiceContainer;
+  }
+
+  public createEndPoints(controllerRoute: string) {
+    const actual = new GlobalServiceContainer(this.settings.url + 'custom/' + controllerRoute, this);
+    const trigger = () => actual;
+    // tslint:disable-next-line: no-string-literal
+    actual['setTrigger'](trigger);
+    this.endPointsDictionary[controllerRoute] = trigger;
+    return this.endPointsDictionary[controllerRoute]() as GlobalServiceContainer;
   }
 
   public liftDefinition(definition: any) {
     Object.keys(definition || {}).forEach(key => {
       const keyValue = definition[key];
       const currentDefinition = this.create(key);
+      Object.keys(keyValue).forEach(subRoute => {
+        currentDefinition.lift(subRoute, keyValue[subRoute]);
+      });
+    });
+    return this;
+  }
+
+  public liftEndPointsDefinition(definition: any) {
+    Object.keys(definition || {}).forEach(key => {
+      const keyValue = definition[key];
+      const currentDefinition = this.createEndPoints(key);
       Object.keys(keyValue).forEach(subRoute => {
         currentDefinition.lift(subRoute, keyValue[subRoute]);
       });
@@ -121,7 +154,7 @@ export class GlobalApiService {
 
   private post(url: string, data: any, paramsDictionary?: any) {
     const params = this.setParams(paramsDictionary);
-    return this.http.post(url, data, {params}).pipe(catchError(this.handleError));
+    return this.http.post(url, data, { headers: this.headers, params}).pipe(catchError(this.handleError));
   }
 
   private put(url: string, data: any, paramsDictionary?: any) {

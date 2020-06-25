@@ -1,93 +1,78 @@
 import * as VERBS from './support/VERBS';
 export interface IGlobalServiceDefinition {
-  users?: {
-    getAll: () => VERBS.IGetCall;
-    getById: () => VERBS.IGetByIdCall;
-    doLogin: () => VERBS.IpostCall;
-    addUser: () => VERBS.IpostCall;
-    updateUser: () => VERBS.IpostCall;
-    getUsersDto: () => VERBS.IGetCall;
+  auth?: {
+    authenticate: () => VERBS.IpostCall;
   };
-  person?: {
-    addPerson: () => VERBS.IpostCall;
-    updatePerson: () => VERBS.IPutCall;
-    getPerson: () => VERBS.IGetByIdCall;
-    getAll: () => VERBS.IGetCall;
+  usuario?: {
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+    agregar: () => VERBS.IpostCall;
+    actualizar: () => VERBS.IPatchCall;
   };
-  employee?: {
-    getById: () => VERBS.IGetByIdCall;
-    getByName: (name: string) => VERBS.IGetCall;
-    getAll: () => VERBS.IGetCall;
-    addEmployee: () => VERBS.IpostCall;
-    availables: () => VERBS.IGetCall;
-    uppdateEmployee: () => VERBS.IpostCall;
-    getSchedule: () => VERBS.IGetCall;
-    getAvailableSupervisor: () => VERBS.IGetCall;
-    getPages: () => VERBS.IGetCall;
-    getSuperVisorTeam: () => VERBS.IGetCall;
-    getMachines: () => VERBS.IGetCall;
-  },
-  machines?: {
-    getAll: () => VERBS.IGetCall;
-    getById: () => VERBS.IGetByIdCall;
-    addMachine: () => VERBS.IpostCall;
-    updateMachine: () => VERBS.IpostCall;
-  },
-  teams?: {
-    getAll: () => VERBS.IGetCall;
-    getById: () => VERBS.IGetByIdCall;
-    addTeam: () => VERBS.IpostCall;
-    addTeamGoal: () => VERBS.IpostCall;
-    updateTeam: () => VERBS.IpostCall;
-  },
-  teamsEmployees?: {
-    syncTeamsEmployees: () => VERBS.IpostCall;
-    getTeamEmployees: (teamId: number) => VERBS.IGetCall;
-  }
-  teamGoal?: {
-    getAll: () => VERBS.IGetCall;
-    getById: () => VERBS.IGetByIdCall;
-    addTeamGoal: () => VERBS.IpostCall;
-  }
-  schedules?: {
-    getAll: () => VERBS.IGetCall;
-    addSchedule: () => VERBS.IpostCall;
-    findById: () => VERBS.IGetCall;
-    findByIdEmployee: () => VERBS.IGetCall;
-    uppdateSchedule: () => VERBS.IpostCall;
-    saveEmployeeSchedule: () => VERBS.IpostCall;
-  },
+  cliente?: {
+    agregar: () => VERBS.IpostCall;
+    actualizar: (id: number) => VERBS.IPatchCall;
+    buscar: () => VERBS.IGetByIdCall;
+    lista: () => VERBS.IGetCall;
+    buscarCorreo: (correo: string) => VERBS.IGetCall;
+    buscarUsuario: (id: number) => VERBS.IGetCall;
+  };
+  reservacion?: {
+    agregar: () => VERBS.IpostCall;
+    actualizar: () => VERBS.IPatchCall;
+    buscar: () => VERBS.IGetByIdCall;
+    lista: () => VERBS.IGetCall;
+    buscarClienteRango: (id: number, desde: string, hasta: string) => VERBS.IGetCall;
+    buscarCliente: (id: number, limit: number) => VERBS.IGetCall;
+    buscarFecha: () => VERBS.IGetCall;
+    buscarHorario: (id: number) => VERBS.IGetCall;
+    buscarPorHorario: (id: number) => VERBS.IGetCall,
+    reservacionesHorario: (id: number) => VERBS.IGetCall
+  };
+  disciplina?: {
+    agregar: () => VERBS.IpostCall;
+    actualizar: () => VERBS.IPatchCall;
+    buscar: () => VERBS.IGetByIdCall;
+    lista: () => VERBS.IGetCall;
+  };
+  horario?: {
+    agregar: () => VERBS.IpostCall;
+    actualizar: () => VERBS.IPatchCall;
+    buscar: () => VERBS.IGetByIdCall;
+    lista: () => VERBS.IGetCall;
+    buscarByid: (id: number) => VERBS.IGetCall;
+    buscarDisciplinaRango: (id: number, desde: any, hasta: any) => VERBS.IGetCall;
+  };
   roles?: {
-    getAll: () => VERBS.IGetCall;
-    getAllPermissions: () => VERBS.IGetCall;
-    getById: () => VERBS.IGetByIdCall;
-    updateRole: () => VERBS.IpostCall;
-    addRole: () => VERBS.IpostCall;
-    getRolePermissions: () => VERBS.IGetCall;
-  },
-
-  goals?: {
-    getAll: () => VERBS.IGetCall;
-    getById: () => VERBS.IGetByIdCall;
-    addGoal: () => VERBS.IpostCall;
-    getByTeam: (teamId: number) => VERBS.IGetCall;
-  }
-
-  employeeMachines?: {
-    getAll: () => VERBS.IGetCall;
-    getByEmployee: (id: number) => VERBS.IGetCall;
-    add: () => VERBS.IpostCall;
-    delete: () => VERBS.IDeleteCall;
-    update: () => VERBS.IpostCall;
-  }
-
-  reports?: {
-    generateReport: () => VERBS.IGetCall;
-    getChartsData: () => VERBS.IGetCall;
-  }
-
-  assigned_details?: {
-    saveDetail: () => VERBS.IpostCall;
-    updateDetail: () => VERBS.IpostCall;
-  }
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+    buscarNombre: (nombre: string) => VERBS.IGetCall;
+  };
+  paquete?: {
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+  };
+  historial_compra?: {
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+    agregar: () => VERBS.IpostCall;
+    buscarCliente: (id: number) => VERBS.IGetCall;
+    creditosCliente: (id: number, desde: string, hasta: string) => VERBS.IGetCall;
+  };
+  forma_pago?: {
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+    agregar: () => VERBS.IpostCall;
+    actualizar: (id: number) => VERBS.IPatchCall;
+    eliminar: () => VERBS.IDeleteCall;
+    buscarCliente: (id: number) => VERBS.IGetCall;
+    buscarPrincipalCliente: (id: number) => VERBS.IGetCall;
+    buscarPrincipalUsuario: (id: number) => VERBS.IGetCall;
+  };
+  reservacion_detalle?: {
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+    buscarReservacion: (id: number) => VERBS.IGetCall;
+    buscarHorario: (id: number) => VERBS.IGetCall;
+  };
 }

@@ -1,0 +1,144 @@
+h1 {
+    font-size: 4rem;
+}
+p {
+    color: gray;
+    font-size: 1.2rem;
+}
+.conoce-mas {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+.mat-icon {
+    font-size: 1.2rem;
+}
+.mejores-instalaciones {
+    margin-top: 12rem;
+    .list-group {
+        .list-group-item {
+            border: none;
+            padding: 0;
+            color: gray;
+            background-color: transparent;
+            span {
+                color: #11e579;
+                font-size: 1.6rem;
+                margin-right: 1.5rem;
+            }
+        }
+    }
+    .nosotros-img {
+        position: absolute;
+        left: -5rem;
+        top: -2rem;
+        width: 60%;
+    }
+    .instalaciones-img {
+        margin-top: 10rem;
+    }
+}
+.disciplinas{
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+    .p-relative-left{
+        position: relative;
+        left: 19%;
+    }
+    .p-relative-right{
+        position: relative;
+        right: 17%;
+    }
+}
+.forma-parte{
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background-color: #d8d8d8;
+    h1{
+        color: #000000;
+        font-weight: bold;
+    }
+   
+    img{
+        width: 100%;
+    }
+    .btn{
+        font-weight: bold!important;
+        padding: .8rem 3rem .8rem 3rem;
+    }
+    .btn-outline{
+        color: #000000!important;
+        background-color: transparent!important;
+    }
+    .btn-purple{
+        color: #ffffff!important;
+        background-color: #986dff!important;
+        margin-left: 2rem;
+    }
+}
+.coaches{
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    img{
+        width: 100%;
+    }
+    .bg-coaches{
+        height: 40rem;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    h5{
+        color: #ffffff;
+        margin-top: 5rem;
+    }
+    p{
+        color: gray;
+        margin-top: 2rem;
+        max-width: 30rem;
+    }
+}
+
+@media (max-width: 1180px) {
+    .mejores-instalaciones{
+        .nosotros-img{
+            left: -4rem;
+            top: 1rem;
+        }
+    }
+}
+
+@media (max-width: 1104px) {
+    .forma-parte{
+        .btn{
+            padding: 0.8rem 1rem 0.8rem 1rem;
+        }
+        .btn-purple{
+            //margin-top: 2rem;
+            margin-left: 1rem;
+        }
+    }
+}
+@media (max-width: 985px) {
+    h1{
+        font-size: 2rem;
+    }
+    h3{
+        font-size: 1rem;
+    }
+    .mejores-instalaciones{
+        .nosotros-img{
+            position: initial;
+            width: 100%;
+        }
+        .instalaciones-img{
+            margin-top: 2rem;
+        }
+    } 
+}
+@media (max-width: 575px) {
+    .mejores-instalaciones{
+        margin-top: 2rem;
+    }
+}

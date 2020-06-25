@@ -6,3 +6,56 @@
     color: #9A9A9A !important;
     font-weight: bold;
 }
+a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.register-button {
+  border-color: rgb(152,109,255);
+    color: white;
+    border-style: solid;
+    border-radius: 0;
+    border-width: 2px;
+}
+
+.link-format {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.responsive-format {
+display: inline;
+}
+
+.menu-margin {
+margin-left: 5em;
+}
+.secciones-margin{
+margin-left: 1.5em;
+}
+@media only screen and(max-width: 1250px){
+.menu-margin {
+  margin-left: 0.5em;
+}
+// .secciones-margin {
+//   padding-left: 0.7em;
+// }
+}
+@media only screen and(max-width: 1170px){
+  .menu-margin {
+    margin-left: 0.2em;
+  }
+  .secciones-margin {
+    margin-left: 0.4em;
+  }
+  }
+
+  @media only screen and(max-width: 1128px){
+    .menu-margin {
+      margin-left: 0.2em;
+    }
+    .secciones-margin {
+      margin-left: 0.1em;
+    }
+    }

@@ -31,12 +31,14 @@
               "node_modules/jquery/dist/jquery.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/arrive/src/arrive.js",
-              "node_modules/moment/moment.js",
-              "node_modules/bootstrap-notify/bootstrap-notify.js"
+              "node_modules/moment/moment.js"
             ],
             "styles": [
+              "src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/custom-theme.scss",
+              {"input": "src/variables.scss"}
             ]
           },
           "configurations": {
@@ -101,12 +103,13 @@
               "node_modules/jquery/dist/jquery.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/arrive/src/arrive.js",
-              "node_modules/moment/moment.js",
-              "node_modules/bootstrap-notify/bootstrap-notify.js"
+              "node_modules/moment/moment.js"
             ],
             "styles": [
+              "src/styles.scss",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/custom-theme.scss"
             ]
           }
         },
@@ -141,5 +144,10 @@
   "defaultProject": "beatStudio",
   "cli": {
     "analytics": "52231e99-bada-4268-8caa-e799b3d901b6"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }

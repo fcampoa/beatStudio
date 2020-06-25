@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;" *ngFor="let p of tarjetas">
+        <div class="row d-flex justify-content-between" style="padding: 2%;" (click)="seleccionar(p)">
+          <div class="col-sm">
+            <div class="row">
+              <div style="margin-right: 5%;">
+                <img *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" />
+                <img *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
+              </div>
+              <div class="justify-content-start">
+                {{p.titular.toUpperCase()}} <br />
+                <!-- &#x2022; &#x2022; &#x2022; &#x2022; -->
+                {{ p.numero_tarjeta | creditCard }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

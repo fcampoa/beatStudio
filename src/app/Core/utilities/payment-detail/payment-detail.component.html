@@ -1,0 +1,31 @@
+<div class="col-sm-12 col-12 col-md-12 col-xs-10 col-xl-12">
+  <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;">
+    <div class="row" style="font-size: 12px; padding-left: 4%;">
+      {{getFecha() | customDate}}
+    </div>
+    <div style="padding-left: 4%; padding-right: 4%;"
+     class="row d-flex justify-content-between" *ngIf="compra !== undefined && compra !== null">
+      <h1>{{compra.creditos}} Créditos</h1>
+      <p style="padding-top: 2%;" class="primary-color">MEX {{compra.total | currency}}</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row d-flex justify-content-between"
+     style="color: gray; font-size: 12px; padding-left: 4%; padding-right: 4%; padding-top: 4%;">
+     <div>
+     NOMBRE DE CUENTA: {{compra.forma_pago.titular}}
+    </div>
+    <div *ngIf="compra !== undefined && compra !== null">
+      TOTAL: MEX {{compra.total | currency}}
+    </div>
+    </div>
+    <div class="row"
+     style="color: gray; font-size: 12px;  padding-left: 4%; padding-right: 4%;">
+      FORMA DE PAGO: {{getFormaPago()}}
+    </div>
+    <div class="row"
+     style="color: gray; font-size: 12px; padding-left: 4%; padding-right: 4%; padding-bottom: 4%;"
+      *ngIf="compra !== undefined && compra !== null">
+    FOLIO: {{compra.folio}}
+    </div>
+  </mat-card>
+</div>

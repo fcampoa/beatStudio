@@ -12,11 +12,13 @@ export class AuthGuard implements CanActivate {
         if (sessionStorage.getItem('currentUser')) {
             // logged in so return true
             this.userSvc.user = JSON.parse(sessionStorage.getItem('currentUser'));
+            // this.userSvc.user = JSON.parse(localStorage.getItem('currentUser'));
+            // this.router.navigate([this.router.url]);
             return true;
         }
 
         // not logged in so redirect to login page with the return url
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+        this.router.navigate(['/dashboard'], { queryParams: { returnUrl: state.url }});
         return false;
     }
 }

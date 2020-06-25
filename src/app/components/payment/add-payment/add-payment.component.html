@@ -1,0 +1,38 @@
+<form #form="ngForm" (ngSubmit)="saveOrUpdate()" [formGroup]="group" novalidate>
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm">
+      <mat-form-field>
+        <mat-label>Nombre del titular</mat-label>
+        <input matInput formControlName="txtTitular" type="text" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Número de tarjeta</mat-label>
+        <input matInput formControlName="txtTarjeta" type="text" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mes</mat-label>
+        <mat-select formControlName="selectMes">
+          <mat-option *ngFor="let m of meses" [value]="m">
+            {{m}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mes</mat-label>
+        <mat-select formControlName="selectAnho">
+          <mat-option *ngFor="let a of anhos" [value]="a">
+            {{a}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>CVV</mat-label>
+        <input matInput formControlName="txtCVV" type="text" />
+      </mat-form-field>
+      <div class="row">
+        <button class="btn btn-outline app-button" type="submit">Guardar</button>
+        <button class="btn btn-outline app-button" type="button">cancelar</button>
+      </div>
+    </div>
+  </div>
+</form>

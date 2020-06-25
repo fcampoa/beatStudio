@@ -1,93 +1,77 @@
 import { GlobalServiceMethodType } from './support/global-service-method-type.enum';
 
 export const GLOBAL_SERVICE_DEFINITION: any = {
-  users: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    getById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
-    doLogin: { method: GlobalServiceMethodType.POST, url: '/doLogin' },
-    addUser: { method: GlobalServiceMethodType.POST, url: '/addUser' },
-    updateUser: { method: GlobalServiceMethodType.POST, url: '/updateUser' },
-    getUsersDto: { method: GlobalServiceMethodType.GET, url: '/getUsersDto' }
+  usuario: {
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PATCH, url: '' },
   },
-  person: {
-    addPerson: { method: GlobalServiceMethodType.POST, url: '/addPerson' },
-    updatePerson: { method: GlobalServiceMethodType.PUT, url: '/updatePerson' },
-    getPerson: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getPerson/$id' },
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' }
+  cliente: {
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PATCH, url: '/$id' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscarCorreo: { method: GlobalServiceMethodType.GET, url: '?filter[correo][eq]=$correo' },
+    buscarUsuario: { method: GlobalServiceMethodType.GET, url: '?filter[usuario.id][eq]=$id' }
   },
-  employee: {
-    getById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getById/' },
-    getByName: { method: GlobalServiceMethodType.GET, url: '/getByName/$name' },
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    addEmployee: { method: GlobalServiceMethodType.POST, url: '/addEmployee' },
-    availables: { method: GlobalServiceMethodType.GET, url: '/availables' },
-    uppdateEmployee: { method: GlobalServiceMethodType.POST, url: '/uppdateEmployee' },
-    getSchedule: { method: GlobalServiceMethodType.GET_BY_ID, url: '/schedule/' },
-    getAvailableSupervisor: { method: GlobalServiceMethodType.GET, url: '/getAvailableSupervisor' },
-    getPages: { method: GlobalServiceMethodType.GET, url: '/getPages' },
-    getSuperVisorTeam: { method: GlobalServiceMethodType.GET, url: '/getSuperVisorTeam' },
-    getMachines: { method: GlobalServiceMethodType.GET, url: '/getMachines' }
+  reservacion: {
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PATCH, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscarClienteRango: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&filter[fecha][between]=$desde,$hasta&sort=-fecha&fields=*,horario.*,horario.coach.nombre' },
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&sort=-created_on&fields=*,horario.*,horario.coach.nombre,horario.disciplina.nombre&limit=$limit'},
+    buscarFecha: { method: GlobalServiceMethodType.GET, url: '' },
+    buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[horario.id][eq]=$id' },
+  },
+  disciplina: {
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PATCH, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+  },
+  horario: {
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PATCH, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscarByid: { method: GlobalServiceMethodType.GET, url: '?filter[id][eq]=$id&fields=*,coach.nombre,disciplina.nombre' },
+    buscarDisciplinaRango: {
+      method: GlobalServiceMethodType.GET,
+      url: '?filter[disciplina][eq]=$id&filter[fecha][between]=$desde,$hasta&fields=*,coach.nombre&sort=fecha'
+    }
   },
   roles: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    getAllPermissions: { method: GlobalServiceMethodType.GET, url: '/getAllPermissions' },
-    getById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getById/' },
-    updateRole: { method: GlobalServiceMethodType.POST, url: '/updateRole' },
-    addRole: { method: GlobalServiceMethodType.POST, url: '/addRole' },
-    getRolePermissions: { method: GlobalServiceMethodType.GET, url: '/getRolePermissions' }
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
+    buscarNombre: { method: GlobalServiceMethodType.GET, url: '?filter[name][eq]=$nombre&fields=id' }
   },
-  teams: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    getById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getById/' },
-    addTeam: { method: GlobalServiceMethodType.POST, url: '/addTeam' },
-    updateTeam: { method: GlobalServiceMethodType.POST, url: '/updateTeam' }
+  paquete: {
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' }
   },
-  teamsEmployees: {
-    syncTeamsEmployees: { method: GlobalServiceMethodType.POST, url: '/syncTeamsEmployees' },
-    getTeamEmployees: { method: GlobalServiceMethodType.GET, url: '/getTeamEmployees/$id' }
+  historial_compra: {
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id,&fields=*,forma_pago.titular,forma_pago.numero_tarjeta&sort=-id' },
+    creditosCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id&filter[vigencia][between]=$desde,$hasta' }
   },
-  goals: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    getById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getById/' },
-    addGoal: { method: GlobalServiceMethodType.POST, url: '/addGoal' },
-    getByTeam: { method: GlobalServiceMethodType.GET, url: '/getByTeam/$id' }
+  forma_pago: {
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    actualizar: { method: GlobalServiceMethodType.PATCH, url: '/$id' },
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id' },
+    eliminar: { method: GlobalServiceMethodType.DELETE, url: '/$id' },
+    buscarPrincipalCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id&filter[principal]=1' },
+    buscarPrincipalUsuario: { method: GlobalServiceMethodType.GET, url: '?filter[principal]=1&filter[cliente.usuario.id]=$id' }
   },
-  teamGoal: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    getById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getById/' },
-    addTeamGoal: { method: GlobalServiceMethodType.POST, url: '/addTeamGoal' }
-  },
-  schedules: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    addSchedule: { method: GlobalServiceMethodType.POST, url: '/addSchedule' },
-    findById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getById/' },
-    uppdateSchedule: { method: GlobalServiceMethodType.POST, url: '/uppdateSchedule' },
-    findByIdEmployee: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getByEmployee/' },
-    saveEmployeeSchedule: { method: GlobalServiceMethodType.POST, url: '/saveEmployeeSchedule' },
-
-  },
-  employees_schedules: {
-
-  },
-  machines: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    getById: { method: GlobalServiceMethodType.GET_BY_ID, url: '/getById/' },
-    addMachine: { method: GlobalServiceMethodType.POST, url: '/addMachine' },
-    updateMachine: { method: GlobalServiceMethodType.POST, url: '/updateMachine' },
-  },
-  employeeMachines: {
-    getAll: { method: GlobalServiceMethodType.GET, url: '/getAll' },
-    getByEmployee: { method: GlobalServiceMethodType.GET, url: '/getByEmployee/$id' },
-    add: { method: GlobalServiceMethodType.POST, url: '/add' },
-    update: { method: GlobalServiceMethodType.POST, url: '/update' },
-    delete: { method: GlobalServiceMethodType.DELETE, url: '/delete' }
-  },
-  reports: {
-    generateReport: { method: GlobalServiceMethodType.GET, url: '/generateReport' },
-    getChartsData: { method: GlobalServiceMethodType.GET, url: '/getChartsData' },
-  },
-  assigned_details: {
-    saveDetail: { method: GlobalServiceMethodType.POST, url: '/addDetail' },
-    updateDetail: { method: GlobalServiceMethodType.POST, url: '/updateDetail' }
+  reservacion_detalle: {
+    lista: { method: GlobalServiceMethodType.GET, url: '' },
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
+    buscarReservacion: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion]=$id' },
+    buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion.horario.id][eq]=$id&filter[reservacion.cancelada]=false' }
   }
 };

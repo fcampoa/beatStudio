@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FixedBarDirective} from '../../Core/directives/fixed-bar.directive';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
+  public loading = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onActivate(event) {
+    window.scroll(0, 0);
+  }
+
+  public loader($event: boolean): void {
+    this.loading = $event;
+  }
 }
