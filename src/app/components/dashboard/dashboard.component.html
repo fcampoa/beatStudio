@@ -32,7 +32,8 @@
           <div class="col-sm centrado">
             <div class="row d-flex justify-content-center cambiar-color text-center">
               <p class="text-color" style="font-size: 28px;font-family: WideUltraLight;letter-spacing: 1px;">BEAT</p>
-              <p class="titulo-color" style="font-size: 28px;font-family: WideUltraLight;letter-spacing: 1px;">{{i.title}}</p>
+              <p class="titulo-color" style="font-size: 28px;font-family: WideUltraLight;letter-spacing: 1px;">
+                {{i.title}}</p>
             </div>
             <div style="margin-left: 2%;" class="row d-flex justify-content-center">
               <p class="ocultar text-color">Ver más ></p>
@@ -86,7 +87,7 @@
       </div>
     </div>
   </div>
-  <div class="row" >
+  <div class="row">
     <div id="section4" class="seccion-rutinas col-sm" style="padding-bottom: 10%;">
       <div class="row d-flex justify-content-center">
         <div class="col-10 col-sm-10 col-md-5 col-xl-5">
@@ -124,13 +125,15 @@
       <div class="row d-flex justify-content-center">
         <div class="col-10 col-sm-10 col-md-3 col-xl-3" *ngFor="let i of socialMedia" style="padding:2%;">
           <img style="width:100%;" [src]="i.imageUrl" />
-          <p class="primary-color" style="font-family: WideUltraLight;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
+          <p class="primary-color"
+            style="font-family: WideUltraLight;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
             {{ i.fecha | date:"longDate" }}
           </p>
           <p style="font-family: GT-America-Light">
             {{ i.descripcion }}
           </p>
-          <a style="font-family: GT-America-Light; color: #ffffff; text-decoration: underline; font-size: 12px; " [href]="i.profileUrl">
+          <a style="font-family: GT-America-Light; color: #ffffff; text-decoration: underline; font-size: 12px; "
+            [href]="i.profileUrl">
             {{ i.usuario }}
           </a>
         </div>
@@ -143,72 +146,76 @@
   <!-- seeción de imagen de gym -->
   <img src="../../../assets/img/work_cover.png" style="width: 100%;" alt="">
   <!-- Sección de música -->
-  <div class="row">
-    <div id="section8" class="col-sm seccion-musica" style="padding-bottom: 5%;">
-      <div class="row d-flex justify-content-center">
-        <b>¡Ahora puedes escuchar tus canciones favoritas</b>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <b>de BeatStudio donde quieras!</b>
-      </div>
-      <div class="row d-flex justify-content-center" style="padding-top: 5%;">
-        <mat-tab-group mat-stretch-tabs [selectedIndex]="2">
-          <mat-tab [disabled]="true"></mat-tab>
-          <mat-tab [disabled]="true"></mat-tab>
-          <mat-tab label="Esta semana">
-            <div class="row d-flex justify-content-center" style="width: 90%">
-              <div class="col-sm" *ngFor="let s of semana" style="padding-top: 5%; margin-left: 4%">
-                <div>
-                  <img [src]="s.url" /> <br />
-                  <label style="color: #ffffff">{{s.titulo}}</label><br />
-                  <label style="color: #BDBDBD">{{s.artista}}</label>
-                </div>
+  <div class="row d-flex justify-content-center text-center" style="padding-top: 5%; padding-bottom: 5%;">
+    <div class="col-12 col-sm-12 col-md-4 col-xl-4">
+      <p style="font-family: GT-America-Light; font-size: 20px;">¡Ahora puedes
+        escuchar tus canciones favoritas de BeatStudio donde quieras!</p>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center" style="padding-bottom: 5%;">
+    <div class="col-12 col-sm-12 col-md-12 col-xl-12>">
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Esta semana">
+          <div class="row d-flex justify-content-center" style="max-width: 100%;
+          overflow-x: hidden;">
+            <div class="col-10 col-sm-10 col-md-2 col-xl-2 justify-content-center" *ngFor="let s of semana"
+              style="padding-top: 5%;font-family: GT-America-Light;">
+              <img [src]="s.url" style="width: 100%;" />
+              <label style="color: #ffffff;padding-top: 15%;">{{s.titulo}}</label><br>
+              <label style="color: #9c9c9c">{{s.artista}}</label>
+            </div>
+          </div>
+          <!-- <div class="row d-flex justify-content-center"  style="width: 90%">
+            <div class="col-sm" style="padding-top: 4%;" *ngFor="let s of semana">
+              <div class="col-sm">
+                <iframe style="margin:4%;" [src]="cleanUrl(s.url)" style="width: 100%; height: 100px;" frameborder="0"
+                  allowtransparency="true" allow="encrypted-media"></iframe>
+                <form>
+                  <mat-form-field>
+                    <mat-label>{{s.titulo}}</mat-label>
+                    <input matInput [value]="s.artista" readonly>
+                  </mat-form-field>
+                </form>
               </div>
             </div>
-            <!-- <div class="row d-flex justify-content-center"  style="width: 90%">
-              <div class="col-sm" style="padding-top: 4%;" *ngFor="let s of semana">
-                <div class="col-sm">
-                  <iframe style="margin:4%;" [src]="cleanUrl(s.url)" style="width: 100%; height: 100px;" frameborder="0"
-                    allowtransparency="true" allow="encrypted-media"></iframe>
-                  <form>
-                    <mat-form-field>
-                      <mat-label>{{s.titulo}}</mat-label>
-                      <input matInput [value]="s.artista" readonly>
-                    </mat-form-field>
-                  </form>
-                </div>
-              </div>
-            </div> -->
-          </mat-tab>
-          <mat-tab label="Nuesrtas Favoritas">
-            <div class="row d-flex justify-content-center" style="width: 90%">
-              <div class="col-sm" *ngFor="let s of semana" style="padding-top: 5%; margin-left: 4%">
-                <div>
-                  <img [src]="s.url" /> <br />
-                  <label style="color: #ffffff">{{s.titulo}}</label><br />
-                  <label style="color: #BDBDBD">{{s.artista}}</label>
-                </div>
+          </div> -->
+        </mat-tab>
+        <mat-tab label="Nuestras favoritas">
+          <div class="row d-flex justify-content-center" style="max-width: 100%;
+          overflow-x: hidden;">
+            <div class="col-10 col-sm-10 col-md-2 col-xl-2 justify-content-center" *ngFor="let s of semana"
+              style="padding-top: 5%;font-family: GT-America-Light;">
+              <img [src]="s.url" style="width: 100%;" />
+              <label style="color: #ffffff;padding-top: 15%;">{{s.titulo}}</label><br>
+              <label style="color: #9c9c9c">{{s.artista}}</label>
+            </div>
+          </div>
+          <!-- <div class="row d-flex justify-content-center" style="width: 90%">
+            <div class="col-12 col-sm-12 col-md-3 col-xl-3" *ngFor="let s of semana"
+              style="padding-top: 5%; margin-left: 4%">
+              <div>
+                <img [src]="s.url" /> <br />
+                <label style="color: #ffffff">{{s.titulo}}</label><br />
+                <label style="color: #BDBDBD">{{s.artista}}</label>
               </div>
             </div>
-            <!-- <div class="row d-flex justify-content-center"  style="width: 90%">
-              <div class="col-sm" style="padding-top: 4%;" *ngFor="let s of favoritas">
-                <div class="col-sm">
-                  <iframe style="margin:4%;" [src]="cleanUrl(s.url)" style="width: 100%; height: 100px;" frameborder="0"
-                    allowtransparency="true" allow="encrypted-media"></iframe>
-                  <form class="example-form">
-                    <mat-form-field>
-                      <mat-label>{{s.titulo}}</mat-label>
-                      <input matInput [value]="s.artista" readonly>
-                    </mat-form-field>
-                  </form>
-                </div>
+          </div> -->
+          <!-- <div class="row d-flex justify-content-center"  style="width: 90%">
+            <div class="col-sm" style="padding-top: 4%;" *ngFor="let s of favoritas">
+              <div class="col-sm">
+                <iframe style="margin:4%;" [src]="cleanUrl(s.url)" style="width: 100%; height: 100px;" frameborder="0"
+                  allowtransparency="true" allow="encrypted-media"></iframe>
+                <form class="example-form">
+                  <mat-form-field>
+                    <mat-label>{{s.titulo}}</mat-label>
+                    <input matInput [value]="s.artista" readonly>
+                  </mat-form-field>
+                </form>
               </div>
-            </div> -->
-          </mat-tab>
-          <mat-tab [disabled]="true"></mat-tab>
-          <mat-tab [disabled]="true"></mat-tab>
-        </mat-tab-group>
-      </div>
+            </div>
+          </div> -->
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>
