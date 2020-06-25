@@ -157,6 +157,28 @@ mat-slide-toggle-bar {
 }
 
 @font-face {
-  font-family: WideUltraLight;
-  src: url('./assets/fonts/Cedra\ 4F/Cedra4F-WideUltraLight.otf');
+  font-family: GT-America-Regular;
+  src: url('./assets/fonts/GT\ America/GT-America-Regular.otf');
+}
+
+@font-face {
+  font-family: GT-America-Medium;
+  src: url('./assets/fonts/GT\ America/GT-America-Medium.otf');
+}
+
+@font-face {
+  font-family: Cedra4FWide;
+  src: url('./assets/fonts/Cedra\ 4F/Cedra4F-Wide.otf');
+}
+
+.sections-titles{
+  font-family: SharpSans-Semibold;
+  font-size: 62px;
+  padding-bottom: 24px;
+}
+
+.sections-info-text{
+  font-family: GT-America-Regular;
+  font-size: 17px;
+  color: #9c9999;
 }
