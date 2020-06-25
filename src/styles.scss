@@ -43,21 +43,22 @@ body {
   border-width: 2px;
 }
 
-.app-button {
-  background: #9865ff;
-  color: #ffffff;
-  border-style: solid;
-  border-radius: 0;
-  border-width: 2px;
-}
+// .app-button {
+//   background: #9865ff;
+//   color: #ffffff;
+//   border-style: solid;
+//   border-radius: 0;
+//   border-width: 2px;
+// }
 
 .app-button {
   background: #000000 !important;
   border-color: rgb(152, 109, 255) !important;
   color: #ffffff !important;
-  // border-style: solid !important;
-  // border-radius: 0 !important;
+  border-style: solid !important;
+  border-radius: 0 !important;
   border-width: 2px !important;
+  font-family: WideUltraLight !important;
 }
 
 .app-button:hover {
@@ -111,6 +112,25 @@ mat-accordion {
   height: 15px !important;
 }
 
+.button-new{
+  background-color: #000000 !important;
+  font-family: WideUltraLight !important;
+  color: #ffffff !important;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-bottom: 8px !important;
+  padding-top: 8px !important;
+  border-radius: 0px !important;
+  border: 2px solid #976cff !important;
+}
+
+.button-new:hover{
+  background-color: #976cff !important;
+  border: 2px solid #976cff !important;
+}
+
 .mat-slide-toggle-thumb-container {
   position: absolute;
   z-index: 1;
@@ -160,3 +180,4 @@ mat-slide-toggle-bar {
   font-family: WideUltraLight;
   src: url('./assets/fonts/Cedra\ 4F/Cedra4F-WideUltraLight.otf');
 }
+
