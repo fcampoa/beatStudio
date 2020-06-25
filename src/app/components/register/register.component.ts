@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './../../services/authentication.service';
 import { GlobalApiService } from './../../Core/global/global-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Cliente } from 'src/app/model/cliente';
 
 @Component({
@@ -16,13 +16,17 @@ import { Cliente } from 'src/app/model/cliente';
 export class RegisterComponent implements OnInit {
   group: FormGroup;
   cliente: Cliente;
+  @Output() registerSuccess: EventEmitter<boolean>;
 
   constructor(private formBuilder: FormBuilder,
               private apiSvc: GlobalApiService,
               private auth: AuthenticationService,
               private router: Router,
               private userSvc: UserService,
-              private notify: NotificationsService) { }
+              private notify: NotificationsService) {
+
+                this.registerSuccess = new EventEmitter<boolean>();
+               }
 
   ngOnInit() {
     this.initForm();
@@ -30,7 +34,7 @@ export class RegisterComponent implements OnInit {
 
   registrarCliente(): void {
     this.cliente = this.parseValues();
-
+    this.registerSuccess.emit(true);
     const u = {
       first_name: this.cliente.nombre,
       last_name: this.cliente.apellido,
@@ -48,6 +52,7 @@ export class RegisterComponent implements OnInit {
               console.log(response);
               this.auth.login(u.email, u.password).subscribe(
                 res => {
+                  this.registerSuccess.emit(false);
                   this.router.navigate(['/dashboard/panel']);
                 },
                 error => console.log(error)
@@ -60,7 +65,10 @@ export class RegisterComponent implements OnInit {
           this.notify.errorMessage('Ya existe un usuario asociado a este correo');
         }
       },
-      error => console.log(error)
+      error => {
+        this.registerSuccess.emit(false);
+        this.notify.errorMessage('Error de conexión.');
+      }
     );
 
   }

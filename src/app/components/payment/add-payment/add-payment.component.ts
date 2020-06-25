@@ -67,7 +67,7 @@ export class AddPaymentComponent implements OnInit {
     this.data.vigencia = m(new Date(this.group.get('selectAnho').value, this.group.get('selectMes').value)).format('YYYY-MM-DD').toString();
     this.data.cvv = this.group.get('txtCVV').value;
     this.data.tipo = 'internet';
-    this.data.principal = false;
+    this.data.principal = this.content.details ? true : false;
     this.data.status = 'published';
   }
 

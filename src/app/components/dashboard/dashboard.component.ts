@@ -8,16 +8,20 @@ import { Component, OnInit, ElementRef } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+
+
   public covers = [
+    {title: 'SPIN', url: '../../../assets/img/beat_spin.jpg'},
     {title: 'BARRE', url: '../../../assets/img/beat_barre.png'},
     {title: 'YOGA', url: '../../../assets/img/beat_yoga.png'},
     {title: 'TRAIN', url: '../../../assets/img/beat_train.png'},
   ];
 
   public socialMedia = [
-    {fecha: new Date(), descripcion: 'los lunes no son lunes...', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png'},
-    {fecha: new Date(), descripcion: 'los lunes no son lunes...', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png'},
-    {fecha: new Date(), descripcion: 'los lunes no son lunes...', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png'}
+    {fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png'},
+    {fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png'},
+    {fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png'}
   ];
 
   // public semana = [

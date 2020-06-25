@@ -32,7 +32,7 @@
         </div>
       </mat-card>
       <!-- <mat-card style="background: rgb(24, 24, 24) !important; cursor: pointer;"> -->
-      <div class="row d-flex justify-content-center primary-color" style="cursor: pointer;" (click)="agregarForma()">
+      <div *ngIf="cliente !== null && cliente !== undefined" class="row d-flex justify-content-center primary-color" style="cursor: pointer;" (click)="agregarForma()">
         <mat-icon>add</mat-icon> Agregar forma de pago
       </div>
       <!-- </mat-card> -->
