@@ -18,7 +18,6 @@ export class BookingDetailsComponent implements OnInit {
   public reservaciones: ReservacionDetalle[] = [];
   public horario: Horario;
   public cancel = false;
-  hoy = new Date();
 
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
@@ -44,14 +43,16 @@ export class BookingDetailsComponent implements OnInit {
   obtenerDetalles(id: number): void {
     this.apiSvc.routes.reservacion_detalle.buscarReservacion(id)<any>().subscribe(
       response => {
-      this.reservaciones = response.data;
+        this.reservaciones = response.data;
       },
       error => console.log(error)
     );
   }
 
   showCancel(): void {
-    this.cancel = (m.duration(m(this.hoy).diff(this.reservacion.fecha)).asHours() >= 1);
+    const aux = m();
+    const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
+    this.cancel = res >= 1;
   }
 
   cancelBooking(): void {
