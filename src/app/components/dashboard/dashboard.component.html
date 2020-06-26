@@ -159,16 +159,16 @@
     <div class="col-12 col-sm-12 col-md-12 col-xl-12>">
       <mat-tab-group mat-align-tabs="center">
         <mat-tab label="Esta semana">
-          <div class="row d-flex justify-content-center" style="max-width: 100%;
+         <!-- <div class="row d-flex justify-content-center" style="max-width: 100%;
           overflow-x: hidden;">
-            <div class="col-10 col-sm-10 col-md-2 col-xl-2 justify-content-center" *ngFor="let s of semana"
+             <div class="col-10 col-sm-10 col-md-2 col-xl-2 justify-content-center" *ngFor="let s of semana"
               style="padding-top: 5%;font-family: GT-America-Regular;">
               <img [src]="s.url" style="width: 100%;" />
               <label style="color: #ffffff;padding-top: 15%;">{{s.titulo}}</label><br>
               <label style="color: #9c9c9c">{{s.artista}}</label>
             </div>
-          </div>
-          <!-- <div class="row d-flex justify-content-center"  style="width: 90%">
+          </div> -->
+          <div class="row d-flex justify-content-center"  style="width: 90%">
             <div class="col-sm" style="padding-top: 4%;" *ngFor="let s of semana">
               <div class="col-sm">
                 <iframe style="margin:4%;" [src]="cleanUrl(s.url)" style="width: 100%; height: 100px;" frameborder="0"
@@ -181,10 +181,10 @@
                 </form>
               </div>
             </div>
-          </div> -->
+          </div>
         </mat-tab>
         <mat-tab label="Nuestras favoritas">
-          <div class="row d-flex justify-content-center" style="max-width: 100%;
+          <!-- <div class="row d-flex justify-content-center" style="max-width: 100%;
           overflow-x: hidden;">
             <div class="col-10 col-sm-10 col-md-2 col-xl-2 justify-content-center" *ngFor="let s of semana"
               style="padding-top: 5%;font-family: GT-America-Regular;">
@@ -192,7 +192,7 @@
               <label style="color: #ffffff;padding-top: 15%;">{{s.titulo}}</label><br>
               <label style="color: #9c9c9c">{{s.artista}}</label>
             </div>
-          </div>
+          </div> -->
           <!-- <div class="row d-flex justify-content-center" style="width: 90%">
             <div class="col-12 col-sm-12 col-md-3 col-xl-3" *ngFor="let s of semana"
               style="padding-top: 5%; margin-left: 4%">
@@ -203,7 +203,7 @@
               </div>
             </div>
           </div> -->
-          <!-- <div class="row d-flex justify-content-center"  style="width: 90%">
+          <div class="row d-flex justify-content-center"  style="width: 90%">
             <div class="col-sm" style="padding-top: 4%;" *ngFor="let s of favoritas">
               <div class="col-sm">
                 <iframe style="margin:4%;" [src]="cleanUrl(s.url)" style="width: 100%; height: 100px;" frameborder="0"
@@ -216,7 +216,7 @@
                 </form>
               </div>
             </div>
-          </div> -->
+          </div>
         </mat-tab>
       </mat-tab-group>
     </div>
