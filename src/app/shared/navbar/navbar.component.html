@@ -12,7 +12,7 @@
       <div class="nav-item" style="margin-left: 1em;" *ngFor="let i of sections">
         <div #secciones fxLayout="row"  class="secciones-margin">
           <mat-icon>expand_more</mat-icon><a class="link-format"
-            (click)="navigate(i.url)" style="font-family: WideUltraLight; letter-spacing: 1px; font-size: 13px;padding-top: 2%;">{{i.nombre}}</a>
+            (click)="navigate(i.url)" style="font-family: Cedra4FWide; letter-spacing: 1px; font-size: 13px;padding-top: 2%;">{{i.nombre}}</a>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <div #profile *ngIf="logged" class="d-flex justify-content-end" style="padding-top: 2%;">
         <img src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;cursor:pointer"
           [ngbPopover]="popLogoutContent" autoClose="outside"/>
-        <div style="padding-top: 1%; margin-left: 4%; color:#9865ff;font-family: WideUltraLight;">
+        <div style="padding-top: 1%; margin-left: 4%; color:#9865ff;font-family: Cedra4FWide;">
           {{ name }}
         </div>
       </div>

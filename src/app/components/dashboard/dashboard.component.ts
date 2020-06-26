@@ -24,17 +24,17 @@ export class DashboardComponent implements OnInit {
     {fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png'}
   ];
 
-  // public semana = [
-  //   { titulo: 'take me to church', artista: 'Hozier', url: 'https://open.spotify.com/embed/track/3dYD57lRAUcMHufyqn9GcI' },
-  //   { titulo: 'somebody that i used to know', artista: 'gotye', url: 'https://open.spotify.com/embed/track/4wCmqSrbyCgxEXROQE6vtV' },
-  //   { titulo: 'shape of you', artista: 'Ed Sheeran', url: 'https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3' }
-  // ];
   public semana = [
-      { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana1.png' },
-      { titulo: 'somebody that i used to know', artista: 'gotye', url: '../../../assets/img/semana2.png' },
-      { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana3.png' },
-      { titulo: 'shape of you', artista: 'Ed Sheeran', url: '../../../assets/img/semana1.png' }
-    ];
+    { titulo: 'take me to church', artista: 'Hozier', url: 'https://open.spotify.com/embed/track/3dYD57lRAUcMHufyqn9GcI' },
+    { titulo: 'somebody that i used to know', artista: 'gotye', url: 'https://open.spotify.com/embed/track/4wCmqSrbyCgxEXROQE6vtV' },
+    { titulo: 'shape of you', artista: 'Ed Sheeran', url: 'https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3' }
+  ];
+  // public semana = [
+  //     { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana1.png' },
+  //     { titulo: 'somebody that i used to know', artista: 'gotye', url: '../../../assets/img/semana2.png' },
+  //     { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana3.png' },
+  //     { titulo: 'shape of you', artista: 'Ed Sheeran', url: '../../../assets/img/semana1.png' }
+  //   ];
 
   public favoritas = [
     { titulo: 'Believer', artista: 'Imagine Dragons', url: 'https://open.spotify.com/embed/track/0pqnGHJpmpxLKifKRmU6WP' },
