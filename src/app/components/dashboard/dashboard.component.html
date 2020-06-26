@@ -27,7 +27,7 @@
             sed diam nonummy nibh euismod tincidunt ut laoreet dolore</p>
         </div>
       </div>
-      <div id="coversDiv" class="row" style="margin-top: 2.3em;margin-left: 1.5em; margin-right: 1.5em;">
+      <div id="coversDiv" class="row mb-3" style="margin-top: 2.3em;margin-left: 1.5em; margin-right: 1.5em;">
         <div *ngFor="let i of covers; let x = index" style="margin-bottom: 1.5em;" class="contenedor col-sm">
           <div class="col-sm centrado">
             <div class="row d-flex justify-content-center cambiar-color text-center">
@@ -44,10 +44,13 @@
           </div>
         </div>
       </div>
-      <div class="row d-flex justify-content-center mt-3">
-        <a href="#" style="color: #000000; font-family: GT-America-Light;"><b>Conoce más de nuestras disciplinas
-            aquí</b></a>
-        <mat-icon>arrow_forward</mat-icon>
+      <div class="row d-flex justify-content-center mt-3 mb-3">
+        <div class="col-12 col-sm-12 col-md-4 col-xl-4">
+          <a href="#" style="color: #000000; font-family: GT-America-Medium; font-size: 22px;text-decoration: underline;">
+            <b>Conoce más de nuestras disciplinas
+              aquí</b></a>
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
       </div>
     </div>
   </div>
@@ -117,7 +120,7 @@
       </div>
       <div class="row d-flex justify-content-center">
         <div class="col-12 col-sm-12 col-md-12 col-xl-12 d-flex justify-content-center text-center">
-          <b style="color: #ffffff; font-size: 18px; font-family: GT-America-Light;padding-bottom: 3%;">
+          <b style="color: #ffffff; font-size: 18px; font-family: GT-America-Regular;padding-bottom: 3%;">
             Etiquétanos en instagram y usa el hashtag #beat..? @BeatStudio
           </b>
         </div>
@@ -129,10 +132,10 @@
             style="font-family: Cedra4FWide;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
             {{ i.fecha | date:"longDate" }}
           </p>
-          <p style="font-family: GT-America-Light">
+          <p style="font-family: GT-America-Regular">
             {{ i.descripcion }}
           </p>
-          <a style="font-family: GT-America-Light; color: #ffffff; text-decoration: underline; font-size: 12px; "
+          <a style="font-family: GT-America-Regular; color: #ffffff; text-decoration: underline; font-size: 12px; "
             [href]="i.profileUrl">
             {{ i.usuario }}
           </a>
@@ -148,7 +151,7 @@
   <!-- Sección de música -->
   <div class="row d-flex justify-content-center text-center" style="padding-top: 5%; padding-bottom: 5%;">
     <div class="col-12 col-sm-12 col-md-4 col-xl-4">
-      <p style="font-family: GT-America-Light; font-size: 20px;">¡Ahora puedes
+      <p style="font-family: GT-America-Regular; font-size: 20px;">¡Ahora puedes
         escuchar tus canciones favoritas de BeatStudio donde quieras!</p>
     </div>
   </div>
@@ -159,7 +162,7 @@
           <div class="row d-flex justify-content-center" style="max-width: 100%;
           overflow-x: hidden;">
             <div class="col-10 col-sm-10 col-md-2 col-xl-2 justify-content-center" *ngFor="let s of semana"
-              style="padding-top: 5%;font-family: GT-America-Light;">
+              style="padding-top: 5%;font-family: GT-America-Regular;">
               <img [src]="s.url" style="width: 100%;" />
               <label style="color: #ffffff;padding-top: 15%;">{{s.titulo}}</label><br>
               <label style="color: #9c9c9c">{{s.artista}}</label>
@@ -184,7 +187,7 @@
           <div class="row d-flex justify-content-center" style="max-width: 100%;
           overflow-x: hidden;">
             <div class="col-10 col-sm-10 col-md-2 col-xl-2 justify-content-center" *ngFor="let s of semana"
-              style="padding-top: 5%;font-family: GT-America-Light;">
+              style="padding-top: 5%;font-family: GT-America-Regular;">
               <img [src]="s.url" style="width: 100%;" />
               <label style="color: #ffffff;padding-top: 15%;">{{s.titulo}}</label><br>
               <label style="color: #9c9c9c">{{s.artista}}</label>
