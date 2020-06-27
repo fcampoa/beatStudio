@@ -65,14 +65,61 @@
   margin: 0 !important;
 }
 
-.desvanecer:hover {
-  opacity: 0.4;
+.desvanecer{
+  color: #000000;
+  background: #eeeeee;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.desvanecer img{
+  opacity: 1;
+  width: 100% !important;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
   -o-transition: opacity 500ms;
   -ms-transition: opacity 500ms;
   transition: opacity 500ms;
+}
+
+.desvanecer div:nth-child(1){
+  background: rgba(152,101,255,1);
+  background: -moz-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(152,101,255,1)), color-stop(67%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9865ff', endColorstr='#ffffff', GradientType=0 );
+}
+
+.desvanecer div:nth-child(2){
+  position: absolute; 
+  bottom: -5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transition: bottom 500ms;
+  -moz-transition: bottom 500ms;
+  -o-transition: bottom 500ms;
+  -ms-transition: bottom 500ms;
+  transition: bottom 500ms;
+}
+
+.desvanecer:hover {
+  img{
+    opacity: 0.4;
+  }
   cursor: pointer;
+  span{
+    color:#000000 !important;
+  }
+  a{
+    font-size: 20px;
+  }
+  div{
+    bottom: 0% !important;
+  }
 }
 
 .seleccion {
@@ -175,4 +222,14 @@ mat-tab-group {
 .sobreponer {
   position: absolute;
   margin-top: 55%;
+}
+
+.see-more{
+  text-align: center;
+  width: 100%;
+  font-size: 0px;
+  transition:font-size 500ms;
+  -moz-transition:font-size 500ms;
+  -webkit-transition:font-size 500ms;
+  -o-transition:font-size 500ms;
 }
