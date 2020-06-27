@@ -23,6 +23,9 @@ export class AppComponent {
     .addSvgIcon('twitter_blanco', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/twitter_blanco.svg'))
     .addSvgIcon('instagram_blanco', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/instagram_blanco.svg'))
     .addSvgIcon('facebook_blanco', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/facebook_blanco.svg'))
+    .addSvgIcon('instagram_morado',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Instagram(Layout contacto).svg'))
+    .addSvgIcon('facebook_morado',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Facebook(Layout contacto9.svg'))
+    .addSvgIcon('twitter_morado',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Twitter(Layout contacto).svg'))
     ;
   }
 
