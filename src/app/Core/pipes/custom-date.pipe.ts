@@ -19,9 +19,9 @@ export class CustomDatePipe implements PipeTransform {
                   'Noviembre',
                   'Diciembre'];
   transform(d: string): string {
-    const value = new Date(d);
+    const value = m(d);
     // m().locale();
     // return m(d).format('LL');
-    return value.getDate() + ' de ' + this.meses[value.getMonth()] + ' del ' + value.getFullYear();
+    return value.date() + ' de ' + this.meses[value.month()] + ' del ' + value.year();
   }
 }

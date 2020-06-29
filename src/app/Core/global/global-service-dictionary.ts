@@ -55,7 +55,7 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     lista: { method: GlobalServiceMethodType.GET, url: '' },
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
     agregar: { method: GlobalServiceMethodType.POST, url: '' },
-    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id,&fields=*,forma_pago.titular,forma_pago.numero_tarjeta&sort=-id' },
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id,&fields=*,paquete.creditos,forma_pago.titular,forma_pago.numero_tarjeta&sort=-id' },
     creditosCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id&filter[vigencia][between]=$desde,$hasta' }
   },
   forma_pago: {

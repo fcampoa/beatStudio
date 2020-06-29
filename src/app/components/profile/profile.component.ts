@@ -130,6 +130,7 @@ export class ProfileComponent implements OnInit {
     this.cliente.status = 'published';
     this.cliente.usuario = this.user.id;
     const aux = m(this.userGroup.get('birthDate').value);
+    debugger;
     this.cliente.fecha_nacimiento = aux.format('YYYY-MM-DD').toString();
   }
 
