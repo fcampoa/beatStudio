@@ -106,7 +106,7 @@
   transition: bottom 500ms;
 }
 
-.desvanecer:hover {
+.desvanecer div:nth-child(1):hover {
   img{
     opacity: 0.4;
   }
