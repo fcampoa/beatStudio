@@ -6,9 +6,27 @@
     color: #9A9A9A !important;
     font-weight: bold;
 }
+.mat-icon {
+  display: inline-flex;
+    vertical-align: top;
+}
 a {
   text-decoration: underline;
   cursor: pointer;
+  font-family: Cedra4FWide; 
+  letter-spacing: 1px; 
+  font-size: 13px;
+}
+
+.navbar-user-button{
+  background: #000000;
+  border: 0;
+  color: #976cff;
+  font-family: Cedra4FWide;
+}
+
+.navbar-user-button:focus{
+  outline: 0;
 }
 
 .register-button {
