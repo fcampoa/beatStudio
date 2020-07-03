@@ -2,8 +2,23 @@ h1 {
     font-size: 4rem;
 }
 p {
+    font-family: GT-America-Regular;
     color: gray;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    
+}
+li{
+    font-family: GT-America-Regular;
+    color: gray;
+    font-size: 1.05rem;
+    width: 80%;
+}
+.parrafo{
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+.title{
+    font-family: SharpSans-Semibold;
 }
 .conoce-mas {
     font-weight: bold;
@@ -15,7 +30,6 @@ p {
     font-size: 1.2rem;
 }
 .mejores-instalaciones {
-    margin-top: 12rem;
     .list-group {
         .list-group-item {
             border: none;
@@ -40,8 +54,9 @@ p {
     }
 }
 .disciplinas{
-    margin-top: 12rem;
-    margin-bottom: 12rem;
+    font-family: SharpGroteskSM15R;
+    margin-top: 10%;
+    margin-bottom: 12%;
     .p-relative-left{
         position: relative;
         left: 19%;
@@ -52,8 +67,9 @@ p {
     }
 }
 .forma-parte{
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-family: SharpGroteskSM15R;
     background-color: #d8d8d8;
     h1{
         color: #000000;
@@ -78,8 +94,8 @@ p {
     }
 }
 .coaches{
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-top: 8%;
+    padding-bottom: 8%;
     img{
         width: 100%;
     }
@@ -91,13 +107,20 @@ p {
     }
     h5{
         color: #ffffff;
-        margin-top: 5rem;
+        margin-top: 3rem;
+        font-size: 1.4rem;
+        font-family: GT-America-Medium;
     }
     p{
         color: gray;
-        margin-top: 2rem;
+        margin-top: 1rem;
         max-width: 30rem;
+        font-family: GT-America-Regular;
     }
+}
+
+.familia{
+    font-size: 5.5rem;
 }
 
 @media (max-width: 1180px) {
@@ -122,6 +145,9 @@ p {
 }
 @media (max-width: 985px) {
     h1{
+        font-size: 2rem;
+    }
+    .familia{
         font-size: 2rem;
     }
     h3{

@@ -22,17 +22,16 @@ body {
 // html {
 //   scroll-behavior: smooth;
 // }
+.popover{
+}
 
 .popover-header {
-  background: #000000 !important;
 }
 
 .popover-body {
-  background: #000000;
 }
 
 .app-background {
-  background: #000000;
 }
 
 .register-button {
@@ -131,6 +130,24 @@ mat-accordion {
   border: 2px solid #976cff !important;
 }
 
+.button-black{
+  width: 100%;
+  padding: 10px 0;
+  letter-spacing: 1px;
+  background-color: black;
+  color:white;
+  border:0;
+  font-family: Cedra4FWide;
+  -webkit-transition: background-color 500ms;
+-moz-transition: background-color 500ms;
+-o-transition: background-color 500ms;
+-ms-transition: background-color 500ms;
+transition: background-color 500ms;
+}
+.button-black:hover{
+  background-color: #1d1d1d;
+}
+
 .mat-slide-toggle-thumb-container {
   position: absolute;
   z-index: 1;
@@ -170,6 +187,10 @@ mat-slide-toggle-bar {
   font-family: SharpSans-Semibold;
   src: url('./assets/fonts/Sharp\ Sans\ No.1/Sharp\ Sans\ No1\ -\ Semibold.otf');
 }
+@font-face {
+  font-family: SharpSans-Medium;
+  src: url('./assets/fonts/Sharp\ Sans\ No.1/Sharp\ Sans\ No1\ -\ Medium.otf');
+}
 
 @font-face {
   font-family: GT-America-Light;
@@ -187,9 +208,20 @@ mat-slide-toggle-bar {
 }
 
 @font-face {
+  font-family: GT-America-Thin;
+  src: url('./assets/fonts/GT\ America/GT-America-Thin.otf');
+}
+
+@font-face {
   font-family: Cedra4FWide;
   src: url('./assets/fonts/Cedra\ 4F/Cedra4F-Wide.otf');
 }
+
+@font-face {
+  font-family: SharpGroteskSM15R;
+  src: url('./assets/fonts/SharpGrotesk/Semibold/SharpGroteskSmBold15-Regular.ttf');
+}
+
 
 .sections-titles{
   font-family: SharpSans-Semibold;

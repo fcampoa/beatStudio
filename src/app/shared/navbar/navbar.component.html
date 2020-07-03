@@ -21,17 +21,17 @@
       <div #profile *ngIf="logged" class="d-flex justify-content-end" style="padding-top: 2%;">
         <img src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;cursor:pointer"
           [ngbPopover]="popLogoutContent" autoClose="outside"/>
-        <div style="padding-top: 1%; margin-left: 4%; color:#9865ff;font-family: Cedra4FWide;">
+        <div style="padding-top: 1%; margin-left: 4%; color:#9865ff;font-family: Cedra4FWide; cursor: pointer;" (click)="goToProfile()">
           {{ name }}
         </div>
       </div>
       <form class="form-inline my-2 d-flex justify-content-end" *ngIf="!logged" fxShow="true">
-        <button class="btn btn-outline app-button" type="button" [ngbPopover]="popLoginContent" autoClose="outside"
-          >Iniciar Sesión</button>
-        <span style="padding: 2%;"></span>
         <button class="btn btn-outline app-button" type="button" [ngbPopover]="popRegisterContent" autoClose="outside">
-          Crear Cuenta
+          CREAR CUENTA
         </button>
+        <span style="padding: 2%;"></span>
+        <button class="btn btn-outline app-button" type="button" [ngbPopover]="popLoginContent" autoClose="outside"
+          >INICIAR SESIÓN</button>
       </form>
     </div>
   </div>
@@ -47,9 +47,8 @@
 <ng-template #popRegisterTitle><b>Registro de usuario</b></ng-template>
 
 <ng-template #popLogoutContent>
-  <app-view>
-    <div class="row" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()">Salir</div>
-    <div class="row" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="goToProfile()">Mi perfil</div>
-  </app-view>
+  <div class="container-fluid">
+    <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()"><span>Cerrar sesión</span></div>
+  </div>
 </ng-template>
 <ng-template #popLogoutTitle></ng-template>

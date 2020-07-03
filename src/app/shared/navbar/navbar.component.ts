@@ -25,11 +25,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   @Output() login: EventEmitter<boolean>;
 
   public sections = [
-    { nombre: 'ABOUT', url: 'section1' },
-    { nombre: 'CLASES', url: 'section2' },
+    { nombre: 'ABOUT', url: 'dashboard/about' },
+    { nombre: 'CLASES', url: 'dashboard/disciplines' },
     { nombre: 'COACHES', url: 'dashboard/coach' },
-    { nombre: 'ONLINE WORKS', url: 'discipline' },
-    { nombre: 'CONTACTO', url: 'booking' }
+    { nombre: 'ONLINE WORKS', url: 'dashboard/disciplines' },
+    { nombre: 'CONTACTO', url: 'dashboard/contact' }
   ];
 
   // Inputs

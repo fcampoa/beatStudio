@@ -163,6 +163,9 @@ export class BookingStepTwoComponent implements OnInit {
     this.list_places.push();
   }
 
+  checarOcupado(i: any): void {
+  }
+
   seleccionarAsiento(i: any): void {
     let a: any;
     if (!this.seleccionado) {
