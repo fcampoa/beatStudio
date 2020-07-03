@@ -219,9 +219,11 @@
               </div>
             </div>
           </div> -->
-          <div class="row d-flex justify-content-center" style="width: 90%">
-            <div class="col-sm" style="padding-top: 4%;" *ngFor="let s of favoritas">
-              <div class="col-sm">
+          <div class="row d-flex justify-content-center" style="max-width: 100%;
+          overflow-x: hidden;">
+            <div  class="col-8 col-sm-8 col-md-3 col-xl-3 justify-content-center" *ngFor="let s of favoritas"
+            style="padding-top: 5%;font-family: GT-America-Regular;"style="padding-top: 5%;font-family: GT-America-Regular;">
+              <div>
                 <iframe style="margin:4%;" [src]="cleanUrl(s.url)" style="width: 100%; height: 100px;" frameborder="0"
                   allowtransparency="true" allow="encrypted-media"></iframe>
                 <form class="example-form">
