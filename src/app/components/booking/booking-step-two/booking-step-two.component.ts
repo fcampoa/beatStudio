@@ -10,6 +10,7 @@ import { Reservacion, Custom } from 'src/app/model/reservacion';
 import * as $ from 'jquery';
 import * as m from 'moment';
 import { ReservacionDetalle } from 'src/app/model/reservacion-detalle';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-booking-step-two',
@@ -19,13 +20,14 @@ import { ReservacionDetalle } from 'src/app/model/reservacion-detalle';
 export class BookingStepTwoComponent implements OnInit {
 
   constructor(private apiSvc: GlobalApiService,
-              private router: Router,
-              private userSv: UserService,
-              private route: ActivatedRoute,
-              private location: Location) {
+    private router: Router,
+    private userSv: UserService,
+    private route: ActivatedRoute,
+    private location: Location,
+    private notify: NotificationsService) {
 
-                this.cliente = new Cliente();
-                this.cliente.nombre = '';
+    this.cliente = new Cliente();
+    this.cliente.nombre = '';
 
   }
 
@@ -163,7 +165,18 @@ export class BookingStepTwoComponent implements OnInit {
     this.list_places.push();
   }
 
-  checarOcupado(i: any): void {
+  public checarOcupado(i: any): void {
+    this.loading = true;
+    this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero)<any>().subscribe(
+      response => {
+        if (response.data.length > 0) {
+          this.seleccionarAsiento(i);
+        } else {
+          this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
+          i.ocupado = true;
+        }
+      }
+    );
   }
 
   seleccionarAsiento(i: any): void {
@@ -209,10 +222,7 @@ export class BookingStepTwoComponent implements OnInit {
       r.cliente = this.cliente.id;
       r.fecha = m().format('YYYY-MM-DD');
       r.horario = this.idHorario;
-     // r.invitado = false;
-     // r.lugar = this.seleccion.numero;
       r.status = 'published';
-     // r.nombre = this.cliente.nombre;
       r.folio = this.cliente.id + this.idHorario + this.seleccion.fila + this.seleccion.numero;
       r.cancelada = false;
       let d: ReservacionDetalle = new ReservacionDetalle();
@@ -223,15 +233,10 @@ export class BookingStepTwoComponent implements OnInit {
       this.reservaciones.push(d);
       this.amigos.forEach(x => {
         d = new ReservacionDetalle();
-       // d.cliente = this.cliente.id;
-       // d.fecha = m().format('YYYY-MM-DD');
-       // d.horario = this.idHorario;
         d.invitado = true;
         d.lugar = x.lugar;
         d.status = 'published';
         d.nombre = x.nombre;
-       // d.folio = this.cliente.id + this.idHorario + x.fila + x.lugar;
-       // d.cancelada = false;
 
 
         this.reservaciones.push(d);
