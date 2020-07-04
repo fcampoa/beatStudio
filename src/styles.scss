@@ -185,28 +185,67 @@ mat-slide-toggle-bar {
   src: url('./assets/fonts/SharpGrotesk/Semibold/SharpGroteskSmBold15-Regular.ttf');
 }
 
+.dashboard-title{
+  font-size: 6.567em !important; 
+  font-family: SharpSans-Semibold !important;
+  padding-top: 5% !important;
+  padding-bottom: 1% !important;
+}
+
 .page-title{
-  font-family: SharpSans-Semibold;
-  font-size: 4.8rem;
-  padding-bottom: 24px;
+  font-family: SharpSans-Semibold !important;
+  font-size: 4.8rem !important;
+  padding-bottom: 24px !important;
 }
+
 .sections-text{
-  font-family: GT-America-Thin;
-  font-size: 1.1rem;
-  color: #ffffff
+  font-family: GT-America-Thin !important;
+  font-size: 1.1rem !important;
+  color: #ffffff !important
 }
+
 .sections-titles{
-  font-family: SharpSans-Semibold;
-  font-size: 4rem;
-  padding-bottom: 24px;
+  font-family: SharpSans-Semibold !important;
+  font-size: 3.5rem !important;
+  padding-bottom: 24px !important;
 }
+
 .sections-info-text{
-  font-family: GT-America-Thin;
-  font-size: 1.1rem;
-  color: #9c9999;
+  font-family: GT-America-Thin !important;
+  font-size: 1rem !important;
+  color: #9c9999 !important;
 }
+
+.sections-info-title{
+  font-family: GT-America-Medium !important;
+  font-size: 1.4rem !important;
+  color: #ffffff !important;
+}
+
 .section-see-more{
-  font-family: GT-America-Medium;
+  font-family: GT-America-Medium !important; 
+  color: #ffffff !important;
+  font-size: 1.5rem !important;
+  text-decoration: underline !important;
+}
+
+.beat-algo{
+  font-family: Cedra4FWide !important;
+  span{
+    color: #9865ff !important;
+  }
+}
+
+.play-button{
+  position: absolute !important; 
+  width: 100px !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.play-button:hover{
+  cursor: pointer !important;
 }
 
 .button-new{
@@ -217,8 +256,8 @@ mat-slide-toggle-bar {
   font-size: 14px !important;
   padding-left: 40px !important;
   padding-right: 40px !important;
-  padding-bottom: 8px !important;
-  padding-top: 8px !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
   border-radius: 0px !important;
   border: 2px solid #976cff !important;
   -webkit-transition: background-color 500ms;
@@ -272,4 +311,76 @@ transition: background-color 500ms;
 }
 .button-black:hover{
   background-color: #1d1d1d;
+}
+
+@media (max-width: 1120px) {
+  .dashboard-title{
+    font-size: 4em;
+  }
+.page-title{
+  font-size: 3.5em;
+}
+.sections-text{
+
+}
+.sections-titles{
+  font-size: 2.5em;
+}
+.sections-info-text{
+
+}
+.sections-info-title{
+
+}
+.section-see-more{
+
+}
+}
+
+@media (max-width: 768px) {
+  .dashboard-title{
+    font-size: 3.5em;
+  }
+.page-title{
+  font-size: 3em;
+}
+.sections-text{
+  font-size: 1em;
+}
+.sections-titles{
+  font-size: 1.8em;
+}
+.sections-info-text{
+  font-size: 1em;
+}
+.sections-info-title{
+
+}
+.section-see-more{
+
+}
+}
+
+@media (max-width: 676px) {
+  .dashboard-title{
+    font-size: 3em;
+  }
+.page-title{
+  font-size: 2.5em;
+}
+.sections-text{
+
+}
+.sections-titles{
+  font-size: 2em;
+}
+.sections-info-text{
+
+}
+.sections-info-title{
+
+}
+.section-see-more{
+
+}
 }

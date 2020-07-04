@@ -1,36 +1,23 @@
-h1{
-    font-size: 4.5rem;
-}
 .nuestras{
-    p{
-        width: 30%;
-        margin: 0 auto;
-        font-size: 1.05rem;
-    }
+    margin-top: 10rem;
 }
 .diciplines{
-    margin-top: 10rem;
-    margin-bottom: 10rem;
     .dicipline{
+        margin-top: 8%;
+        margin-bottom: 8%;
         img{
             width: 100%;
+            padding-bottom: 1.5rem;
         }
         h4{
-            margin-top: 4rem;
-            font-family: Cedra4FWide;
+            padding-top: 1.5rem;
         }
         p{
-            margin-top: 3rem;
-            color: gray;
-            font-family: GT-America-Regular;
+            padding-top: 1.5rem;
         }
         a{
-            color: #ffffff;
-            text-decoration: underline;
-        }
-        span{
-            color: #9865ff;
-            font-family: Cedra4FWide;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
         }
     }
 }
@@ -38,62 +25,29 @@ h1{
 .complementa{
     color: #000000;
     height: 70rem;
+    background-image: url(../../../assets/img/Complementa.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    h1{
-        margin-top: 5rem;
-    }
-    p{
-        width: 30%;
-        margin: 0 auto;
-        font-size: 1.2rem;
+    div{
+        padding-top: 8rem;
     }
 }
 
 @media (max-width: 1120px) {
-    h1{
-        font-size: 3rem;
-    }
-    .diciplines{
-        margin-top: 5rem;
-    }
-    .nuestras,
-    .complementa{
-        p{
-            width: 40%;
-        }
-    }
     .complementa{
         height: 50rem;
+        div{
+            padding-top: 4rem;
+        }
     }
 }
 
 @media (max-width: 768px) {
-    .nuestras{
-        h1{
-            font-size: 2rem;
-        }
-        p{
-            font-size: 1rem;
-            width: 60%;
-        }
-    }
-    .diciplines{
-        margin-bottom: 0;
-        .dicipline{
-            margin-bottom: 4rem;
-        }
-    }
     .complementa{
         height: 44rem;
-        h1{
-            font-size: 2rem;
-            margin-top: 2rem;
-        }
-        p{
-            font-size: 1rem;
-            width: 60%;
+        div{
+            padding-top: 2rem;
         }
     }
 }
@@ -101,11 +55,8 @@ h1{
 @media (max-width: 676px) {
     .complementa{
         height: 28rem;
-        h1{
-            margin-top: 1rem;
-        }
-        p{
-            width: 100%;
+        div{
+            padding-top: 0.5rem;
         }
     }
 }

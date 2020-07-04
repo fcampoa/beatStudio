@@ -1,21 +1,22 @@
-#nav-settings-icon{
-    font-size: 1.4rem;
-}
-.navbar-title{
-    font-size: 2rem;
-    color: #9A9A9A !important;
-    font-weight: bold;
-}
+// #nav-settings-icon{
+//     font-size: 1.4rem;
+// }
+// .navbar-title{
+//     font-size: 2rem;
+//     color: #9A9A9A !important;
+//     font-weight: bold;
+// }
 .mat-icon {
+  width: 1rem;
   display: inline-flex;
     vertical-align: top;
 }
 a {
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
   font-family: Cedra4FWide; 
   letter-spacing: 1px; 
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .navbar-user-button{
@@ -29,51 +30,51 @@ a {
   outline: 0;
 }
 
-.register-button {
-  border-color: rgb(152,109,255);
-    color: white;
-    border-style: solid;
-    border-radius: 0;
-    border-width: 2px;
-}
-
-.link-format {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.responsive-format {
-display: inline;
-}
-
-.menu-margin {
-margin-left: 5em;
-}
-.secciones-margin{
-margin-left: 1.5em;
-}
-@media only screen and(max-width: 1250px){
-.menu-margin {
-  margin-left: 0.5em;
-}
-// .secciones-margin {
-//   padding-left: 0.7em;
+// .register-button {
+//   border-color: rgb(152,109,255);
+//     color: white;
+//     border-style: solid;
+//     border-radius: 0;
+//     border-width: 2px;
 // }
-}
-@media only screen and(max-width: 1170px){
-  .menu-margin {
-    margin-left: 0.2em;
-  }
-  .secciones-margin {
-    margin-left: 0.4em;
-  }
-  }
 
-  @media only screen and(max-width: 1128px){
-    .menu-margin {
-      margin-left: 0.2em;
-    }
-    .secciones-margin {
-      margin-left: 0.1em;
-    }
-    }
+// .link-format {
+//   text-decoration: none;
+//   color: #ffffff;
+// }
+
+// .responsive-format {
+// display: inline;
+// }
+
+// .menu-margin {
+// margin-left: 5em;
+// }
+// .secciones-margin{
+// margin-left: 1.5em;
+// }
+// @media only screen and(max-width: 1250px){
+// .menu-margin {
+//   margin-left: 0.5em;
+// }
+// // .secciones-margin {
+// //   padding-left: 0.7em;
+// // }
+// }
+// @media only screen and(max-width: 1170px){
+//   .menu-margin {
+//     margin-left: 0.2em;
+//   }
+//   .secciones-margin {
+//     margin-left: 0.4em;
+//   }
+//   }
+
+//   @media only screen and(max-width: 1128px){
+//     .menu-margin {
+//       margin-left: 0.2em;
+//     }
+//     .secciones-margin {
+//       margin-left: 0.1em;
+//     }
+//     }
