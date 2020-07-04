@@ -1,3 +1,6 @@
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
 <div class="container  fix_mobile" style="padding-top: 10%;">
   <div class="row d-flex justify-content-center primary-color">
     PASO 2 DE 3
@@ -46,7 +49,7 @@
             (mouseenter)="hover(item.numero)"
             (mouseleave)="leave(item.numero)"
             [disabled]="item.ocupado"
-            (click)="seleccionarAsiento(item)">
+            (click)="checarOcupado(item)">
             {{ item.numero }}
           </button>
           <!-- <div class="col-sm-1"></div> -->
