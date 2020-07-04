@@ -1,12 +1,6 @@
-h1 {
-    font-size: 4rem;
-}
-p {
-    font-family: GT-America-Regular;
-    color: gray;
-    font-size: 1.05rem;
-    
-}
+// h1 {
+//     font-size: 4rem;
+// }
 li{
     font-family: GT-America-Regular;
     color: gray;
@@ -111,60 +105,42 @@ li{
         font-size: 1.4rem;
         font-family: GT-America-Medium;
     }
-    p{
-        color: gray;
-        margin-top: 1rem;
-        max-width: 30rem;
-        font-family: GT-America-Regular;
-    }
 }
 
 .familia{
     font-size: 5.5rem;
 }
 
-@media (max-width: 1180px) {
-    .mejores-instalaciones{
-        .nosotros-img{
-            left: -4rem;
-            top: 1rem;
-        }
-    }
-}
+// @media (max-width: 1180px) {
+//     .mejores-instalaciones{
+//         .nosotros-img{
+//             left: -4rem;
+//             top: 1rem;
+//         }
+//     }
+// }
 
-@media (max-width: 1104px) {
-    .forma-parte{
-        .btn{
-            padding: 0.8rem 1rem 0.8rem 1rem;
-        }
-        .btn-purple{
-            //margin-top: 2rem;
-            margin-left: 1rem;
-        }
-    }
-}
+// @media (max-width: 1104px) {
+//     .forma-parte{
+//         .btn{
+//             padding: 0.8rem 1rem 0.8rem 1rem;
+//         }
+//         .btn-purple{
+//             //margin-top: 2rem;
+//             margin-left: 1rem;
+//         }
+//     }
+// }
 @media (max-width: 985px) {
-    h1{
-        font-size: 2rem;
-    }
     .familia{
         font-size: 2rem;
     }
     h3{
         font-size: 1rem;
     }
-    .mejores-instalaciones{
-        .nosotros-img{
-            position: initial;
-            width: 100%;
-        }
-        .instalaciones-img{
-            margin-top: 2rem;
-        }
-    } 
 }
-@media (max-width: 575px) {
-    .mejores-instalaciones{
-        margin-top: 2rem;
-    }
-}
+// @media (max-width: 575px) {
+//     .mejores-instalaciones{
+//         margin-top: 2rem;
+//     }
+// }
