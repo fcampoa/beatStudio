@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { nombre: 'ABOUT', url: 'dashboard/about' },
     { nombre: 'CLASES', url: 'dashboard/disciplines' },
     { nombre: 'COACHES', url: 'dashboard/coach' },
-    { nombre: 'ONLINE WORKS', url: 'dashboard/disciplines' },
+    { nombre: 'ONLINE WORKOUTS', url: '' },
     { nombre: 'CONTACTO', url: 'dashboard/contact' }
   ];
 
@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.userSvc.getUser().subscribe(res => {
       if (res !== undefined && res !== null && (this.cliente === undefined || this.cliente === null)){
       this.user = res.data.user;
-      this.name = this.user.first_name.toUpperCase();
+      this.name = this.user.first_name;
       }
       this.logged = (res !== undefined && res !== null);
     });

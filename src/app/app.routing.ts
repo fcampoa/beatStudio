@@ -40,6 +40,7 @@ export const AppRoutes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'disciplines', component: DisciplineComponent, children: [] },
+      { path: 'disciplines/beatspin', component: DiciplineBeatspinComponent, children: [] },
       { path: 'privacy', component: PrivacyComponent }
     ]
   },
