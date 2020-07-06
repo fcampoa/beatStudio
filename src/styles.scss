@@ -9,6 +9,11 @@ body {
   max-width: 100%;
     overflow-x: hidden;
 }
+.custom-modalbox {
+   .mat-dialog-container {
+  background: rgb(16,16,16) !important;
+  }
+}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
