@@ -68,7 +68,7 @@ export class PaymentComponent implements OnInit {
  */
   openDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
-      width: '250px',
+      width: '600px', panelClass: 'custom-modalbox',
       data: { fp: f, id: this.cliente.id }
     });
 
