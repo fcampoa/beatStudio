@@ -73,34 +73,36 @@
       <div class="col-sm-4 col-4 col-md-4 col-lg-4 align-self-center">
         <mat-label>Fecha de vencimiento</mat-label>
       </div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2">
-        <mat-form-field>
-          <mat-select formControlName="selectMes" aria-placeholder="MM">
+      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Mes</mat-label>
+          <mat-select formControlName="selectMes">
             <mat-option *ngFor="let m of meses" [value]="m">
               {{m}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2">
-        <mat-form-field>
-          <mat-select formControlName="selectAnho" aria-placeholder="YY">
+      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Año</mat-label>
+          <mat-select formControlName="selectAnho">
             <mat-option *ngFor="let a of anhos" [value]="a">
               {{a}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2"></div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2">
-        <mat-form-field>
+      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2"></div>
+      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2">
+        <mat-form-field style="width: 100%;">
           <input matInput formControlName="txtCVV" type="text" placeholder="CCV"/>
         </mat-form-field>
       </div>
     </div>
   </form>
 </mat-card>
-<div class="row" style="padding-top: 5%;">
-  <button class="btn btn-outline app-button" type="submit">Guardar</button>
-  <button class="btn btn-outline app-button" type="button">cancelar</button>
+<div class="row justify-content-center" style="padding-top: 5%;">
+  <button mat-stroked-button class="button-new mr-4" type="submit">Guardar</button>
+  <button mat-stroked-button class="button-new" type="button">cancelar</button>
 </div>
