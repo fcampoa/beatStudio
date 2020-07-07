@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse w-100 dual-collapse2 order-1 order-xl-0" id="navbarTogglerDemo02">
     <ul class="navbar-nav mx-auto text-lg-center text-left">
       <li class="nav-item active mr-5" *ngFor="let i of sections">
-        <mat-icon>expand_more</mat-icon><a class="link-format" (click)="navigate(i.url)">
+        <mat-icon style="margin-top: 2%;">expand_more</mat-icon><a class="link-format" (click)="navigate(i.url)">
           {{i.nombre}}
         </a>
       </li>
@@ -21,9 +21,9 @@
         <button class="my-2 my-sm-0 navbar-user-button" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
       </div>
       <div *ngIf="!logged">
-        <button style="padding-left: 1rem !important;padding-right: 1rem !important;" class="button-new my-2 my-sm-0 mr-3" [ngbPopover]="popRegisterContent" autoClose="outside">CREAR
+        <button mat-stroked-button style="padding-left: 1rem !important;padding-right: 1rem !important;" class="button-new my-2 my-sm-0 mr-3" [ngbPopover]="popRegisterContent" autoClose="outside">CREAR
           CUENTA</button>
-        <button style="padding-left: 1rem !important;padding-right: 1rem !important;" class="button-new my-2 my-sm-0" [ngbPopover]="popLoginContent" autoClose="outside">INICIAR
+        <button mat-stroked-button style="padding-left: 1rem !important;padding-right: 1rem !important;" class="button-new my-2 my-sm-0" [ngbPopover]="popLoginContent" autoClose="outside">INICIAR
           SESION</button>
       </div>
     </form>
