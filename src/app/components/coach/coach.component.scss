@@ -8,7 +8,16 @@ cursor: pointer;
   width: 100%;
   transition: width 1s;
 }
-
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+  margin-top: -8px;
+}
+mat-icon{
+  @include md-icon-size(32px);
+}
 // .front-image:hover{
 //   width: 40%;
 //   height: 50%;
@@ -30,24 +39,6 @@ cursor: pointer;
   padding-bottom: 1% !important;
 }
 
-.coach-info-hide{
-  font-size: 0px;
-  transition:font-size 500ms;
-     -moz-transition:font-size 500ms; /* Firefox 4 */
-     -webkit-transition:font-size 500ms; /* Safari and Chrome */
-     -o-transition:font-size 500ms;
-}
-
-
-.coach-info-show{
-  font-size: 14px;
-  transition:font-size 500ms;
-     -moz-transition:font-size 500ms; /* Firefox 4 */
-     -webkit-transition:font-size 500ms; /* Safari and Chrome */
-     -o-transition:font-size 500ms;
-}
-
-
 .coach-info-titles{
   font-family: GT-America-Regular;
   letter-spacing: 1px;
@@ -66,6 +57,7 @@ cursor: pointer;
 .coach{
 }
 
+
 .coach img{
   width: 100%;
   -webkit-transition: width 500ms;
@@ -75,19 +67,25 @@ cursor: pointer;
 }
 
 .coach div:first-child{
+  -webkit-transition: padding-top 500ms;
+  -moz-transition: padding-top 500ms;
+    -o-transition: padding-top 500ms;
+       transition: padding-top 500ms;
   span{
     font-size: 0;
-  -webkit-transition: font-size 500ms;
-  -moz-transition: font-size 500ms;
-    -o-transition: font-size 500ms;
-       transition: font-size 500ms;
+    font-family: GT-America-Thin;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+    -o-transition: all 500ms;
+       transition: all 500ms;
   }
   p{
     font-size: 0;
-  -webkit-transition: font-size 500ms;
-  -moz-transition: font-size 500ms;
-    -o-transition: font-size 500ms;
-       transition: font-size 500ms;
+    font-family: GT-America-Thin;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+    -o-transition: all 500ms;
+       transition: all 500ms;
   }
 }
 
@@ -100,11 +98,13 @@ cursor: pointer;
     width: 50%;
   }
   div:first-child{
+    padding-top: 20px;
     span{
-      font-size: 12px;
+      font-size: 11px;
     }
     p{
-      font-size: 20px;
+      font-size: 18px;
+      padding-bottom: 10px;
     }
   }
   div:nth-child(4){

@@ -175,6 +175,7 @@ export class BookingStepTwoComponent implements OnInit {
           this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
           i.ocupado = true;
         }
+        this.loading = false;
       }
     );
   }
