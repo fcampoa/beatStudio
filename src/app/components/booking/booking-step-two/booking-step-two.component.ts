@@ -178,6 +178,7 @@ export class BookingStepTwoComponent implements OnInit {
           this.loading = false;
           this.seleccionarAsiento(i);
         }
+        this.loading = false;
       }
     );
   }

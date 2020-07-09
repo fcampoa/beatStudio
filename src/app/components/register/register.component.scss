@@ -1,3 +1,6 @@
+.registro{
+    padding-top: 5rem;
+}
 form{
     font-family: GT-America-Regular;
 }
@@ -7,4 +10,15 @@ mat-form-field{
 }
 mat-form-field mat-label {
     color: #929191;
+}
+input{
+    width: 100%;
+}
+.form-part{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #111111;
+}
+a{
+    border-bottom: 1px solid #ffffff;
 }

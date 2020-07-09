@@ -1,4 +1,4 @@
-<div class="container-fluid" style="padding-top: 10%;">
+<div style="padding-top: 10%;">
   <div class="row d-flex justify-content-center">
     <h5 class="primary-color" style="font-family: Cedra4FWide;">ABOUT US</h5>
   </div>
@@ -11,7 +11,7 @@
     </div>
     <div class="col-11 col-sm-11 col-md-5 col-xl-5" style="padding-top: 8%;">
       <div style="padding-top: 12%;">
-        <h1 class="sections-titles" >Power<b style="color: #9865ff;">+</b>Spin<b style="color: #9865ff;">+</b>
+        <h1 class="sections-titles">Power<b style="color: #9865ff;">+</b>Spin<b style="color: #9865ff;">+</b>
           Yoga<b style="color: #9865ff;">+</b>Barre</h1>
       </div>
       <p class="sections-info-text" style="padding-top: 6%;padding-bottom: 6%;">
@@ -21,8 +21,8 @@
         Duis autem vel eum iriure dolor in hendrerit in vulput.
       </p>
       <a href="" class="section-see-more">
-        Conoce más aquí <mat-icon svgIcon="white_arrow"></mat-icon>
-      </a>
+        Conoce más aquí 
+      </a><mat-icon svgIcon="white_arrow"></mat-icon>
     </div>
   </div>
   <div class="row d-flex justify-content-center mejores-instalaciones">
@@ -31,21 +31,21 @@
         Las mejores <br>
         instalaciones
       </h1>
-      <p class="sections-info-text">
+      <p class="sections-info-text" style="width: 70% !important;">
         Lorem ipsum dolor sit amet, consectetuer adipiscing
         elit, sed nonummy nibh euismod tincidunt ut laoret
         dolore mafeagna.
       </p>
       <ul class="list-group sections-info-text" style="width: 100%;">
-        <li class="list-group-item pt-2"><span>+</span> Baños y regaderas</li>
-        <li class="list-group-item pt-2"><span>+</span> Vestidores y lockers</li>
-        <li class="list-group-item pt-2"><span>+</span> Guardería y sala de juegos</li>
-        <li class="list-group-item pt-2"><span>+</span> Cafetería</li>
+        <li class="list-group-item pt-1"><span>+</span> Baños y regaderas</li>
+        <li class="list-group-item pt-1"><span>+</span> Vestidores y lockers</li>
+        <li class="list-group-item pt-1"><span>+</span> Guardería y sala de juegos</li>
+        <li class="list-group-item pt-1"><span>+</span> Cafetería</li>
       </ul>
       <div class="pt-5">
         <a href="" class="section-see-more">
-          Conoce más aquí <mat-icon svgIcon="white_arrow"></mat-icon>
-        </a>
+          Conoce más aquí 
+        </a><mat-icon svgIcon="white_arrow"></mat-icon>
       </div>
     </div>
     <div class="col-10 col-sm-10 col-md-5 col-xl-5" style="padding-top: 10%;">
@@ -86,12 +86,12 @@
         <h3>DEL ARTE</h3>
       </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-2">
       <div class="col-md-12">
-        <img src="../../../assets/img/waves.png" alt="" class="w-100">
+        <img src="../../../assets/img/SVG/Gráfico de info relevante (Layout About us)-46.svg" alt="" class="w-100">
       </div>
     </div>
-    <div class="row mt-5 mb-5">
+    <div class="row mt-2 mb-5">
       <div class="col-6 text-center">
         <div class="d-inline-block p-relative-left">
           <h3>PARA TODO TIPO</h3>
@@ -119,9 +119,113 @@
       <img src="../../../assets/img/Team.gif" alt="">
     </div>
   </div>
-
-  <div class="row justify-content-center coaches">
-    <div class="col-11 col-sm-11 col-md-5 col-xl-5" style="padding:2%;">
+  <div class="row justify-content-center pt-5 pb-5">
+    <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 pt-5 pb-5">
+      <div class="row image-viewer">
+        <!-- <div style="float: left;top:50%">
+          <button (click)="scrollLeft()">left</button>
+        </div> -->
+        <button class="next-button" (click)="scrollRight()" style="left:95%;top:40%;transform: translate(-50%, -50%);">
+          <mat-icon svgIcon="black_arrow"></mat-icon>
+        </button>
+        <div #widgetsContent class="middle">
+          <div class="info-widget">
+            <img style="height: 590px;" src="../../../assets/img/Coaches2.png" alt="">
+            <p class="sections-info-title pt-5">Lorem ipsum dolor</p>
+            <div class="widget-text">
+              <p class="sections-info-text">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,<br>
+                nonummy nibh euismod tincidunt ut laoret dolore mafea.
+              </p>
+            </div>
+          </div>
+          <div class="info-widget">
+            <img style="height: 590px;" src="../../../assets/img/Coaches.png" alt="">
+            <p class="sections-info-title pt-5">Lorem ipsum dolor</p>
+            <p class="sections-info-text">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit,<br>
+              nonummy nibh euismod tincidunt ut laoret dolore mafea.
+            </p>
+          </div>
+        </div>
+        <button class="next-button" (click)="scrollLeft()" style="left:2.5%;top:37%;transform: translate(-50%, -50%);transform: rotate(180deg);">
+          <mat-icon svgIcon="black_arrow"></mat-icon>
+        </button>
+        <!-- <div style="float: right;top:50%">
+          <button (click)="scrollRight()">right</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row justify-content-center coaches">
+    <div id="carouselExampleControls" class="carousel slide w-100" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-4 col-xl-4">
+              <img style="height: 500px;max-width: 100%;" src="../../../assets/img/Coaches2.png" alt="">
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+              <p class="sections-info-title pt-5">Lorem ipsum dolor</p>
+              <p class="sections-info-text">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                nonummy nibh euismod tincidunt ut laoret dolore mafea.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block">
+  
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-11 col-sm-11 col-md-4 col-xl-4" style="padding:2%;">
+              <img style="height: 500px;max-width: 100%;" src="../../../assets/img/Coaches2.png" alt="">
+              <p class="sections-info-title pt-5">Lorem ipsum dolor</p>
+              <p class="sections-info-text">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                nonummy nibh euismod tincidunt ut laoret dolore mafea.
+              </p>
+            </div>
+            <div class="col-11 col-sm-11 col-md-7 col-xl-7" style="padding:2%">
+              <img style="height: 500px;max-width: 100%;" src="../../../assets/img/Coaches.png" alt="">
+              <p class="sections-info-title pt-5">Lorem ipsum dolor</p>
+              <p class="sections-info-text">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                nonummy nibh euismod tincidunt ut laoret dolore mafea.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+              <img style="height: 500px;max-width: 100%;" src="../../../assets/img/Coaches.png" alt="">
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+              <p class="sections-info-title pt-5">Lorem ipsum dolor</p>
+              <p class="sections-info-text">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                nonummy nibh euismod tincidunt ut laoret dolore mafea.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div> -->
+  <!-- <div class="col-11 col-sm-11 col-md-5 col-xl-5" style="padding:2%;">
       <div class="w-100 bg-coaches" style="background-image: url(../../../assets/img/Coaches2.png);"></div>
       <p class="sections-info-title pt-5">Lorem ipsum dolor</p>
       <p class="sections-info-text">
@@ -136,6 +240,6 @@
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
         nonummy nibh euismod tincidunt ut laoret dolore mafea.
       </p>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 </div>

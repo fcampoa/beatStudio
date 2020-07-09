@@ -18,6 +18,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
 import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
 import { BookingConfirmationComponent } from './components/booking/booking-confirmation/booking-confirmation.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const AppRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -29,7 +30,7 @@ export const AppRoutes: Routes = [
       { path: 'booking', component: BookingComponent, canActivate: [AuthGuard] },
       { path: 'booking/select/:idHorario', component: BookingStepTwoComponent, canActivate: [AuthGuard] },
       { path: 'booking/summary/:idHorario', component: BookingStepThreeComponent, canActivate: [AuthGuard] },
-      { path: 'booking/success', component: BookingConfirmationComponent, canActivate: [AuthGuard]},
+      { path: 'booking/success', component: BookingConfirmationComponent, canActivate: [AuthGuard] },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
@@ -41,8 +42,10 @@ export const AppRoutes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'disciplines', component: DisciplineComponent, children: [] },
       { path: 'disciplines/beatspin', component: DiciplineBeatspinComponent, children: [] },
-      { path: 'privacy', component: PrivacyComponent }
+      { path: 'privacy', component: PrivacyComponent },{
+    path: 'registro', component: RegisterComponent
+  }
     ]
   },
-
+  
 ];

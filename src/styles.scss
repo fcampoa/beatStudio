@@ -230,8 +230,8 @@ mat-slide-toggle-bar {
 .section-see-more{
   font-family: GT-America-Medium !important; 
   color: #ffffff !important;
-  font-size: 1.5rem !important;
-  text-decoration: underline !important;
+  font-size: 1.3rem !important;
+  border-bottom: 2px solid #ffffff;
 }
 
 .beat-algo{
@@ -343,72 +343,72 @@ transition: background-color 500ms;
 
 @media (max-width: 1120px) {
   .dashboard-title{
-    font-size: 4em;
+    font-size: 4em !important;
   }
 .page-title{
-  font-size: 3.5em;
+  font-size: 3.5em !important;
 }
-.sections-text{
+// .sections-text{
 
-}
+// }
 .sections-titles{
-  font-size: 2.5em;
+  font-size: 2.5em !important;
 }
-.sections-info-text{
+// .sections-info-text{
 
-}
-.sections-info-title{
+// }
+// .sections-info-title{
 
-}
-.section-see-more{
+// }
+// .section-see-more{
 
-}
+// }
 }
 
 @media (max-width: 768px) {
   .dashboard-title{
-    font-size: 3.5em;
+    font-size: 3.5em !important;
   }
 .page-title{
-  font-size: 3em;
+  font-size: 3em !important;
 }
 .sections-text{
-  font-size: 1em;
+  font-size: 1em !important;
 }
 .sections-titles{
-  font-size: 1.8em;
+  font-size: 1.8em !important;
 }
 .sections-info-text{
-  font-size: 1em;
+  font-size: 1em !important;
 }
-.sections-info-title{
+// .sections-info-title{
 
-}
-.section-see-more{
+// }
+// .section-see-more{
 
-}
+// }
 }
 
 @media (max-width: 676px) {
   .dashboard-title{
-    font-size: 3em;
+    font-size: 3em !important;
   }
 .page-title{
-  font-size: 2.5em;
+  font-size: 2.5em !important;
 }
-.sections-text{
+// .sections-text{
 
-}
+// }
 .sections-titles{
-  font-size: 2em;
+  font-size: 2em !important;
 }
-.sections-info-text{
+// .sections-info-text{
 
-}
-.sections-info-title{
+// }
+// .sections-info-title{
 
-}
-.section-see-more{
+// }
+// .section-see-more{
 
-}
+// }
 }
