@@ -74,6 +74,6 @@ export interface IGlobalServiceDefinition {
     buscar: () => VERBS.IGetByIdCall;
     buscarReservacion: (id: number) => VERBS.IGetCall;
     buscarHorario: (id: number) => VERBS.IGetCall;
-    checarOcupado: (lugar: any) => VERBS.IGetCall;
+    checarOcupado: (lugar: any, horario: any) => VERBS.IGetCall;
   };
 }

@@ -167,13 +167,16 @@ export class BookingStepTwoComponent implements OnInit {
 
   public checarOcupado(i: any): void {
     this.loading = true;
-    this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero)<any>().subscribe(
+    this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero, this.idHorario)<any>().subscribe(
       response => {
+        debugger;
         if (response.data.length > 0) {
-          this.seleccionarAsiento(i);
-        } else {
           this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
           i.ocupado = true;
+          this.loading = false;
+        } else {
+          this.loading = false;
+          this.seleccionarAsiento(i);
         }
         this.loading = false;
       }

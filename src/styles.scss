@@ -9,6 +9,11 @@ body {
   max-width: 100%;
     overflow-x: hidden;
 }
+.custom-modalbox {
+   .mat-dialog-container {
+  background: rgb(16,16,16) !important;
+  }
+}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -39,7 +44,7 @@ body {
   color: white;
   border-style: solid;
   border-radius: 0;
-  border-width: 2px;
+  border-width: 1px;
 }
 
 // .app-button {
@@ -56,7 +61,7 @@ body {
   color: #ffffff !important;
   border-style: solid !important;
   border-radius: 0 !important;
-  border-width: 2px !important;
+  border-width: 1px !important;
   font-family: Cedra4FWide !important;
 }
 
@@ -259,7 +264,7 @@ mat-slide-toggle-bar {
   padding-bottom: 5px !important;
   padding-top: 5px !important;
   border-radius: 0px !important;
-  border: 2px solid #976cff !important;
+  border: 1px solid #976cff !important;
   -webkit-transition: background-color 500ms;
   -moz-transition: background-color 500ms;
   -o-transition: background-color 500ms;
@@ -269,6 +274,29 @@ mat-slide-toggle-bar {
 
 .button-new:hover{
   background-color: #976cff !important;
+}
+
+.button-new-inverted{
+  background-color: #976cff  !important;
+  font-family: Cedra4FWide !important;
+  color: #ffffff !important;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+  border-radius: 0px !important;
+  border: 1px solid #976cff !important;
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  -ms-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
+
+.button-new-inverted:hover{
+  background-color: #000000 !important;
 }
 
 .button-new-purple{
@@ -282,7 +310,7 @@ mat-slide-toggle-bar {
   padding-bottom: 8px !important;
   padding-top: 8px !important;
   border-radius: 0px !important;
-  border: 2px solid #976cff !important;
+  border: 1px solid #976cff !important;
   -webkit-transition: background-color 500ms;
   -moz-transition: background-color 500ms;
   -o-transition: background-color 500ms;

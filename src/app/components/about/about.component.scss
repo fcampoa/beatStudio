@@ -93,19 +93,22 @@ a:hover{
 }
 .coaches{
     padding-top: 8%;
-    padding-bottom: 8%;
-    // .bg-coaches{
-    //     height: 40rem;
-    //     background-size: cover;
-    //     background-position: center;
-    //     background-repeat: no-repeat;
-    // }
-    // h5{
-    //     color: #ffffff;
-    //     margin-top: 3rem;
-    //     font-size: 1.4rem;
-    //     font-family: GT-America-Medium;
-    // }
+    padding-bottom: 5%;
+    img{
+        width: 100%;
+    }
+    .bg-coaches{
+        height: 40rem;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    h5{
+        color: #ffffff;
+        margin-top: 3rem;
+        font-size: 1.4rem;
+        font-family: GT-America-Medium;
+    }
 }
 
 .familia{
