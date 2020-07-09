@@ -16,6 +16,7 @@ import { Cliente } from 'src/app/model/cliente';
 export class RegisterComponent implements OnInit {
   group: FormGroup;
   cliente: Cliente;
+  hide = true;
   @Output() registerSuccess: EventEmitter<boolean>;
 
   constructor(private formBuilder: FormBuilder,
