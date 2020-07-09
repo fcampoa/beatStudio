@@ -86,10 +86,10 @@ export class RegisterComponent implements OnInit {
       txtLastName: ['', [Validators.required]],
       txtEmail: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      txtContact: [''],
-      txtSize: [0],
-      txtPhone: [''],
-      birthDate: [new Date()],
+      txtContact: ['',[Validators.required]],
+      txtSize: [0,[Validators.required]],
+      txtPhone: ['',[Validators.required]],
+      birthDate: [new Date(),[Validators.required]],
     });
   }
 
