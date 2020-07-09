@@ -22,14 +22,14 @@ export class RegisterComponent implements OnInit {
   @Output() registerSuccess: EventEmitter<boolean>;
 
   constructor(private formBuilder: FormBuilder,
-              private apiSvc: GlobalApiService,
-              private auth: AuthenticationService,
-              private router: Router,
-              private userSvc: UserService,
-              private notify: NotificationsService) {
+    private apiSvc: GlobalApiService,
+    private auth: AuthenticationService,
+    private router: Router,
+    private userSvc: UserService,
+    private notify: NotificationsService) {
 
-                this.registerSuccess = new EventEmitter<boolean>();
-               }
+    this.registerSuccess = new EventEmitter<boolean>();
+  }
 
   ngOnInit() {
     this.initForm();
