@@ -1,12 +1,12 @@
 // h1 {
 //     font-size: 4rem;
 // }
-li{
-    font-family: GT-America-Regular;
-    color: gray;
-    font-size: 1.05rem;
-    width: 80%;
-}
+// li{
+//     font-family: GT-America-Regular;
+//     color: gray;
+//     font-size: 1.05rem;
+//     width: 80%;
+// }
 .parrafo{
     padding-top: 8%;
     padding-bottom: 8%;
@@ -23,7 +23,11 @@ li{
 .mat-icon {
     font-size: 1.2rem;
 }
+a:hover{
+        text-decoration: none;
+    }
 .mejores-instalaciones {
+    
     .list-group {
         .list-group-item {
             border: none;
@@ -90,25 +94,22 @@ li{
 .coaches{
     padding-top: 8%;
     padding-bottom: 8%;
-    img{
-        width: 100%;
-    }
-    .bg-coaches{
-        height: 40rem;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    h5{
-        color: #ffffff;
-        margin-top: 3rem;
-        font-size: 1.4rem;
-        font-family: GT-America-Medium;
-    }
+    // .bg-coaches{
+    //     height: 40rem;
+    //     background-size: cover;
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    // }
+    // h5{
+    //     color: #ffffff;
+    //     margin-top: 3rem;
+    //     font-size: 1.4rem;
+    //     font-family: GT-America-Medium;
+    // }
 }
 
 .familia{
-    font-size: 5.5rem;
+    font-size: 5rem;
 }
 
 // @media (max-width: 1180px) {
@@ -144,3 +145,45 @@ li{
 //         margin-top: 2rem;
 //     }
 // }
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+    line-height: $size;
+    margin-top: -8px;
+  }
+.info-widget {
+    display: inline-block;
+    margin-right: 40px;
+  }
+
+  .middle {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .image-viewer{
+      overflow:hidden;
+  }
+
+  .next-button{
+      outline: none;
+      position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border:0;
+    mat-icon{
+        @include md-icon-size(38px);
+        display: inline-flex;
+    vertical-align: top;
+    margin-top: 1px;
+      }
+  }
+  .widget-text{
+    word-wrap: break-word !important;
+    width: 100px !important;
+  }

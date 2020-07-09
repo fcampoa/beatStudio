@@ -79,6 +79,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   navigate(s: string): void {
+    console.log(s);
+    
     if (s.indexOf('dashboard') < 0) {
       this.scroll(s);
     } else {

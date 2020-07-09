@@ -79,3 +79,10 @@ a {
 //       margin-left: 0.1em;
 //     }
 //     }
+
+.my-custom-class {
+  width: 500px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
