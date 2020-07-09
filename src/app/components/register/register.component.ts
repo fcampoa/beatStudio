@@ -7,7 +7,7 @@ import { GlobalApiService } from './../../Core/global/global-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Cliente } from 'src/app/model/cliente';
-
+import * as m from 'moment';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,7 +16,9 @@ import { Cliente } from 'src/app/model/cliente';
 export class RegisterComponent implements OnInit {
   group: FormGroup;
   cliente: Cliente;
+  userId: number;
   hide = true;
+  public accept = false;
   @Output() registerSuccess: EventEmitter<boolean>;
 
   constructor(private formBuilder: FormBuilder,
@@ -50,13 +52,17 @@ export class RegisterComponent implements OnInit {
         if (cli.data.length <= 0) {
           this.auth.createUser(u).subscribe(
             response => {
-              console.log(response);
-              this.auth.login(u.email, u.password).subscribe(
-                res => {
-                  this.registerSuccess.emit(false);
-                  this.router.navigate(['/dashboard/panel']);
-                },
-                error => console.log(error)
+              this.cliente.usuario = response.data.id;
+              this.apiSvc.routes.cliente.agregar()<any>(this.cliente).subscribe(
+                c => {
+                  this.auth.login(u.email, u.password).subscribe(
+                    res => {
+                      this.registerSuccess.emit(false);
+                      this.router.navigate(['/dashboard/panel']);
+                    },
+                    error => console.log(error)
+                  );
+                }
               );
             },
             error => console.log(error)
@@ -79,7 +85,11 @@ export class RegisterComponent implements OnInit {
       txtName: ['', [Validators.required]],
       txtLastName: ['', [Validators.required]],
       txtEmail: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      txtContact: [''],
+      txtSize: [0],
+      txtPhone: [''],
+      birthDate: [new Date()],
     });
   }
 
@@ -87,7 +97,12 @@ export class RegisterComponent implements OnInit {
     const c: Cliente = {
     nombre: this.group.get('txtName').value,
     apellido: this.group.get('txtLastName').value,
-    correo: this.group.get('txtEmail').value
+    correo: this.group.get('txtEmail').value,
+    calzado: this.group.get('txtSize').value,    
+    fecha_nacimiento: m(this.group.get('birthDate').value).format('YYYY-MM-DD').toString(),
+    status: 'published',
+    telefono: this.group.get('txtPhone').value,
+    contacto: this.group.get('txtContact').value
     };
     return c;
   }

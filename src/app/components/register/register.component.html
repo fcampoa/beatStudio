@@ -9,13 +9,13 @@
           <div class="col-6 pl-5">
             <mat-form-field>
               <mat-label>Nombre</mat-label>
-              <input matInput>
+              <input matInput type="text" id="txtName" formControlName="txtName">
             </mat-form-field>
           </div>
           <div class="col-6 pr-5">
             <mat-form-field>
               <mat-label>Apellido</mat-label>
-              <input matInput>
+              <input matInput  type="text" id="txtLastName" formControlName="txtLastName">
             </mat-form-field>
           </div>
         </div>
@@ -23,16 +23,16 @@
           <div class="col-6 pl-5">
             <mat-form-field>
               <mat-label>Correo electrónico</mat-label>
-              <input matInput>
+              <input matInput type="text" id="txtEmail" formControlName="txtEmail">
             </mat-form-field>
           </div>
           <div class="col-6 pr-5">
             <mat-form-field>
               <mat-label>Contraseña</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <input matInput [type]="hide ? 'password' : 'text'"  type="password" id="txtPassword" formControlName="password">
+              <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
+              </button> -->
             </mat-form-field>
           </div>
         </div>
@@ -40,13 +40,13 @@
           <div class="col-6 pl-5">
             <mat-form-field>
               <mat-label>Contacto de emergencia</mat-label>
-              <input matInput>
+              <input matInput type="text" id="txtContact" formControlName="txtContact">
             </mat-form-field>
           </div>
           <div class="col-6 pr-5">
             <mat-form-field>
               <mat-label>Teléfono de emergencia</mat-label>
-              <input matInput>
+              <input matInput type="text" id="txtPhone" formControlName="txtPhone">
             </mat-form-field>
           </div>
         </div>
@@ -54,13 +54,13 @@
           <div class="col-6 pl-5">
             <mat-form-field>
               <mat-label>Talla de calzado (US)</mat-label>
-              <input matInput>
+              <input matInput type="number" id="txtSize" formControlName="txtSize">
             </mat-form-field>
           </div>
           <div class="col-6 pr-5">
             <mat-form-field>
               <mat-label>Fecha de nacimiento</mat-label>
-              <input matInput [matDatepicker]="picker">
+              <input matInput [matDatepicker]="picker" formControlName="birthDate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
