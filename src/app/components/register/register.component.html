@@ -1,4 +1,7 @@
-<div class="registro">
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div class="registro" *ngIf="!registered">
   <div class="row d-flex justify-content-center pb-5">
     <h1 class="sections-titles">Regístrate</h1>
   </div>
@@ -82,8 +85,16 @@
     </div>
   </form>
 </div>
-<div class="exitoso">
-
+<div class="exitoso" *ngIf="registered">
+  <div class="row d-flex justify-content-center pb-3">
+    <h5 class="beat-algo" style="font-size: 1rem !important;"><span>¡LISTO!</span></h5>
+  </div>
+  <div class="row d-flex justify-content-center pb-3">
+    <h1 class="sections-titles">Tu registro fue exitoso</h1>
+  </div>
+  <div class="row d-flex justify-content-center pb-5">
+    <p class="sections-info-text pb-5">Hemos enviado un correo de confirmación a {{cliente.correo}}</p>
+  </div>
 </div>
 <!-- <div class="container-fluid text-center">
   <form #form="ngForm" (ngSubmit)="registrarCliente()" [formGroup]="group" novalidate>
