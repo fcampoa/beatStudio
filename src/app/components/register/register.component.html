@@ -23,12 +23,14 @@
           </div>
         </div>
         <div class="row form-part justify-content-center" >
-          <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
             <mat-form-field>
               <mat-label>Correo electrónico</mat-label>
               <input matInput type="text" id="txtEmail" formControlName="txtEmail">
             </mat-form-field>
           </div>
+        </div>
+        <div class="row form-part justify-content-center">
           <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
             <mat-form-field>
               <mat-label>Contraseña</mat-label>
@@ -36,6 +38,12 @@
               <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+            </mat-form-field>
+          </div>
+          <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+            <mat-form-field>
+              <mat-label>Teléfono de contacto</mat-label>
+              <input matInput type="number" formControlName="txtPhone">
             </mat-form-field>
           </div>
         </div>
@@ -49,7 +57,7 @@
           <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
             <mat-form-field>
               <mat-label>Teléfono de emergencia</mat-label>
-              <input matInput type="text" id="txtPhone" formControlName="txtPhone">
+              <input matInput type="text" id="txtPhone" formControlName="txtContactPhone">
             </mat-form-field>
           </div>
         </div>

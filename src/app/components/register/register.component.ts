@@ -94,6 +94,7 @@ export class RegisterComponent implements OnInit {
       txtEmail: ['', [Validators.required]],
       password: ['', [Validators.required]],
       txtContact: ['', [Validators.required]],
+      txtContactPhone: ['', [Validators.required]],
       txtSize: [0, [Validators.required]],
       txtPhone: ['', [Validators.required]],
       birthDate: [new Date(), [Validators.required]],
@@ -109,7 +110,8 @@ export class RegisterComponent implements OnInit {
       fecha_nacimiento: m(this.group.get('birthDate').value).format('YYYY-MM-DD').toString(),
       status: 'published',
       telefono: this.group.get('txtPhone').value,
-      contacto: this.group.get('txtContact').value
+      contacto: this.group.get('txtContact').value,
+      telefono_contacto: this.group.get('txtContactPhone').value,
     };
     return c;
   }
