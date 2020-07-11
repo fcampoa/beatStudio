@@ -8,7 +8,7 @@
     </p>
   </div>
   <div class="row d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 5%;">
-    <h1 class="primary-color"><span style="color:white">Créditos disponibles:</span> {{ creditos }}</h1>
+    <h1 class="primary-color" style="font-family: GT-America-Thin;font-size: 3rem !important;"><span style="color:white">Créditos disponibles:</span> {{ creditos }}</h1>
   </div>
   <div class="row d-flex justify-content-center">
     <button class="button-new mr-4" (click)="goToBooking()" mat-stroked-button>RESERVAR</button>
@@ -19,18 +19,18 @@
       <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="remove-border-bottom" [selectedIndex]="index">
         <mat-tab>
           <ng-template mat-tab-label style="padding-bottom: 5%;">
-            <p class="primary-color">Mi perfil</p>
+            <p class="primary-color tab">Mi perfil</p>
           </ng-template>
           <app-view>
-            <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
-              <h3>Mi Perfil</h3>
+            <div style="padding-top: 5%;" class="d-flex justify-content-center">
+              <h3 class="table-title">Mi Perfil</h3>
             </div>
-            <app-profile (recorded)="clienteId($event)"></app-profile>
+            <app-profile (recorded)="clienteId($event)" style="padding:5%"></app-profile>
           </app-view>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label style="padding-bottom: 5%;">
-            <p class="primary-color">Historial de clases</p>
+            <p class="primary-color tab">Historial de clases</p>
           </ng-template>
           <app-view>
             <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
@@ -41,7 +41,7 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label style="padding-bottom: 5%;">
-            <p class="primary-color">Historial de Pagos</p>
+            <p class="primary-color tab">Historial de Pagos</p>
           </ng-template>
           <app-view>
             <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
@@ -52,7 +52,7 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label style="padding-bottom: 5%;">
-            <p class="primary-color">Mis métodos de pago</p>
+            <p class="primary-color tab">Mis métodos de pago</p>
           </ng-template>
           <app-view>
             <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">

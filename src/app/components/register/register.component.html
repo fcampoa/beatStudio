@@ -1,4 +1,7 @@
-<div class="registro">
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div class="registro" *ngIf="!registered">
   <div class="row d-flex justify-content-center pb-5">
     <h1 class="sections-titles">Regístrate</h1>
   </div>
@@ -20,12 +23,14 @@
           </div>
         </div>
         <div class="row form-part justify-content-center" >
-          <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+          <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
             <mat-form-field>
               <mat-label>Correo electrónico</mat-label>
               <input matInput type="text" id="txtEmail" formControlName="txtEmail">
             </mat-form-field>
           </div>
+        </div>
+        <div class="row form-part justify-content-center">
           <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
             <mat-form-field>
               <mat-label>Contraseña</mat-label>
@@ -33,6 +38,12 @@
               <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+            </mat-form-field>
+          </div>
+          <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+            <mat-form-field>
+              <mat-label>Teléfono de contacto</mat-label>
+              <input matInput type="number" formControlName="txtPhone">
             </mat-form-field>
           </div>
         </div>
@@ -46,7 +57,7 @@
           <div class="col-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
             <mat-form-field>
               <mat-label>Teléfono de emergencia</mat-label>
-              <input matInput type="text" id="txtPhone" formControlName="txtPhone">
+              <input matInput type="text" id="txtPhone" formControlName="txtContactPhone">
             </mat-form-field>
           </div>
         </div>
@@ -82,8 +93,16 @@
     </div>
   </form>
 </div>
-<div class="exitoso">
-
+<div class="exitoso" *ngIf="registered">
+  <div class="row d-flex justify-content-center pb-3">
+    <h5 class="beat-algo" style="font-size: 1rem !important;"><span>¡LISTO!</span></h5>
+  </div>
+  <div class="row d-flex justify-content-center pb-3">
+    <h1 class="sections-titles">Tu registro fue exitoso</h1>
+  </div>
+  <div class="row d-flex justify-content-center pb-5">
+    <p class="sections-info-text pb-5">Hemos enviado un correo de confirmación a {{cliente.correo}}</p>
+  </div>
 </div>
 <!-- <div class="container-fluid text-center">
   <form #form="ngForm" (ngSubmit)="registrarCliente()" [formGroup]="group" novalidate>

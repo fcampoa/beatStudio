@@ -15,12 +15,12 @@
   </div>
 
   <div class="row d-flex justify-content-center">
-    <div class="col-10 col-sm-4 col-md-4 col-xl-4 pb-5" style="padding-left: 3%; padding-right: 3%; padding-bottom: 2%;"
+    <div class="col-10 col-sm-8 col-md-5 col-lg-4 col-xl-4 pb-5" style="padding-left: 3%; padding-right: 3%; padding-bottom: 2%;"
       *ngFor="let c of coaches; let i = index">
-      <div style="height: 100%;" class="coach">
-        <img [src]="c.url" />
-        <div style="padding-left: 4%;">
-          <div class="row">
+      <div class="coach">
+        <div class="coach-container">
+          <img [src]="c.url" />
+          <div>
             <span class="coach-info-titles" style="width: 100%;">FRASE FAVORITA</span>
             <p class="coach-info-text">{{c.frase}}</p>
             <span class="coach-info-titles" style="width: 100%;">COACH EN</span>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="row" style="padding-bottom: 2%;margin-left: 1%;">
+        <div class="row pt-4" style="padding-bottom: 2%;margin-left: 1%;">
           <span style="width: 100%;font-family: Cedra4FWide;color: gray; letter-spacing: 2px; font-size: 11px;">COACH</span>
           <p style="font-size: 24px;width: 100%;" class="coach-name-music">{{c.nombre}}</p>
           <mat-icon svgIcon="music_note"></mat-icon>

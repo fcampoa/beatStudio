@@ -26,8 +26,16 @@ export class ProfileComponent implements OnInit {
   user: any;
   uId: any;
   id: any;
-  step = 0;
   public opened = false;
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  closeStep() {
+    this.step = 0;
+  }
 
   @Output() recorded: EventEmitter<any>;
 
@@ -74,6 +82,7 @@ export class ProfileComponent implements OnInit {
           this.id = response.data.id;
           this.notify.successMessage('Guardado');
           this.recorded.emit(false);
+          this.step = 0;
         },
         error => console.log(error)
       );
@@ -116,7 +125,8 @@ export class ProfileComponent implements OnInit {
       txtSize: [0],
       txtPhone: [''],
       txtContact: [''],
-      birthDate: [new Date()]
+      txtContactPhone: [''],
+      birthDate: ['']
     });
   }
 
@@ -127,6 +137,7 @@ export class ProfileComponent implements OnInit {
     this.cliente.calzado = this.userGroup.get('txtSize').value;
     this.cliente.telefono = this.userGroup.get('txtPhone').value;
     this.cliente.contacto = this.userGroup.get('txtContact').value;
+    this.cliente.telefono_contacto = this.userGroup.get('txtContactPhone').value;
     this.cliente.status = 'published';
     this.cliente.usuario = this.user.id;
     const aux = m(this.userGroup.get('birthDate').value);
@@ -141,7 +152,8 @@ export class ProfileComponent implements OnInit {
       txtSize: this.cliente.calzado,
       txtPhone: this.cliente.telefono,
       txtContact: this.cliente.contacto,
-      birthDate: this.cliente.fecha_nacimiento
+      birthDate: this.cliente.fecha_nacimiento,
+      txtContactPhone:this.cliente.telefono_contacto
     });
   }
 }

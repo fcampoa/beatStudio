@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   userId: number;
   hide = true;
   public accept = false;
+  registered = false;
+  public loading = false;
   @Output() registerSuccess: EventEmitter<boolean>;
 
   constructor(private formBuilder: FormBuilder,
@@ -36,6 +38,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registrarCliente(): void {
+    this.loading = true;
     this.cliente = this.parseValues();
     this.registerSuccess.emit(true);
     const u = {
@@ -55,24 +58,28 @@ export class RegisterComponent implements OnInit {
               this.cliente.usuario = response.data.id;
               this.apiSvc.routes.cliente.agregar()<any>(this.cliente).subscribe(
                 c => {
-                  this.auth.login(u.email, u.password).subscribe(
-                    res => {
-                      this.registerSuccess.emit(false);
-                      this.router.navigate(['/dashboard/panel']);
-                    },
-                    error => console.log(error)
-                  );
+                  this.registered = true;
+                  this.loading = false;
+                  // this.auth.login(u.email, u.password).subscribe(
+                  //   res => {
+                  //     this.registerSuccess.emit(false);
+                  //     this.router.navigate(['/dashboard/panel']);
+                  //   },
+                  //   error => console.log(error)
+                  // );
                 }
               );
             },
-            error => console.log(error)
+            error => { console.log(error); this.loading = false; }
           );
         }
         else {
+          this.loading = false;
           this.notify.errorMessage('Ya existe un usuario asociado a este correo');
         }
       },
       error => {
+        this.loading = false;
         this.registerSuccess.emit(false);
         this.notify.errorMessage('Error de conexión.');
       }
@@ -86,23 +93,25 @@ export class RegisterComponent implements OnInit {
       txtLastName: ['', [Validators.required]],
       txtEmail: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      txtContact: ['',[Validators.required]],
-      txtSize: [0,[Validators.required]],
-      txtPhone: ['',[Validators.required]],
-      birthDate: [new Date(),[Validators.required]],
+      txtContact: ['', [Validators.required]],
+      txtContactPhone: ['', [Validators.required]],
+      txtSize: [0, [Validators.required]],
+      txtPhone: ['', [Validators.required]],
+      birthDate: [new Date(), [Validators.required]],
     });
   }
 
   parseValues(): Cliente {
     const c: Cliente = {
-    nombre: this.group.get('txtName').value,
-    apellido: this.group.get('txtLastName').value,
-    correo: this.group.get('txtEmail').value,
-    calzado: this.group.get('txtSize').value,    
-    fecha_nacimiento: m(this.group.get('birthDate').value).format('YYYY-MM-DD').toString(),
-    status: 'published',
-    telefono: this.group.get('txtPhone').value,
-    contacto: this.group.get('txtContact').value
+      nombre: this.group.get('txtName').value,
+      apellido: this.group.get('txtLastName').value,
+      correo: this.group.get('txtEmail').value,
+      calzado: this.group.get('txtSize').value,
+      fecha_nacimiento: m(this.group.get('birthDate').value).format('YYYY-MM-DD').toString(),
+      status: 'published',
+      telefono: this.group.get('txtPhone').value,
+      contacto: this.group.get('txtContact').value,
+      telefono_contacto: this.group.get('txtContactPhone').value,
     };
     return c;
   }
