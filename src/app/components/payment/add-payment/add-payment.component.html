@@ -103,6 +103,6 @@
   </form>
 </mat-card>
 <div class="row justify-content-center" style="padding-top: 5%;">
-  <button mat-stroked-button class="button-new mr-4" type="submit">Guardar</button>
-  <button mat-stroked-button class="button-new" type="button">cancelar</button>
+  <button mat-stroked-button class="button-new mr-4" type="button" (click)="saveOrUpdate()">Guardar</button>
+  <button mat-stroked-button class="button-new" type="button" (click)="onNoClick()">cancelar</button>
 </div>
