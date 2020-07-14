@@ -1,3 +1,4 @@
+import { NgxPayPalModule } from 'ngx-paypal';
 import { MessageModalComponent } from './components/message-modal/message-modal.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { PaymentDetailComponent } from './Core/utilities/payment-detail/payment-detail.component';
@@ -59,6 +60,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
 import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
 import { InviteDirective } from './Core/directives/invites.directive';
+import { PaypalComponent } from './Core/utilities/paypal/paypal.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,7 @@ import { InviteDirective } from './Core/directives/invites.directive';
     PaymentDetailComponent,
     PaymentHistoryComponent,
     MessageModalComponent,
+    PaypalComponent,
     // directives
     FixedBarDirective,
     InviteDirective,
@@ -120,6 +123,7 @@ import { InviteDirective } from './Core/directives/invites.directive';
     MDBBootstrapModule.forRoot(),
     QuickAppProMaterialModule,
     UtilitiesModule,
+    NgxPayPalModule
     // AdminModule
   ],
   exports: [
