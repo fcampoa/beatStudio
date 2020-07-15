@@ -9,4 +9,7 @@ export interface IGlobalServiceEndPointsDefinition {
     reservacionesHorario: (id: number) => VERBS.IGetCall;
     agregarReservaciones: () => VERBS.IpostCall;
   };
+  horario?: {
+    lugaresOcupados: (idHorario) => VERBS.IGetCall;
+  };
 }

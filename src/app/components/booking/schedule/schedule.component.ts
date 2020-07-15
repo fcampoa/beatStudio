@@ -131,6 +131,7 @@ export class ScheduleComponent implements OnInit {
     let actual: any;
     let cont = 0;
     this.horarios.forEach(x => {
+      this.checarLleno(x);
       const aux = m(x.fecha).format('YYYY-MM-DD');
       if (actual !== aux) {
         cont++;
@@ -158,5 +159,17 @@ export class ScheduleComponent implements OnInit {
     // deselecciona el que estaba seleccionado antes
     // d.horarios.forEach(x => x.selected && x.horario.id !== h.id ? false : x.selected);
     this.Seleccion.emit(h);
+  }
+
+  /**
+   * Valida si los lugares del horario dado estan todos llenos.
+   * @param horario
+   */
+  checarLleno(horario: Horario) {
+    this.apiSvc.endPoints.horario.lugaresOcupados(horario.id)<any>().subscribe(
+      response => {
+        horario.lleno = response.ocupados === horario.lugares;
+      }
+    );
   }
 }

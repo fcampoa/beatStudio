@@ -57,15 +57,20 @@ export class BookingDetailsComponent implements OnInit {
 
   cancelBooking(): void {
     this.reservacion.cancelada = true;
-    this.apiSvc.routes.reservacion.actualizar()<any>(this.reservacion).subscribe(
+    this.apiSvc.routes.reservacion.actualizar(this.reservacion.id)<any>(this.reservacion).subscribe(
       response => {
         this.reservacion = response;
         this.cancel = false;
+        this.notifyUsers(this.horario.id);
       },
       error => {
         console.log(error);
         this.notify.errorMessage('Error al tratar de cancelar');
       }
     );
+  }
+
+  notifyUsers(horario: any): void {
+  
   }
 }
