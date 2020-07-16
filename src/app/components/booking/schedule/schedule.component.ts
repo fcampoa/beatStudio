@@ -130,7 +130,7 @@ export class ScheduleComponent implements OnInit {
     let actual: any;
     let cont = 0;
     this.horarios.forEach(x => {
-      // this.checarLleno(x);
+      this.checarLleno(x);
       const aux = m(x.fecha).format('YYYY-MM-DD');
       if (actual !== aux) {
         cont++;
