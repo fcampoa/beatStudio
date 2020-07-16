@@ -61,7 +61,6 @@ export class ScheduleComponent implements OnInit {
     this.apiSvc.routes.horario.buscarDisciplinaRango(this.idDisciplina, this.desde, this.hasta)<any>().subscribe(
       response => {
         this.horarios = response.data;
-
         this.splitHorarios();
       },
       error => {
@@ -131,7 +130,7 @@ export class ScheduleComponent implements OnInit {
     let actual: any;
     let cont = 0;
     this.horarios.forEach(x => {
-      this.checarLleno(x);
+      // this.checarLleno(x);
       const aux = m(x.fecha).format('YYYY-MM-DD');
       if (actual !== aux) {
         cont++;
@@ -151,7 +150,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   seleccionar(d: CustomHorario, h: any) {
-
 
     $('.hourly').removeClass('selected');
 

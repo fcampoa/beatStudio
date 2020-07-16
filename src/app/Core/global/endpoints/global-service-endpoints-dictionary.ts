@@ -9,6 +9,6 @@ export const GLOBAL_SERVICE_ENDPOINTS_DEFINITION: any = {
     agregarReservaciones: { method: GlobalServiceMethodType.POST, url: '/agregar' }
   },
   horario: {
-    lugaresOcupados: { method: GlobalServiceMethodType.GET, url: '?idHorario=$idHorario' }
+    lugaresOcupados: { method: GlobalServiceMethodType.GET, url: '/ocupados?idHorario=$idHorario' }
   }
 };

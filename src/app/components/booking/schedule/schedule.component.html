@@ -18,7 +18,7 @@
         <div class="" *ngFor="let h of dia.horarios; let i = index" style="padding-top: 20%;">
           <div class="d-flex justify-content-center name_couch">
             {{h.horario.coach.nombre}}</div>
-          <div *ngIf="h.lleno" class="button-style d-flex justify-content-center onMouse hourly"
+          <div *ngIf="!h.lleno" class="button-style d-flex justify-content-center onMouse hourly"
             [ngClass]="h.selected ? 'selected': ''" style="margin-bottom: 20%;" (click)="seleccionar(dia, h)">
             <b>{{getHora(h.horario.fecha)}}</b>
           </div>
