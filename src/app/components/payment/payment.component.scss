@@ -10,7 +10,22 @@
 // ::ng-deep .mat-radio-content {
 //   width: 100% !important;
 // }
+.remove-icon{
+  width: 40px;
+  height: 40px;
+}
 .remove-icon:hover {
   cursor: pointer;
   background: rgb(39, 39 ,39);
+}
+
+.add-new{
+  font-size: 20px;
+  font-family: GT-America-Medium;
+}
+
+.card-info{
+  font-family: GT-America-Thin;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
