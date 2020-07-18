@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-center">
-    <div class="col-sm-8">
-      <div style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;" *ngFor="let p of formasPago">
-        <div class="row pt-3 pl-3">
+    <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-8">
+      <mat-card class="mb-3" style="background: rgb(24, 24, 24) !important;" *ngFor="let p of formasPago">
+        <div class="row pt-3 pl-2">
           <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
             <mat-radio-button class="pt-2 pl-2" (change)="guardarForma(p)">
             </mat-radio-button>
@@ -16,7 +16,7 @@
           </div>
           <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <p class="card-info">
-              {{p.titular.toUpperCase()}} <br />
+              {{p.titular}} <br />
               {{ p.numero_tarjeta | creditCard }}
             </p>
           </div>
@@ -27,7 +27,7 @@
             <mat-icon class="remove-icon" svgIcon="remove"></mat-icon>
           </div>
         </div>
-      </div>
+      </mat-card>
     </div>
   </div>
   <div class="row justify-content-center">
