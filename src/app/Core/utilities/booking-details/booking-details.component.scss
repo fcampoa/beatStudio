@@ -1,6 +1,13 @@
-.cancel-button {
-  background: red;
-  color: #ffffff;
-  border-color: red;
-  border: 0px;
+.table-titles{
+  font-family: Cedra4FWide;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: gray;
+}
+.table-content{
+  font-size: 15px;
+  font-family: GT-America-Thin;
+  span{
+    font-family: GT-America-Medium !important;
+  }
 }

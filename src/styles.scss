@@ -235,6 +235,8 @@ mat-slide-toggle-bar {
 }
 
 .beat-algo{
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-family: Cedra4FWide !important;
   span{
     color: #9865ff !important;
@@ -259,8 +261,8 @@ mat-slide-toggle-bar {
   color: #ffffff !important;
   letter-spacing: 1px !important;
   font-size: 14px !important;
-  padding-left: 40px !important;
-  padding-right: 40px !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
   padding-bottom: 5px !important;
   padding-top: 5px !important;
   border-radius: 0px !important;
@@ -274,6 +276,22 @@ mat-slide-toggle-bar {
 
 .button-new:hover{
   background-color: #976cff !important;
+}
+
+.cancel-button {
+  background: #ed1c24 !important;
+  color: #806363 !important;
+  border-color: #ed1c24 !important;
+  border: 0px !important;
+  font-family: Cedra4FWide !important;
+  color: #ffffff !important;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+  border-radius: 0px !important;
 }
 
 .button-new-inverted{

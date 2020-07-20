@@ -33,8 +33,8 @@
             <p class="primary-color tab">Historial de clases</p>
           </ng-template>
           <app-view>
-            <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
-              <h3>Reservaciones Agendadas</h3>
+            <div style="padding-top: 5%; padding-bottom: 5%;" class="d-flex justify-content-center">
+              <h3 class="table-title">Reservaciones Agendadas</h3>
             </div>
             <app-booking-history [idCliente]="cliente.id"></app-booking-history>
           </app-view>
@@ -44,8 +44,8 @@
             <p class="primary-color tab">Historial de Pagos</p>
           </ng-template>
           <app-view>
-            <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
-              <h3>Mis pagos</h3>
+            <div style="padding-top: 5%; padding-bottom: 5%;" class="d-flex justify-content-center">
+              <h3 class="table-title">Mis pagos</h3>
             </div>
             <app-payment-history [idCliente]="cliente.id"></app-payment-history>
           </app-view>
@@ -55,8 +55,8 @@
             <p class="primary-color tab">Mis métodos de pago</p>
           </ng-template>
           <app-view>
-            <div style="padding-top: 5%; padding-bottom: 2%;" class="d-flex justify-content-center">
-              <h3>Mis Métodos de pago</h3>
+            <div style="padding-top: 5%; padding-bottom: 5%;" class="d-flex justify-content-center">
+              <h3 class="table-title">Mis Métodos de pago</h3>
             </div>
             <app-payment></app-payment>
           </app-view>
