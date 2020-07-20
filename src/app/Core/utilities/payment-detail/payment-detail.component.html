@@ -1,31 +1,42 @@
-<div class="col-sm-12 col-12 col-md-12 col-xs-10 col-xl-12">
-  <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;">
-    <div class="row" style="font-size: 12px; padding-left: 4%;">
-      {{getFecha() | customDate}}
+<mat-card style="background: rgb(24, 24, 24) !important;">
+  <div class="pay-header">
+    <div class="row pt-3 pl-3">
+      <div class="col-12">
+        <p>{{getFecha() | customDate}}</p>
+      </div>
     </div>
-    <div style="padding-left: 4%; padding-right: 4%;"
-     class="row d-flex justify-content-between" *ngIf="compra !== undefined && compra !== null">
-      <h1>{{compra.paquete.creditos}} Créditos</h1>
-      <p style="padding-top: 2%;" class="primary-color">MEX {{compra.total | currency}}</p>
+    <div class="row pt-2 pl-3 pr-3" *ngIf="compra !== undefined && compra !== null">
+      <div class="col-12 d-flex justify-content-between">
+        <h1>{{compra.paquete.creditos}} Créditos</h1>
+        <span class="primary-color pt-3">MEX {{compra.total | currency}}</span>
+      </div>
     </div>
-    <mat-divider></mat-divider>
-    <div class="row d-flex justify-content-between"
-     style="color: gray; font-size: 12px; padding-left: 4%; padding-right: 4%; padding-top: 4%;">
-     <div>
-     NOMBRE DE CUENTA: {{compra.forma_pago.titular}}
+  </div>
+  <div class="row justify-content-center pt-2">
+    <div class="col-11">
+      <mat-divider></mat-divider>
     </div>
-    <div *ngIf="compra !== undefined && compra !== null">
-      TOTAL: MEX {{compra.total | currency}}
+  </div>
+  <div class="pay-footer">
+    <div class="row pt-4 pl-3 pr-3">
+      <div class="col-12 d-flex justify-content-between">
+        <div>
+          <span>NOMBRE DE CUENTA: </span>{{compra.forma_pago.titular}}
+        </div>
+        <div *ngIf="compra !== undefined && compra !== null">
+          <span>TOTAL: MEX </span>{{compra.total | currency}}
+        </div>
+      </div>
     </div>
+    <div class="row pl-3">
+      <div class="col-12">
+        <span>FORMA DE PAGO: </span>{{getFormaPago()}}
+      </div>
     </div>
-    <div class="row"
-     style="color: gray; font-size: 12px;  padding-left: 4%; padding-right: 4%;">
-      FORMA DE PAGO: {{getFormaPago()}}
+    <div class="row pl-3 pb-5" *ngIf="compra !== undefined && compra !== null">
+      <div class="col-12">
+        <span>FOLIO: </span>{{compra.folio}}
+      </div>
     </div>
-    <div class="row"
-     style="color: gray; font-size: 12px; padding-left: 4%; padding-right: 4%; padding-bottom: 4%;"
-      *ngIf="compra !== undefined && compra !== null">
-    FOLIO: {{compra.folio}}
-    </div>
-  </mat-card>
-</div>
+  </div>
+</mat-card>
