@@ -165,26 +165,53 @@ export class BookingStepTwoComponent implements OnInit {
     this.list_places.push();
   }
 
+  checarSeleccionado(i: any): boolean {
+    return this.seleccionado && this.amigos.findIndex(x => x.lugar === i.lugar) > -1;
+  }
+
   public checarOcupado(i: any): void {
-    this.loading = true;
-    this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero, this.idHorario)<any>().subscribe(
-      response => {
-        debugger;
-        if (response.data.length > 0) {
-          this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
-          i.ocupado = true;
+    if (!this.checarSeleccionado(i)) {
+      this.loading = true;
+      this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero, this.idHorario)<any>().subscribe(
+        response => {
+          if (response.data.length > 0) {
+            this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
+            i.ocupado = true;
+            this.loading = false;
+          } else {
+            this.loading = false;
+            this.seleccionarAsiento(i);
+          }
           this.loading = false;
-        } else {
-          this.loading = false;
-          this.seleccionarAsiento(i);
         }
-        this.loading = false;
-      }
-    );
+      );
+    }
   }
 
   seleccionarAsiento(i: any): void {
     let a: any;
+
+    if (!this.invitar && this.seleccionado) {
+      debugger;
+      const lugar = document.getElementById('labelPrincipal');
+      lugar.style.color = this.colors[0];
+
+      const nombre = document.getElementById('nombrePrincipal');
+      nombre.style.backgroundColor = this.colors[0];
+
+      $('#' + 'btn' + this.numero).addClass('seat-format');
+      $('#' + 'btn' + this.numero).css('background', '#000000');
+      $('#' + 'btn' + this.numero).prop('enabled', true);
+
+      this.seleccion = i;
+      this.numero = i.numero;
+      this.seleccionado = true;
+
+      $('#' + 'btn' + i.numero).removeClass('seat-format');
+      $('#' + 'btn' + i.numero).css('background', this.colors[0]);
+      $('#' + 'btn' + i.numero).prop('enabled', false);
+    }
+
     if (!this.seleccionado) {
       this.seleccion = i;
       this.numero = i.numero;
@@ -205,6 +232,7 @@ export class BookingStepTwoComponent implements OnInit {
       this.amigos.push(a);
       this.formatInput(a);
     }
+ 
   }
 
   formatInput(a: any) {
@@ -270,13 +298,5 @@ export class BookingStepTwoComponent implements OnInit {
     const el = document.getElementById('btn' + String(id));
     el.style.borderColor = '';
     el.style.color = '';
-  }
-
-  checarDisponible(): boolean {
-    return true;
-  }
-
-  checkAvailable(): boolean {
-    return false;
   }
 }

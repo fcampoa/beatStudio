@@ -51,7 +51,6 @@ export class AddPaymentComponent implements OnInit {
   }
 
   patchValues(): void {
-    debugger;
     const d = new Date(this.data.vigencia);
     this.group.patchValue({
       txtTitular: this.data.titular,

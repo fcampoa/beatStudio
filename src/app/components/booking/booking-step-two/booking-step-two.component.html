@@ -115,9 +115,9 @@
           <label class="border_mat col-md-12" id="nombrePrincipal"></label>
         </div>
       </div>
-      <div class="row" [attr.disabled]="seleccionado">
+      <div class="row">
         <div class="col-md-12">
-          <mat-slide-toggle [(ngModel)]="invitados">Invitar Amigos</mat-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="invitados" [disabled]="!seleccionado">Invitar Amigos</mat-slide-toggle>
         </div>
       </div>
       <div class="row">
