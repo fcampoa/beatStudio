@@ -1,43 +1,58 @@
 <div class="container-fluid" style="padding-top: 10%;">
-  <div class="row d-flex justify-content-center">
-    <p class="primary-color">PASO 3 DE 3</p>
+  <div class="row d-flex justify-content-center ">
+    <div class="col-11 col-sm-10 col-md-8 col-lg-5 col-xl-4 beat-algo d-flex justify-content-center">
+      <span>PASO 3 DE 3</span>
+    </div>
   </div>
   <div class="row d-flex justify-content-center">
-    <h2>Resumen de reservación</h2>
+    <div class="col-12 col-sm-11 col-md-10 col-lg-7 col-xl-7 d-flex justify-content-center">
+      <h2 class="sections-titles">Resumen de reservación</h2>
+    </div>
   </div>
-  <div class="row d-flexjustify-content-center" style="padding-bottom: 5%;">
-    <p style="color:grey">Conﬁrma que los datos de tu reservación sean correctos.
-    </p>
+  <div class="row d-flex justify-content-center mb-5">
+    <div class="col-12 col-sm-11 col-md-10 col-lg-7 col-xl-6 d-flex justify-content-center">
+      <p class="sections-info-text">Confirma que los datos de tu reservacion sean correctos.</p>
+    </div>
   </div>
   <div class="row d-flex justify-content-center">
-    <div class="col-md-10 col-sm-8 col-xs-8 col-10">
-      <app-view>
-        <div *ngIf="horario" class="row">
-          <p class="primary-color">BEAT</p>
-          <p>{{ horario.disciplina.nombre | uppercase }}</p>
-        </div>
-        <div class="row" style="font-size: 10px; color:grey; padding-bottom: 1%;">
-          <div class="col-md-3 col-xs-3 col-3">DIA</div>
-          <div class="col-md-3 col-xs-3 col-3">HORA</div>
-          <div class="col-md-3 col-xs-3 col-3">COACH</div>
-          <div class="col-md-3 col-xs-3 col-3">LUGARES</div>
-        </div>
-        <mat-divider></mat-divider>
-        <div *ngIf="horario" class="row" style="font-size: 18px; padding-top: 2%;">
-          <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha | customDate }}</div>
-          <div class="col-md-3 col-xs-3 col-3">{{ getHora(horario.fecha) }}</div>
-          <div class="col-md-3 col-xs-3 col-3">{{ horario.coach.nombre }}</div>
-          <div class="col-md-3 col-xs-3 col-3">
-            <div class="col col-md col-sm col-xs" *ngFor="let r of reservaciones; let i = index">
-              <b [ngStyle]="{'color' : colors[i]}">{{ r.lugar }}</b> {{ r.nombre }}
+    <div class="col-12 col-sm-12 col-md-10 col-lg-9 col-xl-9">
+      <mat-card style="background: rgb(27, 27, 27) !important">
+        <div class="pt-4 pb-4 ">
+          <div *ngIf="horario" class="row pl-3">
+            <div class="col-12">
+              <p class="beat-algo" style="letter-spacing: 2px !important;">
+                <span>BEAT</span>{{ horario.disciplina.nombre | uppercase }}</p>
+            </div>
+          </div>
+          <div class="row table-titles pt-3 pl-3 pr-4">
+            <div class="col-3">DIA</div>
+            <div class="col-3">HORA</div>
+            <div class="col-3">COACH</div>
+            <div class="col-3">LUGARES</div>
+          </div>
+          <div class="row d-flex justify-content-center pt-2 pl-4 pr-4">
+            <div class="col-12">
+              <mat-divider></mat-divider>
+            </div>
+          </div>
+          <div *ngIf="horario" class="row pt-3 pl-3 pr-4 table-content">
+            <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha | customDate }}</div>
+            <div class="col-md-3 col-xs-3 col-3">{{ getHora(horario.fecha) }}</div>
+            <div class="col-md-3 col-xs-3 col-3">{{ horario.coach.nombre }}</div>
+            <div class="col-md-3 col-xs-3 col-3">
+              <div class="row pl-3" *ngFor="let r of reservaciones; let i = index">
+                <span [ngStyle]="{'color' : colors[i]}" class="mr-2">{{ r.lugar }}</span> {{ r.nombre }}
+              </div>
             </div>
           </div>
         </div>
-      </app-view>
+      </mat-card>
     </div>
   </div>
-  <div class="row d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 10%;">
-    <button class="app-button btn_next" (click)="regresar()">REGRESAR</button>
-    <button class="app-button btn_next" style="margin-left: 2%;" (click)="reservar()">RESERVAR</button>
+  <div class="row d-flex justify-content-center" style="padding-top: 8%; padding-bottom: 10%;">
+    <button mat-stroked-button class="mr-3 button-new" (click)="regresar()">
+      <mat-icon>keyboard_arrow_left</mat-icon>REGRESAR
+    </button>    
+    <button mat-stroked-button class="button-new" (click)="reservar()">RESERVAR</button>
   </div>
 </div>

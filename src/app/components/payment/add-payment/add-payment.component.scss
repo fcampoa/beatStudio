@@ -1,0 +1,48 @@
+.modal-form{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+}
+
+.modal-card{
+    background: rgb(44, 44, 44) !important;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+mat-form-field{
+    font-family: GT-America-Regular;
+}
+
+mat-label{
+    font-family: GT-America-Medium;
+    font-size:14px;
+}
+
+@media (max-width: 576px) {
+   .modal-form{
+    padding-left: 10px;
+    padding-right: 10px;
+   }
+   .modal-card{
+    margin-left: 0;
+    margin-right: 0;
+   }
+   .button-new{
+       padding-left: 10px !important;
+       padding-right: 10px !important;
+   }
+  }
+  @media (min-width: 577px) {
+    
+  }
+  @media (min-width: 768px) {
+   
+  }
+  @media (min-width: 992px) {
+   
+  }
+  @media (min-width: 1200px) {
+   
+  }
