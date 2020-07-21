@@ -80,15 +80,15 @@ export class PaypalComponent implements OnInit {
       debugger;
       console.log('onClick', data, actions);
       if (data.fundingSource === 'card') {
-        // this.loadCreditCardData();
+      this.loadCreditCardData();
       }
     },
   };
   }
 
   loadCreditCardData(){
-    $('iframe').load(() => {
-      $('iframe').contents().find('input#credit-card-number').val('1234567890123456');
+    $('iframe')[0].on('load', () => {
+      console.log($('iframe')[0].id);
     });
   }
 }
