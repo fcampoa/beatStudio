@@ -51,11 +51,12 @@ export class AddPaymentComponent implements OnInit {
   }
 
   patchValues(): void {
+    const d = new Date(this.data.vigencia);
     this.group.patchValue({
       txtTitular: this.data.titular,
       txtTarjeta: this.data.numero_tarjeta,
-      selectMes: this.meses[this.data.vigencia.getMonth()],
-      selectAnho: this.data.vigencia.getFullYear(),
+      selectMes: this.meses[d.getMonth() + 1],
+      selectAnho: this.anhos[this.anhos.indexOf(d.getFullYear().toString())],
       txtCVV: this.data.cvv
     });
   }

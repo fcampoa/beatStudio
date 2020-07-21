@@ -15,6 +15,10 @@ export class PaypalComponent implements OnInit {
 
   ngOnInit(): void {
       this.initConfig();
+
+      // $('iframe').load(function() {
+      //   $('iframe').contents().find('input#credit-card-number').val('1234567890123456');
+      // });
   }
 
   private initConfig(): void {
@@ -73,15 +77,18 @@ export class PaypalComponent implements OnInit {
       console.log('OnError', err);
     },
     onClick: (data, actions) => {
+      debugger;
       console.log('onClick', data, actions);
       if (data.fundingSource === 'card') {
-        
+        // this.loadCreditCardData();
       }
     },
   };
   }
 
   loadCreditCardData(){
-    $('#credit-card-number').val('1234567890123456');
+    $('iframe').load(() => {
+      $('iframe').contents().find('input#credit-card-number').val('1234567890123456');
+    });
   }
 }

@@ -73,7 +73,7 @@
         <div class="col-12">
           <!-- <mat-slide-toggle [(ngModel)]="invitados" >Invitar Amigos</mat-slide-toggle> -->
           <label class="switch">
-            <input type="checkbox" [(ngModel)]="invitados">
+            <input type="checkbox" [disabled]="!seleccionado" [(ngModel)]="invitados">
             <span class="slider round"></span>
           </label>
           <label class="pl-3 pb-2" style="font-family: GT-America-Medium;font-size: 18px;">Invitar amigos</label>
