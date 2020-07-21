@@ -43,37 +43,38 @@
   </form>
 </div>
 </app-view> -->
-<div class="row justify-content-center" style="padding-bottom: 5%;">
-  <h2>Registra tu método de pago</h2>
+<div class="row justify-content-center mt-5 mb-5">
+  <div class="col-10 col-sm-10 col-md-8 col-lg-7 col-xl-7">
+    <h2 style="text-align: center;font-family: GT-America-Medium;">Registra tu método de pago</h2>
+  </div>
 </div>
-<mat-card style="background: rgb(27,27,27) !important;">
-
-  <form #form="ngForm" (ngSubmit)="saveOrUpdate()" [formGroup]="group" novalidate>
+<div class="modal-card">
+  <form #form="ngForm" class="modal-form" (ngSubmit)="saveOrUpdate()" [formGroup]="group" novalidate>
     <div class="row">
-      <div class="col-sm-4 col-4 col-md-4 col-lg-4 align-self-center">
+      <div class="col-4 align-self-center">
         <mat-label>Nombre del titular</mat-label>
       </div>
-      <div class="col-sm-8 col-8 col-md-8 col-lg-8">
+      <div class="col-8">
         <mat-form-field style="width: 100%;">
           <input matInput formControlName="txtTitular" type="text" />
         </mat-form-field>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-4 col-md-4 col-lg-4 align-self-center">
+      <div class="col-4 align-self-center">
         <mat-label>Número de tarjeta</mat-label>
       </div>
-      <div class="col-sm-8 col-8 col-md-8 col-lg-8">
+      <div class="col-8">
         <mat-form-field style="width: 100%;">
           <input matInput formControlName="txtTarjeta" type="text" />
         </mat-form-field>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4 col-4 col-md-4 col-lg-4 align-self-center">
+      <div class="col-4 align-self-center">
         <mat-label>Fecha de vencimiento</mat-label>
       </div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2">
+      <div class="col-2">
         <mat-form-field style="width: 100%;">
           <mat-label>Mes</mat-label>
           <mat-select formControlName="selectMes">
@@ -83,7 +84,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2">
+      <div class="col-2">
         <mat-form-field style="width: 100%;">
           <mat-label>Año</mat-label>
           <mat-select formControlName="selectAnho">
@@ -93,16 +94,18 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2"></div>
-      <div class="col-sm-2 col-2 col-md-2 col-lg-2 col-xl-2 col-xs-2">
+      <div class="col-2"></div>
+      <div class="col-2">
         <mat-form-field style="width: 100%;">
-          <input matInput formControlName="txtCVV" type="text" placeholder="CCV"/>
+          <input matInput formControlName="txtCVV" type="text" placeholder="CCV" />
         </mat-form-field>
       </div>
     </div>
   </form>
-</mat-card>
-<div class="row justify-content-center" style="padding-top: 5%;">
-  <button mat-stroked-button class="button-new mr-4" type="button" (click)="saveOrUpdate()">Guardar</button>
-  <button mat-stroked-button class="button-new" type="button" (click)="onNoClick()">cancelar</button>
+</div>
+<div class="row mt-5 mb-5">
+  <div class="col-12 d-flex justify-content-center mt-2">
+    <button mat-stroked-button class="button-new mr-4" type="button" (click)="onNoClick()">CANCELAR</button>
+    <button mat-stroked-button class="button-new" type="button" (click)="saveOrUpdate()">GUARDAR</button>
+  </div>
 </div>
