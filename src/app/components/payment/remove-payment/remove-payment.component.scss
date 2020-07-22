@@ -1,0 +1,44 @@
+.modal-card{
+    background: rgb(44, 44, 44) !important;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 15px;
+}
+
+.part1{
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+.part2{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.part3{
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
+.card-info{
+    font-family: GT-America-Thin;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+@media (max-width: 576px) {
+   .part1{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.part3{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.modal-card{
+    background: rgb(44, 44, 44) !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 15px;
+}
+  }

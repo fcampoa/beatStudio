@@ -32,18 +32,18 @@ export class CheckoutDetailsComponent implements OnInit {
   public tieneTarjeta = false;
 
   constructor(private userSvc: UserService,
-              private apiSvc: GlobalApiService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private location: Location,
-              public dialog: MatDialog
+    private apiSvc: GlobalApiService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       params => {
-      this.id = params.idPaquete;
-      this.getData();
+        this.id = params.idPaquete;
+        this.getData();
       }
     );
   }
@@ -110,8 +110,8 @@ export class CheckoutDetailsComponent implements OnInit {
   }
   openDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
-      width: '250px',
-      data: { fp: f, id: this.cliente.id, details: true }
+      panelClass: 'custom-modalbox',
+      data: { fp: f, id: this.cliente.id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -119,7 +119,7 @@ export class CheckoutDetailsComponent implements OnInit {
         response => {
           this.p = response.data[0];
           this.tieneTarjeta = true;
-         }
+        }
       );
     });
   }

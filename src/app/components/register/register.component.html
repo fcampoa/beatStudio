@@ -5,7 +5,7 @@
   <div class="row d-flex justify-content-center pb-5">
     <h1 class="sections-titles">Regístrate</h1>
   </div>
-  <form #form="ngForm" (ngSubmit)="registrarCliente()" [formGroup]="group" novalidate>
+  <form #form="ngForm" novalidate (ngSubmit)="registrarCliente()" [formGroup]="group">
     <div class="row d-flex justify-content-center">
       <div class="col-11 col-sm-11 col-md-10 col-lg-8 col-xl-6">
         <div class="row form-part justify-content-center"  style="padding-top: 40px !important;">
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="row justify-content-center pt-5 pb-5">
-          <button mat-stroked-button type="submit" class="button-new">REGISTRARME</button>
+          <button mat-stroked-button [disabled]="group.invalid" type="submit" class="button-new">REGISTRARME</button>
         </div>
       </div>
     </div>
