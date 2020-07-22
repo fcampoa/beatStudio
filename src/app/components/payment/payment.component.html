@@ -3,9 +3,13 @@
     <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-8">
       <mat-card class="mb-3" style="background: rgb(24, 24, 24) !important;" *ngFor="let p of formasPago">
         <div class="row pt-3 pl-2">
-          <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-            <mat-radio-button class="pt-2 pl-2" (change)="guardarForma(p)">
-            </mat-radio-button>
+          <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 ml-2 custom-radio-button">
+            <!-- <mat-radio-button class="pt-2 pl-2" (change)="guardarForma(p)">
+            </mat-radio-button> -->
+            <label class="radio-container">
+              <input type="radio" name="radio" (change)="guardarForma(p)">
+              <span class="checkmark"></span>
+            </label>
           </div>
           <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
             <mat-divider vertical style="height: 40px;"></mat-divider>
