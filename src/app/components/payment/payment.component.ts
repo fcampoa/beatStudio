@@ -93,6 +93,7 @@ export class PaymentComponent implements OnInit {
   eliminar(p: FormaPago) {
     this.apiSvc.routes.forma_pago.eliminar()<any>(p.id).subscribe(
       response => {
+        this.listaFormas();
         this.notify.successMessage('Método de pago eliminado');
       }
     );
