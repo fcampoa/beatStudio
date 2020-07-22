@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalApiService } from './../../../Core/global/global-service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
-import { FormaPago } from './../../../model/forma-pago';
 
 @Component({
   selector: 'app-remove-payment',
@@ -20,10 +19,14 @@ export class RemovePaymentComponent implements OnInit {
     this.data = this.content.tarjeta;
   }
 
-  eliminar(p: FormaPago) {
+  eliminar(): void {
     this.loading = true;
-    this.apiSvc.routes.forma_pago.eliminar()<any>(p.id).subscribe(
+    this.apiSvc.routes.forma_pago.eliminar()<any>(this.data.id).subscribe(
       response => {
+        this.dialogRef.close();
+      },
+      error => {
+        console.log(error);
         this.loading = false;
       }
     );

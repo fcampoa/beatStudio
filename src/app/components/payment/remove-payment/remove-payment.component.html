@@ -8,8 +8,10 @@
 <div class="modal-card">
     <div class="row">
         <div class="col-5 d-flex justify-content-center">
-            <img style="height: 35px;width:auto;" *ngIf="data.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" />
-            <img style="height: 35px;width:auto;" *ngIf="data.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
+            <img style="height: 35px;width:auto;" *ngIf="data.numero_tarjeta[0] === '5'"
+                src="../../../assets/img/master_card.png" />
+            <img style="height: 35px;width:auto;" *ngIf="data.numero_tarjeta[0] === '4'"
+                src="../../../assets/img/visa.png" />
         </div>
         <div class="col-7">
             <div class="card-info">
@@ -21,6 +23,9 @@
 </div>
 <div class="row part3">
     <div class="col-12 d-flex justify-content-center">
-        <button mat-stroked-button class="cancel-button" type="button">ELIMINAR</button>
+        <button mat-stroked-button class="cancel-button" [disabled]="loading" (click)="eliminar()" type="button">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+            <span *ngIf="!loading">ELIMINAR</span>
+        </button>
     </div>
 </div>
