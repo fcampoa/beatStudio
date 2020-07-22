@@ -98,6 +98,7 @@ export class RegisterComponent implements OnInit {
       txtSize: [0, [Validators.required]],
       txtPhone: ['', [Validators.required]],
       birthDate: [new Date(), [Validators.required]],
+      terms: [false]
     });
   }
 
