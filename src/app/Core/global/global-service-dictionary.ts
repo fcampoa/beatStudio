@@ -64,7 +64,7 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     agregar: { method: GlobalServiceMethodType.POST, url: '' },
     actualizar: { method: GlobalServiceMethodType.PATCH, url: '/$id' },
     buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id' },
-    eliminar: { method: GlobalServiceMethodType.DELETE, url: '/$id' },
+    eliminar: { method: GlobalServiceMethodType.DELETE, url: '' },
     buscarPrincipalCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$id&filter[principal]=1' },
     buscarPrincipalUsuario: { method: GlobalServiceMethodType.GET, url: '?filter[principal]=1&filter[cliente.usuario.id]=$id' }
   },
