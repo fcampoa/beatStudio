@@ -61,6 +61,7 @@ import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dici
 import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
 import { InviteDirective } from './Core/directives/invites.directive';
 import { PaypalComponent } from './Core/utilities/paypal/paypal.component';
+import { RemovePaymentComponent } from './components/payment/remove-payment/remove-payment.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { PaypalComponent } from './Core/utilities/paypal/paypal.component';
     // pipes
     CustomDatePipe,
     CreditCardPipe,
-    ScheduleDatePipe
+    ScheduleDatePipe,
+    RemovePaymentComponent
   ],
   imports: [
     BrowserModule,
