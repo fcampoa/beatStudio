@@ -4,11 +4,13 @@
     padding-top: 12px;
     padding-bottom: 20px;
 }
-
+mat-form-field{
+    width: 100%;
+}
 .modal-card{
     background: rgb(44, 44, 44) !important;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 mat-form-field{
@@ -20,6 +22,30 @@ mat-label{
     font-size:14px;
 }
 
+.part1{
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+.part2{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.part3{
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
+.col-input{
+    width: 30%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.col-aux{
+    width: 10%;
+}
+
 @media (max-width: 576px) {
    .modal-form{
     padding-left: 10px;
@@ -28,11 +54,26 @@ mat-label{
    .modal-card{
     margin-left: 0;
     margin-right: 0;
+    margin-top: 20px;
    }
    .button-new{
        padding-left: 10px !important;
        padding-right: 10px !important;
    }
+   .part1{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.part3{
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.col-input{
+    width: 33.33%;
+}
+.col-aux{
+    width: 0;
+}
   }
   @media (min-width: 577px) {
     
