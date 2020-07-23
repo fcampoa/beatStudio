@@ -183,9 +183,16 @@ iframe{
   color: #000000;
 }
 .seccion-coaches {
+  padding: 8% 3% 10% 3%;
   background: #eeeeee !important;
   color: #000000;
-  padding-top: 5%;
+  .text-part{
+    margin-left: 5%;
+    margin-top: 25%;
+    p{
+      width: 85%;
+    }
+  }
 }
 
 .seccion-social {
