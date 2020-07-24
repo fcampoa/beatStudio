@@ -9,21 +9,32 @@
   <div class="collapse navbar-collapse w-100 dual-collapse2 order-1 order-xl-0" id="navbarTogglerDemo02">
     <ul class="navbar-nav mx-auto text-lg-center text-left">
       <li class="nav-item active mr-5" *ngFor="let i of sections">
-        <mat-icon style="margin-top: 2%;">expand_more</mat-icon><a class="link-format" (click)="navigate(i.url)">
+
+        <div *ngIf="i.sublinks" class="dropdown">
+          <mat-icon>expand_more</mat-icon><a class="link-format" (click)="navigate(i.url)">
+            {{i.nombre}}
+          </a>
+          <div class="dropdown-content">
+            <a *ngFor="let sub of i.sublinks" (click)="navigate(sub.url)">{{sub.name}}</a>
+          </div>
+        </div>
+        <a *ngIf="!i.sublinks" class="link-format" (click)="navigate(i.url)">
           {{i.nombre}}
         </a>
       </li>
     </ul>
     <form class="form-inline">
       <div *ngIf="logged">
-        <button class="my-2 my-sm-0 navbar-user-button" [ngbPopover]="popLogoutContent" autoClose="outside"><img src="../../../assets/img/SVG/Usuario(menu)-01.svg"
-          style="height: 35px;position: inline;" /></button>
+        <button class="my-2 my-sm-0 navbar-user-button" [ngbPopover]="popLogoutContent" autoClose="outside"><img
+            src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
         <button class="my-2 my-sm-0 navbar-user-button" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
       </div>
       <div *ngIf="!logged">
-        <button mat-stroked-button style="padding-left: 1rem !important;padding-right: 1rem !important;" class="button-new my-2 my-sm-0 mr-3" (click)="navigate('dashboard/registro')">CREAR
+        <button mat-stroked-button style="padding-left: 1rem !important;padding-right: 1rem !important;"
+          class="button-new my-2 my-sm-0 mr-3" (click)="navigate('dashboard/registro')">CREAR
           CUENTA</button>
-        <button mat-stroked-button style="padding-left: 1rem !important;padding-right: 1rem !important;" class="button-new my-2 my-sm-0" [ngbPopover]="popLoginContent" autoClose="outside">INICIAR
+        <button mat-stroked-button style="padding-left: 1rem !important;padding-right: 1rem !important;"
+          class="button-new my-2 my-sm-0" [ngbPopover]="popLoginContent" autoClose="outside">INICIAR
           SESION</button>
       </div>
     </form>
