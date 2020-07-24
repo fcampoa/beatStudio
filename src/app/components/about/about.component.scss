@@ -1,39 +1,42 @@
-// h1 {
-//     font-size: 4rem;
-// }
-// li{
-//     font-family: GT-America-Regular;
-//     color: gray;
-//     font-size: 1.05rem;
-//     width: 80%;
-// }
-.parrafo{
-    padding-top: 8%;
-    padding-bottom: 8%;
-}
-.title{
-    font-family: SharpSans-Semibold;
-}
-.conoce-mas {
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 1.2rem;
-    text-decoration: underline;
-}
 .mat-icon {
     font-size: 1.2rem;
 }
-a:hover{
-        text-decoration: none;
+
+a:hover {
+    text-decoration: none;
+}
+
+.section1{
+    padding: 0 4% 0 4%;
+}
+
+.section-1-text {
+    padding-left: 6%;
+    padding-top: 15%;
+
+    p {
+        width: 80% !important;
     }
+}
+
+.section-2-text {
+    padding-left: 7%;
+    padding-top: 15%;
+
+    p {
+        width: 80% !important;
+    }
+}
+
 .mejores-instalaciones {
-    
+
     .list-group {
         .list-group-item {
             border: none;
             padding: 0;
             color: gray;
             background-color: transparent;
+
             span {
                 color: #11e579;
                 font-size: 1.6rem;
@@ -41,69 +44,95 @@ a:hover{
             }
         }
     }
+
     .nosotros-img {
         position: absolute;
         left: -5rem;
         top: -2rem;
         width: 60%;
     }
+
     .instalaciones-img {
         margin-top: 10rem;
     }
 }
-.disciplinas{
+
+.disciplinas {
     font-family: SharpGroteskSM15R;
+
+    h3 {
+        font-size: 24px;
+    }
+
     margin-top: 10%;
-    margin-bottom: 12%;
-    .p-relative-left{
+    margin-bottom: 10%;
+
+    .p-relative-left {
         position: relative;
         left: 19%;
     }
-    .p-relative-right{
+
+    .p-relative-right {
         position: relative;
         right: 17%;
     }
 }
-.forma-parte{
-    padding-top: 10%;
-    padding-bottom: 10%;
-    font-family: SharpGroteskSM15R;
+
+.forma-parte {
+    padding-top: 7%;
+    padding-bottom: 8%;
+
+    .familia-buttons {
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
     background-color: #d8d8d8;
-    h1{
+
+    h1 {
+        margin-top: 10%;
         color: #000000;
         font-weight: bold;
+        font-family: SharpGroteskSM15R;
+        letter-spacing: -2px;
+        font-size: 5rem;
     }
-   
-    img{
+
+    img {
         width: 100%;
     }
-    .btn{
-        font-weight: bold!important;
-        padding: .8rem 3rem .8rem 3rem;
-    }
-    .btn-outline{
-        color: #000000!important;
-        background-color: transparent!important;
-    }
-    .btn-purple{
-        color: #ffffff!important;
-        background-color: #986dff!important;
-        margin-left: 2rem;
-    }
+
+    // .btn{
+    //     font-weight: bold!important;
+    //     padding: .8rem 3rem .8rem 3rem;
+    // }
+    // .btn-outline{
+    //     color: #000000!important;
+    //     background-color: transparent!important;
+    // }
+    // .btn-purple{
+    //     color: #ffffff!important;
+    //     background-color: #986dff!important;
+    //     margin-left: 2rem;
+    // }
 }
-.coaches{
+
+.coaches {
     padding-top: 8%;
     padding-bottom: 5%;
-    img{
+
+    img {
         width: 100%;
     }
-    .bg-coaches{
+
+    .bg-coaches {
         height: 40rem;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
     }
-    h5{
+
+    h5 {
         color: #ffffff;
         margin-top: 3rem;
         font-size: 1.4rem;
@@ -111,7 +140,7 @@ a:hover{
     }
 }
 
-.familia{
+.familia {
     font-size: 5rem;
 }
 
@@ -135,14 +164,54 @@ a:hover{
 //         }
 //     }
 // }
-@media (max-width: 985px) {
-    .familia{
-        font-size: 2rem;
+@media (max-width: 769px) {
+    .section1{
+        padding: 0;
     }
-    h3{
-        font-size: 1rem;
+
+    .section-1-text {
+        padding-left: 0;
+        padding-top: 9%;
+
+        p {
+            width: 100% !important;
+        }
+    }
+
+    .section-2-text {
+        padding-left: 0;
+        padding-top: 0;
+
+        p {
+            width: 100% !important;
+        }
     }
 }
+
+@media (max-width: 985px) {
+    .familia {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1rem !important;
+    }
+
+    .forma-parte {
+        padding-top: 3%;
+        padding-bottom: 3%;
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        .familia-buttons {
+            padding-top: 2%;
+            padding-bottom: 0;
+        }
+    }
+}
+
 // @media (max-width: 575px) {
 //     .mejores-instalaciones{
 //         margin-top: 2rem;
@@ -154,39 +223,42 @@ a:hover{
     width: $size;
     line-height: $size;
     margin-top: -8px;
-  }
+}
+
 .info-widget {
     display: inline-block;
     margin-right: 40px;
-  }
+}
 
-  .middle {
+.middle {
     float: left;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
-  }
+}
 
-  .image-viewer{
-      overflow:hidden;
-  }
+.image-viewer {
+    overflow: hidden;
+}
 
-  .next-button{
-      outline: none;
-      position: absolute;
+.next-button {
+    outline: none;
+    position: absolute;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     background-color: white;
-    border:0;
-    mat-icon{
+    border: 0;
+
+    mat-icon {
         @include md-icon-size(38px);
         display: inline-flex;
-    vertical-align: top;
-    margin-top: 1px;
-      }
-  }
-  .widget-text{
+        vertical-align: top;
+        margin-top: 1px;
+    }
+}
+
+.widget-text {
     word-wrap: break-word !important;
     width: 100px !important;
-  }
+}
