@@ -9,7 +9,7 @@
   </div>
   <div class="row d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 5%;">
     <div class="col-12 d-flex justify-content-center">
-      <h1 class="primary-color" style="font-family: GT-America-Thin;font-size: 3rem !important;text-align: center;"><span style="color:white">Créditos disponibles:</span> {{ creditos }}</h1>
+      <h1 class="primary-color" style="font-family: GT-America-Thin;font-size: 3rem !important;text-align: center;letter-spacing: -2px;"><span style="color:white">Créditos disponibles:</span> {{ creditos }}</h1>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
@@ -20,7 +20,7 @@
     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
       <mat-tab-group mat-stretch-tabs mat-align-tabs="center" class="remove-border-bottom" [selectedIndex]="index">
         <mat-tab>
-          <ng-template mat-tab-label style="padding-bottom: 5%;">
+          <ng-template mat-tab-label>
             <p class="primary-color tab">Mi perfil</p>
           </ng-template>
           <app-view>
@@ -31,7 +31,7 @@
           </app-view>
         </mat-tab>
         <mat-tab>
-          <ng-template mat-tab-label style="padding-bottom: 5%;">
+          <ng-template mat-tab-label>
             <p class="primary-color tab">Historial de clases</p>
           </ng-template>
           <app-view>
@@ -42,7 +42,7 @@
           </app-view>
         </mat-tab>
         <mat-tab>
-          <ng-template mat-tab-label style="padding-bottom: 5%;">
+          <ng-template mat-tab-label>
             <p class="primary-color tab">Historial de Pagos</p>
           </ng-template>
           <app-view>
@@ -53,7 +53,7 @@
           </app-view>
         </mat-tab>
         <mat-tab>
-          <ng-template mat-tab-label style="padding-bottom: 5%;">
+          <ng-template mat-tab-label>
             <p class="primary-color tab">Mis métodos de pago</p>
           </ng-template>
           <app-view>

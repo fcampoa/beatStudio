@@ -138,7 +138,7 @@
   }
 
   .seccion-rutinas {
-    padding: 100px 50px 100px 50px;
+    padding: 120px 50px 100px 50px;
 
     img {
       width: 100%;
@@ -202,8 +202,6 @@
   }
 
   .iframe-container {
-    position: relative;
-
     iframe {
       height: 100px;
     }
@@ -220,13 +218,19 @@
 
 .info-widget {
   display: inline-block;
-  width: 300px;
-  margin-right: 30px;
+  width: 33.33%;
 
-  img {
-    width: 300px;
-    height: 300px;
+  .publicacion {
+    margin: 10px;
+
+    img {
+      width: 100%
+    }
+    iframe {
+      width: 100%;
+    }
   }
+
 
   a:hover {
     text-decoration: none;
@@ -347,6 +351,28 @@
           width: 100%;
         }
       }
+    }
+  }
+
+  .info-widget {
+    display: inline-block;
+    width: 100%;
+
+    .publicacion {
+      margin: 10px;
+
+      img {
+        width: 100%
+      }
+
+      iframe {
+        width: 100%;
+      }
+    }
+
+
+    a:hover {
+      text-decoration: none;
     }
   }
 }
