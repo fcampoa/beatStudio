@@ -23,7 +23,7 @@
         style="overflow: hidden;">
         <mat-tab *ngFor="let d of disciplinas">
           <ng-template mat-tab-label>
-            <p class="beat-algo"><span>BEAT</span>{{d.nombre}}</p>
+            <p class="beat-algo tab"><span>BEAT</span>{{d.nombre}}</p>
           </ng-template>
           <app-schedule [idDisciplina]="d.id" (Seleccion)="asignarSeleccion($event)"></app-schedule>
         </mat-tab>
@@ -34,6 +34,7 @@
   <br>
   <br>
   <div class="row d-flex justify-content-center ">
-    <button mat-stroked-button class="button-new" (click)="siguientePaso()">SIGUIENTE<mat-icon>keyboard_arrow_right</mat-icon></button>
+    <button mat-stroked-button class="button-new" (click)="siguientePaso()">SIGUIENTE<mat-icon>keyboard_arrow_right
+      </mat-icon></button>
   </div>
 </div>

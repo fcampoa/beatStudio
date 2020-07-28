@@ -81,8 +81,6 @@ export class DashboardComponent implements OnInit {
   }
 
   public scrollMusicWidget1Right(): void {
-    console.log(this.musicWidget2.nativeElement.$window.pageXOffset);
-    
     this.musicWidget1.nativeElement.scrollTo({ left: (this.musicWidget1.nativeElement.scrollLeft + 330), behavior: 'smooth' });
   }
 

@@ -122,7 +122,7 @@
         </button>
       </div>
       <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-8">
-        <div class="row image-viewer">
+        <div class="image-viewer">
           <div #widgetsContent class="middle">
             <div class="info-widget" *ngFor="let i of socialMedia">
               <div class="publicacion">
@@ -131,9 +131,9 @@
                   style="font-family: Cedra4FWide;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
                   {{ i.fecha | date:"longDate" }}
                 </div>
-                <div class="sections-info-text" style="color: #ffffff !important;">
+                <p class="sections-info-text" style="color: #ffffff !important;">
                   {{ i.descripcion }}
-                </div>
+                </p>
                 <a class="section-see-more"
                   style="font-size: 13px !important; border-bottom: 1px solid #ffffff !important;"
                   [href]="i.profileUrl">
@@ -222,7 +222,7 @@
                 </button>
               </div>
               <div class="col-9 col-sm-9 col-md-8 col-lg-7 col-xl-7">
-                <div class="row image-viewer">
+                <div class="image-viewer">
                   <div #musicWidget1 class="middle">
                     <div class="info-widget" *ngFor="let s of semana">
                       <div class="publicacion">
@@ -268,7 +268,7 @@
                 </button>
               </div>
               <div class="col-9 col-sm-9 col-md-8 col-lg-7 col-xl-7">
-                <div class="row image-viewer">
+                <div class="image-viewer">
                   <div #musicWidget2 class="middle">
                     <div class="info-widget" *ngFor="let s of favoritas">
                       <div class="publicacion">

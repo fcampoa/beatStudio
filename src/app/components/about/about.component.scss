@@ -6,29 +6,35 @@ a:hover {
     text-decoration: none;
 }
 
-.section1{
+.section1 {
     padding: 0 4% 0 4%;
-}
 
-.section-1-text {
-    padding-left: 6%;
-    padding-top: 15%;
+    .text-part {
+        padding-left: 65px;
+        padding-top: 150px;
 
-    p {
-        width: 80% !important;
+        p {
+            width: 85% !important;
+        }
+    }
+
+    img {
+        margin-top: 50px;
     }
 }
 
-.section-2-text {
-    padding-left: 7%;
-    padding-top: 15%;
-
-    p {
-        width: 80% !important;
-    }
-}
 
 .mejores-instalaciones {
+    margin-top: 120px;
+
+    .text-part {
+        padding-left: 50px;
+        padding-top: 120px;
+
+        p {
+            width: 70% !important;
+        }
+    }
 
     .list-group {
         .list-group-item {
@@ -44,17 +50,11 @@ a:hover {
             }
         }
     }
+}
 
-    .nosotros-img {
-        position: absolute;
-        left: -5rem;
-        top: -2rem;
-        width: 60%;
-    }
-
-    .instalaciones-img {
-        margin-top: 10rem;
-    }
+.section3 {
+    margin-top: 120px;
+    margin-bottom: 120px;
 }
 
 .disciplinas {
@@ -64,8 +64,8 @@ a:hover {
         font-size: 24px;
     }
 
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 100px;
+    margin-bottom: 100px;
 
     .p-relative-left {
         position: relative;
@@ -79,8 +79,8 @@ a:hover {
 }
 
 .forma-parte {
-    padding-top: 7%;
-    padding-bottom: 8%;
+    padding-top: 80px;
+    padding-bottom: 80px;
 
     .familia-buttons {
         padding-top: 5%;
@@ -101,122 +101,96 @@ a:hover {
     img {
         width: 100%;
     }
-
-    // .btn{
-    //     font-weight: bold!important;
-    //     padding: .8rem 3rem .8rem 3rem;
-    // }
-    // .btn-outline{
-    //     color: #000000!important;
-    //     background-color: transparent!important;
-    // }
-    // .btn-purple{
-    //     color: #ffffff!important;
-    //     background-color: #986dff!important;
-    //     margin-left: 2rem;
-    // }
-}
-
-.coaches {
-    padding-top: 8%;
-    padding-bottom: 5%;
-
-    img {
-        width: 100%;
-    }
-
-    .bg-coaches {
-        height: 40rem;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    h5 {
-        color: #ffffff;
-        margin-top: 3rem;
-        font-size: 1.4rem;
-        font-family: GT-America-Medium;
-    }
 }
 
 .familia {
     font-size: 5rem;
 }
 
-// @media (max-width: 1180px) {
-//     .mejores-instalaciones{
-//         .nosotros-img{
-//             left: -4rem;
-//             top: 1rem;
-//         }
-//     }
-// }
 
-// @media (max-width: 1104px) {
-//     .forma-parte{
-//         .btn{
-//             padding: 0.8rem 1rem 0.8rem 1rem;
-//         }
-//         .btn-purple{
-//             //margin-top: 2rem;
-//             margin-left: 1rem;
-//         }
-//     }
-// }
-@media (max-width: 769px) {
-    .section1{
+@media (max-width: 992px) {
+    .section1 {
         padding: 0;
-    }
-
-    .section-1-text {
-        padding-left: 0;
-        padding-top: 9%;
-
-        p {
-            width: 100% !important;
+    
+        .text-part {
+            padding-left: 0;
+            padding-top: 80px;
+    
+            p {
+                width: 100% !important;
+            }
+        }
+        img {
+            margin-top: 50px;
         }
     }
 
-    .section-2-text {
-        padding-left: 0;
-        padding-top: 0;
-
-        p {
-            width: 100% !important;
+    .mejores-instalaciones {
+        margin-top: 50px;
+    
+        .text-part {
+            padding-left: 0;
+            padding-top: 80px;
+    
+            p {
+                width: 100% !important;
+            }
+        }
+        img {
+            margin-top: 50px;
+            padding-left: 5%;
         }
     }
-}
 
-@media (max-width: 985px) {
     .familia {
-        font-size: 2rem;
+        font-size: 3rem !important;
     }
 
     h3 {
         font-size: 1rem !important;
     }
+}
+
+@media (max-width: 576px) {
+    .section1 {
+        padding: 0;
+    
+        .text-part {
+            padding-left: 0;
+            padding-top: 50px;
+    
+            p {
+                width: 100% !important;
+            }
+        }
+        img {
+            margin-top: 50px;
+        }
+    }
+
+    .mejores-instalaciones {
+        margin-top: 50px;
+    
+        .text-part {
+            padding-left: 0;
+            padding-top: 50px;
+    
+            p {
+                width: 100% !important;
+            }
+        }
+        img {
+            margin-top: 50px;
+            padding-left: 10%;
+        }
+    }
 
     .forma-parte {
-        padding-top: 3%;
-        padding-bottom: 3%;
-
-        h1 {
-            font-size: 3rem;
-        }
-
-        .familia-buttons {
-            padding-top: 2%;
-            padding-bottom: 0;
-        }
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 }
 
-// @media (max-width: 575px) {
-//     .mejores-instalaciones{
-//         margin-top: 2rem;
-//     }
-// }
 @mixin md-icon-size($size: 24px) {
     font-size: $size;
     height: $size;

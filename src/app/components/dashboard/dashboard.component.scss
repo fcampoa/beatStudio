@@ -222,10 +222,12 @@
 
   .publicacion {
     margin: 10px;
+    white-space: normal;
 
     img {
       width: 100%
     }
+
     iframe {
       width: 100%;
     }
@@ -238,7 +240,7 @@
 }
 
 .middle {
-  float: left;
+  // float: left;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
