@@ -21,6 +21,9 @@ export class DashboardComponent implements OnInit {
   public socialMedia = [
     { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png' },
     { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png' },
     { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png' }
   ];
 
@@ -92,4 +95,15 @@ export class DashboardComponent implements OnInit {
   public scrollMusicWidget2Left(): void {
     this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft - 330), behavior: 'smooth' });
   }
+
+  // angular.element($window).bind('scroll', function() {
+
+  //   var offSet = $window.pageYOffset,
+  //       height = $window.innerHeight,
+  //       scrolledPercentage = (offSet / height * 100);
+  //       //console.log(scrolledPercentage);
+  //       if (scrolledPercentage >= 60) {
+  //         console.log(scrolledPercentage + ' over 60');
+  //       }
+  //   });
 }

@@ -1,13 +1,16 @@
-.beatspin-title{
-    span{
+.beatspin-title {
+    span {
         color: #9865ff;
     }
 }
-.beatspin-video{
-    margin-top: 6%;
-    .video{
+
+.beatspin-video {
+    margin-top: 70px;
+
+    .video {
         text-align: center;
-        img{
+
+        img {
             width: 100%;
             margin: 0 auto;
         }
@@ -15,35 +18,41 @@
 }
 
 .benefits {
-    .list-group {
-        .list-group-item {
-            border: none;
-            padding: 0;
-            color: gray;
-            background-color: transparent;
-            span {
-                color: #11e579;
-                font-size: 1.6rem;
-                margin-right: 1.5rem;
+    .text-part {
+        padding-left: 100px;
+        margin-top: 170px;
+
+        .list-group {
+            .list-group-item {
+                border: none;
+                padding: 0;
+                color: gray;
+                background-color: transparent;
+
+                span {
+                    color: #11e579;
+                    font-size: 1.6rem;
+                    margin-right: 1.5rem;
+                }
             }
         }
+
+        p {
+            width: 70%;
+        }
     }
-    p{
-        color: gray;
-    }
-    a{
-        color: #ffffff;
-        text-decoration: underline;
-    }
-    img{
+
+    img {
+        margin-top: 150px;
         width: 100%;
     }
 }
 
-.complements{
+.complements {
     margin-top: 12%;
     margin-bottom: 5%;
-    p{
+
+    p {
         color: gray;
         width: 40%;
         margin: 0 auto;
@@ -51,34 +60,41 @@
     }
 }
 
-@media (max-width: 1120px) {
-    .complements{
-        p{
-            width: 60%;
+
+@media (max-width: 992px) {
+    .benefits {
+        .text-part {
+            padding-left: 0;
+            margin-top: 100px;
+
+            p {
+                width: 100%;
+            }
+        }
+
+        img {
+            margin-top: 100px;
         }
     }
 }
 
-@media (max-width: 991px) {
-    .benefits{
-        .benefits-img{
-            width: 100%;
+@media (max-width: 576px) {
+    .benefits {
+        .text-part {
+            padding-left: 0;
+            margin-top: 80px;
+
+            p {
+                width: 100%;
+            }
+        }
+
+        img {
+            margin-top: 50px;
         }
     }
-}
 
-@media (max-width: 768px) {
-    .complements{
-        p{
-            width: 70%;
-        }
-    }
-}
-
-@media (max-width: 676px) {
-    .complements{
-        p{
-            width: 80%;
-        }
+    .beatspin-video {
+        margin-top: 50px;
     }
 }

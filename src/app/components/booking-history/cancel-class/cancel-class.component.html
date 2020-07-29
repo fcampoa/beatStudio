@@ -1,0 +1,24 @@
+<div class="custom-modal">
+    <span class="close"  (click)="closeModal()">&times;</span>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h2 class="part1" style="text-align: center;font-family: GT-America-Medium;">
+                ¿Deseas cancelar<br>la siguiente clase?
+            </h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 text-center">
+            <p class="beat-algo"><span>BEAT</span>{{horario.disciplina.nombre}}</p>
+            <div class="sections-info-text">
+                <div>{{horario.coach.nombre}}</div>
+                <div>{{castFecha(horario.fecha)}}</div>
+                <div>{{formatAMPM(horario.fecha)}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center part3">
+        <button mat-stroked-button class="cancel-button" type="button" (click)="cancelBooking()"> CANCELAR
+        </button>
+    </div>
+</div>

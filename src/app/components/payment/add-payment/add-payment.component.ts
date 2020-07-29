@@ -33,7 +33,9 @@ export class AddPaymentComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  closeModal(): void {
+    this.dialogRef.close();
+  }
   ngOnInit() {
     this.data = this.content.fp;
     this.initForm();
