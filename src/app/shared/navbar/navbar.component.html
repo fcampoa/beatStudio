@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: #000000;">
-  <a class="navbar-brand" href="#">
-    <img style="width: 220px;" src="../../../assets/img/logo_blanco.png" />
+  <a class="navbar-brand ml-4" href="#">
+    <img style="width: 220px;" src="../../../assets/img/SVG/BeatStudio_Logo-03_blanco.svg" />
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
     aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
       </li>
     </ul>
     <form class="form-inline">
-      <div *ngIf="logged">
+      <div *ngIf="logged" class="mr-4">
         <button class="my-2 my-sm-0 navbar-user-button" [ngbPopover]="popLogoutContent" autoClose="outside"><img
             src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
         <button class="my-2 my-sm-0 navbar-user-button" (click)="goToProfile()">{{ name.toUpperCase() }}</button>

@@ -1,89 +1,62 @@
-.modal-form{
+.modal-form {
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 12px;
     padding-bottom: 20px;
 }
-mat-form-field{
+
+mat-form-field {
     width: 100%;
 }
-.modal-card{
+
+.modal-card {
     background: rgb(44, 44, 44) !important;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 40px !important;
+    margin-right: 40px !important;
+    padding: 0 !important;
 }
 
-mat-form-field{
+mat-form-field {
     font-family: GT-America-Regular;
 }
 
-mat-label{
-    font-family: GT-America-Medium;
-    font-size:14px;
+mat-label {
+    font-family: GT-America-Light;
+    font-size: 14px;
 }
 
-.part1{
-    margin-top: 40px;
-    margin-bottom: 70px;
-}
-
-.part2{
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.part3{
-    padding-top: 60px;
-    padding-bottom: 50px;
-}
-
-.col-input{
+.col-input {
     width: 30%;
     padding-right: 15px;
     padding-left: 15px;
 }
-.col-aux{
+
+.col-aux {
     width: 10%;
 }
 
 @media (max-width: 576px) {
-   .modal-form{
-    padding-left: 10px;
-    padding-right: 10px;
-   }
-   .modal-card{
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 20px;
-   }
-   .button-new{
-       padding-left: 10px !important;
-       padding-right: 10px !important;
-   }
-   .part1{
-    margin-top: 0;
-    margin-bottom: 15px;
+    .modal-form {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .modal-card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 20px;
+    }
+
+    .button-new {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .col-input {
+        width: 33.33%;
+    }
+
+    .col-aux {
+        width: 0;
+    }
 }
-.part3{
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
-.col-input{
-    width: 33.33%;
-}
-.col-aux{
-    width: 0;
-}
-  }
-  @media (min-width: 577px) {
-    
-  }
-  @media (min-width: 768px) {
-   
-  }
-  @media (min-width: 992px) {
-   
-  }
-  @media (min-width: 1200px) {
-   
-  }

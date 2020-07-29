@@ -18,7 +18,9 @@ export class RemovePaymentComponent implements OnInit {
   ngOnInit(): void {
     this.data = this.content.tarjeta;
   }
-
+  closeModal(): void {
+    this.dialogRef.close();
+  }
   eliminar(): void {
     this.loading = true;
     this.apiSvc.routes.forma_pago.eliminar()<any>(this.data.id).subscribe(

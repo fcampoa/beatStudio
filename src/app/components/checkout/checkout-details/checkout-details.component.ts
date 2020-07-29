@@ -10,6 +10,7 @@ import { FormaPago } from './../../../model/forma-pago';
 import { GlobalApiService } from './../../../Core/global/global-service';
 import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { ChangeMethodComponent } from '../change-method/change-method.component'
 import * as m from 'moment';
 
 @Component({
@@ -65,10 +66,6 @@ export class CheckoutDetailsComponent implements OnInit {
       });
   }
 
-  cambiarForma(): void {
-
-  }
-
   getCreditos(): void {
     this.apiSvc.routes.paquete.buscar()<any>(this.id).subscribe(
       response => this.paquete = response,
@@ -108,6 +105,18 @@ export class CheckoutDetailsComponent implements OnInit {
   agregarForma(f?: any): void {
     this.openDialog(f);
   }
+
+  cambiarForma(): void {
+    const dialogRef = this.dialog.open(ChangeMethodComponent, {
+      panelClass: 'custom-modalbox-medium',
+      data: { idCliente: this.cliente.id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getData();
+    });
+  }
+
   openDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
       panelClass: 'custom-modalbox',

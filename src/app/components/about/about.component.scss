@@ -1,5 +1,5 @@
 .mat-icon {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 a:hover {
@@ -111,15 +111,16 @@ a:hover {
 @media (max-width: 992px) {
     .section1 {
         padding: 0;
-    
+
         .text-part {
             padding-left: 0;
             padding-top: 80px;
-    
+
             p {
                 width: 100% !important;
             }
         }
+
         img {
             margin-top: 50px;
         }
@@ -127,15 +128,16 @@ a:hover {
 
     .mejores-instalaciones {
         margin-top: 50px;
-    
+
         .text-part {
             padding-left: 0;
             padding-top: 80px;
-    
+
             p {
                 width: 100% !important;
             }
         }
+
         img {
             margin-top: 50px;
             padding-left: 5%;
@@ -154,15 +156,16 @@ a:hover {
 @media (max-width: 576px) {
     .section1 {
         padding: 0;
-    
+
         .text-part {
             padding-left: 0;
             padding-top: 50px;
-    
+
             p {
                 width: 100% !important;
             }
         }
+
         img {
             margin-top: 50px;
         }
@@ -170,15 +173,16 @@ a:hover {
 
     .mejores-instalaciones {
         margin-top: 50px;
-    
+
         .text-part {
             padding-left: 0;
             padding-top: 50px;
-    
+
             p {
                 width: 100% !important;
             }
         }
+
         img {
             margin-top: 50px;
             padding-left: 10%;
@@ -235,4 +239,13 @@ a:hover {
 .widget-text {
     word-wrap: break-word !important;
     width: 100px !important;
+}
+
+.see-more {
+    mat-icon {
+        @include md-icon-size(32px);
+        display: inline-flex;
+        vertical-align: top;
+        margin-top: 4px;
+    }
 }

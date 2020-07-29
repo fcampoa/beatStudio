@@ -1,0 +1,50 @@
+<div class="custom-modal">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h2 class="part1" style="text-align: center;font-family: GT-America-Medium;">
+                Cambiar método<br>de pago
+            </h2>
+        </div>
+    </div>
+    <div *ngIf="loading" class="row d-flex justify-content-center">
+        <div class="spinner-border" role="status"
+            style="color: rgb(152, 109, 255) !important; width: 100px; height: 100px;">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div *ngIf="!loading">
+        <div class="modal-card" *ngFor="let card of formasPago">
+            <div class="row">
+                <div class="col-3 d-flex justify-content-center">
+                    <img style="height: 35px;width:auto;" *ngIf="card.numero_tarjeta[0] === '5'"
+                        src="../../../assets/img/master_card.png" />
+                    <img style="height: 35px;width:auto;" *ngIf="card.numero_tarjeta[0] === '4'"
+                        src="../../../assets/img/visa.png" />
+                </div>
+                <div class="col-5 col-sm-5 col-md-6 col-lg-6 col-xl-6">
+                    <div class="card-info">
+                        {{card.titular}} <br />
+                        {{ card.numero_tarjeta | creditCard }}
+                    </div>
+                </div>
+                <div class="col-1">
+                    <mat-divider vertical style="height: 40px;"></mat-divider>
+                </div>
+                <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 custom-radio-button mt-2">
+                    <label class="radio-container">
+                        <input type="radio" name="radio" (change)="guardarForma(card)">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center part3">
+        <button mat-stroked-button class="button-new mr-md-5" type="button"> IR A FORMAS DE PAGO
+        </button>
+        <button mat-stroked-button class="button-new" type="button" (click)="closeModal()"> ACEPTAR
+        </button>
+    </div>
+</div>

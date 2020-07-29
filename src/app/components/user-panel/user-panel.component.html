@@ -38,7 +38,9 @@
             <div style="padding-top: 5%; padding-bottom: 5%;" class="d-flex justify-content-center">
               <h3 class="table-title">Reservaciones Agendadas</h3>
             </div>
-            <app-booking-history [idCliente]="cliente.id"></app-booking-history>
+            <div class="pb-5">
+              <app-booking-history [idCliente]="cliente.id"></app-booking-history>
+            </div>
           </app-view>
         </mat-tab>
         <mat-tab>
@@ -49,7 +51,9 @@
             <div style="padding-top: 5%; padding-bottom: 5%;" class="d-flex justify-content-center">
               <h3 class="table-title">Mis pagos</h3>
             </div>
-            <app-payment-history [idCliente]="cliente.id"></app-payment-history>
+            <div class="pb-5">
+              <app-payment-history [idCliente]="cliente.id"></app-payment-history>
+            </div>
           </app-view>
         </mat-tab>
         <mat-tab>
