@@ -3,6 +3,8 @@ import { GlobalApiService } from './../../../Core/global/global-service';
 import { Disciplina } from 'src/app/model/disciplina';
 import { Horario } from './../../../model/horario';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { WaitlistComponent } from '../waitlist/waitlist.component';
 import * as m from 'moment';
 import $ from 'jquery';
 /**
@@ -46,7 +48,8 @@ export class ScheduleComponent implements OnInit {
   public hasta: any;
 
   constructor(private apiSvc: GlobalApiService,
-              private notify: NotificationsService) { }
+    private notify: NotificationsService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loading = true;
@@ -169,5 +172,17 @@ export class ScheduleComponent implements OnInit {
         horario.lleno = response.ocupados === horario.lugares;
       }
     );
+  }
+
+
+  entrarWaitlist(h: Horario): void {
+    const dialogRef = this.dialog.open(WaitlistComponent, {
+      panelClass: 'custom-modalbox-info',
+      data: { horario: h }
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.getData();
+    // });
   }
 }

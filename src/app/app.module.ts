@@ -62,6 +62,10 @@ import { BookingStepTwoComponent } from './components/booking/booking-step-two/b
 import { InviteDirective } from './Core/directives/invites.directive';
 import { PaypalComponent } from './Core/utilities/paypal/paypal.component';
 import { RemovePaymentComponent } from './components/payment/remove-payment/remove-payment.component';
+import { WaitlistComponent } from './components/booking/waitlist/waitlist.component';
+import { CancelClassComponent } from './components/booking-history/cancel-class/cancel-class.component';
+import { ChangeMethodComponent } from './components/checkout/change-method/change-method.component';
+import { InfoModalComponent } from './components/info-modal/info-modal.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +110,11 @@ import { RemovePaymentComponent } from './components/payment/remove-payment/remo
     CustomDatePipe,
     CreditCardPipe,
     ScheduleDatePipe,
-    RemovePaymentComponent
+    RemovePaymentComponent,
+    WaitlistComponent,
+    CancelClassComponent,
+    ChangeMethodComponent,
+    InfoModalComponent
   ],
   imports: [
     BrowserModule,

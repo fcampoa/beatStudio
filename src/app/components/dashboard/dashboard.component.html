@@ -1,8 +1,10 @@
 <div style="width: 100%; padding-top: 50px;">
   <!-- Secciòn principal -->
   <div class="row d-flex justify-content-center text-center">
-    <h1 class="dashboard-title">
-      Ride. Tone. Stretch.</h1>
+    <div class="col-12">
+      <h1 class="dashboard-title">
+        Ride. Tone. Stretch.</h1>
+    </div>
   </div>
   <div class="home-image mt-3 w-100">
     <div class="d-flex justify-content-center">
@@ -50,13 +52,11 @@
       <div class="row d-flex justify-content-center text-center part3">
         <div class="col-11 col-sm-11 col-md-10 col-lg-8 col-xl-6">
           <a href="#" class="section-see-more"
-            style="color: #000000 !important; text-decoration: none !important;border-bottom: 2px solid #000;">
-            <b>Conoce más de nuestras disciplinas
-              aquí</b>
+            style="letter-spacing: -2px !important;  color: #000000 !important; text-decoration: none !important;border-bottom: 2px solid #000;">
+            Conoce más de nuestras disciplinas
+            aquí
           </a>
-          <mat-icon svgIcon="black_arrow" style="display: inline-flex;
-            vertical-align: top;
-            margin-top: 7px;margin-left: 10px;color: black;"></mat-icon>
+          <mat-icon class="align-self-center" svgIcon="black_arrow" style="margin-left: 10px;color: black;"></mat-icon>
         </div>
       </div>
     </div>
@@ -124,21 +124,24 @@
         </button>
       </div>
       <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-8">
-        <div class="row image-viewer">
+        <div class="image-viewer">
           <div #widgetsContent class="middle">
             <div class="info-widget" *ngFor="let i of socialMedia">
-              <img [src]="i.imageUrl" />
-              <div class="primary-color"
-                style="font-family: Cedra4FWide;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
-                {{ i.fecha | date:"longDate" }}
+              <div class="publicacion">
+                <img [src]="i.imageUrl" />
+                <div class="primary-color"
+                  style="font-family: Cedra4FWide;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
+                  {{ i.fecha | date:"longDate" }}
+                </div>
+                <p class="sections-info-text" style="color: #ffffff !important;">
+                  {{ i.descripcion }}
+                </p>
+                <a class="section-see-more"
+                  style="font-size: 13px !important; border-bottom: 1px solid #ffffff !important;"
+                  [href]="i.profileUrl">
+                  {{ i.usuario }}
+                </a>
               </div>
-              <div class="sections-info-text" style="color: #ffffff !important;">
-                {{ i.descripcion }}
-              </div>
-              <a class="section-see-more"
-                style="font-size: 13px !important; border-bottom: 1px solid #ffffff !important;" [href]="i.profileUrl">
-                {{ i.usuario }}
-              </a>
             </div>
           </div>
         </div>
@@ -221,15 +224,17 @@
                 </button>
               </div>
               <div class="col-9 col-sm-9 col-md-8 col-lg-7 col-xl-7">
-                <div class="row image-viewer">
+                <div class="image-viewer">
                   <div #musicWidget1 class="middle">
                     <div class="info-widget" *ngFor="let s of semana">
-                      <div class="iframe-container">
-                        <iframe frameborder="0" allowtransparency="true" allow="encrypted-media"
-                          [src]="cleanUrl(s.url)"></iframe>
+                      <div class="publicacion">
+                        <div class="iframe-container">
+                          <iframe frameborder="0" allowtransparency="true" allow="encrypted-media"
+                            [src]="cleanUrl(s.url)"></iframe>
+                        </div>
+                        <div class="sections-info-text mt-3" style="color: #ffffff !important;">{{s.titulo}}</div>
+                        <div class="sections-info-text">{{s.artista}}</div>
                       </div>
-                      <div class="sections-info-text mt-3" style="color: #ffffff !important;">{{s.titulo}}</div>
-                      <div class="sections-info-text">{{s.artista}}</div>
                     </div>
                   </div>
                 </div>
@@ -240,7 +245,7 @@
                 </button>
               </div>
             </div>
-  
+
             <!-- <div class="row d-flex justify-content-center" >
               <div class="col-8 col-sm-8 col-md-3 col-xl-3 justify-content-center" *ngFor="let s of semana"
                 style="padding-top: 5%;font-family: GT-America-Regular;">
@@ -254,7 +259,7 @@
                 </div>
               </div>
             </div> -->
-  
+
           </mat-tab>
           <mat-tab label="Nuestras favoritas">
             <div class="row d-flex justify-content-center music" style="max-width: 100%;
@@ -265,15 +270,17 @@
                 </button>
               </div>
               <div class="col-9 col-sm-9 col-md-8 col-lg-7 col-xl-7">
-                <div class="row image-viewer">
+                <div class="image-viewer">
                   <div #musicWidget2 class="middle">
                     <div class="info-widget" *ngFor="let s of favoritas">
-                      <div class="iframe-container">
-                        <iframe frameborder="0" allowtransparency="true" allow="encrypted-media"
-                          [src]="cleanUrl(s.url)"></iframe>
+                      <div class="publicacion">
+                        <div class="iframe-container">
+                          <iframe frameborder="0" allowtransparency="true" allow="encrypted-media"
+                            [src]="cleanUrl(s.url)"></iframe>
+                        </div>
+                        <div class="sections-info-text mt-3" style="color: #ffffff !important;">{{s.titulo}}</div>
+                        <div class="sections-info-text">{{s.artista}}</div>
                       </div>
-                      <div class="sections-info-text mt-3" style="color: #ffffff !important;">{{s.titulo}}</div>
-                      <div class="sections-info-text">{{s.artista}}</div>
                     </div>
                   </div>
                 </div>
