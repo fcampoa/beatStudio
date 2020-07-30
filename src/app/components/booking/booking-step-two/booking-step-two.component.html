@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="col-amigos pt-4 pr-3 pl-3 pb-3">
+    <div class="col-amigos pt-4 pr-3 pl-3 pb-3" style="overflow: auto;">
       <div class="row">
         <div class="col-12">
           <label id="labelPrincipal" class="mat_number">{{ numero }}</label>
@@ -69,14 +69,20 @@
           <label class="border_mat col-12" id="nombrePrincipal"></label>
         </div>
       </div>
-      <div class="row mt-1 mb-2" [attr.disabled]="seleccionado">
+      <!-- <div class="row mt-1 mb-2" [attr.disabled]="seleccionado">
         <div class="col-12">
-          <!-- <mat-slide-toggle [(ngModel)]="invitados" >Invitar Amigos</mat-slide-toggle> -->
           <label class="switch">
             <input type="checkbox" [disabled]="!seleccionado" [(ngModel)]="invitados">
             <span class="slider round"></span>
           </label>
           <label class="pl-3 pb-2" style="font-family: GT-America-Medium;font-size: 18px;">Invitar amigos</label>
+        </div>
+      </div> -->
+      <div class="row mt-1 mb-2" [attr.disabled]="seleccionado">
+        <div class="col-12">
+          <button mat-mini-fab color="accent" (click)="agregarAmigo()">
+            <mat-icon>add</mat-icon>
+          </button>
         </div>
       </div>
       <div class="row">

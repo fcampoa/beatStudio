@@ -20,11 +20,11 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 export class BookingStepTwoComponent implements OnInit {
 
   constructor(private apiSvc: GlobalApiService,
-    private router: Router,
-    private userSv: UserService,
-    private route: ActivatedRoute,
-    private location: Location,
-    private notify: NotificationsService) {
+              private router: Router,
+              private userSv: UserService,
+              private route: ActivatedRoute,
+              private location: Location,
+              private notify: NotificationsService) {
 
     this.cliente = new Cliente();
     this.cliente.nombre = '';
@@ -43,6 +43,7 @@ export class BookingStepTwoComponent implements OnInit {
   totalInvitados = 0;
   public invitar = false;
   public loading = false;
+  index = 0;
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',
@@ -192,7 +193,6 @@ export class BookingStepTwoComponent implements OnInit {
     let a: any;
 
     if (!this.invitar && this.seleccionado) {
-      debugger;
       const lugar = document.getElementById('labelPrincipal');
       lugar.style.color = this.colors[0];
 
@@ -200,7 +200,7 @@ export class BookingStepTwoComponent implements OnInit {
       nombre.style.backgroundColor = this.colors[0];
 
       $('#' + 'btn' + this.numero).addClass('seat-format');
-      $('#' + 'btn' + this.numero).css('background', '#000000');
+      $('#' + 'btn' + this.numero).css('background', '#1b1b1b');
       $('#' + 'btn' + this.numero).prop('enabled', true);
 
       this.seleccion = i;
@@ -228,18 +228,23 @@ export class BookingStepTwoComponent implements OnInit {
 
     }
     if (this.invitar) {
-      a = { lugar: i.numero, fila: i.fila, nombre: '', index: this.totalInvitados };
-      this.amigos.push(a);
+      // a = { lugar: i.numero, fila: i.fila, nombre: '', index: this.totalInvitados };
+      // this.amigos.push(a);
+      // this.formatInput(a);
+      a = this.amigos[this.index];
+      a.lugar = i.numero;
+      a.fila = i.fila;
+      a.nombre = '';
       this.formatInput(a);
     }
- 
   }
 
   formatInput(a: any) {
     const btn = 'btn' + a.lugar;
     $('#' + btn).removeClass('seat-format');
-    this.totalInvitados++;
-    $('#' + btn).css('background', this.colors[this.totalInvitados]);
+    // this.totalInvitados++;
+    //$('#' + btn).css('background', this.colors[this.totalInvitados]);
+    $('#' + btn).css('background', this.colors[a.index]);
     $('#' + btn).prop('enabled', false);
   }
 
@@ -298,5 +303,33 @@ export class BookingStepTwoComponent implements OnInit {
     const el = document.getElementById('btn' + String(id));
     el.style.borderColor = '';
     el.style.color = '';
+  }
+
+  agregarAmigo(): void {
+    this.invitar = true;
+    if (this.amigos[this.amigos.length - 1].nombre !== '') {
+    let a: any;
+    this.totalInvitados++;
+    a = { lugar: '', fila: '', nombre: '', index: this.totalInvitados };
+    this.index = this.totalInvitados;
+    this.amigos.push(a);
+    this.amigos.forEach(f => this.formatInput(f));
+    // this.formatInput(a);
+    } else {
+      this.notify.errorMessage('debes seleccionar asiento y nombre para el invitado actual.')
+    }
+  }
+
+  eliminarAmigo(a: any): void {
+    const aux = this.amigos.indexOf(a);
+    if (aux >= 0) {
+      let auxAmigos = [];
+      auxAmigos = this.amigos.splice(aux, 1);
+      this.amigos = [];
+      // this.amigos = auxAmigos;
+      auxAmigos.forEach(f => this.amigos.push(f));
+      this.totalInvitados--;
+
+    }
   }
 }
