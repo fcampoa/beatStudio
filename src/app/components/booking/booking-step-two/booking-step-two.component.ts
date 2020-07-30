@@ -78,37 +78,37 @@ export class BookingStepTwoComponent implements OnInit {
       { status: 'active', fila: 1, numero: 1, visible: true, value: 1, ocupado: false },
       { status: 'active', fila: 1, numero: 2, visible: true, value: 2, ocupado: false },
       { status: 'active', fila: 1, numero: 3, visible: true, value: 3, ocupado: false },
-      { status: 'active', fila: 1, numero: 4, visible: false, value: 4, ocupado: false },
-      { status: 'active', fila: 1, numero: 5, visible: false, value: 5, ocupado: false },
-      { status: 'active', fila: 1, numero: 6, visible: false, value: 6, ocupado: false },
-      { status: 'active', fila: 1, numero: 7, visible: false, value: 7, ocupado: false },
-      { status: 'active', fila: 1, numero: 8, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 1, numero: 9, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 1, numero: 10, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 4, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 5, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 6, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 7, ocupado: false },
+      { status: 'active', fila: 1, numero: 4, visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: 1, numero: 5, visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: 1, numero: 6, visible: true, value: 10, ocupado: false }
     ],
     [
-      { status: 'active', fila: 2, numero: 11, visible: true, value: 1, ocupado: false },
-      { status: 'active', fila: 2, numero: 12, visible: true, value: 2, ocupado: false },
-      { status: 'active', fila: 2, numero: 13, visible: true, value: 3, ocupado: false },
-      { status: 'active', fila: 2, numero: 14, visible: true, value: 4, ocupado: false },
-      { status: 'active', fila: 2, numero: 15, visible: false, value: 5, ocupado: false },
-      { status: 'active', fila: 2, numero: 16, visible: false, value: 6, ocupado: false },
-      { status: 'active', fila: 2, numero: 17, visible: true, value: 7, ocupado: false },
-      { status: 'active', fila: 2, numero: 18, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 2, numero: 19, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 2, numero: 20, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 2, numero: 7, visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: 2, numero: 8, visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: 2, numero: 9, visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: 2, numero: 10, visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: 2, numero: 0, visible: false, value: 5, ocupado: false },
+      { status: 'active', fila: 2, numero: 0, visible: false, value: 6, ocupado: false },
+      { status: 'active', fila: 2, numero: 11, visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: 2, numero: 12, visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: 2, numero: 13, visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: 2, numero: 14, visible: true, value: 10, ocupado: false }
     ],
     [
-      { status: 'active', fila: 3, numero: 21, visible: true, value: 1, ocupado: false },
-      { status: 'active', fila: 3, numero: 22, visible: true, value: 2, ocupado: false },
-      { status: 'active', fila: 3, numero: 23, visible: true, value: 3, ocupado: false },
-      { status: 'active', fila: 3, numero: 24, visible: true, value: 4, ocupado: false },
-      { status: 'active', fila: 3, numero: 25, visible: true, value: 5, ocupado: false },
-      { status: 'active', fila: 3, numero: 26, visible: true, value: 6, ocupado: false },
-      { status: 'active', fila: 3, numero: 27, visible: true, value: 7, ocupado: false },
-      { status: 'active', fila: 3, numero: 28, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 3, numero: 29, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 3, numero: 30, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 3, numero: 15, visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: 3, numero: 16, visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: 3, numero: 17, visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: 3, numero: 18, visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: 3, numero: 19, visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: 3, numero: 20, visible: true, value: 6, ocupado: false },
+      { status: 'active', fila: 3, numero: 21, visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: 3, numero: 22, visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: 3, numero: 23, visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: 3, numero: 24, visible: true, value: 10, ocupado: false }
     ],
   ];
 
@@ -200,7 +200,7 @@ export class BookingStepTwoComponent implements OnInit {
       nombre.style.backgroundColor = this.colors[0];
 
       $('#' + 'btn' + this.numero).addClass('seat-format');
-      $('#' + 'btn' + this.numero).css('background', '#000000');
+      $('#' + 'btn' + this.numero).css('background', '#1b1b1b');
       $('#' + 'btn' + this.numero).prop('enabled', true);
 
       this.seleccion = i;
