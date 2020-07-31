@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-paypal',
@@ -11,7 +12,8 @@ export class PaypalComponent implements OnInit {
 
   public payPalConfig?: IPayPalConfig;
 
-  @Input() total: any;
+  @Input() total: string;
+  @Output() resultado: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit(): void {
       this.initConfig();
@@ -31,11 +33,11 @@ export class PaypalComponent implements OnInit {
         {
           amount: {
             currency_code: 'MXN',
-            value: '9.99',
+            value: '1',
             breakdown: {
               item_total: {
                 currency_code: 'MXN',
-                value: '9.99'
+                value: '1'
               }
             }
           },
@@ -46,7 +48,7 @@ export class PaypalComponent implements OnInit {
               category: 'DIGITAL_GOODS',
               unit_amount: {
                 currency_code: 'MXN',
-                value: '9.99'
+                value: '1'
               },
             }
           ]
@@ -69,6 +71,7 @@ export class PaypalComponent implements OnInit {
     onClientAuthorization: (data) => {
       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
      // this.showSuccess = true;
+      this.resultado.emit(data);
     },
     onCancel: (data, actions) => {
       console.log('OnCancel', data, actions);
@@ -77,10 +80,9 @@ export class PaypalComponent implements OnInit {
       console.log('OnError', err);
     },
     onClick: (data, actions) => {
-      debugger;
       console.log('onClick', data, actions);
       if (data.fundingSource === 'card') {
-      this.loadCreditCardData();
+      // this.loadCreditCardData();
       }
     },
   };

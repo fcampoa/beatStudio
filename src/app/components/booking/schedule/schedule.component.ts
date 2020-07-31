@@ -167,9 +167,9 @@ export class ScheduleComponent implements OnInit {
    * @param horario
    */
   checarLleno(horario: Horario) {
-    this.apiSvc.endPoints.horario.lugaresOcupados(horario.id)<any>().subscribe(
+    this.apiSvc.routes.reservacion_detalle.buscarHorario(horario.id)<any>().subscribe(
       response => {
-        horario.lleno = response.ocupados === horario.lugares;
+        horario.lleno = response.data.length === horario.lugares;
       }
     );
   }
