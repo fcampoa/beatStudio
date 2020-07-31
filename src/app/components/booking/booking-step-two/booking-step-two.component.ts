@@ -31,12 +31,13 @@ export class BookingStepTwoComponent implements OnInit {
 
   }
 
-  public numero = '';
+  public numero = 0;
   user: any;
   click = false;
   cliente: Cliente;
   public reservaciones: ReservacionDetalle[] = [];
   public seleccionado = false;
+  public seleccionado_amigo = false;
   public seleccion: any;
   public horario: Horario;
   amigos: any[] = [];
@@ -78,25 +79,25 @@ export class BookingStepTwoComponent implements OnInit {
       { status: 'active', fila: 1, numero: 1, visible: true, value: 1, ocupado: false },
       { status: 'active', fila: 1, numero: 2, visible: true, value: 2, ocupado: false },
       { status: 'active', fila: 1, numero: 3, visible: true, value: 3, ocupado: false },
-      { status: 'active', fila: 1, numero: 0, visible: false, value: 4, ocupado: false },
-      { status: 'active', fila: 1, numero: 0, visible: false, value: 5, ocupado: false },
-      { status: 'active', fila: 1, numero: 0, visible: false, value: 6, ocupado: false },
-      { status: 'active', fila: 1, numero: 0, visible: false, value: 7, ocupado: false },
-      { status: 'active', fila: 1, numero: 4, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 1, numero: 5, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 1, numero: 6, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 4, visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: 1, numero: 5, visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: 1, numero: 6, visible: true, value: 6, ocupado: false }
     ],
     [
       { status: 'active', fila: 2, numero: 7, visible: true, value: 1, ocupado: false },
       { status: 'active', fila: 2, numero: 8, visible: true, value: 2, ocupado: false },
       { status: 'active', fila: 2, numero: 9, visible: true, value: 3, ocupado: false },
       { status: 'active', fila: 2, numero: 10, visible: true, value: 4, ocupado: false },
-      { status: 'active', fila: 2, numero: 0, visible: false, value: 5, ocupado: false },
-      { status: 'active', fila: 2, numero: 0, visible: false, value: 6, ocupado: false },
-      { status: 'active', fila: 2, numero: 11, visible: true, value: 7, ocupado: false },
-      { status: 'active', fila: 2, numero: 12, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 2, numero: 13, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 2, numero: 14, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 2, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 2, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 2, numero: 11, visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: 2, numero: 12, visible: true, value: 6, ocupado: false },
+      { status: 'active', fila: 2, numero: 13, visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: 2, numero: 14, visible: true, value: 8, ocupado: false }
     ],
     [
       { status: 'active', fila: 3, numero: 15, visible: true, value: 1, ocupado: false },
@@ -192,16 +193,13 @@ export class BookingStepTwoComponent implements OnInit {
     let a: any;
 
     if (!this.invitar && this.seleccionado) {
-      debugger;
       const lugar = document.getElementById('labelPrincipal');
       lugar.style.color = this.colors[0];
 
       const nombre = document.getElementById('nombrePrincipal');
-      nombre.style.backgroundColor = this.colors[0];
+      // nombre.style.backgroundColor = this.colors[0];
 
-      $('#' + 'btn' + this.numero).addClass('seat-format');
-      $('#' + 'btn' + this.numero).css('background', '#1b1b1b');
-      $('#' + 'btn' + this.numero).prop('enabled', true);
+      this.resetButton(this.numero);
 
       this.seleccion = i;
       this.numero = i.numero;
@@ -209,7 +207,7 @@ export class BookingStepTwoComponent implements OnInit {
 
       $('#' + 'btn' + i.numero).removeClass('seat-format');
       $('#' + 'btn' + i.numero).css('background', this.colors[0]);
-      $('#' + 'btn' + i.numero).prop('enabled', false);
+      $('#' + 'btn' + i.numero).prop('disabled', true);
     }
 
     if (!this.seleccionado) {
@@ -220,27 +218,70 @@ export class BookingStepTwoComponent implements OnInit {
       lugar.style.color = this.colors[0];
 
       const nombre = document.getElementById('nombrePrincipal');
-      nombre.style.backgroundColor = this.colors[0];
+      nombre.style.borderBottom = `2px solid ${this.colors[0]} !important`;
 
       $('#' + 'btn' + i.numero).removeClass('seat-format');
       $('#' + 'btn' + i.numero).css('background', this.colors[0]);
-      $('#' + 'btn' + i.numero).prop('enabled', false);
-
+      $('#' + 'btn' + i.numero).prop('disabled', true);
+      this.seleccionado_amigo = true;
     }
     if (this.invitar) {
-      a = { lugar: i.numero, fila: i.fila, nombre: '', index: this.totalInvitados };
-      this.amigos.push(a);
-      this.formatInput(a);
-    }
- 
-  }
+      // a = { lugar: i.numero, fila: i.fila, nombre: '', index: this.totalInvitados };
+      // this.amigos.push(a);
 
+      let amigo = this.amigos[this.amigos.length - 1];
+
+      this.resetButton(amigo.lugar);
+
+      amigo.lugar = i.numero;
+      amigo.fila = i.fila;
+      this.formatInput(amigo);
+    }
+
+  }
+  resetButton(lugar: number): void {
+    if (lugar > 0) {
+      const btn = 'btn' + lugar;
+      $('#' + btn).addClass('seat-format');
+      $('#' + btn).css('background', '#1b1b1b');
+      $('#' + btn).prop('disabled', false);
+    }
+  }
+  addFriend(): void {
+    let a = { lugar: 0, fila: 0, nombre: '', index: this.totalInvitados };
+    this.amigos.push(a);
+    this.totalInvitados++;
+    this.invitar = true;
+    this.seleccionado_amigo = false;
+  }
+  removeFriend(i: number): void {
+    let amigo = this.amigos[i];
+    this.resetButton(amigo.lugar);
+    this.amigos.splice(i, 1);
+    this.totalInvitados--;
+    const sinElegir = this.amigos.filter(amigo => amigo.lugar === 0);
+    if (sinElegir.length === 0) {
+      this.seleccionado_amigo = true;
+    } else {
+      this.seleccionado_amigo = false;
+    }
+    const otrosElegidos = this.amigos.filter(amigo => amigo.lugar !== 0);
+    if (otrosElegidos.length > 0) {
+      for (let index = 0; index < otrosElegidos.length; index++) {
+        const element = otrosElegidos[index];
+        const btn = 'btn' + element.lugar;
+        $('#' + btn).removeClass('seat-format');
+        $('#' + btn).css('background', this.colors[index+1]);
+        $('#' + btn).prop('disabled', true);
+      }
+    }
+  }
   formatInput(a: any) {
     const btn = 'btn' + a.lugar;
     $('#' + btn).removeClass('seat-format');
-    this.totalInvitados++;
     $('#' + btn).css('background', this.colors[this.totalInvitados]);
-    $('#' + btn).prop('enabled', false);
+    $('#' + btn).prop('disabled', true);
+    this.seleccionado_amigo = true;
   }
 
   getElement(id) {
@@ -290,13 +331,23 @@ export class BookingStepTwoComponent implements OnInit {
   hover(id: number) {
     const el = document.getElementById('btn' + String(id));
     // el.classList.remove('seat-format');
-    el.style.borderColor = this.seleccionado && this.invitar ? this.colors[this.totalInvitados + 1] : this.colors[0];
-    el.style.color = this.seleccionado && this.invitar ? this.colors[this.totalInvitados + 1] : this.colors[0];
+    el.style.borderColor = this.seleccionado && this.invitar ? this.colors[this.totalInvitados] : this.colors[0];
+    el.style.color = this.seleccionado && this.invitar ? this.colors[this.totalInvitados] : this.colors[0];
   }
 
   leave(id: number) {
     const el = document.getElementById('btn' + String(id));
     el.style.borderColor = '';
     el.style.color = '';
+  }
+
+  isSelected(): boolean {
+    if (this.amigos.length > 0) {
+      if (this.amigos[this.totalInvitados].selected) {
+        return true;
+      }
+      return false;
+    }
+    return true;
   }
 }
