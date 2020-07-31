@@ -27,10 +27,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public sections = [
     { nombre: 'ABOUT', url: 'dashboard/about' },
     {
-      nombre: 'CLASES', url: 'dashboard/disciplines', sublinks: [{ name: 'BeatSpin', url: 'dashboard/disciplines/beatspin' },
-      { name: 'BeatBarre', url: 'dashboard/disciplines/beatspin' },
-      { name: 'BeatYoga', url: 'dashboard/disciplines/beatspin' },
-      { name: 'BeatPower', url: 'dashboard/disciplines/beatspin' }]
+      nombre: 'CLASES', url: 'dashboard/disciplines', sublinks: [
+        { name: 'SPIN', url: 'dashboard/disciplines/beatspin' },
+        { name: 'BARRE', url: 'dashboard/disciplines/beatspin' },
+        { name: 'YOGA', url: 'dashboard/disciplines/beatspin' },
+        { name: 'POWER', url: 'dashboard/disciplines/beatspin' }]
     },
     { nombre: 'COACHES', url: 'dashboard/coach' },
     { nombre: 'ONLINE WORKOUTS', url: '' },

@@ -1,279 +1,389 @@
-button{
+button {
   outline: none;
 }
 
-.coach-seat {
-    width: 48px;
-        height: 48px;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-        background: #ffffff;
+.div-personas {
+  padding-bottom: 5px;
+  border-bottom: 2px solid #9865ff;
+  margin-bottom: 25px;
+  font-family: GT-America-Regular;
+  letter-spacing: -1px;
+  .sit-number {
+    position: absolute;
+    top: 0;
+    left: 5%;
+  }
+
+  .name {
+    margin-left: 30px;
+    font-size: 14px;
+    input[type="text"]{
+      width: 90%;
+      background: transparent;
+      border:none;
+      outline: none;
+      color: white;
+    }
+  }
+
+  .remove-button {
+    position: absolute;
+    top: 5px;
+    left: 88%;
+    right: -100px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    -webkit-transition: background-color 500ms;
+    -moz-transition: background-color 500ms;
+    -o-transition: background-color 500ms;
+    -ms-transition: background-color 500ms;
+    transition: background-color 500ms;
+    div {
+      color: red;
+      text-align: center;
+      position: relative;
+      top: 50%;
+      transform: translateY(-55%);
+    }
+  }
+
+  .remove-button:hover {
+    background-color: #313131;
+  }
 }
 
-.coach-title{
-    font-family: Cedra4FWide;
-    font-size: 11px;
-    text-transform: uppercase;
+.add-friend{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background-color: #303030;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: GT-America-Regular;
+  letter-spacing: -1px;
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  -ms-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
+
+.add-friend:hover{
+  background-color: #616161;
+}
+
+.coach-seat {
+  width: 48px;
+  height: 48px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.coach-title {
+  font-family: Cedra4FWide;
+  font-size: 11px;
+  text-transform: uppercase;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 30px;
-    height: 18px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(12px);
-    -ms-transform: translateX(12px);
-    transform: translateX(12px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 18px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(12px);
+  -ms-transform: translateX(12px);
+  transform: translateX(12px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 
 .background-format {
   background: #000000 !important;
 }
+
 .background-format:hover {
   background: #000000 !important;
   border: 2px solid !important;
 }
-button:disabled{
-color: #aaa;
+
+button:disabled {
+  color: #aaa;
 }
 
-mat-card{
-    background: #1b1b1b !important;
+mat-card {
+  background: #1b1b1b !important;
 }
+
 .hide_circle {
-    visibility: hidden;
-}
-.title_top_ {
-    font-size: 12px;
-    color: #4c4c4c;
-    font-family: Cedra4FWide;
-}
-.title_down_ {
-    font-family: GT-America-Light;
-    font-size: 18px;
-}
-.mat_input {
-    border-style: none !important;
-    background-color: transparent;
-    color: white !important;
-    padding-left: 2rem;
-    font-family: GT-America-Regular;
-    font-size: 14px;
-}
-.mat_input:focus {
-    border-color: transparent !important;
-    box-shadow: none !important;
-}
-.border_mat {
-    background-color: #986dff;
-    height: 1px;
-    position: relative;
-    top: -13px;
-}
-.mat_number {
-    position: absolute;
-    color: #986dff;
-    top: 10px;
-}
-.invitados{
-    font-family: Cedra4FWide !important;
+  visibility: hidden;
 }
 
-.col-asientos{
-    background: #1b1b1b !important;;
-    width: 73%;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin-right: 2%;
-    .col-button{
-        width: 10%;
-    }
-    .seat-format {
-        background: #1b1b1b;
-        border-color: #ffffff;
-        border: 1px solid;
-        font-family: GT-America-Thin;
-        width: 44px;
-        height: 44px;
-      }
+.title_top_ {
+  font-size: 12px;
+  color: #4c4c4c;
+  font-family: Cedra4FWide;
 }
-.col-amigos{
-    background: #1b1b1b !important;
-    width: 25%;
+
+.title_down_ {
+  font-family: GT-America-Light;
+  font-size: 18px;
 }
+
+.mat_input {
+  border-style: none !important;
+  background-color: transparent;
+  color: white !important;
+  padding-left: 2rem;
+  font-family: GT-America-Regular;
+  font-size: 14px;
+}
+
+.mat_input:focus {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.border_mat {
+  background-color: #986dff;
+  height: 1px;
+  position: relative;
+  top: -13px;
+}
+
+.mat_number {
+  position: absolute;
+  color: #986dff;
+  top: 10px;
+}
+
+.invitados {
+  font-family: Cedra4FWide !important;
+}
+
+.col-asientos {
+  background: #1b1b1b !important;
+  ;
+  width: 73%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-right: 2%;
+
+  .col-button {
+    width: 10%;
+  }
+
+  .seat-format {
+    background: #1b1b1b;
+    border-color: #ffffff;
+    border: 1px solid;
+    font-family: GT-America-Thin;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.col-amigos {
+  background: #1b1b1b !important;
+  width: 25%;
+}
+
 /* estilos fily */
 
 .remove-border-bottom ::ng-deep .mat-tab-header {
-    border-bottom: none;
-    padding-bottom: 5%;
+  border-bottom: none;
+  padding-bottom: 5%;
 }
 
 @media (max-width: 576px) {
-    .col-asientos{
-        width: 100%;
-        padding-left: 5%;
-        padding-right: 5%;
-        margin-right: 0;
-        margin-bottom: 14px;
-        .col-button{
-            width: 10%;
-        }
-        .seat-format {
-            background: #1b1b1b;
-            border-color: #ffffff;
-            border: 1px solid;
-            font-family: GT-America-Thin;
-            width: 38px;
-            height: 38px;
-          }
-    }
-    .col-amigos{
-        width: 100%;
-    }
-  }
-  @media (min-width: 577px) {
-    .col-asientos{
-        width: 100%;
-        padding-left: 5%;
-        padding-right: 5%;
-        margin-right: 0;
-        margin-bottom: 14px;
-        .col-button{
-            width: 10%;
-        }
-        .seat-format {
-            background: #1b1b1b;
-            border-color: #ffffff;
-            border: 1px solid;
-            font-family: GT-America-Thin;
-            width: 44px;
-            height: 44px;
-          }
-    }
-    .col-amigos{
-        width: 100%;
-    }
-  }
-  @media (min-width: 768px) {
-    .col-asientos{
+  .col-asientos {
     width: 100%;
     padding-left: 5%;
     padding-right: 5%;
     margin-right: 0;
     margin-bottom: 14px;
-    .col-button{
-        width: 10%;
+
+    .col-button {
+      width: 10%;
     }
+
     .seat-format {
-        background: #1b1b1b;
-        border-color: #ffffff;
-        border: 1px solid;
-        font-family: GT-America-Thin;
-        width: 44px;
-        height: 44px;
-      }
-}
-.col-amigos{
+      background: #1b1b1b;
+      border-color: #ffffff;
+      border: 1px solid;
+      font-family: GT-America-Thin;
+      width: 38px;
+      height: 38px;
+    }
+  }
+
+  .col-amigos {
     width: 100%;
-}
   }
-  @media (min-width: 992px) {
-    .col-asientos{
+}
+
+@media (min-width: 577px) {
+  .col-asientos {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-right: 0;
+    margin-bottom: 14px;
+
+    .col-button {
+      width: 10%;
+    }
+
+    .seat-format {
+      background: #1b1b1b;
+      border-color: #ffffff;
+      border: 1px solid;
+      font-family: GT-America-Thin;
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  .col-amigos {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-asientos {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-right: 0;
+    margin-bottom: 14px;
+
+    .col-button {
+      width: 10%;
+    }
+
+    .seat-format {
+      background: #1b1b1b;
+      border-color: #ffffff;
+      border: 1px solid;
+      font-family: GT-America-Thin;
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  .col-amigos {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-asientos {
     width: 73%;
     padding-left: 5%;
     padding-right: 5%;
     margin-right: 2%;
     margin-bottom: 0;
-    .col-button{
-        width: 10%;
+
+    .col-button {
+      width: 10%;
     }
+
     .seat-format {
-        background: #1b1b1b;
-        border-color: #ffffff;
-        border: 1px solid;
-        font-family: GT-America-Thin;
-        width: 44px;
-        height: 44px;
-      }
-}
-.col-amigos{
-    width: 25%;
-}
+      background: #1b1b1b;
+      border-color: #ffffff;
+      border: 1px solid;
+      font-family: GT-America-Thin;
+      width: 44px;
+      height: 44px;
+    }
   }
-  @media (min-width: 1200px) {
-    .col-asientos{
+
+  .col-amigos {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-asientos {
     width: 73%;
     padding-left: 5%;
     padding-right: 5%;
     margin-right: 2%;
     margin-bottom: 0;
-    .col-button{
-        width: 10%;
+
+    .col-button {
+      width: 10%;
     }
+
     .seat-format {
-        background: #1b1b1b;
-        border-color: #ffffff;
-        border: 1px solid;
-        font-family: GT-America-Thin;
-        width: 44px;
-        height: 44px;
-      }
-}
-.col-amigos{
-    width: 25%;
-}
+      background: #1b1b1b;
+      border-color: #ffffff;
+      border: 1px solid;
+      font-family: GT-America-Thin;
+      width: 44px;
+      height: 44px;
+    }
   }
+
+  .col-amigos {
+    width: 25%;
+  }
+}
 
 
 // .button-style:hover {
