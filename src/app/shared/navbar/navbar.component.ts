@@ -105,4 +105,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   checkLogin($event): void {
     this.login.emit($event);
   }
+
+  openCustomPopover(): void {
+    let popover = document.getElementById('custom-popover');
+    popover.style.display = 'block';
+  }
 }

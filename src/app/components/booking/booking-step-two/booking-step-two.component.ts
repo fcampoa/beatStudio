@@ -239,6 +239,7 @@ export class BookingStepTwoComponent implements OnInit {
     }
 
   }
+  
   resetButton(lugar: number): void {
     if (lugar > 0) {
       const btn = 'btn' + lugar;
@@ -247,6 +248,7 @@ export class BookingStepTwoComponent implements OnInit {
       $('#' + btn).prop('disabled', false);
     }
   }
+
   addFriend(): void {
     let a = { lugar: 0, fila: 0, nombre: '', index: this.totalInvitados };
     this.amigos.push(a);
@@ -254,6 +256,7 @@ export class BookingStepTwoComponent implements OnInit {
     this.invitar = true;
     this.seleccionado_amigo = false;
   }
+
   removeFriend(i: number): void {
     let amigo = this.amigos[i];
     this.resetButton(amigo.lugar);
@@ -271,11 +274,12 @@ export class BookingStepTwoComponent implements OnInit {
         const element = otrosElegidos[index];
         const btn = 'btn' + element.lugar;
         $('#' + btn).removeClass('seat-format');
-        $('#' + btn).css('background', this.colors[index+1]);
+        $('#' + btn).css('background', this.colors[index + 1]);
         $('#' + btn).prop('disabled', true);
       }
     }
   }
+
   formatInput(a: any) {
     const btn = 'btn' + a.lugar;
     $('#' + btn).removeClass('seat-format');
@@ -288,6 +292,7 @@ export class BookingStepTwoComponent implements OnInit {
     const el = document.getElementById(id);
     return el !== null ? el : this.getElement(id);
   }
+
   siguiente() {
     let r: Reservacion;
     if (this.seleccionado) {
@@ -339,15 +344,5 @@ export class BookingStepTwoComponent implements OnInit {
     const el = document.getElementById('btn' + String(id));
     el.style.borderColor = '';
     el.style.color = '';
-  }
-
-  isSelected(): boolean {
-    if (this.amigos.length > 0) {
-      if (this.amigos[this.totalInvitados].selected) {
-        return true;
-      }
-      return false;
-    }
-    return true;
   }
 }

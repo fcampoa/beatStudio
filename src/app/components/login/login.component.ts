@@ -66,4 +66,7 @@ export class LoginComponent implements OnInit {
     this.password = this.userGroup.get('txtPassword').value;
   }
 
+  goToRecover(): void {
+    this.router.navigate(['dashboard/recover']);
+  }
 }
