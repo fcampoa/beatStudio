@@ -66,6 +66,8 @@ import { WaitlistComponent } from './components/booking/waitlist/waitlist.compon
 import { CancelClassComponent } from './components/booking-history/cancel-class/cancel-class.component';
 import { ChangeMethodComponent } from './components/checkout/change-method/change-method.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
+import { PasswordRecoveryStepOneComponent } from './components/password-recovery/password-recovery-step-one/password-recovery-step-one.component';
+import { PasswordRecoveryStepTwoComponent } from './components/password-recovery/password-recovery-step-two/password-recovery-step-two.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +116,9 @@ import { InfoModalComponent } from './components/info-modal/info-modal.component
     WaitlistComponent,
     CancelClassComponent,
     ChangeMethodComponent,
-    InfoModalComponent
+    InfoModalComponent,
+    PasswordRecoveryStepOneComponent,
+    PasswordRecoveryStepTwoComponent
   ],
   imports: [
     BrowserModule,

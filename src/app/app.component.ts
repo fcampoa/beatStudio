@@ -1,5 +1,5 @@
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 
 declare var $: any;
@@ -33,4 +33,12 @@ export class AppComponent {
     ;
   }
 
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    let popover = document.getElementById('custom-popover');
+    if (event.target == popover) {
+      popover.style.display = "none";
+    }
+  }
 }

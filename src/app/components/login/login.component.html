@@ -1,23 +1,19 @@
-<div class="container-fluid text-center">
-  <form #form="ngForm" [formGroup]="userGroup" (ngSubmit)="doLogin()" novalidate>
-    <div class="mt-3"><h5 style="padding-bottom: 20px;"><b>Iniciar sesión</b></h5></div>
-    <mat-form-field>
-      <mat-label>Tu correo electrónico</mat-label>
-      <input matInput type="email" id="txtEmail" formControlName="txtEmail">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Tu contraseña</mat-label>
-      <input matInput type="password" id="txtPassword" formControlName="txtPassword">
-    </mat-form-field>
-    <div style="padding-bottom: 20px;">
-      <a [ngbPopover]="popResetContent" [popoverTitle]="popResetTitle">¿Olvidaste tu contraseña?</a>
-    </div>
-    <!-- <a href="">¿Olvidaste tu contrañse?</a> -->
-    <div class="mb-3"><button type="submit" class="button-black">ENTRAR</button></div>
-    
-  </form>
-</div>
-<ng-template #popResetContent>
+<form #form="ngForm" [formGroup]="userGroup" (ngSubmit)="doLogin()" novalidate>
+  <h5 style="padding-bottom: 25px;"><b>Iniciar sesión</b></h5>
+  <mat-form-field style="padding-bottom: 20px;">
+    <mat-label>Tu correo electrónico</mat-label>
+    <input matInput type="email" id="txtEmail" formControlName="txtEmail">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tu contraseña</mat-label>
+    <input matInput type="password" id="txtPassword" formControlName="txtPassword">
+  </mat-form-field>
+  <div style="margin-bottom: 30px;">
+    <a (click)="goToRecover()">¿Olvidaste tu contraseña?</a>
+  </div>
+  <button type="submit" class="button-black">ENTRAR</button>
+</form>
+<!-- <ng-template #popResetContent>
   <div class="container-fluid">
     <p>Escribe tu correo electrónico y te enviaremos instrucciones para recuperar tu contraseña.</p>
     <form novalidate>
@@ -29,4 +25,4 @@
     </form>
   </div>
 </ng-template>
-<ng-template #popResetTitle>Recuperar contraseña</ng-template>
+<ng-template #popResetTitle>Recuperar contraseña</ng-template> -->
