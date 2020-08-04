@@ -20,6 +20,7 @@ import { BookingStepTwoComponent } from './components/booking/booking-step-two/b
 import { BookingConfirmationComponent } from './components/booking/booking-confirmation/booking-confirmation.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryStepOneComponent } from './components/password-recovery/password-recovery-step-one/password-recovery-step-one.component';
+import { PasswordRecoveryStepTwoComponent } from './components/password-recovery/password-recovery-step-two/password-recovery-step-two.component';
 import { PaypalComponent } from './Core/utilities/paypal/paypal.component';
 
 export const AppRoutes: Routes = [
@@ -47,6 +48,7 @@ export const AppRoutes: Routes = [
       { path: 'privacy', component: PrivacyComponent },
       { path: 'registro', component: RegisterComponent },
       { path: 'recover', component: PasswordRecoveryStepOneComponent },
+      { path: 'newpassword', component: PasswordRecoveryStepTwoComponent },
       { path: 'paypal', component: PaypalComponent }
     ]
   },

@@ -359,7 +359,10 @@ mat-slide-toggle-bar {
 }
 
 .button-new:disabled {
-  background: #616161 !important;
+  background: #3b3b3b !important;
+  border: 1px solid #797979 !important;
+  color: #bbbbbb;
+  opacity: 0.8;
 }
 
 .cancel-button {

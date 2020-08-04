@@ -11,7 +11,7 @@ button {
   .sit-number {
     position: absolute;
     top: 0;
-    left: 5%;
+    left: 20px
   }
 
   .name {
@@ -29,12 +29,10 @@ button {
   .remove-button {
     position: absolute;
     top: 5px;
-    left: 88%;
-    right: -100px;
+    left: calc(100% - 32px);
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #ccc;
     border: none;
     cursor: pointer;
     background-color: transparent;
