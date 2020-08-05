@@ -239,7 +239,7 @@ export class BookingStepTwoComponent implements OnInit {
     }
 
   }
-  
+
   resetButton(lugar: number): void {
     if (lugar > 0) {
       const btn = 'btn' + lugar;
@@ -291,6 +291,27 @@ export class BookingStepTwoComponent implements OnInit {
   getElement(id) {
     const el = document.getElementById(id);
     return el !== null ? el : this.getElement(id);
+  }
+
+  validateFriendsNames(): boolean {
+    const namePattern = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*$/;
+    let invalid = this.amigos.filter(amigo => !String(amigo.nombre).match(namePattern) || amigo.lugar === 0);
+    if (invalid.length > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  validate(): void {
+    if (this.amigos.length > 0) {
+      if (this.validateFriendsNames()) {
+        this.siguiente();
+      } else {
+        this.notify.errorMessage('Verifica el nombre o lugar de tus amigos.');
+      }
+    }else{
+      this.siguiente();
+    }
   }
 
   siguiente() {

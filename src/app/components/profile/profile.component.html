@@ -63,7 +63,7 @@
             Teléfono de contacto
           </mat-panel-title>
           <mat-panel-description>
-            <p>{{cliente.telefono}}</p>
+            <p>{{cliente.telefono | mask: '(000) 000 00 00'}}</p>
             <!-- <p style="color: #986dff">Cambiar</p> -->
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -72,7 +72,7 @@
             <div class="row">
               <mat-form-field>
                 <mat-label>Tu teléfono</mat-label>
-                <input matInput formControlName="txtPhone">
+                <input matInput formControlName="txtPhone" mask="(000) 000 00 00">
               </mat-form-field>
             </div>
             <div class="row d-flex justify-content-between">
@@ -97,7 +97,7 @@
             <div class="row">
               <mat-form-field>
                 <mat-label>Tu fecha de nacimiento</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                <input readonly matInput [matDatepicker]="picker" formControlName="birthDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -165,7 +165,7 @@
             Teléfono de emergencia
           </mat-panel-title>
           <mat-panel-description>
-            <p>{{cliente.telefono_contacto}}</p>
+            <p>{{cliente.telefono_contacto | mask:'(000) 000 00 00'}}</p>
             <!-- <p style="color: #986dff">Cambiar</p> -->
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -174,7 +174,7 @@
             <div class="row">
               <mat-form-field>
                 <mat-label>Tu teléfono de contacto de emergencia</mat-label>
-                <input matInput formControlName="txtContactPhone">
+                <input matInput mask="(000) 000 00 00" formControlName="txtContactPhone">
               </mat-form-field>
             </div>
             <div class="row d-flex justify-content-between">

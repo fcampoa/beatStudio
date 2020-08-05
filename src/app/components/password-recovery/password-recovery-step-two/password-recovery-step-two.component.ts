@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { NotificationsService } from '../../../services/notifications.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -22,7 +23,7 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   public passwordSecurity = '';
 
-  constructor(private formBuilder: FormBuilder,) { }
+  constructor(private formBuilder: FormBuilder,private notify: NotificationsService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -79,7 +80,7 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
 
   initForm(): void {
     this.userGroup = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.pattern("[a-zA-Z0-9.]+"), Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*[.]*"), Validators.minLength(8)]],
       passwordConfirmation: ['', [Validators.required]]
     }, { validator: this.samePassword });
   }
@@ -89,6 +90,10 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
   }
 
   recover(): void {
-    this.enviado = true;
+    if (this.userGroup.invalid) {
+      this.notify.errorMessage('Verifique los datos ingresados.');
+    } else {
+      this.enviado = true;
+    }
   }
 }

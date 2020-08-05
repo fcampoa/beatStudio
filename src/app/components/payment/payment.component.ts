@@ -99,6 +99,8 @@ export class PaymentComponent implements OnInit {
     this.apiSvc.routes.forma_pago.buscarCliente(this.cliente.id)<any>().subscribe(
       response => {
         this.formasPago = response.data;
+        console.log(response.data);
+        
       },
       error => console.log(error)
     );

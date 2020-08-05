@@ -69,6 +69,10 @@ import { InfoModalComponent } from './components/info-modal/info-modal.component
 import { PasswordRecoveryStepOneComponent } from './components/password-recovery/password-recovery-step-one/password-recovery-step-one.component';
 import { PasswordRecoveryStepTwoComponent } from './components/password-recovery/password-recovery-step-two/password-recovery-step-two.component';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+// export const options: Partial<IConfig> | (() => Partial<IConfig>);
+
 @NgModule({
   declarations: [
     // Componentes
@@ -137,16 +141,17 @@ import { PasswordRecoveryStepTwoComponent } from './components/password-recovery
     MDBBootstrapModule.forRoot(),
     QuickAppProMaterialModule,
     UtilitiesModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    NgxMaskModule.forRoot(),
     // AdminModule
   ],
   exports: [
   ],
   providers: [GlobalApiService, UserService, NotificationsService,
-     ParamsService, GenericApiCallService,
+    ParamsService, GenericApiCallService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: ErrorsHandler}],
+    { provide: ErrorHandler, useClass: ErrorsHandler }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -37,6 +37,17 @@ export class RegisterComponent implements OnInit {
     this.initForm();
   }
 
+  validate(): void {
+    if (this.group.get('terms').value === false) {
+      return this.notify.errorMessage('Debes aceptar los términos y condiciones.');
+    }
+    if (this.group.invalid) {
+      this.notify.errorMessage('Verifique los datos ingresados.');
+    } else {
+      this.registrarCliente();
+    }
+  }
+
   registrarCliente(): void {
     this.loading = true;
     this.cliente = this.parseValues();
@@ -88,17 +99,18 @@ export class RegisterComponent implements OnInit {
   }
 
   initForm(): void {
+    const namePattern = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*$/;
     this.group = this.formBuilder.group({
-      txtName: ['', [Validators.required]],
-      txtLastName: ['', [Validators.required]],
-      txtEmail: ['', [Validators.required]],
+      txtName: ['', [Validators.required, Validators.pattern(namePattern)]],
+      txtLastName: ['', [Validators.required, Validators.pattern(namePattern)]],
+      txtEmail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      txtContact: ['', [Validators.required]],
+      txtContact: ['', [Validators.required, Validators.pattern(namePattern)]],
       txtContactPhone: ['', [Validators.required]],
-      txtSize: [0, [Validators.required]],
+      txtSize: [0, [Validators.required, Validators.max(40)]],
       txtPhone: ['', [Validators.required]],
       birthDate: [new Date(), [Validators.required]],
-      terms:[false,[Validators.requiredTrue]]
+      terms: [false]
     });
   }
 

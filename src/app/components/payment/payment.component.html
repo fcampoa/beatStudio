@@ -7,7 +7,7 @@
             <!-- <mat-radio-button class="pt-2 pl-2" (change)="guardarForma(p)">
             </mat-radio-button> -->
             <label class="radio-container">
-              <input type="radio" name="radio" (change)="guardarForma(p)">
+              <input [checked]="p.principal" type="radio" name="radio" (change)="guardarForma(p)">
               <span class="checkmark"></span>
             </label>
           </div>
