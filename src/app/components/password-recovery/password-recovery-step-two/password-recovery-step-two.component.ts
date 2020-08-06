@@ -23,7 +23,7 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   public passwordSecurity = '';
 
-  constructor(private formBuilder: FormBuilder,private notify: NotificationsService) { }
+  constructor(private formBuilder: FormBuilder, private notify: NotificationsService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -32,19 +32,29 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
   validatePassword(): void {
     const password = String(this.userGroup.get('password').value);
     let checks = 0;
-    const isAlphanumeric = /\w+[\\.]*/;
+    // const isAlphanumeric = /\w+[\\.]*/;
     const hasUppercase = /[A-Z]+/;
     const hasLowercase = /[a-z]+/;
     const hasNumbers = /[0-9]+/;
-    const hasDot = /[\\.]+/;
-    if (password.match(isAlphanumeric) && password.length > 0) {
+    const hasOtherCharacters = /[\\#\\$\\%\\&\\/\\,\\.\\-\\_]+/;
+    if (password.length > 0) {
 
-      if (password.match(hasUppercase) && password.match(hasLowercase)) {
+      if (password.match(hasLowercase)) {
         checks++;
       }
-      if (password.match(hasNumbers) && password.match(hasDot)) {
+
+      if (password.match(hasUppercase)) {
         checks++;
       }
+
+      if (password.match(hasNumbers)) {
+        checks++;
+      }
+
+      if (password.match(hasOtherCharacters)) {
+        checks++;
+      }
+
       if (password.length > 8) {
         checks++;
       }
@@ -52,19 +62,23 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
       let securityLevelSpan = document.getElementById('security_level');
 
       switch (checks) {
-        case 0:
-          this.passwordSecurity = 'Poco segura';
+        case 1:
+          this.passwordSecurity = 'Insegura';
           securityLevelSpan.style.color = '#fc1e1e';
           break;
-        case 1:
+        case 2:
+          this.passwordSecurity = 'Poco segura';
+          securityLevelSpan.style.color = '#fcaf1e';
+          break;
+        case 3:
           this.passwordSecurity = 'Medianamente segura';
           securityLevelSpan.style.color = '#fcaf1e';
           break;
-        case 2:
+        case 4:
           this.passwordSecurity = 'Segura';
           securityLevelSpan.style.color = '#7affb9';
           break;
-        case 3:
+        case 5:
           this.passwordSecurity = 'Muy segura';
           securityLevelSpan.style.color = '#11E478';
           break;
@@ -80,7 +94,7 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
 
   initForm(): void {
     this.userGroup = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*[.]*"), Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\\#\\$\\%\\&\\,\\.\\-\\_]+$/), Validators.minLength(8)]],
       passwordConfirmation: ['', [Validators.required]]
     }, { validator: this.samePassword });
   }
