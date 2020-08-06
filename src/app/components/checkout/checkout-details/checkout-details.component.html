@@ -56,6 +56,12 @@
           <mat-icon style="margin-top: 3px;">add</mat-icon> Agregar otra forma de pago
         </div>
       </div>
+      <div class="row justify-content-center">
+        <div class="col col-sm col-xs col-md col-lg">
+        <!-- <app-paypal [total]="paquete.precio"></app-paypal> -->
+        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+      </div>
+      </div>
       <div class="row d-flex justify-content-center" style="padding-top: 10%; margin-bottom: 40%;">
         <div class="col-12 d-flex justify-content-between pr-5 pl-5">
           <button mat-stroked-button class="button-new" (click)="back()">CANCELAR</button>

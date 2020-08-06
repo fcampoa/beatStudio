@@ -20,11 +20,11 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 export class BookingStepTwoComponent implements OnInit {
 
   constructor(private apiSvc: GlobalApiService,
-    private router: Router,
-    private userSv: UserService,
-    private route: ActivatedRoute,
-    private location: Location,
-    private notify: NotificationsService) {
+              private router: Router,
+              private userSv: UserService,
+              private route: ActivatedRoute,
+              private location: Location,
+              private notify: NotificationsService) {
 
     this.cliente = new Cliente();
     this.cliente.nombre = '';
@@ -43,7 +43,8 @@ export class BookingStepTwoComponent implements OnInit {
   amigos: any[] = [];
   totalInvitados = 0;
   public invitar = false;
-  public loading = true;
+  public loading = false;
+  index = 0;
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',

@@ -10,8 +10,10 @@ import { FormaPago } from './../../../model/forma-pago';
 import { GlobalApiService } from './../../../Core/global/global-service';
 import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { ChangeMethodComponent } from '../change-method/change-method.component'
+import { ChangeMethodComponent } from '../change-method/change-method.component';
 import * as m from 'moment';
+import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-checkout-details',
@@ -31,13 +33,15 @@ export class CheckoutDetailsComponent implements OnInit {
   public creditos = 0;
   public total = 0;
   public tieneTarjeta = false;
+  public payPalConfig?: IPayPalConfig;
 
   constructor(private userSvc: UserService,
-    private apiSvc: GlobalApiService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private location: Location,
-    public dialog: MatDialog
+              private apiSvc: GlobalApiService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private location: Location,
+              public dialog: MatDialog,
+              public notify: NotificationsService
   ) { }
 
   ngOnInit() {
@@ -45,6 +49,7 @@ export class CheckoutDetailsComponent implements OnInit {
       params => {
         this.id = params.idPaquete;
         this.getData();
+        this.initConfig();
       }
     );
   }
@@ -98,10 +103,6 @@ export class CheckoutDetailsComponent implements OnInit {
     this.location.back();
   }
 
-  apiBanco(): void {
-
-  }
-
   agregarForma(f?: any): void {
     this.openDialog(f);
   }
@@ -131,5 +132,74 @@ export class CheckoutDetailsComponent implements OnInit {
         }
       );
     });
+  }
+
+  // Paypal config
+
+  private initConfig(): void {
+    this.payPalConfig = {
+      currency: 'MXN',
+     // clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
+      clientId: 'AVJ9WP8qD0yJwMBZkK8UFK0m4OmG1Obk2l-lM0krkhCx_fJM8-PRFQzwWDrV0vUSnjD7fcJsxWxI7SCd',
+      createOrderOnClient: (data) => <ICreateOrderRequest> {
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'MXN',
+              value: this.paquete.precio.toString(),
+              breakdown: {
+                item_total: {
+                  currency_code: 'MXN',
+                  value: this.paquete.precio.toString()
+                }
+              }
+            },
+            items: [
+              {
+                name: 'Créditos para reservaciones',
+                quantity: '1',
+                category: 'DIGITAL_GOODS',
+                unit_amount: {
+                  currency_code: 'MXN',
+                  value: this.paquete.precio.toString()
+                },
+              }
+            ]
+          }
+        ]
+      },
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        label: 'paypal',
+        layout: 'vertical'
+      },
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then(details => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+       // this.showSuccess = true;
+       this.pagar();
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+      },
+      onError: err => {
+        console.log('OnError', err);
+        this.notify.errorMessage('Error al procesar el pago: ' + err);
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+        if (data.fundingSource === 'card') {
+        // this.loadCreditCardData();
+        }
+      },
+    };
   }
 }

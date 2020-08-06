@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div class="col-amigos pt-4 pr-3 pl-3 pb-3">
+    <div class="col-amigos pt-4 pr-3 pl-3 pb-3" style="overflow: auto;">
       <div class="row">
         <div class="col-12">
           <div class="div-personas" id="nombrePrincipal" [ngStyle]="{'border-bottom': '2px solid ' + colors[0]}">
@@ -91,6 +91,19 @@
           </div>
         </div>
       </div>
+      <!-- <div class="row mt-1 mb-2" [attr.disabled]="seleccionado">
+        <div class="col-12">
+          <button mat-mini-fab color="accent" (click)="agregarAmigo()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div> -->
+      <!-- <div class="row justify-content-center pt-5 pb-5" [attr.disabled]="seleccionado" (click)="agregarAmigo()">
+        <div class="row d-flex justify-content-center primary-color add-new"
+          style="cursor: pointer;font-size: 20px;">
+          <mat-icon style="margin-top: 3px;">add</mat-icon> Agregar Amigo
+        </div>
+      </div> -->
       <!-- <div class="row" *ngFor="let a of amigos">
         <div class="col-12">
           <label appInvite [estilo]="['color', colors[totalInvitados]]" id="{{a.lugar + 'numero'}}"

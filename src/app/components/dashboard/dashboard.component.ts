@@ -9,7 +9,9 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-
+  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
+  @ViewChild('musicWidget1', { read: ElementRef }) public musicWidget1: ElementRef<any>;
+  @ViewChild('musicWidget2', { read: ElementRef }) public musicWidget2: ElementRef<any>;
 
   public covers = [
     { title: 'SPIN', url: '../../../assets/img/beat_spin.jpg' },
@@ -58,7 +60,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToCoaches(): void {
-    window.scroll(0, 0);
+   // window.scroll(0, 0);
     this.router.navigate(['dashboard/coach']);
   }
 
@@ -68,9 +70,6 @@ export class DashboardComponent implements OnInit {
   //   el.scrollIntoView();
   //   }
   // }
-  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
-  @ViewChild('musicWidget1', { read: ElementRef }) public musicWidget1: ElementRef<any>;
-  @ViewChild('musicWidget2', { read: ElementRef }) public musicWidget2: ElementRef<any>;
 
   public scrollRight(): void {
     this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 330), behavior: 'smooth' });
