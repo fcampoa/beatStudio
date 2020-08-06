@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToCoaches(): void {
-    window.scroll(0, 0);
+   // window.scroll(0, 0);
     this.router.navigate(['dashboard/coach']);
   }
 
