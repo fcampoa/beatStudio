@@ -1,0 +1,62 @@
+.modal-form {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 12px;
+    padding-bottom: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.modal-card {
+    background: rgb(44, 44, 44) !important;
+    margin-left: 40px !important;
+    margin-right: 40px !important;
+    padding: 0 !important;
+}
+
+mat-form-field {
+    font-family: GT-America-Regular;
+}
+
+mat-label {
+    font-family: GT-America-Light;
+    font-size: 14px;
+}
+
+.col-input {
+    width: 30%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-aux {
+    width: 10%;
+}
+
+@media (max-width: 576px) {
+    .modal-form {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .modal-card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 20px;
+    }
+
+    .button-new {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .col-input {
+        width: 33.33%;
+    }
+
+    .col-aux {
+        width: 0;
+    }
+}

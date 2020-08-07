@@ -60,16 +60,16 @@ export class AddPaymentComponent implements OnInit {
     this.group.patchValue({
       txtTitular: this.data.titular,
       txtTarjeta: this.data.numero_tarjeta,
-      selectMes: this.meses[d.getMonth() + 1],
-      selectAnho: this.anhos[this.anhos.indexOf(d.getFullYear().toString())],
-      txtCVV: this.data.cvv
+      // selectMes: this.meses[d.getMonth() + 1],
+      // selectAnho: this.anhos[this.anhos.indexOf(d.getFullYear().toString())],
+      // txtCVV: this.data.cvv
     });
   }
 
   parseValues(): void {
     this.data.cliente = this.content.id;
     this.data.titular = this.group.get('txtTitular').value;
-    // this.data.numero_tarjeta = this.group.get('txtTarjeta').value;
+    this.data.numero_tarjeta = this.group.get('txtTarjeta').value;
     // this.data.vigencia = m(new Date(this.group.get('selectAnho').value, this.group.get('selectMes').value)).format('YYYY-MM-DD').toString();
     // this.data.cvv = this.group.get('txtCVV').value;
     this.data.tipo = 'internet';

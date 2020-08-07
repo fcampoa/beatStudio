@@ -69,7 +69,8 @@ import { InfoModalComponent } from './components/info-modal/info-modal.component
 import { PasswordRecoveryStepOneComponent } from './components/password-recovery/password-recovery-step-one/password-recovery-step-one.component';
 import { PasswordRecoveryStepTwoComponent } from './components/password-recovery/password-recovery-step-two/password-recovery-step-two.component';
 
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { CardModalComponent } from './components/checkout/card-modal/card-modal.component'
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -122,7 +123,8 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     ChangeMethodComponent,
     InfoModalComponent,
     PasswordRecoveryStepOneComponent,
-    PasswordRecoveryStepTwoComponent
+    PasswordRecoveryStepTwoComponent,
+    CardModalComponent
   ],
   imports: [
     BrowserModule,

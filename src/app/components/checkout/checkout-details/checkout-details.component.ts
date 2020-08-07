@@ -11,6 +11,10 @@ import { GlobalApiService } from './../../../Core/global/global-service';
 import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ChangeMethodComponent } from '../change-method/change-method.component';
+import { CardModalComponent } from '../card-modal/card-modal.component';
+
+declare let Conekta: any;
+
 import * as m from 'moment';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { NotificationsService } from 'src/app/services/notifications.service';
@@ -36,15 +40,17 @@ export class CheckoutDetailsComponent implements OnInit {
   public payPalConfig?: IPayPalConfig;
 
   constructor(private userSvc: UserService,
-              private apiSvc: GlobalApiService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private location: Location,
-              public dialog: MatDialog,
-              public notify: NotificationsService
+    private apiSvc: GlobalApiService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
+    public dialog: MatDialog,
+    public notify: NotificationsService
   ) { }
 
   ngOnInit() {
+    Conekta.setPublicKey("key_eYvWV7gSDkNYXsmr");
+    Conekta.setLanguage("es");
     this.route.params.subscribe(
       params => {
         this.id = params.idPaquete;
@@ -107,10 +113,41 @@ export class CheckoutDetailsComponent implements OnInit {
     this.openDialog(f);
   }
 
+  openCardModal(): void {
+    const dialogRef = this.dialog.open(CardModalComponent, {
+      panelClass: 'custom-modalbox-info'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.pagarConTarjeta(result);
+    });
+  }
+
+  pagarConTarjeta(cardData: any): void {
+    var successResponseHandler = function (token) {
+      console.log(token);
+    };
+
+    var errorResponseHandler = function (error) {
+      console.log(error.message);
+    };
+
+    var tokenParams = {
+      card: {
+        number: this.p.numero_tarjeta,
+        name: this.p.titular,
+        exp_year: cardData.exp_date_year,
+        exp_month: cardData.exp_date_month,
+        cvc: cardData.ccv
+      }
+    };
+
+    Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
+  }
+
   cambiarForma(): void {
     const dialogRef = this.dialog.open(ChangeMethodComponent, {
       panelClass: 'custom-modalbox-medium',
-      data: { idCliente: this.cliente.id}
+      data: { idCliente: this.cliente.id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -139,9 +176,9 @@ export class CheckoutDetailsComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'MXN',
-     // clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
+      // clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
       clientId: 'AVJ9WP8qD0yJwMBZkK8UFK0m4OmG1Obk2l-lM0krkhCx_fJM8-PRFQzwWDrV0vUSnjD7fcJsxWxI7SCd',
-      createOrderOnClient: (data) => <ICreateOrderRequest> {
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [
           {
@@ -184,8 +221,8 @@ export class CheckoutDetailsComponent implements OnInit {
       },
       onClientAuthorization: (data) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-       // this.showSuccess = true;
-       this.pagar();
+        // this.showSuccess = true;
+        this.pagar();
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
@@ -197,7 +234,7 @@ export class CheckoutDetailsComponent implements OnInit {
       onClick: (data, actions) => {
         console.log('onClick', data, actions);
         if (data.fundingSource === 'card') {
-        // this.loadCreditCardData();
+          // this.loadCreditCardData();
         }
       },
     };
