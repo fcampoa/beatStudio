@@ -43,7 +43,7 @@ export class BookingStepTwoComponent implements OnInit {
   amigos: any[] = [];
   totalInvitados = 0;
   public invitar = false;
-  public loading = false;
+  public loading = true;
   index = 0;
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',

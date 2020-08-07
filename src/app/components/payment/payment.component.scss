@@ -13,6 +13,7 @@
 .remove-icon{
   width: 40px;
   height: 40px;
+  margin-left: 20%;
 }
 .remove-icon:hover {
   cursor: pointer;
@@ -24,9 +25,15 @@
   font-family: GT-America-Medium;
 }
 
+.options{
+  width: 33%;
+  position: absolute;
+  left: calc(100% - 27%);
+}
+
 .card-info{
-  font-family: GT-America-Thin;
+  font-family: GT-America-Regular;
+  text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
-  text-transform: uppercase;
 }

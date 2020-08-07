@@ -1,47 +1,57 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-center">
-    <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-8">
-      <mat-card class="mb-3" style="background: rgb(24, 24, 24) !important;" *ngFor="let p of formasPago">
-        <div class="row pt-3 pl-2">
-          <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 ml-2 custom-radio-button">
-            <!-- <mat-radio-button class="pt-2 pl-2" (change)="guardarForma(p)">
-            </mat-radio-button> -->
-            <label class="radio-container">
-              <input [checked]="p.principal" type="radio" name="radio" (change)="guardarForma(p)">
-              <span class="checkmark"></span>
-            </label>
-          </div>
-          <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-            <mat-divider vertical style="height: 40px;"></mat-divider>
-          </div>
-          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-            <img style="height: 35px; width: 80%;" *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" />
-            <img style="height: 35px; width: 80%;" *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
-          </div>
-          <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            <p class="card-info">
-              {{p.titular}} <br />
-              {{ p.numero_tarjeta | creditCard }}
-            </p>
-          </div>
-          <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 pt-2">
-            <p class="primary-color" (click)="agregarForma(p)" style="cursor: pointer;">Editar</p>
-          </div>
-          <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 pr-1" (click)="borrarForma(p)">
-            <mat-icon class="remove-icon" svgIcon="remove"></mat-icon>
+    <div class="col-12 col-sm-10 col-md-9 col-lg-8 col-xl-7">
+      <div class="row mb-4" style="background: rgb(24, 24, 24) !important;" *ngFor="let p of formasPago">
+        <div class="col-4 col-sm-3 align-self-center">
+          <div class="row">
+            <div class="col-5 custom-radio-button mt-2">
+              <label class="radio-container">
+                <input [checked]="p.principal" type="radio" name="radio" (change)="guardarForma(p)">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <mat-divider vertical style="height: 40px; margin: 0; padding: 0;"></mat-divider>
+            <div class="col-4 align-self-center">
+              <img style="height: 30px;" *ngIf="p.numero_tarjeta[0] === '5'"
+                src="../../../assets/img/master_card.png" />
+              <img style="height: 30px;" *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
+            </div>
           </div>
         </div>
-      </mat-card>
+        <div class="col-8 py-3">
+          <span class="card-info">
+            {{p.titular}} <br />
+            {{ p.numero_tarjeta | creditCard }}
+          </span>
+        </div>
+        <div class="options align-self-center">
+          <span class="primary-color" (click)="agregarForma(p)" style="cursor: pointer;">Editar</span>
+          <mat-icon class="remove-icon" svgIcon="remove"></mat-icon>
+        </div>
+        <!-- <div class="col-2 align-self-center">
+          
+        </div>
+        <div class="col-5 py-3">
+          
+        </div>
+        <div class="col-2 align-self-center">
+          <span class="primary-color" (click)="agregarForma(p)" style="cursor: pointer;">Editar</span>
+        </div>
+        <div class="col-1 align-self-center" (click)="borrarForma(p)">
+          <mat-icon class="remove-icon" svgIcon="remove"></mat-icon>
+        </div> -->
+      </div>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-sm-8">
+    <div class="col-sm-7">
       <mat-divider></mat-divider>
     </div>
   </div>
   <div class="row justify-content-center pt-5 pb-5">
-    <div *ngIf="cliente !== null && cliente !== undefined" class="row d-flex justify-content-center primary-color add-new"
-      style="cursor: pointer;font-size: 20px;" (click)="agregarForma()">
+    <div *ngIf="cliente !== null && cliente !== undefined"
+      class="row d-flex justify-content-center primary-color add-new" style="cursor: pointer;font-size: 20px;"
+      (click)="agregarForma()">
       <mat-icon style="margin-top: 3px;">add</mat-icon> Agregar otra forma de pago
     </div>
   </div>
