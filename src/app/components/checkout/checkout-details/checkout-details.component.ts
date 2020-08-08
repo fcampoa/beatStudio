@@ -12,6 +12,7 @@ import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ChangeMethodComponent } from '../change-method/change-method.component';
 import { CardModalComponent } from '../card-modal/card-modal.component';
+import { cardPayment } from '../../../model/cardPayment';
 
 declare let Conekta: any;
 
@@ -123,13 +124,8 @@ export class CheckoutDetailsComponent implements OnInit {
   }
 
   pagarConTarjeta(cardData: any): void {
-    var successResponseHandler = function (token) {
-      console.log(token);
-    };
 
-    var errorResponseHandler = function (error) {
-      console.log(error.message);
-    };
+    this.loading = true;
 
     var tokenParams = {
       card: {
@@ -141,7 +137,30 @@ export class CheckoutDetailsComponent implements OnInit {
       }
     };
 
-    Conekta.Token.create(tokenParams, successResponseHandler, errorResponseHandler);
+    Conekta.Token.create(tokenParams, token => {
+
+      let payObject = new cardPayment();
+
+      payObject.card_token = token.id;
+      payObject.amount = this.paquete.precio;
+      payObject.client_email = this.cliente.correo;
+      payObject.client_name = `${this.cliente.nombre} ${this.cliente.apellido}`;
+      payObject.client_phone = this.cliente.telefono;
+      payObject.item = this.paquete.nombre;
+
+      this.apiSvc.endPoints.historial_compra.hacerPago()<any>(payObject).subscribe(
+        response => {
+          this.pagar();
+        },
+        error => {
+          this.loading = false;
+          this.notify.errorMessage('Error al procesar el pago.');
+        });
+
+    }, error => {
+      this.loading = false;
+      this.notify.errorMessage(error.message_to_purchaser);
+    });
   }
 
   cambiarForma(): void {

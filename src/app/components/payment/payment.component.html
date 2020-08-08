@@ -14,7 +14,7 @@
             <div class="col-4 align-self-center">
               <img style="height: 30px;" *ngIf="p.numero_tarjeta[0] === '5'"
                 src="../../../assets/img/master_card.png" />
-              <img style="height: 30px;" *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
+              <img style="width: 60px;" *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="options align-self-center">
           <span class="primary-color" (click)="agregarForma(p)" style="cursor: pointer;">Editar</span>
-          <mat-icon class="remove-icon" svgIcon="remove"></mat-icon>
+          <mat-icon class="remove-icon" svgIcon="remove" (click)="borrarForma(p)"></mat-icon>
         </div>
         <!-- <div class="col-2 align-self-center">
           
