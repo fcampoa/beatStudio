@@ -11,10 +11,10 @@ import * as m from 'moment';
 })
 export class PaymentDetailComponent implements OnInit {
 
-    // Inputs
-    @Input() compra: HistorialCompra;
+  // Inputs
+  @Input() compra: HistorialCompra;
 
-    // variables
+  // variables
 
   constructor() { }
 
@@ -22,11 +22,15 @@ export class PaymentDetailComponent implements OnInit {
   }
 
   getFecha(): string {
-    return m().format('YYYY-MM-DD');
+    return m(this.compra.created_on).format('YYYY-MM-DD');
   }
 
   getFormaPago(): string {
-    return this.compra.forma_pago.numero_tarjeta.startsWith('4') ? 'VISA' : 'MASTERCARD';
+    if (this.compra.forma_pago) {
+      return this.compra.forma_pago.numero_tarjeta.startsWith('4') ? 'VISA' : 'MASTERCARD';
+    } else {
+      return 'PayPal'
+    }
   }
 
   obtenerHistorial(id: number): void {

@@ -21,7 +21,7 @@
     <div class="row pt-4 pl-3 pr-3">
       <div class="col-12 d-flex justify-content-between">
         <div>
-          <span>NOMBRE DE CUENTA: </span>{{compra.forma_pago.titular}}
+          <span>NOMBRE DE CUENTA: </span><span *ngIf="compra.forma_pago">{{compra.forma_pago.titular}}</span>
         </div>
         <div *ngIf="compra !== undefined && compra !== null">
           <span>TOTAL: MEX </span>{{compra.total | currency}}

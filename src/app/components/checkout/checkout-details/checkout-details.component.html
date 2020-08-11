@@ -30,7 +30,7 @@
       <mat-divider></mat-divider>
 
       <div class="row mr-1 ml-1" *ngIf="tieneTarjeta"
-        style="background-color: rgb(24, 24, 24) !important; margin-top: 50px; margin-bottom: 50px;">
+        style="background-color: rgb(24, 24, 24) !important; margin-top: 50px; margin-bottom: 20px;">
         <div class="col-3 align-self-center">
           <img style="height: 35px;" *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" />
           <img style="width: 60px;" *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
@@ -44,7 +44,7 @@
         <p class="primary-color change-card align-self-center" (click)="cambiarForma()">Cambiar</p>
       </div>
 
-      <div *ngIf="!tieneTarjeta" class="row justify-content-center pt-5 pb-5">
+      <div class="row justify-content-center pt-3 pb-5">
         <div class="row d-flex justify-content-center primary-color add-new" style="cursor: pointer;font-size: 20px;"
           (click)="agregarForma()">
           <mat-icon style="margin-top: 3px;">add</mat-icon> Agregar otra forma de pago
