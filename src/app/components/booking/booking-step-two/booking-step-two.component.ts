@@ -139,9 +139,9 @@ export class BookingStepTwoComponent implements OnInit {
             this.ocupados.forEach(o => {
               if (s.numero === o.lugar) {
                 s.ocupado = true;
-                this.loading = false;
               }
             });
+            this.loading = false;
           });
         });
       }
