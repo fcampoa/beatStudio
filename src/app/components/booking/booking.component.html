@@ -25,7 +25,7 @@
           <ng-template mat-tab-label>
             <p class="beat-algo tab"><span>BEAT</span>{{d.nombre}}</p>
           </ng-template>
-          <app-schedule [idDisciplina]="d.id" (Seleccion)="asignarSeleccion($event)"></app-schedule>
+          <app-schedule [idDisciplina]="d.id" (WaitList)="notifyWaitList($event)" (Seleccion)="asignarSeleccion($event)" (Loader)="setLoader($event)"></app-schedule>
         </mat-tab>
       </mat-tab-group>
     </div>

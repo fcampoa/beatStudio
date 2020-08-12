@@ -1,7 +1,7 @@
 import { CommonFields } from './common-fields';
-export class Horario extends CommonFields {
-    public id_cliente?: number;
-    public id_horario?: number;
+export class listaEspera extends CommonFields {
+    public cliente?: number;
+    public horario?: number;
     public constructor() {
         super();
     }

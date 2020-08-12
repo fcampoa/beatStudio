@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationsService } from '../../../services/notifications.service';
 import { Horario } from './../../../model/horario';
+import { listaEspera } from './../../../model/lista_espera';
+import { UserService } from '../../../services/user.service';
 import { GlobalApiService } from '../../../Core/global/global-service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
@@ -10,19 +13,29 @@ import { Inject } from '@angular/core';
   styleUrls: ['./waitlist.component.scss']
 })
 export class WaitlistComponent implements OnInit {
+
   public horario: Horario;
+  public loading = false;
+  private id_cliente: number;
   private dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
   private meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
+
   constructor(private apiSvc: GlobalApiService,
+    private userSv: UserService,
+    private notify: NotificationsService,
     public dialogRef: MatDialogRef<WaitlistComponent>,
     @Inject(MAT_DIALOG_DATA) public content: any) { }
 
   ngOnInit(): void {
-    this.horario = this.content.horario.horario;
-    console.log(this.horario);
+    this.horario = this.content.horario;
+    this.apiSvc.routes.cliente.buscarUsuario(this.userSv.loggedUser.data.user.id)<any>().subscribe(response => {
+      this.id_cliente = response.data[0].id;
+    }, error => {
+      this.notify.errorMessage('Ocurrió un error, intentalo de nuevo.')
 
+    })
   }
 
   castFecha(fecha: string): string {
@@ -46,5 +59,19 @@ export class WaitlistComponent implements OnInit {
 
   closeModal(): void {
     this.dialogRef.close();
+  }
+
+  enterWaitlist(): void {
+    this.loading = true;
+    let waitlistObject: listaEspera = {
+      cliente: this.id_cliente,
+      horario: this.horario.id
+    };
+    this.apiSvc.routes.lista_espera.agregar()<any>(waitlistObject).subscribe(response => {
+      this.dialogRef.close();
+    }, error => {
+      this.notify.errorMessage('Ocurrió un error, intentalo de nuevo.')
+      this.loading = false;
+    });
   }
 }

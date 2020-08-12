@@ -39,7 +39,7 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     buscarByid: { method: GlobalServiceMethodType.GET, url: '?filter[id][eq]=$id&fields=*,coach.nombre,disciplina.nombre' },
     buscarDisciplinaRango: {
       method: GlobalServiceMethodType.GET,
-      url: '?filter[disciplina][eq]=$id&filter[fecha][between]=$desde,$hasta&fields=*,coach.nombre&sort=fecha'
+      url: '?filter[disciplina][eq]=$id&filter[fecha][between]=$desde,$hasta&fields=*,coach.nombre,disciplina.nombre&sort=fecha'
     }
   },
   roles: {

@@ -36,15 +36,15 @@ export class BookingStepThreeComponent implements OnInit {
   ];
 
   constructor(private apiSvc: GlobalApiService,
-              private userSvc: UserService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private notify: NotificationsService,
-              private location: Location) {
+    private userSvc: UserService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private notify: NotificationsService,
+    private location: Location) {
 
-                this.desde = m().format('YYYY-MM-DD');
-                this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
-              }
+    this.desde = m().format('YYYY-MM-DD');
+    this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
+  }
 
   ngOnInit() {
     this.user = this.userSvc.loggedUser.data.user;
@@ -63,36 +63,66 @@ export class BookingStepThreeComponent implements OnInit {
   async buscarCliente() {
     await this.apiSvc.routes.cliente.buscarUsuario(this.user.id)<any>().subscribe(
       response => {
-         this.cliente = response.data[0];
-         this.getCreditos();
-          });
+        this.cliente = response.data[0];
+        this.getCreditos();
+      });
   }
 
   obtenerHorario(id: number): void {
     this.apiSvc.routes.horario.buscarByid(id)<any>().subscribe(
-    response => {
-      this.horario = response.data[0];
-    });
+      response => {
+        this.horario = response.data[0];
+      });
   }
 
   reservar(): void {
-    if (this.creditos >= this.reservaciones.length) {
+    // if (this.creditos >= this.reservaciones.length) {
+
+    // } else {
+    //   this.notify.errorMessage('No tienes créditos suficientes');
+    // }
     this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
       response => {
         this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
-           this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
-             res => {
+          this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
+            res => {
               if (res.resultado === true) {
                 this.router.navigate(['dashboard/booking/success']);
               }
-             }
-           );
+            }
+          );
       },
-      error => this.notify.errorMessage(error)
+      error => {
+        this.notify.errorMessage('Ocurrió un error.');
+      }
     );
-  } else {
-    this.notify.errorMessage('No tienes créditos suficientes');
   }
+
+  verificarReserva(): void {
+    this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
+      response => {
+        if (response.creditos >= this.reservaciones.length) {
+          this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(response => {
+            if (response.data && response.data.length > 0) {
+              if (response.data.length + this.reservaciones.length <= this.horario.lugares) {
+                this.reservar();
+              } else {
+                this.notify.errorMessage('Ya no hay suficientes lugares para tu reservación.');
+              }
+            } else {
+              this.reservar();
+            }
+          }, error => {
+            this.notify.errorMessage('Ocurrió un error.');
+          })
+        } else {
+          this.notify.errorMessage('No tienes créditos suficientes.');
+        }
+      },
+      error => {
+        this.notify.errorMessage('Ocurrió un error.');
+      }
+    );
   }
 
   regresar(): void {
@@ -106,8 +136,9 @@ export class BookingStepThreeComponent implements OnInit {
   getCreditos(): void {
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
       response => {
-         this.creditos = response.creditos; },
-         error => console.log(error)
+        this.creditos = response.creditos;
+      },
+      error => console.log(error)
     );
   }
 }

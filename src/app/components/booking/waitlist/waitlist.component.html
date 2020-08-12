@@ -1,5 +1,5 @@
 <div class="custom-modal">
-    <span class="close"  (click)="closeModal()">&times;</span>
+    <span class="close" (click)="closeModal()">&times;</span>
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="part1" style="text-align: center;font-family: GT-America-Medium;">
@@ -9,7 +9,7 @@
     </div>
     <div class="row d-flex justify-content-center">
         <div class="col-12 text-center">
-            <p class="beat-algo"><span>BEAT</span></p>
+            <p class="beat-algo"><span>BEAT</span>{{horario.disciplina.nombre}}</p>
             <div class="sections-info-text">
                 <div>{{horario.coach.nombre}}</div>
                 <div>{{castFecha(horario.fecha)}}</div>
@@ -18,7 +18,9 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center part3">
-        <button mat-stroked-button class="button-new" type="button"> UNIRME
+        <button mat-stroked-button class="button-new" [disabled]="loading" (click)="enterWaitlist()" type="button">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+            <span *ngIf="!loading">ELIMINAR</span>
         </button>
     </div>
 </div>

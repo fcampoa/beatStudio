@@ -264,6 +264,9 @@ export class BookingStepTwoComponent implements OnInit {
     this.resetButton(amigo.lugar);
     this.amigos.splice(i, 1);
     this.totalInvitados--;
+    if (this.amigos.length === 0) {
+      this.invitar = false;
+    }
     const sinElegir = this.amigos.filter(amigo => amigo.lugar === 0);
     if (sinElegir.length === 0) {
       this.seleccionado_amigo = true;
