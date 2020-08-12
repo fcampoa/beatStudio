@@ -1,51 +1,65 @@
-<!-- <div *ngIf="loading">
-    <app-loader></app-loader>
-  </div> -->
-<div class="container fluid" style="padding-top: 10%">
-  <div *ngIf="!loading">
-    <div class="row d-flex justify-content-center" style="padding-bottom: 5%;">
-      <h1>Resumen de Compra</h1>
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div class="custom-container">
+  <div class="row" style="padding-bottom: 5%;">
+    <div class="col-12 d-flex justify-content-center text-center">
+      <h1 class="page-title">Resumen de Compra</h1>
     </div>
-    <div class="row d-flex justify-content-center">
-      <div class="col-sm-6">
-        <div class="row d-flex justify-content-between" style="padding: 3%;">
-          <div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-4">
+      <div class="row pr-3 pl-3">
+        <div class="col-12 d-flex justify-content-between">
+          <div class="t-title pt-2">
             PAQUETE/PRODUCTO
           </div>
-          <div>
+          <div class="p-name">
             {{ paquete.creditos }} créditos.<br />
-            <p style="color: gray; font-size: 12px;">Expira en 30 dias.</p>
+            <p>Expira en 30 dias.</p>
           </div>
         </div>
-        <mat-divider class="divider-class-show"></mat-divider>
-        <div class="row d-flex justify-content-between" style="padding: 3%;">
-          <div>Total</div>
-          <div>{{paquete.precio | currency: 'MXN'}}</div>
-        </div>
-        <mat-divider class="divider-class-show "></mat-divider>
-        <div style="margin-bottom: 10%; margin-top: 10%;">
-        <mat-card style="background: rgb(24, 24, 24) !important; margin-bottom: 5%;" (click)="cambiarForma()">
-          <div *ngIf="tieneTarjeta" class="row">
-            <div class="col-sm-2" style="font-style: bold;">
-              <img *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" style="height: 80%"/>
-              <img *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" style="height: 80%" />
-            </div>
-            <div class="col-sm-8 d-flex justify-content-start" style="font-size: 1vw;">
-              {{p.titular.toUpperCase()}} <br />
-              {{ p.numero_tarjeta | creditCard }}
-            </div>
-              <div class="col-sm-2 justify-content-end">
-                <p class="primary-color">cambiar</p>
-            </div>
-          </div>
-          <div *ngIf="!tieneTarjeta" class="row d-flex justify-content-center primary-color" style="cursor: pointer;" (click)="agregarForma()">
-              <mat-icon>add</mat-icon> Agregar forma de pago
-          </div>
-        </mat-card>
       </div>
-        <div class="row d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 10%;">
-          <button class="btn btn-outline app-button" (click)="back()">Cancelar</button>
-          <button class="btn btn-outline app-button" style="margin-left: 5%;" (click)="pagar()">Pagar Ahora</button>
+      <mat-divider></mat-divider>
+      <div class="row pr-3 pl-3 pt-3 pb-3">
+        <div class="col-12 d-flex justify-content-between">
+          <div class="t-title pt-2">TOTAL</div>
+          <div class="total">{{paquete.precio | currency: 'MXN'}}</div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div class="row mr-1 ml-1" *ngIf="tieneTarjeta"
+        style="background-color: rgb(24, 24, 24) !important; margin-top: 50px; margin-bottom: 20px;">
+        <div class="col-3 align-self-center">
+          <img style="height: 35px;" *ngIf="p.numero_tarjeta[0] === '5'" src="../../../assets/img/master_card.png" />
+          <img style="width: 60px;" *ngIf="p.numero_tarjeta[0] === '4'" src="../../../assets/img/visa.png" />
+        </div>
+        <div class="col-9 py-3">
+          <div class="card-info">
+            {{p.titular}} <br />
+            {{ p.numero_tarjeta | creditCard }}
+          </div>
+        </div>
+        <p class="primary-color change-card align-self-center" (click)="cambiarForma()">Cambiar</p>
+      </div>
+
+      <div class="row justify-content-center pt-3 pb-5">
+        <div class="row d-flex justify-content-center primary-color add-new" style="cursor: pointer;font-size: 20px;"
+          (click)="agregarForma()">
+          <mat-icon style="margin-top: 3px;">add</mat-icon> Agregar otra forma de pago
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col col-sm col-xs col-md col-lg">
+          <!-- <app-paypal [total]="paquete.precio"></app-paypal> -->
+          <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center" style="padding-top: 10%; margin-bottom: 40%;">
+        <div class="col-12 d-flex justify-content-between pr-5 pl-5">
+          <button mat-stroked-button class="button-new" (click)="back()">CANCELAR</button>
+          <button mat-stroked-button class="button-new" (click)="openCardModal()">PAGAR AHORA</button>
         </div>
       </div>
     </div>

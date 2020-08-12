@@ -3,6 +3,7 @@ import { UserService } from './../../services/user.service';
 import { Cliente } from 'src/app/model/cliente';
 import { GlobalApiService } from './../../Core/global/global-service';
 import { AddPaymentComponent } from './add-payment/add-payment.component';
+import { RemovePaymentComponent } from './remove-payment/remove-payment.component';
 import { FormaPago } from './../../model/forma-pago';
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,9 +21,9 @@ export class PaymentComponent implements OnInit {
 
 
   constructor(public dialog: MatDialog,
-              private apiSvc: GlobalApiService,
-              private userSvc: UserService,
-              private notify: NotificationsService) { }
+    private apiSvc: GlobalApiService,
+    private userSvc: UserService,
+    private notify: NotificationsService) { }
 
   ngOnInit() {
     this.userSvc.getCustomUser().subscribe(
@@ -36,7 +37,11 @@ export class PaymentComponent implements OnInit {
   }
 
   agregarForma(f?: any): void {
-    this.openDialog(f);
+    this.openAddDialog(f);
+  }
+
+  borrarForma(f?: any): void {
+    this.openRemoveDialog(f);
   }
   /**
    * modifica la tarjeta principal de la cuenta, cambia a false el estado de la anterior
@@ -49,27 +54,38 @@ export class PaymentComponent implements OnInit {
         x.principal = false;
         this.apiSvc.routes.forma_pago.actualizar(x.id)<any>(x).subscribe(
           response => {
-             p = response;
-            },
+            p = response;
+          },
           error => console.log(error)
         );
       }
     });
     this.apiSvc.routes.forma_pago.actualizar(p.id)<any>(p).subscribe(
       response => {
-         p = response;
-        },
+        p = response;
+      },
       error => console.log(error)
     );
   }
-/**
- * abre el modal para agregar o modificar tarjetas
- * @param f tarjeta que se va a modificar
- */
-  openDialog(f: any): void {
+  /**
+   * abre el modal para agregar o modificar tarjetas
+   * @param f tarjeta que se va a modificar
+   */
+  openAddDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
-      width: '600px', panelClass: 'custom-modalbox',
+      panelClass: 'custom-modalbox',
       data: { fp: f, id: this.cliente.id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.listaFormas();
+    });
+  }
+
+  openRemoveDialog(f: any): void {
+    const dialogRef = this.dialog.open(RemovePaymentComponent, {
+      panelClass: 'custom-modalbox-info',
+      data: { tarjeta: f }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -83,16 +99,19 @@ export class PaymentComponent implements OnInit {
     this.apiSvc.routes.forma_pago.buscarCliente(this.cliente.id)<any>().subscribe(
       response => {
         this.formasPago = response.data;
+        console.log(response.data);
+        
       },
       error => console.log(error)
     );
   }
-/**
- * elimina una tarjeta
- */
+  /**
+   * elimina una tarjeta
+   */
   eliminar(p: FormaPago) {
     this.apiSvc.routes.forma_pago.eliminar()<any>(p.id).subscribe(
       response => {
+        this.listaFormas();
         this.notify.successMessage('Método de pago eliminado');
       }
     );

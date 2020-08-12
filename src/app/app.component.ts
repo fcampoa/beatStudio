@@ -1,5 +1,5 @@
 import { DomSanitizer } from '@angular/platform-browser';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 
 declare var $: any;
@@ -23,11 +23,22 @@ export class AppComponent {
     .addSvgIcon('twitter_blanco', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/twitter_blanco.svg'))
     .addSvgIcon('instagram_blanco', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/instagram_blanco.svg'))
     .addSvgIcon('facebook_blanco', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/facebook_blanco.svg'))
-    .addSvgIcon('instagram_morado',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Instagram(Layout contacto).svg'))
-    .addSvgIcon('facebook_morado',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Facebook(Layout contacto9.svg'))
-    .addSvgIcon('twitter_morado',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Twitter(Layout contacto).svg'))
-    .addSvgIcon('black_arrow',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Flecha para navegar_negro.svg'))
+    .addSvgIcon('instagram_morado', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Instagram(Layout contacto).svg'))
+    .addSvgIcon('facebook_morado', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Facebook(Layout contacto9.svg'))
+    .addSvgIcon('twitter_morado', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Twitter(Layout contacto).svg'))
+    .addSvgIcon('black_arrow', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Flecha para navegar_negro.svg'))
+    .addSvgIcon('logo_blanco', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/BeatStudio_Logo-03_blanco.svg'))
+    .addSvgIcon('logo_negro', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/BeatStudio_Logo-negro.svg'))
+    .addSvgIcon('logo_morado', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/BeatStudio_Logo-morado.svg'))
     ;
   }
 
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    let popover = document.getElementById('custom-popover');
+    if (event.target == popover) {
+      popover.style.display = "none";
+    }
+  }
 }

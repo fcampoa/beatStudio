@@ -4,6 +4,8 @@ import { Reservacion } from 'src/app/model/reservacion';
 import { Horario } from './../../../model/horario';
 import { ReservacionDetalle } from './../../../model/reservacion-detalle';
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CancelClassComponent } from '../../../components/booking-history/cancel-class/cancel-class.component';
 import * as m from 'moment';
 
 @Component({
@@ -28,7 +30,8 @@ export class BookingDetailsComponent implements OnInit {
   ];
 
   constructor(private apiSvc: GlobalApiService,
-              private notify: NotificationsService) { }
+    private notify: NotificationsService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.horario = this.reservacion.horario;
@@ -55,17 +58,19 @@ export class BookingDetailsComponent implements OnInit {
     this.cancel = res >= 1;
   }
 
-  cancelBooking(): void {
-    this.reservacion.cancelada = true;
-    this.apiSvc.routes.reservacion.actualizar()<any>(this.reservacion).subscribe(
-      response => {
-        this.reservacion = response;
-        this.cancel = false;
-      },
-      error => {
-        console.log(error);
-        this.notify.errorMessage('Error al tratar de cancelar');
-      }
-    );
+  cancelarReservacion(): void {
+    const dialogRef = this.dialog.open(CancelClassComponent, {
+      panelClass: 'custom-modalbox-info',
+      data: { horario: this.horario, reservacion: this.reservacion }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.cancel = true;
+    });
+  }
+
+
+  notifyUsers(horario: any): void {
+
   }
 }

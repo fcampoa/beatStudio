@@ -26,9 +26,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public sections = [
     { nombre: 'ABOUT', url: 'dashboard/about' },
-    { nombre: 'CLASES', url: 'dashboard/disciplines' },
+    {
+      nombre: 'CLASES', url: 'dashboard/disciplines', sublinks: [
+        { name: 'SPIN', url: 'dashboard/disciplines/beatspin' },
+        { name: 'BARRE', url: 'dashboard/disciplines/beatspin' },
+        { name: 'YOGA', url: 'dashboard/disciplines/beatspin' },
+        { name: 'POWER', url: 'dashboard/disciplines/beatspin' }]
+    },
     { nombre: 'COACHES', url: 'dashboard/coach' },
-    { nombre: 'ONLINE WORKOUTS', url: '' },
+    // { nombre: 'ONLINE WORKOUTS', url: '' },
     { nombre: 'CONTACTO', url: 'dashboard/contact' }
   ];
 
@@ -39,10 +45,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
 
   constructor(location: Location,
-              private element: ElementRef,
-              private router: Router,
-              private userSvc: UserService,
-              private auth: AuthenticationService
+    private element: ElementRef,
+    private router: Router,
+    private userSvc: UserService,
+    private auth: AuthenticationService
   ) {
     this.location = location;
     this.login = new EventEmitter<boolean>();
@@ -51,9 +57,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.name = '';
     this.userSvc.getUser().subscribe(res => {
-      if (res !== undefined && res !== null && (this.cliente === undefined || this.cliente === null)){
-      this.user = res.data.user;
-      this.name = this.user.first_name;
+      if (res !== undefined && res !== null && (this.cliente === undefined || this.cliente === null)) {
+        this.user = res.data.user;
+        this.name = this.user.first_name;
       }
       this.logged = (res !== undefined && res !== null);
     });
@@ -64,7 +70,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           this.name = cu.nombre;
         }
       }
-      );
+    );
   }
 
   ngOnDestroy(): void {
@@ -80,12 +86,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   navigate(s: string): void {
     console.log(s);
-    
+
     if (s.indexOf('dashboard') < 0) {
       this.scroll(s);
     } else {
-    window.scroll(0, 0);
-    this.router.navigate([s]);
+      window.scroll(0, 0);
+      this.router.navigate([s]);
     }
   }
 
@@ -98,5 +104,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   checkLogin($event): void {
     this.login.emit($event);
+  }
+
+  openCustomPopover(): void {
+    let popover = document.getElementById('custom-popover');
+    popover.style.display = 'block';
   }
 }

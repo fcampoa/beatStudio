@@ -1,5 +1,40 @@
-.divider-class-show {
-  border-color: #BDBDBD !important;
-  border-top-width: 1px !important;
-  padding-bottom: 1% !important;
+
+.mat-divider {
+  border-top-width: 2px;
+}
+
+.t-title{
+  font-size: 12px;
+    font-family: GT-America-Medium;
+}
+
+.p-name{
+  text-align: right;
+  font-family: GT-America-Regular;
+  font-size: 20px;
+  p{
+    font-family: GT-America-Light;
+    font-size: 12px;
+    color: gray;
+  }
+}
+
+.total{
+  font-family: GT-America-Regular;
+  font-size: 20px;
+}
+
+.change-card{
+  margin: 0;
+  position: absolute;
+  left: calc(100% - 90px);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.card-info{
+  font-family: GT-America-Regular;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
 }

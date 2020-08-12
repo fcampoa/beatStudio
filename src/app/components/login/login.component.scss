@@ -1,21 +1,32 @@
-form{
+h5{
+    color: black;
+}
+
+form {
     font-family: GT-America-Regular;
+    text-align:center;
 }
-mat-form-field{
+
+mat-form-field {
     width: 100%;
-    padding-bottom: 20px;
 }
+
+mat-form-field input{
+    color: black;
+}
+
 mat-form-field mat-label {
     color: #929191;
 }
-a{
-    color:#5ca2fd;
+
+a {
+    color: #5ca2fd;
     font-size: 0.7rem;
     border-bottom: 1px solid #5ca2fd;
     cursor: pointer;
 }
-a:hover{
-    color:#5ca2fd;
+
+a:hover {
+    color: #5ca2fd;
     border-bottom: 1px solid #5ca2fd;
-    cursor: pointer;
 }

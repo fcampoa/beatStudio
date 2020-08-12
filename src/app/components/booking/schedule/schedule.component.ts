@@ -1,8 +1,8 @@
-import { NotificationsService } from './../../../services/notifications.service';
 import { GlobalApiService } from './../../../Core/global/global-service';
-import { Disciplina } from 'src/app/model/disciplina';
 import { Horario } from './../../../model/horario';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { WaitlistComponent } from '../waitlist/waitlist.component';
 import * as m from 'moment';
 import $ from 'jquery';
 /**
@@ -27,8 +27,6 @@ export class ScheduleComponent implements OnInit {
 
   public horariosCustom: any[] = [];
 
-  public loading = false;
-
   dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 
   private meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -37,19 +35,21 @@ export class ScheduleComponent implements OnInit {
 
   // Inputs
   @Input() idDisciplina: number;
+  @Input() idCliente: number;
 
   // Outputs
   @Output() Seleccion: EventEmitter<any> = new EventEmitter<any>();
+  @Output() Loader: EventEmitter<any> = new EventEmitter<any>();
+  @Output() WaitList: EventEmitter<any> = new EventEmitter<any>();
 
   // Variables
   public desde: any;
   public hasta: any;
 
   constructor(private apiSvc: GlobalApiService,
-              private notify: NotificationsService) { }
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.loading = true;
     this.getRango();
     this.getHorarios(this.idDisciplina);
   }
@@ -60,13 +60,16 @@ export class ScheduleComponent implements OnInit {
     // this.idDisciplina = id;
     this.apiSvc.routes.horario.buscarDisciplinaRango(this.idDisciplina, this.desde, this.hasta)<any>().subscribe(
       response => {
-        this.horarios = response.data;
-
-        this.splitHorarios();
+        // this.horarios = response.data;
+        // this.splitHorarios();
+        if (response.data && response.data.length > 0) {
+          this.checarLleno(response.data);
+        } else {
+          this.Loader.emit({ error: 'No hay horarios.', loader: false });
+        }
       },
       error => {
-        this.notify.errorMessage('Ha ocurrido un error');
-        this.loading = false;
+        this.Loader.emit({ error: 'Ocurrió un error.', loader: false });
       }
     );
   }
@@ -118,8 +121,8 @@ export class ScheduleComponent implements OnInit {
   /**
    * Separa los horarios por dias de la semana
    */
-  splitHorarios(): void {
-    this.semana = [
+  splitHorarios(horarios: Array<Horario>): void {
+    let semana = [
       { fecha: '', horarios: [] },
       { fecha: '', horarios: [] },
       { fecha: '', horarios: [] },
@@ -130,16 +133,19 @@ export class ScheduleComponent implements OnInit {
     ];
     let actual: any;
     let cont = 0;
-    this.horarios.forEach(x => {
+    horarios.forEach(x => {
+      // this.checarLleno(x);
       const aux = m(x.fecha).format('YYYY-MM-DD');
       if (actual !== aux) {
         cont++;
         actual = aux;
-        this.semana[cont - 1].fecha = m(actual).format('YYYY-MM-DD');
+        semana[cont - 1].fecha = m(actual).format('YYYY-MM-DD');
       }
-      this.semana[cont - 1].horarios.push({ horario: x, selected: false });
+      semana[cont - 1].horarios.push({ horario: x, selected: false });
     });
-    this.loading = false;
+
+    this.semana = semana;
+    this.Loader.emit({ loader: false });
   }
   /**
    * Formatea las fechas del rango para obtener los horarios de la semana
@@ -151,12 +157,40 @@ export class ScheduleComponent implements OnInit {
 
   seleccionar(d: CustomHorario, h: any) {
 
-
     $('.hourly').removeClass('selected');
 
     h.selected = !h.selected;
     // deselecciona el que estaba seleccionado antes
     // d.horarios.forEach(x => x.selected && x.horario.id !== h.id ? false : x.selected);
     this.Seleccion.emit(h);
+  }
+
+  /**
+   * Valida si los lugares del horario dado estan todos llenos.
+   * @param horario
+   */
+  checarLleno(horarios: Array<Horario>) {
+    horarios.forEach((horario, index) => {
+      this.apiSvc.routes.reservacion_detalle.buscarHorario(horario.id)<any>().subscribe(response => {
+        horario.lleno = response.data.length === horario.lugares;
+        if (index === horarios.length - 1) {
+          this.splitHorarios(horarios);
+        }
+      }, error => {
+        this.Loader.emit({ error: 'Ocurrió un error.', loader: true });
+      });
+    });
+  }
+
+
+  entrarWaitlist(h: Horario): void {
+    const dialogRef = this.dialog.open(WaitlistComponent, {
+      panelClass: 'custom-modalbox-info',
+      data: { horario: h }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.WaitList.emit('');
+    });
   }
 }

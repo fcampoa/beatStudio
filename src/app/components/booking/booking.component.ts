@@ -27,11 +27,12 @@ export class BookingComponent implements OnInit {
   public desde: any;
   public hasta: any;
   public loading = false;
+  loaders = 0;
 
   constructor(private apiSvc: GlobalApiService,
-              private router: Router,
-              private userSv: UserService,
-              private notify: NotificationsService) {
+    private router: Router,
+    private userSv: UserService,
+    private notify: NotificationsService) {
 
     this.seleccion = new BehaviorSubject<Horario>(null);
     this.desde = m().format('YYY-MM-DD');
@@ -51,12 +52,10 @@ export class BookingComponent implements OnInit {
   getDisciplinas(): void {
     this.apiSvc.routes.disciplina.lista()<any>().subscribe(
       response => {
-        this.loading = false;
         this.disciplinas = response.data;
       },
       error => {
         this.notify.errorMessage('Ha ocurrido un error');
-        console.log(error);
         this.loading = false;
       }
     );
@@ -78,10 +77,10 @@ export class BookingComponent implements OnInit {
    * guarda el valor del horario seleccionado en el componente
    * de schedule
    */
- /* asignarSeleccion($event: any): void {
-    this.seleccion.next($event);
-
-  }*/
+  /* asignarSeleccion($event: any): void {
+     this.seleccion.next($event);
+ 
+   }*/
 
   asignarSeleccion($event: any): void {
     this.seleccion.next($event.horario);
@@ -93,8 +92,23 @@ export class BookingComponent implements OnInit {
     console.log(this.horarioElegido);
     console.log(this.horarioElegido.id);
     if (this.horarioElegido.id > 0) {
-    this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+      this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
     }
   }
 
+  setLoader(event): void {
+    if (!event.loader) {
+      this.loaders++;
+      if (this.loaders === this.disciplinas.length) {
+        this.loading = event.loader;
+      }
+    }
+    if (event.error) {
+      this.notify.errorMessage(event.error);
+    }
+  }
+
+  notifyWaitList(event): void {
+    this.notify.successMessage('Te has registrado a la lista de espera exitosamente.')
+  }
 }

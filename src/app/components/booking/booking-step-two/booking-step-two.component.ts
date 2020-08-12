@@ -20,29 +20,31 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 export class BookingStepTwoComponent implements OnInit {
 
   constructor(private apiSvc: GlobalApiService,
-    private router: Router,
-    private userSv: UserService,
-    private route: ActivatedRoute,
-    private location: Location,
-    private notify: NotificationsService) {
+              private router: Router,
+              private userSv: UserService,
+              private route: ActivatedRoute,
+              private location: Location,
+              private notify: NotificationsService) {
 
     this.cliente = new Cliente();
     this.cliente.nombre = '';
 
   }
 
-  public numero = '';
+  public numero = 0;
   user: any;
   click = false;
   cliente: Cliente;
   public reservaciones: ReservacionDetalle[] = [];
   public seleccionado = false;
+  public seleccionado_amigo = false;
   public seleccion: any;
   public horario: Horario;
   amigos: any[] = [];
   totalInvitados = 0;
   public invitar = false;
-  public loading = false;
+  public loading = true;
+  index = 0;
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',
@@ -78,37 +80,37 @@ export class BookingStepTwoComponent implements OnInit {
       { status: 'active', fila: 1, numero: 1, visible: true, value: 1, ocupado: false },
       { status: 'active', fila: 1, numero: 2, visible: true, value: 2, ocupado: false },
       { status: 'active', fila: 1, numero: 3, visible: true, value: 3, ocupado: false },
-      { status: 'active', fila: 1, numero: 4, visible: false, value: 4, ocupado: false },
-      { status: 'active', fila: 1, numero: 5, visible: false, value: 5, ocupado: false },
-      { status: 'active', fila: 1, numero: 6, visible: false, value: 6, ocupado: false },
-      { status: 'active', fila: 1, numero: 7, visible: false, value: 7, ocupado: false },
-      { status: 'active', fila: 1, numero: 8, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 1, numero: 9, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 1, numero: 10, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 1, numero: 4, visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: 1, numero: 5, visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: 1, numero: 6, visible: true, value: 6, ocupado: false }
     ],
     [
-      { status: 'active', fila: 2, numero: 11, visible: true, value: 1, ocupado: false },
-      { status: 'active', fila: 2, numero: 12, visible: true, value: 2, ocupado: false },
-      { status: 'active', fila: 2, numero: 13, visible: true, value: 3, ocupado: false },
-      { status: 'active', fila: 2, numero: 14, visible: true, value: 4, ocupado: false },
-      { status: 'active', fila: 2, numero: 15, visible: false, value: 5, ocupado: false },
-      { status: 'active', fila: 2, numero: 16, visible: false, value: 6, ocupado: false },
-      { status: 'active', fila: 2, numero: 17, visible: true, value: 7, ocupado: false },
-      { status: 'active', fila: 2, numero: 18, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 2, numero: 19, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 2, numero: 20, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 2, numero: 7, visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: 2, numero: 8, visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: 2, numero: 9, visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: 2, numero: 10, visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: 2, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 2, numero: 0, visible: false, value: 0, ocupado: false },
+      { status: 'active', fila: 2, numero: 11, visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: 2, numero: 12, visible: true, value: 6, ocupado: false },
+      { status: 'active', fila: 2, numero: 13, visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: 2, numero: 14, visible: true, value: 8, ocupado: false }
     ],
     [
-      { status: 'active', fila: 3, numero: 21, visible: true, value: 1, ocupado: false },
-      { status: 'active', fila: 3, numero: 22, visible: true, value: 2, ocupado: false },
-      { status: 'active', fila: 3, numero: 23, visible: true, value: 3, ocupado: false },
-      { status: 'active', fila: 3, numero: 24, visible: true, value: 4, ocupado: false },
-      { status: 'active', fila: 3, numero: 25, visible: true, value: 5, ocupado: false },
-      { status: 'active', fila: 3, numero: 26, visible: true, value: 6, ocupado: false },
-      { status: 'active', fila: 3, numero: 27, visible: true, value: 7, ocupado: false },
-      { status: 'active', fila: 3, numero: 28, visible: true, value: 8, ocupado: false },
-      { status: 'active', fila: 3, numero: 29, visible: true, value: 9, ocupado: false },
-      { status: 'active', fila: 3, numero: 30, visible: true, value: 10, ocupado: false }
+      { status: 'active', fila: 3, numero: 15, visible: true, value: 1, ocupado: false },
+      { status: 'active', fila: 3, numero: 16, visible: true, value: 2, ocupado: false },
+      { status: 'active', fila: 3, numero: 17, visible: true, value: 3, ocupado: false },
+      { status: 'active', fila: 3, numero: 18, visible: true, value: 4, ocupado: false },
+      { status: 'active', fila: 3, numero: 19, visible: true, value: 5, ocupado: false },
+      { status: 'active', fila: 3, numero: 20, visible: true, value: 6, ocupado: false },
+      { status: 'active', fila: 3, numero: 21, visible: true, value: 7, ocupado: false },
+      { status: 'active', fila: 3, numero: 22, visible: true, value: 8, ocupado: false },
+      { status: 'active', fila: 3, numero: 23, visible: true, value: 9, ocupado: false },
+      { status: 'active', fila: 3, numero: 24, visible: true, value: 10, ocupado: false }
     ],
   ];
 
@@ -139,6 +141,7 @@ export class BookingStepTwoComponent implements OnInit {
                 s.ocupado = true;
               }
             });
+            this.loading = false;
           });
         });
       }
@@ -165,26 +168,50 @@ export class BookingStepTwoComponent implements OnInit {
     this.list_places.push();
   }
 
+  checarSeleccionado(i: any): boolean {
+    return this.seleccionado && this.amigos.findIndex(x => x.lugar === i.lugar) > -1;
+  }
+
   public checarOcupado(i: any): void {
-    this.loading = true;
-    this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero, this.idHorario)<any>().subscribe(
-      response => {
-        debugger;
-        if (response.data.length > 0) {
-          this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
-          i.ocupado = true;
+    if (!this.checarSeleccionado(i)) {
+      this.loading = true;
+      this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero, this.idHorario)<any>().subscribe(
+        response => {
+          if (response.data.length > 0) {
+            this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
+            i.ocupado = true;
+            this.loading = false;
+          } else {
+            this.loading = false;
+            this.seleccionarAsiento(i);
+          }
           this.loading = false;
-        } else {
-          this.loading = false;
-          this.seleccionarAsiento(i);
         }
-        this.loading = false;
-      }
-    );
+      );
+    }
   }
 
   seleccionarAsiento(i: any): void {
     let a: any;
+
+    if (!this.invitar && this.seleccionado) {
+      const lugar = document.getElementById('labelPrincipal');
+      lugar.style.color = this.colors[0];
+
+      const nombre = document.getElementById('nombrePrincipal');
+      // nombre.style.backgroundColor = this.colors[0];
+
+      this.resetButton(this.numero);
+
+      this.seleccion = i;
+      this.numero = i.numero;
+      this.seleccionado = true;
+
+      $('#' + 'btn' + i.numero).removeClass('seat-format');
+      $('#' + 'btn' + i.numero).css('background', this.colors[0]);
+      $('#' + 'btn' + i.numero).prop('disabled', true);
+    }
+
     if (!this.seleccionado) {
       this.seleccion = i;
       this.numero = i.numero;
@@ -193,32 +220,105 @@ export class BookingStepTwoComponent implements OnInit {
       lugar.style.color = this.colors[0];
 
       const nombre = document.getElementById('nombrePrincipal');
-      nombre.style.backgroundColor = this.colors[0];
+      nombre.style.borderBottom = `2px solid ${this.colors[0]} !important`;
 
       $('#' + 'btn' + i.numero).removeClass('seat-format');
       $('#' + 'btn' + i.numero).css('background', this.colors[0]);
-      $('#' + 'btn' + i.numero).prop('enabled', false);
-
+      $('#' + 'btn' + i.numero).prop('disabled', true);
+      this.seleccionado_amigo = true;
     }
     if (this.invitar) {
-      a = { lugar: i.numero, fila: i.fila, nombre: '', index: this.totalInvitados };
-      this.amigos.push(a);
-      this.formatInput(a);
+      // a = { lugar: i.numero, fila: i.fila, nombre: '', index: this.totalInvitados };
+      // this.amigos.push(a);
+
+      let amigo = this.amigos[this.amigos.length - 1];
+
+      this.resetButton(amigo.lugar);
+
+      amigo.lugar = i.numero;
+      amigo.fila = i.fila;
+      this.formatInput(amigo);
+    }
+
+  }
+
+  resetButton(lugar: number): void {
+    if (lugar > 0) {
+      const btn = 'btn' + lugar;
+      $('#' + btn).addClass('seat-format');
+      $('#' + btn).css('background', '#1b1b1b');
+      $('#' + btn).prop('disabled', false);
+    }
+  }
+
+  addFriend(): void {
+    let a = { lugar: 0, fila: 0, nombre: '', index: this.totalInvitados };
+    this.amigos.push(a);
+    this.totalInvitados++;
+    this.invitar = true;
+    this.seleccionado_amigo = false;
+  }
+
+  removeFriend(i: number): void {
+    let amigo = this.amigos[i];
+    this.resetButton(amigo.lugar);
+    this.amigos.splice(i, 1);
+    this.totalInvitados--;
+    if (this.amigos.length === 0) {
+      this.invitar = false;
+    }
+    const sinElegir = this.amigos.filter(amigo => amigo.lugar === 0);
+    if (sinElegir.length === 0) {
+      this.seleccionado_amigo = true;
+    } else {
+      this.seleccionado_amigo = false;
+    }
+    const otrosElegidos = this.amigos.filter(amigo => amigo.lugar !== 0);
+    if (otrosElegidos.length > 0) {
+      for (let index = 0; index < otrosElegidos.length; index++) {
+        const element = otrosElegidos[index];
+        const btn = 'btn' + element.lugar;
+        $('#' + btn).removeClass('seat-format');
+        $('#' + btn).css('background', this.colors[index + 1]);
+        $('#' + btn).prop('disabled', true);
+      }
     }
   }
 
   formatInput(a: any) {
     const btn = 'btn' + a.lugar;
     $('#' + btn).removeClass('seat-format');
-    this.totalInvitados++;
     $('#' + btn).css('background', this.colors[this.totalInvitados]);
-    $('#' + btn).prop('enabled', false);
+    $('#' + btn).prop('disabled', true);
+    this.seleccionado_amigo = true;
   }
 
   getElement(id) {
     const el = document.getElementById(id);
     return el !== null ? el : this.getElement(id);
   }
+
+  validateFriendsNames(): boolean {
+    const namePattern = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*$/;
+    let invalid = this.amigos.filter(amigo => !String(amigo.nombre).match(namePattern) || amigo.lugar === 0);
+    if (invalid.length > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  validate(): void {
+    if (this.amigos.length > 0) {
+      if (this.validateFriendsNames()) {
+        this.siguiente();
+      } else {
+        this.notify.errorMessage('Verifica el nombre o lugar de tus amigos.');
+      }
+    }else{
+      this.siguiente();
+    }
+  }
+
   siguiente() {
     let r: Reservacion;
     if (this.seleccionado) {
@@ -262,21 +362,13 @@ export class BookingStepTwoComponent implements OnInit {
   hover(id: number) {
     const el = document.getElementById('btn' + String(id));
     // el.classList.remove('seat-format');
-    el.style.borderColor = this.seleccionado && this.invitar ? this.colors[this.totalInvitados + 1] : this.colors[0];
-    el.style.color = this.seleccionado && this.invitar ? this.colors[this.totalInvitados + 1] : this.colors[0];
+    el.style.borderColor = this.seleccionado && this.invitar ? this.colors[this.totalInvitados] : this.colors[0];
+    el.style.color = this.seleccionado && this.invitar ? this.colors[this.totalInvitados] : this.colors[0];
   }
 
   leave(id: number) {
     const el = document.getElementById('btn' + String(id));
     el.style.borderColor = '';
     el.style.color = '';
-  }
-
-  checarDisponible(): boolean {
-    return true;
-  }
-
-  checkAvailable(): boolean {
-    return false;
   }
 }

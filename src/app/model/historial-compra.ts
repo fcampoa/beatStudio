@@ -7,6 +7,7 @@ export class HistorialCompra extends CommonFields {
   public folio?: string;
   public vigencia?: any;
   public creditos?: number;
+  public id_orden: string;
   public constructor() {
     super();
   }
