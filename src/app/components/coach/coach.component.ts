@@ -13,37 +13,70 @@ export class CoachComponent implements OnInit {
   public imageClass = 'front-image';
   public coaches = [
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach1.png', musica: 'Pop, Reggeaton, R&B'
+      frase: 'Self love is the key',
+      disciplinas: 'BeatBarre',
+      movimiento: '¡Squats!',
+      nombre: 'Caro Hernández',
+      url: '../../../assets/img/new-images/Coaches/Coach_PauHernandez.jpg',
+      musica: 'Reggeaton / Pop'
     },
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach2.png', musica: 'Pop, Reggeaton, R&B'
+      frase: 'Let’s make every minute a moment',
+      disciplinas: 'BeatSpin / BeatBarre / BeatPower',
+      movimiento: 'Sprints & Pushups',
+      nombre: 'Pau Hernández',
+      url: '../../../assets/img/new-images/Coaches/Coach_Fer.jpg',
+      musica: 'Hip hop / EDM / Pop'
     },
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'Pop, Reggeaton, R&B'
+      frase: 'Your body can stand almost anything. Its your mind that you have to convince',
+      disciplinas: 'BeatBarre',
+      movimiento: 'Squats y pulsos en barra',
+      nombre: 'Pau Ávila',
+      url: '../../../assets/img/new-images/Coaches/Coach_PauCordova.jpg',
+      musica: 'Mixes, old with new'
     },
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach1.png', musica: 'Pop, Reggeaton, R&B'
+      frase: 'No one is you and that is your power',
+      disciplinas: 'BeatSpin',
+      movimiento: 'Sprint / No hands',
+      nombre: 'Alexa Caliz',
+      url: '../../../assets/img/new-images/Coaches/Coach_Ale.jpg',
+      musica: 'Reggeaton / Pop'
     },
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach2.png', musica: 'Pop, Reggeaton, R&B'
+      frase: 'Never, never, never give up',
+      disciplinas: 'BeatBarre',
+      movimiento: 'Desplantes y planchas',
+      nombre: 'Ale Soria',
+      url: '../../../assets/img/new-images/Coaches/Coach_Mariana.jpg',
+      musica: 'Indie Rock'
     },
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'Pop, Reggeaton, R&B'
+      frase: 'Whatever you do, do it well',
+      disciplinas: 'BeatBarre',
+      movimiento: 'Squats',
+      nombre: 'Marielena Anaya',
+      url: '../../../assets/img/new-images/Coaches/Coach_PauAvila.jpg',
+      musica: 'Oldies'
     },
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'Pop, Reggeaton, R&B'
+      frase: 'Vive y deja vivir',
+      disciplinas: 'BeatSpin',
+      movimiento: 'Sprints',
+      nombre: 'Baca',
+      url: '../../../assets/img/new-images/Coaches/Coach_Baca.jpg',
+      musica: 'Chill house, electrónica'
     },
     {
-      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
-      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'Pop, Reggeaton, R&B'
+      frase: ' Your body can stand almost everything, is your mind that you have to convince',
+      disciplinas: 'BeatSpin / BeatPower',
+      movimiento: 'Brincar de la bici',
+      nombre: 'Abraham Elizondo',
+      url: '../../../assets/img/new-images/Coaches/Coach_Abraham.jpg',
+      musica: 'Pop / Oldies / Electrónica'
     }
+
   ];
   constructor(private builder: FormBuilder) { }
 

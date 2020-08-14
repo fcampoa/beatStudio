@@ -29,9 +29,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     {
       nombre: 'CLASES', url: 'dashboard/disciplines', sublinks: [
         { name: 'SPIN', url: 'dashboard/disciplines/beatspin' },
-        { name: 'BARRE', url: 'dashboard/disciplines/beatspin' },
-        { name: 'YOGA', url: 'dashboard/disciplines/beatspin' },
-        { name: 'POWER', url: 'dashboard/disciplines/beatspin' }]
+        { name: 'BARRE', url: 'dashboard/disciplines/beatbarre' },
+        { name: 'YOGA', url: 'dashboard/disciplines/beatyoga' },
+        { name: 'POWER', url: 'dashboard/disciplines/beatpower' }]
     },
     { nombre: 'COACHES', url: 'dashboard/coach' },
     // { nombre: 'ONLINE WORKOUTS', url: '' },

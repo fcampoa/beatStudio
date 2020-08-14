@@ -1,0 +1,100 @@
+.beatspin-title {
+    span {
+        color: #9865ff;
+    }
+}
+
+.beatspin-video {
+    margin-top: 70px;
+
+    .video {
+        text-align: center;
+
+        img {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.benefits {
+    .text-part {
+        padding-left: 100px;
+        margin-top: 170px;
+
+        .list-group {
+            .list-group-item {
+                border: none;
+                padding: 0;
+                color: gray;
+                background-color: transparent;
+
+                span {
+                    color: #11e579;
+                    font-size: 1.6rem;
+                    margin-right: 1.5rem;
+                }
+            }
+        }
+
+        p {
+            width: 70%;
+        }
+    }
+
+    img {
+        margin-top: 150px;
+        width: 100%;
+    }
+}
+
+.complements {
+    margin-top: 12%;
+    margin-bottom: 5%;
+
+    p {
+        color: gray;
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 2rem;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .benefits {
+        .text-part {
+            padding-left: 0;
+            margin-top: 100px;
+
+            p {
+                width: 100%;
+            }
+        }
+
+        img {
+            margin-top: 100px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .benefits {
+        .text-part {
+            padding-left: 0;
+            margin-top: 80px;
+
+            p {
+                width: 100%;
+            }
+        }
+
+        img {
+            margin-top: 50px;
+        }
+    }
+
+    .beatspin-video {
+        margin-top: 50px;
+    }
+}

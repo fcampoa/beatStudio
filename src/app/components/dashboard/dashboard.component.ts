@@ -14,10 +14,10 @@ export class DashboardComponent implements OnInit {
   @ViewChild('musicWidget2', { read: ElementRef }) public musicWidget2: ElementRef<any>;
 
   public covers = [
-    { title: 'SPIN', url: '../../../assets/img/beat_spin.jpg' },
-    { title: 'BARRE', url: '../../../assets/img/beat_barre.png' },
-    { title: 'YOGA', url: '../../../assets/img/beat_yoga.png' },
-    { title: 'TRAIN', url: '../../../assets/img/beat_train.png' },
+    { title: 'SPIN', url: '../../../assets/img/new-images/Home/Home_BeatSpin.jpg' },
+    { title: 'BARRE', url: '../../../assets/img/new-images/Home/Home_BeatBarre.jpg' },
+    { title: 'YOGA', url: '../../../assets/img/new-images/Home/Home_BeatYoga.jpg' },
+    { title: 'POWER', url: '../../../assets/img/new-images/Home/Home_BeatPower.jpg' },
   ];
 
   public socialMedia = [
