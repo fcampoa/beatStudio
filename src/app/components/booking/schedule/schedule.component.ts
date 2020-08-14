@@ -190,7 +190,7 @@ export class ScheduleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.WaitList.emit('');
+      this.WaitList.emit(result);
     });
   }
 }

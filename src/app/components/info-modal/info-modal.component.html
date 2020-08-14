@@ -1,1 +1,15 @@
-<p>info-modal works!</p>
+<div class="custom-modal">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <div class="row justify-content-center">
+        <img src="../../../assets/img/SVG/circle_test.svg">
+    </div>
+    <div class="modal-card part-2">
+        {{message}}
+    </div>
+    <div class="row part3">
+        <div class="col-12 d-flex justify-content-center">
+            <button mat-stroked-button class="button-new" style="margin-right: 5%;" type="button"
+                (click)="closeModal()">{{btn_text}}</button>
+        </div>
+    </div>
+</div>

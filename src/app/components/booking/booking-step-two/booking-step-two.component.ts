@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalApiService } from 'src/app/Core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { Coach } from 'src/app/model/coach';
 import { Horario } from 'src/app/model/horario';
 import { Reservacion, Custom } from 'src/app/model/reservacion';
 import * as $ from 'jquery';
@@ -20,20 +19,17 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 export class BookingStepTwoComponent implements OnInit {
 
   constructor(private apiSvc: GlobalApiService,
-              private router: Router,
-              private userSv: UserService,
-              private route: ActivatedRoute,
-              private location: Location,
-              private notify: NotificationsService) {
-
+    private router: Router,
+    private userSv: UserService,
+    private route: ActivatedRoute,
+    private location: Location,
+    private notify: NotificationsService) {
     this.cliente = new Cliente();
     this.cliente.nombre = '';
-
   }
 
   public numero = 0;
   user: any;
-  click = false;
   cliente: Cliente;
   public reservaciones: ReservacionDetalle[] = [];
   public seleccionado = false;
@@ -41,10 +37,9 @@ export class BookingStepTwoComponent implements OnInit {
   public seleccion: any;
   public horario: Horario;
   amigos: any[] = [];
-  totalInvitados = 0;
   public invitar = false;
   public loading = true;
-  index = 0;
+
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',
@@ -52,12 +47,6 @@ export class BookingStepTwoComponent implements OnInit {
     '#FF00CD', '#DC00FF', '#4600FF', '#00FFCD', '#77CE2A',
     '#E86E6E', '#C6FF5B', '#02FFC2', '#02AFFF', '#ACA3FF'
   ];
-
-  set invitados(value: boolean) {
-    this.invitar = value;
-    if (this.totalInvitados === 0) {
-    }
-  }
 
   public distributionType: any[] = [];
   public distributionType1 = [
@@ -164,31 +153,47 @@ export class BookingStepTwoComponent implements OnInit {
     );
   }
 
-  test(bal: any): void {
-    this.list_places.push();
-  }
+  // test(bal: any): void {
+  //   this.list_places.push();
+  // }
 
-  checarSeleccionado(i: any): boolean {
-    return this.seleccionado && this.amigos.findIndex(x => x.lugar === i.lugar) > -1;
-  }
+  // checarSeleccionado(i: any): boolean {
+  //   return this.seleccionado && this.amigos.findIndex(x => x.lugar === i.lugar) > -1;
+  // }
 
-  public checarOcupado(i: any): void {
-    if (!this.checarSeleccionado(i)) {
-      this.loading = true;
-      this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero, this.idHorario)<any>().subscribe(
-        response => {
-          if (response.data.length > 0) {
-            this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
-            i.ocupado = true;
-            this.loading = false;
-          } else {
-            this.loading = false;
-            this.seleccionarAsiento(i);
-          }
-          this.loading = false;
-        }
-      );
-    }
+  // public checarOcupado(i: any): void {
+  //   if (!this.checarSeleccionado(i)) {
+  //     this.loading = true;
+  //     this.apiSvc.routes.reservacion_detalle.checarOcupado(i.numero, this.idHorario)<any>().subscribe(
+  //       response => {
+  //         if (response.data.length > 0) {
+  //           this.notify.errorMessage('El lugar seleccionado ya esta ocupado');
+  //           i.ocupado = true;
+  //           this.loading = false;
+  //         } else {
+  //           this.loading = false;
+  //           this.seleccionarAsiento(i);
+  //         }
+  //         this.loading = false;
+  //       }
+  //     );
+  //   }
+  // }
+
+  checarOcupado(lugar: any): void {
+    this.loading = true;
+    this.apiSvc.routes.reservacion_detalle.checarOcupado(lugar.numero, this.idHorario)<any>().subscribe(response => {
+      if (response.data && response.data.length > 0) {
+        this.notify.infoMessage('Este lugar ya fue reservado, intenta con otro.');
+        lugar.ocupado = true;
+        this.loading = false;
+      } else {
+        this.seleccionarAsiento(lugar);
+      }
+    }, error => {
+      this.loading = false;
+      this.notify.errorMessage('Ocurrió un error.');
+    })
   }
 
   seleccionarAsiento(i: any): void {
@@ -228,18 +233,14 @@ export class BookingStepTwoComponent implements OnInit {
       this.seleccionado_amigo = true;
     }
     if (this.invitar) {
-      // a = { lugar: i.numero, fila: i.fila, nombre: '', index: this.totalInvitados };
-      // this.amigos.push(a);
-
       let amigo = this.amigos[this.amigos.length - 1];
-
       this.resetButton(amigo.lugar);
-
       amigo.lugar = i.numero;
       amigo.fila = i.fila;
       this.formatInput(amigo);
     }
 
+    this.loading = false;
   }
 
   resetButton(lugar: number): void {
@@ -252,9 +253,8 @@ export class BookingStepTwoComponent implements OnInit {
   }
 
   addFriend(): void {
-    let a = { lugar: 0, fila: 0, nombre: '', index: this.totalInvitados };
+    let a = { lugar: 0, fila: 0, nombre: '' };
     this.amigos.push(a);
-    this.totalInvitados++;
     this.invitar = true;
     this.seleccionado_amigo = false;
   }
@@ -263,7 +263,6 @@ export class BookingStepTwoComponent implements OnInit {
     let amigo = this.amigos[i];
     this.resetButton(amigo.lugar);
     this.amigos.splice(i, 1);
-    this.totalInvitados--;
     if (this.amigos.length === 0) {
       this.invitar = false;
     }
@@ -288,7 +287,7 @@ export class BookingStepTwoComponent implements OnInit {
   formatInput(a: any) {
     const btn = 'btn' + a.lugar;
     $('#' + btn).removeClass('seat-format');
-    $('#' + btn).css('background', this.colors[this.totalInvitados]);
+    $('#' + btn).css('background', this.colors[this.amigos.length]);
     $('#' + btn).prop('disabled', true);
     this.seleccionado_amigo = true;
   }
@@ -314,7 +313,7 @@ export class BookingStepTwoComponent implements OnInit {
       } else {
         this.notify.errorMessage('Verifica el nombre o lugar de tus amigos.');
       }
-    }else{
+    } else {
       this.siguiente();
     }
   }
@@ -362,8 +361,8 @@ export class BookingStepTwoComponent implements OnInit {
   hover(id: number) {
     const el = document.getElementById('btn' + String(id));
     // el.classList.remove('seat-format');
-    el.style.borderColor = this.seleccionado && this.invitar ? this.colors[this.totalInvitados] : this.colors[0];
-    el.style.color = this.seleccionado && this.invitar ? this.colors[this.totalInvitados] : this.colors[0];
+    el.style.borderColor = this.seleccionado && this.invitar ? this.colors[this.amigos.length] : this.colors[0];
+    el.style.color = this.seleccionado && this.invitar ? this.colors[this.amigos.length] : this.colors[0];
   }
 
   leave(id: number) {

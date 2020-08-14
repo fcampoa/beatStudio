@@ -35,6 +35,14 @@ export class CoachComponent implements OnInit {
     {
       frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
       nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'Pop, Reggeaton, R&B'
+    },
+    {
+      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
+      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'Pop, Reggeaton, R&B'
+    },
+    {
+      frase: 'No pain no gain', disciplinas: 'Spin, yoga, barre, train', movimiento: 'Mountain Climbers',
+      nombre: 'Karina', apellido: 'Hernandez Garza', url: '../../../assets/img/coach3.png', musica: 'Pop, Reggeaton, R&B'
     }
   ];
   constructor(private builder: FormBuilder) { }
