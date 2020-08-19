@@ -41,7 +41,7 @@ export const AppRoutes: Routes = [
       { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
       { path: 'discipline', component: DisciplineComponent },
-      { path: 'coach', component: CoachComponent },
+      { path: 'coaches', component: CoachComponent },
       { path: 'checkout-details/:idPaquete', component: CheckoutDetailsComponent, canActivate: [AuthGuard] },
       { path: 'checkout-result/:idPago', component: CheckoutResultComponent, canActivate: [AuthGuard] },
       { path: 'about', component: AboutComponent },

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -15,8 +16,10 @@ export class AboutComponent implements OnInit {
   public scrollLeft(): void {
     this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 600), behavior: 'smooth' });
   }
-  constructor() { }
-
+  constructor(private router: Router) { }
+  goTo(here: string): void {
+    this.router.navigate([`/dashboard/${here}`]);
+}
   ngOnInit() {
   }
 

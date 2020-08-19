@@ -14,10 +14,10 @@ export class DashboardComponent implements OnInit {
   @ViewChild('musicWidget2', { read: ElementRef }) public musicWidget2: ElementRef<any>;
 
   public covers = [
-    { title: 'SPIN', url: '../../../assets/img/new-images/Home/Home_BeatSpin.jpg' },
-    { title: 'BARRE', url: '../../../assets/img/new-images/Home/Home_BeatBarre.jpg' },
-    { title: 'YOGA', url: '../../../assets/img/new-images/Home/Home_BeatYoga.jpg' },
-    { title: 'POWER', url: '../../../assets/img/new-images/Home/Home_BeatPower.jpg' },
+    { title: 'SPIN', url: '../../../assets/img/new-images/Clases/Clases_BeatSpin.jpg' },
+    { title: 'BARRE', url: '../../../assets/img/new-images/Clases/Clases_BeatBarre.jpg' },
+    { title: 'YOGA', url: '../../../assets/img/new-images/Clases/Clases_BeatYoka.jpg' },
+    { title: 'POWER', url: '../../../assets/img/new-images/Clases/Clases_BeatPower.jpg' },
   ];
 
   public socialMedia = [
@@ -60,8 +60,8 @@ export class DashboardComponent implements OnInit {
   }
 
   goToCoaches(): void {
-   // window.scroll(0, 0);
-    this.router.navigate(['dashboard/coach']);
+    // window.scroll(0, 0);
+    this.router.navigate(['dashboard/coaches']);
   }
 
   // scrollIntoView(section: any) {
@@ -93,6 +93,10 @@ export class DashboardComponent implements OnInit {
 
   public scrollMusicWidget2Left(): void {
     this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft - 330), behavior: 'smooth' });
+  }
+
+  goTo(here: string): void {
+    this.router.navigate([`/dashboard/${here}`]);
   }
 
   // angular.element($window).bind('scroll', function() {

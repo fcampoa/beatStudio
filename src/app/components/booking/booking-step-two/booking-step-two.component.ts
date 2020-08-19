@@ -10,6 +10,9 @@ import * as $ from 'jquery';
 import * as m from 'moment';
 import { ReservacionDetalle } from 'src/app/model/reservacion-detalle';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoModalComponent } from '../../info-modal/info-modal.component';
+
 
 @Component({
   selector: 'app-booking-step-two',
@@ -19,6 +22,7 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 export class BookingStepTwoComponent implements OnInit {
 
   constructor(private apiSvc: GlobalApiService,
+    public dialog: MatDialog,
     private router: Router,
     private userSv: UserService,
     private route: ActivatedRoute,
@@ -54,9 +58,9 @@ export class BookingStepTwoComponent implements OnInit {
 
   lugarObject = { fila: 0, numero: 0, visible: false, ocupado: false, coach: false };
 
-  llenarAsientos(distributionType: Array<Array<number>>): void {
+  llenarAsientos(distributionType: Array<Array<number>>, lugarCoach: Array<number>): void {
     let sitnumber = 0;
-    distributionType.forEach((fila) => {
+    distributionType.forEach((fila, indexFila) => {
       let new_fila = [];
       if (fila.length > 0) {
         for (let index = 0; index < Math.max(...fila) + 1; index++) {
@@ -66,9 +70,14 @@ export class BookingStepTwoComponent implements OnInit {
         new_fila.push({ ...this.lugarObject });
       }
       fila.forEach((lugar) => {
-        sitnumber++;
-        new_fila[lugar].visible = true;
-        new_fila[lugar].numero = sitnumber;
+        if (indexFila === lugarCoach[0] && lugar === lugarCoach[1]) {
+          new_fila[lugar].coach = true;
+        } else {
+          sitnumber++;
+          new_fila[lugar].visible = true;
+          new_fila[lugar].numero = sitnumber;
+          new_fila[lugar].fila = indexFila + 1;
+        }
       });
       this.asientos.push(new_fila);
     });
@@ -77,22 +86,21 @@ export class BookingStepTwoComponent implements OnInit {
   mostrarAsientosSpin(disciplina: string): void {
     switch (disciplina.toLowerCase()) {
       case 'spin':
-        this.llenarAsientos([[0, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]]);
-        this.asientos[0][2].coach = true;
+        this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
         break;
       case 'barre':
-        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []]);
-        this.asientos[0][0].coach = true;
+        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
         break;
       case 'yoga':
-        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4], []]);
-        this.asientos[0][0].coach = true;
+        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4], []], [0, 0]);
         break;
       case 'power':
-        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5], []]);
-        this.asientos[0][0].coach = true;
+        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5], []], [0, 0]);
         break;
-    }
+      default:
+        this.llenarAsientos([[0], [0, 1, 2, 3, 4, 5, 6], [0, 1, 2, 3, 4, 5, 6], [0, 1, 2, 3, 4, 5, 6]], [0, 0]);
+        break;
+      }
     this.obtenerOcupados();
   }
 
@@ -144,7 +152,7 @@ export class BookingStepTwoComponent implements OnInit {
     this.loading = true;
     this.apiSvc.routes.reservacion_detalle.checarOcupado(lugar.numero, this.idHorario)<any>().subscribe(response => {
       if (response.data && response.data.length > 0) {
-        this.notify.infoMessage('Este lugar ya fue reservado, intenta con otro.');
+        this.infoModal('Este lugar ha sido ocupado, pruebe con otro :)');
         lugar.ocupado = true;
         this.loading = false;
       } else {
@@ -319,5 +327,12 @@ export class BookingStepTwoComponent implements OnInit {
     const el = document.getElementById('btn' + String(id));
     el.style.borderColor = '';
     el.style.color = '';
+  }
+
+  infoModal(message: string): void {
+    const dialogRef = this.dialog.open(InfoModalComponent, {
+      panelClass: 'custom-modalbox-info',
+      data: { message: message, btn_text: 'ACEPTAR' }
+    });
   }
 }

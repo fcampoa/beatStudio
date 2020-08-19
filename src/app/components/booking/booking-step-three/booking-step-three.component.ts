@@ -112,7 +112,7 @@ export class BookingStepThreeComponent implements OnInit {
                   this.reservaciones.map(reservacion => {
                     const ocupados = res.data.filter(reservada => reservacion.lugar === reservada.lugar);
                     if (ocupados.length > 0) {
-                      this.infoModal('Parece que uno de los lugares elegidos ya fue apartado.');
+                      this.infoModal('Parece que uno de los lugares elegidos ya fue apartado');
                     } else {
                       this.reservar();
                     }
@@ -121,20 +121,20 @@ export class BookingStepThreeComponent implements OnInit {
                   this.reservar();
                 }
               } else {
-                this.notify.errorMessage('Ya no hay suficientes lugares para tu reservación.');
+                this.infoModal('Ya no hay suficientes lugares para tu reservación');
               }
             } else {
               this.reservar();
             }
           }, error => {
-            this.notify.errorMessage('Ocurrió un error.');
+            this.infoModal('No pudimos hacer tu reservación');
           })
         } else {
-          this.notify.errorMessage('No tienes créditos suficientes.');
+          this.infoModal('Parece que no tienes créditos suficientes');
         }
       },
       error => {
-        this.notify.errorMessage('Ocurrió un error.');
+        this.infoModal('No pudimos hacer tu reservación');
       }
     );
   }

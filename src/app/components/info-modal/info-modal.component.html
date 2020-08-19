@@ -1,15 +1,18 @@
 <div class="custom-modal">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <div class="row justify-content-center">
-        <img src="../../../assets/img/SVG/circle_test.svg">
+    <div class="row d-flex justify-content-end">
+        <img class="close" style="width: 20px;" (click)="closeModal()" src="../../../assets/img/SVG/Cruz.svg">
     </div>
-    <div class="modal-card part-2">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center mt-3 mb-5">
+            <img style="width: 80px;" src="../../../assets/img/SVG/ex_modal.svg">
+        </div>
+    </div>
+    <div class="text-center message">
         {{message}}
     </div>
     <div class="row part3">
         <div class="col-12 d-flex justify-content-center">
-            <button mat-stroked-button class="button-new" style="margin-right: 5%;" type="button"
-                (click)="closeModal()">{{btn_text}}</button>
+            <button mat-stroked-button class="button-new" type="button" (click)="closeModal()">{{btn_text}}</button>
         </div>
     </div>
 </div>

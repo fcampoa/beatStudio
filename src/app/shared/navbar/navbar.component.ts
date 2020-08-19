@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         { name: 'YOGA', url: 'dashboard/disciplines/beatyoga' },
         { name: 'POWER', url: 'dashboard/disciplines/beatpower' }]
     },
-    { nombre: 'COACHES', url: 'dashboard/coach' },
+    { nombre: 'COACHES', url: 'dashboard/coaches' },
     // { nombre: 'ONLINE WORKOUTS', url: '' },
     { nombre: 'CONTACTO', url: 'dashboard/contact' }
   ];

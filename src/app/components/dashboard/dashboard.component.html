@@ -8,8 +8,8 @@
   </div>
   <div class="home-image mt-3 w-100">
     <div class="d-flex justify-content-center">
-      <button mat-stroked-button class="button-new mr-4" type="button">RESERVAR</button>
-      <button mat-stroked-button class="button-new" type="button">COMPRAR</button>
+      <button mat-stroked-button class="button-new mr-4" type="button" (click)="goTo('booking')">RESERVAR</button>
+      <button mat-stroked-button class="button-new" type="button" (click)="goTo('checkout')">COMPRAR</button>
     </div>
   </div>
 
@@ -25,15 +25,15 @@
         <div class="row d-flex justify-content-center text-center">
           <div class="col-10 col-sm-10 col-md-6 col-lg-5 col-xl-4">
             <p class="sections-info-text">Suda al pulso del latido de tu corazón, muévete al ritmo de la música <br>
-            y deja que tu alma sea dueña del sentimiento</p>
+              y deja que tu alma sea dueña del sentimiento</p>
           </div>
         </div>
       </div>
       <div class="row d-flex justify-content-center part2">
         <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
           <div class="row d-flex justify-content-center">
-            <div class="col-11 col-sm-6 col-md-6 col-lg-3 col-xl-3 desvanecer" *ngFor="let i of covers; let x = index"
-              style="margin-bottom: 25px;">
+            <div class="col-11 col-sm-6 col-md-6 col-lg-3 col-xl-3 desvanecer" (click)="goTo('disciplines/beat'+i.title.toLowerCase())"
+              *ngFor="let i of covers; let x = index" style="margin-bottom: 25px;">
               <div>
                 <div>
                   <img [src]="i.url" />
@@ -50,7 +50,7 @@
       </div>
       <div class="row d-flex justify-content-center text-center part3">
         <div class="col-11 col-sm-11 col-md-10 col-lg-8 col-xl-6">
-          <a href="#" class="section-see-more"
+          <a (click)="goTo('disciplines');" class="section-see-more"
             style="letter-spacing: -2px !important;  color: #000000 !important; text-decoration: none !important;border-bottom: 2px solid #000;">
             Conoce más de nuestras disciplinas
             aquí
@@ -69,7 +69,8 @@
     <div class="row d-flex justify-content-center seccion-coaches">
       <div class="col-11 col-sm-11 col-md-10 col-lg-6 col-xl-6">
         <img style="position: relative;width: 75%;" src="../../../assets/img/new-images/Home/Home_CoachesA.jpg" />
-        <img style="position: absolute;width: 65%; top: 75%; left: 30%;" src="../../../assets/img/new-images/Home/Home_CoachesB.jpg" />
+        <img style="position: absolute;width: 65%; top: 75%; left: 30%;"
+          src="../../../assets/img/new-images/Home/Home_CoachesB.jpg" />
       </div>
       <div class="col-11 col-sm-11 col-md-10 col-lg-6 col-xl-6">
         <div class="text-part">
@@ -92,7 +93,7 @@
           Deja que el ritmo te lleve en la dirección indicada <br>
           e incrementa tus latidos a cada paso
         </p>
-        <button style="margin-top: 30px;" mat-stroked-button class="button-new-inverted">CONÓCELAS</button>
+        <button (click)="goTo('disciplines');" style="margin-top: 30px;" mat-stroked-button class="button-new-inverted">CONÓCELAS</button>
       </div>
       <div class="col-11 col-sm-11 col-md-10 col-lg-6 col-xl-6">
         <img src="../../../assets/img/new-images/Home/Home_BestRoutines.jpg" />

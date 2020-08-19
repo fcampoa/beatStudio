@@ -1,17 +1,22 @@
-p{
-    color: gray;
-}
-h1{
-    font-size: 4rem;
+h4,h5{
+    font-family: GT-America-Regular;
+    letter-spacing: -1px;
 }
 
-@media (max-width: 767px) {
-    h1{
-        font-size: 3rem;
-    }
-}
-@media (max-width: 520px) {
-    h1{
-      font-size: 2rem;  
-    }
-}
+// p{
+//     color: gray;
+// }
+// h1{
+//     font-size: 4rem;
+// }
+
+// @media (max-width: 767px) {
+//     h1{
+//         font-size: 3rem;
+//     }
+// }
+// @media (max-width: 520px) {
+//     h1{
+//       font-size: 2rem;  
+//     }
+// }
