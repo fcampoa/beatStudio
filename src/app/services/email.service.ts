@@ -30,7 +30,7 @@ export class EmailService {
         return this.apiCall.Create(email, config.base_url + 'mail');
     }
 
-    public cambioConstrasenha(correos: any[]): Observable<any> {
+    public cambioContrasenha(correos: any[]): Observable<any> {
         const email = new EmailModel();
         const body = this.contrasenha;
         return this.apiCall.Create({ email: correos[0], return_url: '' }, config.base_url + 'mail');
