@@ -15,7 +15,10 @@ import { BookingComponent } from './components/booking/booking.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { Routes } from '@angular/router';
 import { PrivacyComponent } from './components/privacy/privacy.component';
-import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
+import { BeatspinComponent } from './components/disciplines/beatspin/beatspin.component';
+import { BeatbarreComponent } from './components/disciplines/beatbarre/beatbarre.component';
+import { BeatyogaComponent } from './components/disciplines/beatyoga/beatyoga.component';
+import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower.component';
 import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
 import { BookingConfirmationComponent } from './components/booking/booking-confirmation/booking-confirmation.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -38,13 +41,16 @@ export const AppRoutes: Routes = [
       { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
       { path: 'discipline', component: DisciplineComponent },
-      { path: 'coach', component: CoachComponent },
+      { path: 'coaches', component: CoachComponent },
       { path: 'checkout-details/:idPaquete', component: CheckoutDetailsComponent, canActivate: [AuthGuard] },
       { path: 'checkout-result/:idPago', component: CheckoutResultComponent, canActivate: [AuthGuard] },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'disciplines', component: DisciplineComponent, children: [] },
-      { path: 'disciplines/beatspin', component: DiciplineBeatspinComponent, children: [] },
+      { path: 'disciplines/beatspin', component: BeatspinComponent, children: [] },
+      { path: 'disciplines/beatbarre', component: BeatbarreComponent, children: [] },
+      { path: 'disciplines/beatyoga', component: BeatyogaComponent, children: [] },
+      { path: 'disciplines/beatpower', component: BeatpowerComponent, children: [] },
       { path: 'privacy', component: PrivacyComponent },
       { path: 'registro', component: RegisterComponent },
       { path: 'recover', component: PasswordRecoveryStepOneComponent },

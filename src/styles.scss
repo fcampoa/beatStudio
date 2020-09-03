@@ -308,6 +308,10 @@ mat-slide-toggle-bar {
   letter-spacing: -1px;
 }
 
+.section-see-more:hover {
+  cursor: pointer;
+}
+
 .beat-algo {
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -599,9 +603,9 @@ mat-slide-toggle-bar {
 .custom-modal {
   .close {
     color: #aaaaaa;
-    float: right;
     font-size: 40px;
     transition: color 250ms;
+    margin-right: 15px;
   }
 
   .close:hover,

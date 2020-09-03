@@ -9,6 +9,8 @@ import { GlobalApiService } from './../../../Core/global/global-service';
 import { Component, OnInit } from '@angular/core';
 import * as m from 'moment';
 import { Cliente } from 'src/app/model/cliente';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoModalComponent } from '../../info-modal/info-modal.component';
 
 @Component({
   selector: 'app-booking-step-three',
@@ -40,7 +42,8 @@ export class BookingStepThreeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private notify: NotificationsService,
-    private location: Location) {
+    private location: Location,
+    public dialog: MatDialog) {
 
     this.desde = m().format('YYYY-MM-DD');
     this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
@@ -102,25 +105,36 @@ export class BookingStepThreeComponent implements OnInit {
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
       response => {
         if (response.creditos >= this.reservaciones.length) {
-          this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(response => {
-            if (response.data && response.data.length > 0) {
-              if (response.data.length + this.reservaciones.length <= this.horario.lugares) {
-                this.reservar();
+          this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(res => {
+            if (res.data && res.data.length > 0) {
+              if (res.data.length + this.reservaciones.length <= this.horario.lugares) {
+                if (res.data.length > 0) {
+                  this.reservaciones.map(reservacion => {
+                    const ocupados = res.data.filter(reservada => reservacion.lugar === reservada.lugar);
+                    if (ocupados.length > 0) {
+                      this.infoModal('Parece que uno de los lugares elegidos ya fue apartado');
+                    } else {
+                      this.reservar();
+                    }
+                  });
+                } else {
+                  this.reservar();
+                }
               } else {
-                this.notify.errorMessage('Ya no hay suficientes lugares para tu reservación.');
+                this.infoModal('Ya no hay suficientes lugares para tu reservación');
               }
             } else {
               this.reservar();
             }
           }, error => {
-            this.notify.errorMessage('Ocurrió un error.');
+            this.infoModal('No pudimos hacer tu reservación');
           })
         } else {
-          this.notify.errorMessage('No tienes créditos suficientes.');
+          this.infoModal('Parece que no tienes créditos suficientes');
         }
       },
       error => {
-        this.notify.errorMessage('Ocurrió un error.');
+        this.infoModal('No pudimos hacer tu reservación');
       }
     );
   }
@@ -140,5 +154,12 @@ export class BookingStepThreeComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  infoModal(message: string): void {
+    const dialogRef = this.dialog.open(InfoModalComponent, {
+      panelClass: 'custom-modalbox-info',
+      data: { message: message, btn_text: 'ACEPTAR' }
+    });
   }
 }
