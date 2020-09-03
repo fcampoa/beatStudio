@@ -77,8 +77,8 @@ button {
 }
 
 .coach-seat {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -216,14 +216,14 @@ mat-card {
 
 .col-asientos {
   background: #1b1b1b !important;
-  ;
   width: 73%;
   padding-left: 5%;
   padding-right: 5%;
   margin-right: 2%;
 
   .col-button {
-    width: 10%;
+    width: 12% !important;
+    height: 80px;
   }
 
   .seat-format {

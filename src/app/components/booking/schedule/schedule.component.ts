@@ -172,7 +172,7 @@ export class ScheduleComponent implements OnInit {
   checarLleno(horarios: Array<Horario>) {
     horarios.forEach((horario, index) => {
       this.apiSvc.routes.reservacion_detalle.buscarHorario(horario.id)<any>().subscribe(response => {
-        horario.lleno = response.data.length === horario.lugares;
+        horario.lleno = response.data.length === horario.lugares || response.data.length >= horario.lugares;
         if (index === horarios.length - 1) {
           this.splitHorarios(horarios);
         }
@@ -190,7 +190,7 @@ export class ScheduleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.WaitList.emit('');
+      this.WaitList.emit(result);
     });
   }
 }

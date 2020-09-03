@@ -28,6 +28,7 @@ export class BookingComponent implements OnInit {
   public hasta: any;
   public loading = false;
   loaders = 0;
+  errors = 0;
 
   constructor(private apiSvc: GlobalApiService,
     private router: Router,
@@ -104,11 +105,16 @@ export class BookingComponent implements OnInit {
       }
     }
     if (event.error) {
-      this.notify.errorMessage(event.error);
+      this.errors++;
+      if (this.errors === this.disciplinas.length) {
+        this.notify.errorMessage(event.error);
+      }
     }
   }
 
   notifyWaitList(event): void {
-    this.notify.successMessage('Te has registrado a la lista de espera exitosamente.')
+    if (event.state) {
+      this.notify.successMessage('Te has registrado a la lista de espera exitosamente.');
+    }
   }
 }

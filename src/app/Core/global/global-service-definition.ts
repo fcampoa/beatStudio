@@ -84,5 +84,6 @@ export interface IGlobalServiceDefinition {
     buscar: () => VERBS.IGetByIdCall;
     buscarHorario: (idHorario: number) => VERBS.IGetCall;
     buscarCliente: (idCliente: number) => VERBS.IGetCall;
+    buscarRepetido: (idCliente: number, idHorario: number) => VERBS.IGetCall;
   };
 }

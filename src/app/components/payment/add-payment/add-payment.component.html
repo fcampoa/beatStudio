@@ -46,7 +46,9 @@
 
 
 <div class="custom-modal">
-  <span class="close" (click)="closeModal()">&times;</span>
+  <div class="row d-flex justify-content-end">
+    <img class="close" style="width: 20px;" (click)="closeModal()" src="../../../../assets/img/SVG/Cruz.svg">
+  </div>
   <div class="row justify-content-center">
     <div class="col-10 col-sm-10 col-md-8 col-lg-7 col-xl-7">
       <h2 class="part1" style="text-align: center;font-family: GT-America-Medium;">Registra tu método de pago</h2>
@@ -70,7 +72,7 @@
         </div>
         <div class="col-8">
           <mat-form-field>
-            <input matInput mask="0000 0000 0000 0000" formControlName="txtTarjeta"/>
+            <input matInput mask="0000 0000 0000 0000" formControlName="txtTarjeta" />
           </mat-form-field>
         </div>
       </div>

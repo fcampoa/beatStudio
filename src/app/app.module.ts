@@ -70,7 +70,11 @@ import { PasswordRecoveryStepOneComponent } from './components/password-recovery
 import { PasswordRecoveryStepTwoComponent } from './components/password-recovery/password-recovery-step-two/password-recovery-step-two.component';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { CardModalComponent } from './components/checkout/card-modal/card-modal.component'
+import { CardModalComponent } from './components/checkout/card-modal/card-modal.component';
+import { BeatspinComponent } from './components/disciplines/beatspin/beatspin.component';
+import { BeatbarreComponent } from './components/disciplines/beatbarre/beatbarre.component';
+import { BeatyogaComponent } from './components/disciplines/beatyoga/beatyoga.component';
+import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower.component'
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -124,7 +128,11 @@ import { CardModalComponent } from './components/checkout/card-modal/card-modal.
     InfoModalComponent,
     PasswordRecoveryStepOneComponent,
     PasswordRecoveryStepTwoComponent,
-    CardModalComponent
+    CardModalComponent,
+    BeatspinComponent,
+    BeatbarreComponent,
+    BeatyogaComponent,
+    BeatpowerComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,8 @@
         a {
             padding-top: 1.5rem;
         }
-        a:hover{
+
+        a:hover {
             text-decoration: none;
         }
     }
@@ -39,7 +40,9 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
+    .complementa-text {
+        margin-top: 7%;
+    }
     p {
         font-family: GT-America-Regular;
     }
@@ -48,7 +51,9 @@
 @media (max-width: 1120px) {
     .complementa {
         height: 50rem;
-
+        .complementa-text {
+            margin-top: 2%;
+        }
         div {
             padding-top: 4rem;
         }
@@ -59,6 +64,10 @@
     .complementa {
         height: 44rem;
 
+        .complementa-text {
+            margin-top: 2%;
+        }
+
         div {
             padding-top: 2rem;
         }
@@ -68,7 +77,33 @@
 @media (max-width: 676px) {
     .complementa {
         height: 28rem;
+        .complementa-text {
+            margin-top: 2%;
+            p{
+                margin-top: 20%;
+            }
+        }
+        div {
+            padding-top: 0.5rem;
+        }
+    }
 
+    .diciplines {
+        margin-right: 0;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .complementa {
+        height: 28rem;
+        .complementa-text {
+            margin-top: 2%;
+            p{
+                margin-top: 40%;
+            }
+        }
         div {
             padding-top: 0.5rem;
         }

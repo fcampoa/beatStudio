@@ -1,13 +1,13 @@
-
 .mat-form-field-underline {
   display: none;
 }
 
 .front-image {
-cursor: pointer;
+  cursor: pointer;
   width: 100%;
   transition: width 1s;
 }
+
 @mixin md-icon-size($size: 24px) {
   font-size: $size;
   height: $size;
@@ -56,15 +56,15 @@ mat-icon {
   margin: 40px 10px 40px 10px;
 
   .coach-card {
-    width: 33.33%;
+    width: 400px;
   }
 
   .coach {
     margin: 40px 30px 40px 30px;
 
     img {
-      height: 100%;
-      width: 100%;
+      width: 340px;
+      height: 459px;
       z-index: 1;
       -webkit-transition: all 500ms;
       -moz-transition: all 500ms;
@@ -74,8 +74,9 @@ mat-icon {
 
     .divider {
       margin-top: 10px;
+
       mat-divider {
-        border-top-color:#ffffff;
+        border-top-color: #ffffff;
         margin-bottom: 15px;
       }
 
@@ -131,8 +132,8 @@ mat-icon {
 
   .coach:hover {
     img {
-      height: 50%;
-      width: 50%;
+      height: 229px;
+      width: 170px;
     }
 
     .hide-info {
@@ -152,127 +153,114 @@ mat-icon {
 
 
 .coach-container {
-  height: 500px;
+  height: 459px;
 }
 
-@media (max-width: 1200px) {
-  .coach-container {
-    height: 400px;
-  }
-}
+// @media (max-width: 1200px) {
+//   .coach-container {
+//     height: 400px;
+//   }
+// }
 
-@media (max-width: 1100px) {
-  .coach-info-text {
-    margin-bottom: 0;
-  }
+// @media (max-width: 1100px) {
+//   .coach-info-text {
+//     margin-bottom: 0;
+//   }
 
-  .coach-container {
-    height: 350px;
+//   .coach-container {
+//     height: 350px;
 
-    .coach {
-      .hide-info {
-        top: 50%;
-      }
-    }
-  }
-}
+//     .coach {
+//       .hide-info {
+//         top: 50%;
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: 992px) {
-  .coach-info-text {
-    margin-bottom: 20px;
-  }
+// @media (max-width: 992px) {
+//   .coach-info-text {
+//     margin-bottom: 20px;
+//   }
 
-  .coaches {
-    .coach-card {
-      width: 50%;
+//   .coaches {
+//     .coach-card {
+//       width: 50%;
 
-      .coach {
-        .hide-info {
-          top: 55%;
-        }
-      }
-    }
-  }
+//       .coach {
+//         .hide-info {
+//           top: 55%;
+//         }
+//       }
+//     }
+//   }
 
-  .coach-container {
-    height: 500px;
-  }
-}
+//   .coach-container {
+//     height: 500px;
+//   }
+// }
 
-@media (max-width: 850px) {
-  .coach-info-text {
-    margin-bottom: 0;
-  }
+// @media (max-width: 850px) {
+//   .coach-info-text {
+//     margin-bottom: 0;
+//   }
 
-  .coach-container {
-    height: 420px;
+//   .coach-container {
+//     height: 420px;
 
-    .coach {
-      .hide-info {
-        top: 50%;
-      }
-    }
-  }
-}
+//     .coach {
+//       .hide-info {
+//         top: 50%;
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: 768px) {
-  .coach-info-text {
-    margin-bottom: 0;
-  }
+// @media (max-width: 768px) {
+//   .coach-info-text {
+//     margin-bottom: 0;
+//   }
 
-  .coach-container {
-    height: 350px;
+//   .coach-container {
+//     height: 350px;
 
-    .coach {
-      .hide-info {
-        top: 50%;
-      }
-    }
-  }
-}
+//     .coach {
+//       .hide-info {
+//         top: 50%;
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: 576px) {
-  .coach-info-text {
-    margin-bottom: 20px;
-  }
+// @media (max-width: 576px) {
+//   .coach-info-text {
+//     margin-bottom: 20px;
+//   }
 
-  .coaches {
-    .coach-card {
-      width: 100%;
+//   .coaches {
+//     .coach-card {
+//       width: 100%;
 
-      .coach {
-        .hide-info {
-          top: 55%;
-        }
-      }
-    }
-  }
+//       .coach {
+//         .hide-info {
+//           top: 55%;
+//         }
+//       }
+//     }
+//   }
 
-  .coach-container {
-    height: 500px;
-  }
-}
+//   .coach-container {
+//     height: 500px;
+//   }
+// }
 
 @media (max-width: 400px) {
-  .coach-info-text {
-    margin-bottom: 10px;
-  }
-
   .coaches {
+    margin: 40px 0 40px 0;
     .coach-card {
-      width: 100%;
-
       .coach {
         margin: 20px 0 20px 0;
-
-        .hide-info {
-          top: 50%;
-        }
       }
     }
-  }
-
-  .coach-container {
-    height: 420px;
   }
 }

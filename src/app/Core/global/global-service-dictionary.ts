@@ -21,7 +21,7 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
     lista: { method: GlobalServiceMethodType.GET, url: '' },
     buscarClienteRango: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&filter[fecha][between]=$desde,$hasta&sort=-fecha&fields=*,horario.*,horario.coach.nombre' },
-    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&sort=-created_on&fields=*,horario.*,horario.coach.nombre,horario.disciplina.nombre&limit=$limit'},
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&sort=-created_on&fields=*,horario.*,horario.coach.nombre,horario.disciplina.nombre&limit=$limit' },
     buscarFecha: { method: GlobalServiceMethodType.GET, url: '' },
     buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[horario.id][eq]=$id' },
   },
@@ -78,10 +78,11 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
   lista_espera: {
     agregar: { method: GlobalServiceMethodType.POST, url: '' },
     actualizar: { method: GlobalServiceMethodType.PATCH, url: '/$id' },
-    eliminar: {method: GlobalServiceMethodType.DELETE, url: '/$id' },
-    lista: { method: GlobalServiceMethodType.GET, url: ' '},
+    eliminar: { method: GlobalServiceMethodType.DELETE, url: '/$id' },
+    lista: { method: GlobalServiceMethodType.GET, url: ' ' },
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
     buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[horario.id]=$idHorario&fields=*,cliente.correo' },
-    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$idCliente&fields=*,cliente.correo' }
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$idCliente&fields=*,cliente.correo' },
+    buscarRepetido: { method: GlobalServiceMethodType.GET, url: '?filter[cliente]=$idCliente&filter[horario]=$idHorario&fields=*' }
   }
 };
