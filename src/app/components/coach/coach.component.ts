@@ -1,5 +1,6 @@
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-coach',
@@ -16,7 +17,7 @@ export class CoachComponent implements OnInit {
       frase: 'Self love is the key',
       disciplinas: 'BeatBarre',
       movimiento: '¡Squats!',
-      nombre: 'Caro Hernández',
+      nombre: 'Pau Hernández',
       url: '../../../assets/img/new-images/Coaches/Coach_PauHernandez.jpg',
       musica: 'Reggeaton / Pop'
     },
@@ -24,7 +25,7 @@ export class CoachComponent implements OnInit {
       frase: 'Let’s make every minute a moment',
       disciplinas: 'BeatSpin / BeatBarre / BeatPower',
       movimiento: 'Sprints & Pushups',
-      nombre: 'Pau Hernández',
+      nombre: 'Fer Pereira',
       url: '../../../assets/img/new-images/Coaches/Coach_Fer.jpg',
       musica: 'Hip hop / EDM / Pop'
     },
@@ -32,7 +33,7 @@ export class CoachComponent implements OnInit {
       frase: 'Your body can stand almost anything. Its your mind that you have to convince',
       disciplinas: 'BeatBarre',
       movimiento: 'Squats y pulsos en barra',
-      nombre: 'Pau Ávila',
+      nombre: 'Pau Cordova',
       url: '../../../assets/img/new-images/Coaches/Coach_PauCordova.jpg',
       musica: 'Mixes, old with new'
     },
@@ -40,7 +41,7 @@ export class CoachComponent implements OnInit {
       frase: 'No one is you and that is your power',
       disciplinas: 'BeatSpin',
       movimiento: 'Sprint / No hands',
-      nombre: 'Alexa Caliz',
+      nombre: 'Ale Soria',
       url: '../../../assets/img/new-images/Coaches/Coach_Ale.jpg',
       musica: 'Reggeaton / Pop'
     },
@@ -48,7 +49,7 @@ export class CoachComponent implements OnInit {
       frase: 'Never, never, never give up',
       disciplinas: 'BeatBarre',
       movimiento: 'Desplantes y planchas',
-      nombre: 'Ale Soria',
+      nombre: 'Mariana Ezquerra',
       url: '../../../assets/img/new-images/Coaches/Coach_Mariana.jpg',
       musica: 'Indie Rock'
     },
@@ -56,7 +57,7 @@ export class CoachComponent implements OnInit {
       frase: 'Whatever you do, do it well',
       disciplinas: 'BeatBarre',
       movimiento: 'Squats',
-      nombre: 'Marielena Anaya',
+      nombre: 'Pau Avila',
       url: '../../../assets/img/new-images/Coaches/Coach_PauAvila.jpg',
       musica: 'Oldies'
     },
@@ -78,7 +79,9 @@ export class CoachComponent implements OnInit {
     }
 
   ];
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder, private titleService: Title) { 
+    this.titleService.setTitle('Coaches — BeatStudio');
+  }
 
   ngOnInit() {
     // this.group = this.builder.group({});

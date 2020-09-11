@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeUrl, Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
@@ -47,7 +47,11 @@ export class DashboardComponent implements OnInit {
     { titulo: 'Hallowed be thy name', artista: 'Iron Maiden', url: 'https://open.spotify.com/embed/track/469rBLYJUZHMJLtq2Wch3h' }
   ];
   constructor(private sanitizer: DomSanitizer,
-    private router: Router) { }
+              private router: Router,
+              private titleService: Title) {
+
+  this.titleService.setTitle('Home — BeatStudio');
+               }
 
   ngOnInit() {
     // this.eventService.getEvent().subscribe(

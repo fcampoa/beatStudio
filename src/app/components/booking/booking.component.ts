@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { Disciplina } from 'src/app/model/disciplina';
 import * as m from 'moment';
 import * as $ from 'jquery';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -31,9 +32,12 @@ export class BookingComponent implements OnInit {
   errors = 0;
 
   constructor(private apiSvc: GlobalApiService,
-    private router: Router,
-    private userSv: UserService,
-    private notify: NotificationsService) {
+              private router: Router,
+              private userSv: UserService,
+              private notify: NotificationsService,
+              private titleService: Title) {
+
+    this.titleService.setTitle('Reservaciones — BeatStudio');
 
     this.seleccion = new BehaviorSubject<Horario>(null);
     this.desde = m().format('YYY-MM-DD');

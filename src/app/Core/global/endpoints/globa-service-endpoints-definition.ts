@@ -5,6 +5,7 @@ export interface IGlobalServiceEndPointsDefinition {
     creditosCliente: (id: number, desde: string, hasta: string) => VERBS.IGetCall;
     actualizarCreditos: (id: number, desde: string, hasta: string, creditos: number) => VERBS.IPatchCall;
     hacerPago: () => VERBS.IpostCall;
+    regresarCreditos: (id: number, desde: string, creditos: number) => VERBS.IPatchCall;
   };
   reservacion?: {
     reservacionesHorario: (id: number) => VERBS.IGetCall;

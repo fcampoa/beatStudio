@@ -292,6 +292,7 @@ export class BookingStepTwoComponent implements OnInit {
       d.invitado = false;
       d.status = 'published';
       d.lugar = this.seleccion.numero;
+      d.horario = this.horario.fecha;
       this.reservaciones.push(d);
       this.amigos.forEach(x => {
         d = new ReservacionDetalle();

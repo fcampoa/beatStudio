@@ -52,10 +52,12 @@ export class CancelClassComponent implements OnInit {
 
   cancelBooking(): void {
     this.reservacion.cancelada = true;
+    this.reservacion.cliente = this.reservacion.cliente.id;
+    this.reservacion.horario = this.reservacion.horario.id;
     this.apiSvc.routes.reservacion.actualizar(this.reservacion.id)<any>(this.reservacion).subscribe(
       response => {
         this.reservacion = response;
-        this.dialogRef.close();
+        this.dialogRef.close(true);
       },
       error => {
         console.log(error);

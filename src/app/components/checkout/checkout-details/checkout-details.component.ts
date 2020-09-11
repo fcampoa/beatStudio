@@ -107,7 +107,7 @@ export class CheckoutDetailsComponent implements OnInit {
     hp.creditos = this.paquete.creditos;
     hp.id_orden = idOrden;
     const d = new Date();
-    d.setDate(d.getDate() + 30);
+    d.setDate(d.getDate() + this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30);
     hp.vigencia = m(d).format('YYYY-MM-DD');
     this.apiSvc.routes.historial_compra.agregar()<any>(hp).subscribe(
       response => {
