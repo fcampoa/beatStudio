@@ -378,3 +378,19 @@
     }
   }
 }
+
+@media only screen and(max-width: 750px) {
+  .part2 {
+    padding: 4% 4% 4% 4%;
+    .desvanecer {
+     span {
+      padding-top: 4% !important;
+      font-size: 16px !important;
+      }
+    }
+  }
+
+  .home-image {
+    // background-image: url("../../../assets/img/Homepage2.jpg");
+  }
+}

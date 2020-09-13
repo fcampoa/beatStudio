@@ -165,6 +165,10 @@ export class ScheduleComponent implements OnInit {
     this.Seleccion.emit(h);
   }
 
+  seleccionar2(d: CustomHorario, h: any) {
+    this.Seleccion.emit(h);
+  }
+
   /**
    * Valida si los lugares del horario dado estan todos llenos.
    * @param horario

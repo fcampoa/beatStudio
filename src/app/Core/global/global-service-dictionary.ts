@@ -73,7 +73,8 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
     buscarReservacion: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion]=$id' },
     buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion.horario.id][eq]=$id&filter[reservacion.cancelada]=false' },
-    checarOcupado: { method: GlobalServiceMethodType.GET, url: '?filter[lugar]=$lugar&filter[reservacion.cancelada]=false&filter[reservacion.horario]=$horario' }
+    checarOcupado: { method: GlobalServiceMethodType.GET, url: '?filter[lugar]=$lugar&filter[reservacion.cancelada]=false&filter[reservacion.horario]=$horario' },
+    listaClase: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion.horario]=$horario'}
   },
   lista_espera: {
     agregar: { method: GlobalServiceMethodType.POST, url: '' },

@@ -14,36 +14,36 @@ export class CoachComponent implements OnInit {
   public imageClass = 'front-image';
   public coaches = [
     {
-      frase: 'Self love is the key',
-      disciplinas: 'BeatBarre',
-      movimiento: '¡Squats!',
+      frase: 'Let’s make every minute a moment',
+      disciplinas: 'BeatSpin, BeatPower y BeatBarre',
+      movimiento: 'Sprints, Pulse en segunda, Upper Body',
       nombre: 'Pau Hernández',
       url: '../../../assets/img/new-images/Coaches/Coach_PauHernandez.jpg',
-      musica: 'Reggeaton / Pop'
-    },
-    {
-      frase: 'Let’s make every minute a moment',
-      disciplinas: 'BeatSpin / BeatBarre / BeatPower',
-      movimiento: 'Sprints & Pushups',
-      nombre: 'Fer Pereira',
-      url: '../../../assets/img/new-images/Coaches/Coach_Fer.jpg',
       musica: 'Hip hop / EDM / Pop'
     },
     {
-      frase: 'Your body can stand almost anything. Its your mind that you have to convince',
-      disciplinas: 'BeatBarre',
-      movimiento: 'Squats y pulsos en barra',
-      nombre: 'Pau Cordova',
-      url: '../../../assets/img/new-images/Coaches/Coach_PauCordova.jpg',
-      musica: 'Mixes, old with new'
+      frase: 'be the energy you want to attract',
+      disciplinas: ': Beatspin y BeatPower',
+      movimiento: ': Pushup & Tapback, Squats & Planks',
+      nombre: 'Fer Pereira',
+      url: '../../../assets/img/new-images/Coaches/Coach_Fernanda.jpg',
+      musica: 'Hip Hop / Pop / Progressive House'
     },
     {
-      frase: 'No one is you and that is your power',
-      disciplinas: 'BeatSpin',
-      movimiento: 'Sprint / No hands',
+      frase: 'Nothing worth having ever comes easy',
+      disciplinas: ': BeatSpin y BeatPower',
+      movimiento: 'Sprints y push ups, Upper body y squats',
+      nombre: 'Pau Cordova',
+      url: '../../../assets/img/new-images/Coaches/Coach_PauCordova.jpg',
+      musica: 'Pop / oldies / rock / Un poquito de todos los estilos'
+    },
+    {
+      frase: 'Never, never, never give up',
+      disciplinas: 'BeatBarre',
+      movimiento: 'Desplantes y planchas',
       nombre: 'Ale Soria',
       url: '../../../assets/img/new-images/Coaches/Coach_Ale.jpg',
-      musica: 'Reggeaton / Pop'
+      musica: 'Indie rock'
     },
     {
       frase: 'Never, never, never give up',
@@ -54,12 +54,12 @@ export class CoachComponent implements OnInit {
       musica: 'Indie Rock'
     },
     {
-      frase: 'Whatever you do, do it well',
+      frase: 'Stop underestimating yourself',
       disciplinas: 'BeatBarre',
-      movimiento: 'Squats',
+      movimiento: ': Pulsos en barra',
       nombre: 'Pau Avila',
       url: '../../../assets/img/new-images/Coaches/Coach_PauAvila.jpg',
-      musica: 'Oldies'
+      musica: 'Pop / remixes de oldies'
     },
     {
       frase: 'Vive y deja vivir',
@@ -67,19 +67,35 @@ export class CoachComponent implements OnInit {
       movimiento: 'Sprints',
       nombre: 'Baca',
       url: '../../../assets/img/new-images/Coaches/Coach_Baca.jpg',
-      musica: 'Chill house, electrónica'
+      musica: 'Chill house y electrónica son mi TOP, pero en mis clases vas a escuchar de TODO'
     },
     {
-      frase: ' Your body can stand almost everything, is your mind that you have to convince',
+      frase: 'fitness starts in your head',
       disciplinas: 'BeatSpin / BeatPower',
-      movimiento: 'Brincar de la bici',
+      movimiento: 'Brincar de la bici, pushups',
       nombre: 'Abraham Elizondo',
       url: '../../../assets/img/new-images/Coaches/Coach_Abraham.jpg',
-      musica: 'Pop / Oldies / Electrónica'
+      musica: 'Flow Soul / Oldies / Electrónica'
+    },
+    {
+      frase: 'Self love is the key',
+      disciplinas: 'BeatBarre',
+      movimiento: 'Booty Pulses',
+      nombre: 'Caro Hernández',
+      url: '../../../assets/img/new-images/Coaches/Coach_Carolina.jpg',
+      musica: 'Reggaeton / Pop'
+    },
+    {
+      frase: 'Whatever you do, do it well',
+      disciplinas: 'BeatBarre',
+      movimiento: 'Squats',
+      nombre: 'Marie',
+      url: '../../../assets/img/new-images/Coaches/Coach_Marielena.jpg',
+      musica: 'Oldies'
     }
 
   ];
-  constructor(private builder: FormBuilder, private titleService: Title) { 
+  constructor(private builder: FormBuilder, private titleService: Title) {
     this.titleService.setTitle('Coaches — BeatStudio');
   }
 

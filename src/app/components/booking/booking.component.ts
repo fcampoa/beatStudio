@@ -89,6 +89,11 @@ export class BookingComponent implements OnInit {
 
   asignarSeleccion($event: any): void {
     this.seleccion.next($event.horario);
+    if (this.user.role === '1') {
+      if (this.horarioElegido.id > 0) {
+        this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+      }
+    }
   }
   /**
    * navega al siguiente componente booking-seatSelection
