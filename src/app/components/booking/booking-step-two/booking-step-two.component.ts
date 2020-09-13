@@ -92,7 +92,8 @@ export class BookingStepTwoComponent implements OnInit {
   mostrarAsientosSpin(disciplina: string): void {
     switch (disciplina.toLowerCase()) {
       case 'spin':
-        this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
+        // this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
+        this.llenarAsientos([[0, 3, 6], [0, 5], [0, 1, 2, 3, 4], [0, 2, 4, 6]], [0, 3]);
         break;
       case 'barre':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
