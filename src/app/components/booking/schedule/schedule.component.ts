@@ -122,28 +122,44 @@ export class ScheduleComponent implements OnInit {
    * Separa los horarios por dias de la semana
    */
   splitHorarios(horarios: Array<Horario>): void {
-    let semana = [
-      { fecha: '', horarios: [] },
-      { fecha: '', horarios: [] },
-      { fecha: '', horarios: [] },
-      { fecha: '', horarios: [] },
-      { fecha: '', horarios: [] },
-      { fecha: '', horarios: [] },
-      { fecha: '', horarios: [] }
-    ];
+    // let semana = [
+    //   { fecha: '', horarios: [] },
+    //   { fecha: '', horarios: [] },
+    //   { fecha: '', horarios: [] },
+    //   { fecha: '', horarios: [] },
+    //   { fecha: '', horarios: [] },
+    //   { fecha: '', horarios: [] },
+    //   { fecha: '', horarios: [] }
+    // ];
+    // let actual: any;
+    // let cont = 0;
+    // horarios.forEach(x => {
+    //   // this.checarLleno(x);
+    //   const aux = m(x.fecha).format('YYYY-MM-DD');
+    //   if (actual !== aux) {
+    //     cont++;
+    //     actual = aux;
+    //     semana[cont - 1].fecha = m(actual).format('YYYY-MM-DD');
+    //   }
+    //   semana[cont - 1].horarios.push({ horario: x, selected: false });
+    // });
+    debugger;
+    let semana = [];
     let actual: any;
     let cont = 0;
     horarios.forEach(x => {
-      // this.checarLleno(x);
       const aux = m(x.fecha).format('YYYY-MM-DD');
-      if (actual !== aux) {
-        cont++;
-        actual = aux;
-        semana[cont - 1].fecha = m(actual).format('YYYY-MM-DD');
+      let index = semana.findIndex(d => d.fecha === aux);
+      if (index >= 0) {
+        semana[index].horarios.push({ horario: x, selected: false });
+      } else {
+        let z: any = {};
+        z.fecha = aux;
+        z.horarios = [];
+        z.horarios.push({ horario: x, selected: false} );
+        semana.push(z);
       }
-      semana[cont - 1].horarios.push({ horario: x, selected: false });
     });
-
     this.semana = semana;
     this.Loader.emit({ loader: false });
   }

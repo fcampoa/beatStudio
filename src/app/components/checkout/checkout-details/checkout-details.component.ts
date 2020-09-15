@@ -106,9 +106,11 @@ export class CheckoutDetailsComponent implements OnInit {
     hp.total = this.paquete.precio;
     hp.creditos = this.paquete.creditos;
     hp.id_orden = idOrden;
+    debugger;
     const d = new Date();
-    d.setDate(d.getDate() + this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30);
-    hp.vigencia = m(d).format('YYYY-MM-DD');
+    // d.setDate(d.getDate() + this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30);
+    hp.vigencia = m(d).add(this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30, 'days').format('YYYY-MM-DD');
+    // hp.vigencia = m(d).format('YYYY-MM-DD');
     this.apiSvc.routes.historial_compra.agregar()<any>(hp).subscribe(
       response => {
         const pago = response.data;

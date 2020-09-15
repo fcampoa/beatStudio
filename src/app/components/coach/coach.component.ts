@@ -25,7 +25,7 @@ export class CoachComponent implements OnInit {
       frase: 'be the energy you want to attract',
       disciplinas: ': Beatspin y BeatPower',
       movimiento: ': Pushup & Tapback, Squats & Planks',
-      nombre: 'Fer Pereira',
+      nombre: 'Fer Pereyra',
       url: '../../../assets/img/new-images/Coaches/Coach_Fernanda.jpg',
       musica: 'Hip Hop / Pop / Progressive House'
     },
