@@ -21,7 +21,7 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
     lista: { method: GlobalServiceMethodType.GET, url: '' },
     buscarClienteRango: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&filter[fecha][between]=$desde,$hasta&sort=-fecha&fields=*,horario.*,horario.coach.nombre' },
-    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&sort=-created_on&fields=*,horario.*,horario.coach.nombre,horario.disciplina.nombre&limit=$limit' },
+    buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id][eq]=$id&sort=-created_on&fields=*,horario.*,horario.coach.id,horario.coach.nombre,horario.disciplina.id,horario.disciplina.nombre&limit=$limit' },
     buscarFecha: { method: GlobalServiceMethodType.GET, url: '' },
     buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[horario.id][eq]=$id' },
   },
@@ -73,7 +73,8 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
     buscarReservacion: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion]=$id' },
     buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion.horario.id][eq]=$id&filter[reservacion.cancelada]=false' },
-    checarOcupado: { method: GlobalServiceMethodType.GET, url: '?filter[lugar]=$lugar&filter[reservacion.cancelada]=false&filter[reservacion.horario]=$horario' }
+    checarOcupado: { method: GlobalServiceMethodType.GET, url: '?filter[lugar]=$lugar&filter[reservacion.cancelada]=false&filter[reservacion.horario]=$horario' },
+    listaClase: { method: GlobalServiceMethodType.GET, url: '?filter[reservacion.horario]=$horario'}
   },
   lista_espera: {
     agregar: { method: GlobalServiceMethodType.POST, url: '' },

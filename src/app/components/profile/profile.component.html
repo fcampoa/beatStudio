@@ -25,10 +25,10 @@
                 <input matInput formControlName="txtLastName">
               </mat-form-field>
             </div>
-            <div class="row d-flex justify-content-between">
+            <!-- <div class="row d-flex justify-content-between">
               <button class="section-buttons" type="button" (click)="closeStep()">CANCELAR</button>
               <button class="section-buttons" type="submit">GUARDAR</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </mat-expansion-panel>
@@ -50,10 +50,10 @@
                 <input matInput formControlName="txtEmail">
               </mat-form-field>
             </div>
-            <div class="row d-flex justify-content-between">
+            <!-- <div class="row d-flex justify-content-between">
               <button class="section-buttons" type="button" (click)="closeStep()">CANCELAR</button>
               <button class="section-buttons" type="submit">GUARDAR</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </mat-expansion-panel>
@@ -75,10 +75,10 @@
                 <input matInput formControlName="txtPhone" mask="(000) 000 00 00">
               </mat-form-field>
             </div>
-            <div class="row d-flex justify-content-between">
+            <!-- <div class="row d-flex justify-content-between">
               <button class="section-buttons" type="button" (click)="closeStep()">CANCELAR</button>
               <button class="section-buttons" type="submit">GUARDAR</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </mat-expansion-panel>
@@ -102,10 +102,10 @@
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </div>
-            <div class="row d-flex justify-content-between">
+            <!-- <div class="row d-flex justify-content-between">
               <button class="section-buttons" type="button" (click)="closeStep()">CANCELAR</button>
               <button class="section-buttons" type="submit">GUARDAR</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </mat-expansion-panel>
@@ -127,10 +127,10 @@
                 <input matInput type="number" formControlName="txtSize">
               </mat-form-field>
             </div>
-            <div class="row d-flex justify-content-between">
+            <!-- <div class="row d-flex justify-content-between">
               <button class="section-buttons" type="button" (click)="closeStep()">CANCELAR</button>
               <button class="section-buttons" type="submit">GUARDAR</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </mat-expansion-panel>
@@ -152,10 +152,10 @@
                 <input matInput formControlName="txtContact">
               </mat-form-field>
             </div>
-            <div class="row d-flex justify-content-between">
+            <!-- <div class="row d-flex justify-content-between">
               <button class="section-buttons" type="button" (click)="closeStep()">CANCELAR</button>
               <button class="section-buttons" type="submit">GUARDAR</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </mat-expansion-panel>
@@ -177,13 +177,17 @@
                 <input matInput mask="(000) 000 00 00" formControlName="txtContactPhone">
               </mat-form-field>
             </div>
-            <div class="row d-flex justify-content-between">
+            <!-- <div class="row d-flex justify-content-between">
               <button class="section-buttons" type="button" (click)="closeStep()">CANCELAR</button>
               <button class="section-buttons" type="submit">GUARDAR</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
+    <div class="row d-flex justify-content-center m-5">
+      <button class="section-buttons m-3" type="button" (click)="closeStep()">CANCELAR</button>
+      <button class="section-buttons m-3" type="submit">GUARDAR</button>
+    </div>
   </form>
 </div>

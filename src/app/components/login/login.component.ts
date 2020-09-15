@@ -61,7 +61,9 @@ export class LoginComponent implements OnInit {
   initForm(): void {
     this.userGroup = this.formBuilder.group({
       txtEmail: ['', [Validators.required, Validators.email]],
-      txtPassword: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*[.]*"), Validators.minLength(8)]]
+     // txtPassword: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*[.]*"), Validators.minLength(8)]]
+     txtPassword: ['', [Validators.required]]
+
     });
   }
 

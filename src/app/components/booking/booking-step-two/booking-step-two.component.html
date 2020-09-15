@@ -14,7 +14,7 @@
   </div>
   <div class="row d-flex justify-content-center mb-5">
     <div class="col-12 col-sm-11 col-md-10 col-lg-7 col-xl-6 d-flex justify-content-center">
-      <p class="sections-info-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+      <p class="sections-info-text">Elige tu lugar favorito.</p>
     </div>
   </div>
   <div class="row pt-md-5 mb-5">
@@ -26,17 +26,23 @@
         </div>
         <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
           <div class="row">
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
               <h5 class="title_top_">HORARIO</h5>
               <label class="title_down_">{{horario.fecha | date:'mediumTime'}}</label>
             </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
               <h5 class="title_top_">COACH</h5>
               <label class="title_down_">{{horario.coach.nombre}}</label>
             </div>
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
               <h5 class="title_top_">TU CLASE</h5>
               <label class="title_down_"><span>Beat</span> {{horario.disciplina.nombre}}</label>
+            </div>
+            <!--Boton para imprimir-->
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" *ngIf="user.role === '1'">
+              <button mat-stroked-button class="mr-3 button-new" (click)="imprimir()">
+                Imprimr lista
+              </button>
             </div>
           </div>
         </div>

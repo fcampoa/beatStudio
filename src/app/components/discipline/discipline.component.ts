@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-discipline',
@@ -8,7 +9,9 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class DisciplineComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private titleService: Title) {
+    this.titleService.setTitle('Clases — BeatStudio');
+   }
 
   ngOnInit() {
   }

@@ -4,6 +4,7 @@ export class ReservacionDetalle extends CommonFields{
   public nombre?: string;
   public lugar?: any;
   public invitado?: any;
+  public horario?: any;
 
   constructor() {
     super();

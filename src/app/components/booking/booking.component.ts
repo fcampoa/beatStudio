@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { Disciplina } from 'src/app/model/disciplina';
 import * as m from 'moment';
 import * as $ from 'jquery';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -31,9 +32,12 @@ export class BookingComponent implements OnInit {
   errors = 0;
 
   constructor(private apiSvc: GlobalApiService,
-    private router: Router,
-    private userSv: UserService,
-    private notify: NotificationsService) {
+              private router: Router,
+              private userSv: UserService,
+              private notify: NotificationsService,
+              private titleService: Title) {
+
+    this.titleService.setTitle('Reservaciones — BeatStudio');
 
     this.seleccion = new BehaviorSubject<Horario>(null);
     this.desde = m().format('YYY-MM-DD');
@@ -85,6 +89,11 @@ export class BookingComponent implements OnInit {
 
   asignarSeleccion($event: any): void {
     this.seleccion.next($event.horario);
+    if (this.user.role === '1') {
+      if (this.horarioElegido.id > 0) {
+        this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+      }
+    }
   }
   /**
    * navega al siguiente componente booking-seatSelection

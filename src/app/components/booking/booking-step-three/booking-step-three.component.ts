@@ -86,6 +86,8 @@ export class BookingStepThreeComponent implements OnInit {
     // }
     this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
       response => {
+        debugger;
+        console.log(response);
         this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
           this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
             res => {

@@ -106,9 +106,11 @@ export class CheckoutDetailsComponent implements OnInit {
     hp.total = this.paquete.precio;
     hp.creditos = this.paquete.creditos;
     hp.id_orden = idOrden;
+    debugger;
     const d = new Date();
-    d.setDate(d.getDate() + 30);
-    hp.vigencia = m(d).format('YYYY-MM-DD');
+    // d.setDate(d.getDate() + this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30);
+    hp.vigencia = m(d).add(this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30, 'days').format('YYYY-MM-DD');
+    // hp.vigencia = m(d).format('YYYY-MM-DD');
     this.apiSvc.routes.historial_compra.agregar()<any>(hp).subscribe(
       response => {
         const pago = response.data;
@@ -186,7 +188,7 @@ export class CheckoutDetailsComponent implements OnInit {
       //   this.notify.errorMessage(error.message_to_purchaser);
       // });
     } else {
-      this.notify.errorMessage('Debe registrar un método de pago.')
+      this.notify.errorMessage('Debe registrar un método de pago.');
     }
   }
 
@@ -220,7 +222,7 @@ export class CheckoutDetailsComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'MXN',
-      // clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
+      //clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
       clientId: 'AVJ9WP8qD0yJwMBZkK8UFK0m4OmG1Obk2l-lM0krkhCx_fJM8-PRFQzwWDrV0vUSnjD7fcJsxWxI7SCd',
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',

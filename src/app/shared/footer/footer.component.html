@@ -43,21 +43,21 @@
         <label class="footer-text">Llámanos a 662 215 4609</label>
         <label class="footer-text">Lunes a viernes: 6:00 AM - 11:00 AM y 4:00 PM a 8:00 PM</label>
       </div>
-      <div class="col-12 col-sm-12 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
+      <div class="col-6 col-sm-6 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
         <div class="footer-title">
           <b>Conócenos</b><br>
         </div>
-        <label class="link" (click)="goTo('')">Inicio</label>
-        <label class="link" (click)="goTo('about')">About</label>
-        <label class="link" (click)="goTo('disciplines')">Clases</label>
-        <label class="link" (click)="goTo('coach')">Coaches</label>
-        <label class="link" (click)="goTo('contact')">Contacto</label>
+        <label class="link footer-text" (click)="goTo('')">Inicio</label>
+        <label class="link footer-text" (click)="goTo('about')">About</label>
+        <label class="link footer-text" (click)="goTo('disciplines')">Clases</label>
+        <label class="link footer-text" (click)="goTo('coach')">Coaches</label>
+        <label class="link footer-text" (click)="goTo('contact')">Contacto</label>
       </div>
-      <div class="col-12 col-sm-12 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
+      <div class="col-6 col-sm-6 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
         <div class="footer-title">
           <b>Servicio al cliente</b><br>
         </div>
-        <label class="footer-text">Política de privacidad</label>
+        <label class="footer-text"><a [routerLink]="['privacy']">Política de privacidad</a></label>
         <label class="footer-text">Preguntas frecuentes</label>
         <label class="footer-text">Términos y condiciones</label>
       </div>
@@ -85,16 +85,16 @@
       </div>
       <div class="col-12 col-sm-12 col-md-6 col-xl-6" style="padding-top: 5%;padding-bottom: 3%;">
         <div class="row">
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>SPIN</span>
           </div>
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>BARRE</span>
           </div>
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>YOGA</span>
           </div>
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>TRAIN</span>
           </div>
         </div>

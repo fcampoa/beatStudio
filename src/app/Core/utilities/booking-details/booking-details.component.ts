@@ -65,7 +65,15 @@ export class BookingDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.cancel = true;
+      if (result === true) {
+      this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>(null).subscribe(
+        response => {
+          console.log(response);
+          this.cancel = true;
+          window.location.reload();
+        }
+      );
+      }
     });
   }
 

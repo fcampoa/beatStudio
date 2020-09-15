@@ -75,6 +75,7 @@ import { BeatspinComponent } from './components/disciplines/beatspin/beatspin.co
 import { BeatbarreComponent } from './components/disciplines/beatbarre/beatbarre.component';
 import { BeatyogaComponent } from './components/disciplines/beatyoga/beatyoga.component';
 import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower.component'
+import { FileService } from './services/file-service.service';
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -158,7 +159,7 @@ import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower
   exports: [
   ],
   providers: [GlobalApiService, UserService, NotificationsService,
-    ParamsService, GenericApiCallService,
+    ParamsService, GenericApiCallService, FileService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: ErrorHandler, useClass: ErrorsHandler }],

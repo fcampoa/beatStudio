@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -16,7 +17,11 @@ export class AboutComponent implements OnInit {
   public scrollLeft(): void {
     this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 600), behavior: 'smooth' });
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private titleService: Title) {
+    this.titleService.setTitle('About Us — BeatStudio');
+
+   }
+
   goTo(here: string): void {
     this.router.navigate([`/dashboard/${here}`]);
 }

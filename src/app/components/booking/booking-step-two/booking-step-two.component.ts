@@ -12,6 +12,9 @@ import { ReservacionDetalle } from 'src/app/model/reservacion-detalle';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoModalComponent } from '../../info-modal/info-modal.component';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { FileService } from 'src/app/services/file-service.service';
 
 
 @Component({
@@ -27,9 +30,12 @@ export class BookingStepTwoComponent implements OnInit {
     private userSv: UserService,
     private route: ActivatedRoute,
     private location: Location,
-    private notify: NotificationsService) {
+    private notify: NotificationsService,
+    private fileService: FileService) {
     this.cliente = new Cliente();
     this.cliente.nombre = '';
+    
+    this.user = this.userSv.loggedUser.data.user;
   }
 
   public numero = 0;
@@ -86,7 +92,8 @@ export class BookingStepTwoComponent implements OnInit {
   mostrarAsientosSpin(disciplina: string): void {
     switch (disciplina.toLowerCase()) {
       case 'spin':
-        this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
+        // this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
+        this.llenarAsientos([[0, 3, 6], [0, 5], [0, 1, 2, 3, 4], [0, 2, 4, 6]], [0, 3]);
         break;
       case 'barre':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
@@ -105,7 +112,6 @@ export class BookingStepTwoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.userSv.loggedUser.data.user;
     this.buscarCliente();
     this.route.params.subscribe(
       params => {
@@ -292,6 +298,7 @@ export class BookingStepTwoComponent implements OnInit {
       d.invitado = false;
       d.status = 'published';
       d.lugar = this.seleccion.numero;
+      d.horario = this.horario.fecha;
       this.reservaciones.push(d);
       this.amigos.forEach(x => {
         d = new ReservacionDetalle();
@@ -335,4 +342,19 @@ export class BookingStepTwoComponent implements OnInit {
       data: { message: message, btn_text: 'ACEPTAR' }
     });
   }
+
+  imprimir(): void {
+    this.fileService.imprimirListaClase(this.horario);
+  }
+  // exportAsPDF()
+  //     {
+  //       let data = document.getElementById('MyDIv');  
+  //       html2canvas(data).then(canvas => {
+  //         const contentDataURL = canvas.toDataURL('image/png')  
+  //         let pdf = new jsPDF('l', 'cm', 'a4'); //Generates PDF in landscape mode
+  //         // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
+  //         pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);  
+  //         pdf.save('Filename.pdf');   
+  //       }); 
+  //     }
 }
