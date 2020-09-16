@@ -28,7 +28,8 @@ export class BookingStepThreeComponent implements OnInit {
   public desde: any;
   public hasta: any;
   public creditos;
-
+  public loading = false;
+  public ocupados = 0;
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',
@@ -78,15 +79,33 @@ export class BookingStepThreeComponent implements OnInit {
       });
   }
 
+  async checarOcupado(lugar: any) {
+    // this.loading = true;
+    let res = false;
+    let promise = this.apiSvc.routes.reservacion_detalle.checarOcupado(lugar.numero, this.idHorario)<any>().toPromise();
+    await promise.then(response => {
+      if (response.data && response.data.length > 0) {
+        this.ocupados ++;
+      }
+    }).catch(err => {
+     // this.loading = false;
+      this.notify.errorMessage('Ocurrió un error.');
+    });
+    return res;
+  }
+
   reservar(): void {
     // if (this.creditos >= this.reservaciones.length) {
 
     // } else {
     //   this.notify.errorMessage('No tienes créditos suficientes');
     // }
+    this.reservaciones.forEach(d => {
+      this.checarOcupado(d.lugar);
+    });
+    if (this.ocupados === 0) {
     this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
       response => {
-        debugger;
         console.log(response);
         this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
           this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
@@ -101,6 +120,11 @@ export class BookingStepThreeComponent implements OnInit {
         this.notify.errorMessage('Ocurrió un error.');
       }
     );
+    }
+    else {
+      this.notify.errorMessage('Uno o varios de tus lugares ya fueron reservados. Elige uno nuevo.');
+      this.regresar();
+    }
   }
 
   verificarReserva(): void {
