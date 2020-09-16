@@ -100,10 +100,40 @@ export class BookingStepThreeComponent implements OnInit {
     // } else {
     //   this.notify.errorMessage('No tienes créditos suficientes');
     // }
-    this.reservaciones.forEach(d => {
-      this.checarOcupado(d.lugar);
-    });
-    if (this.ocupados === 0) {
+    // this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(
+    //   o => {
+    //     o.forEach(element => {
+    //       this.custom.detalles.forEach(d => {
+    //         if (element.lugar === d.lugar) {
+    //           this.ocupados ++;
+    //         }
+    //       });
+    //       if (this.ocupados === 0) {
+    //       this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
+    //         response => {
+    //           console.log(response);
+    //           this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
+    //             this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
+    //               res => {
+    //                 if (res.resultado === true) {
+    //                   this.router.navigate(['dashboard/booking/success']);
+    //                 }
+    //               }
+    //             );
+    //         },
+    //         error => {
+    //           this.notify.errorMessage('Ocurrió un error.');
+    //         }
+    //       );
+    //       }
+    //       else {
+    //         this.notify.errorMessage('Uno o varios de tus lugares ya fueron reservados. Elige uno nuevo.');
+    //         this.regresar();
+    //       }
+
+    //     });
+    // });
+    // if (this.ocupados === 0) {
     this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
       response => {
         console.log(response);
@@ -120,11 +150,11 @@ export class BookingStepThreeComponent implements OnInit {
         this.notify.errorMessage('Ocurrió un error.');
       }
     );
-    }
-    else {
-      this.notify.errorMessage('Uno o varios de tus lugares ya fueron reservados. Elige uno nuevo.');
-      this.regresar();
-    }
+    // }
+    // else {
+    //   this.notify.errorMessage('Uno o varios de tus lugares ya fueron reservados. Elige uno nuevo.');
+    //   this.regresar();
+    // }
   }
 
   verificarReserva(): void {
