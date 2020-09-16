@@ -167,7 +167,7 @@ export class BookingStepTwoComponent implements OnInit {
     }, error => {
       this.loading = false;
       this.notify.errorMessage('Ocurrió un error.');
-    })
+    });
   }
 
   seleccionarAsiento(i: any): void {
