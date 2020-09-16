@@ -58,15 +58,17 @@
         </div>
       </div> -->
       <div class="mt-4 mb-4">
-        <div class="row d-flex justify-content-center" *ngFor="let row of asientos">
-          <div class="col-button d-flex justify-content-center" *ngFor="let item of row">
-            <div *ngIf="item.coach" class="coach-seat align-self-center">
+        <div *ngFor="let row of asientos">
+          <div class="row d-flex" [ngClass]="checkClass(row)">
+            <div class="col-button d-flex" *ngFor="let item of row">
+              <div *ngIf="item.coach" class="coach-seat align-self-center">
+              </div>
+              <button *ngIf="!item.coach" mat-mini-fab class="seat-format align-self-center"
+                id="{{'btn' + item.numero}}" [ngClass]="{hide_circle: !item.visible}" (mouseenter)="hover(item.numero)"
+                (mouseleave)="leave(item.numero)" [disabled]="item.ocupado" (click)="checarOcupado(item)">
+                {{ item.numero }}
+              </button>
             </div>
-            <button *ngIf="!item.coach" mat-mini-fab class="seat-format align-self-center" id="{{'btn' + item.numero}}"
-              [ngClass]="{hide_circle: !item.visible}" (mouseenter)="hover(item.numero)"
-              (mouseleave)="leave(item.numero)" [disabled]="item.ocupado" (click)="checarOcupado(item)">
-              {{ item.numero }}
-            </button>
           </div>
         </div>
       </div>
@@ -76,7 +78,7 @@
         <div class="col-12">
           <div class="div-personas" id="nombrePrincipal" [ngStyle]="{'border-bottom': '2px solid ' + colors[0]}">
             <span [hidden]="numero === 0" id="labelPrincipal" class="sit-number mat_number">{{numero}}</span>
-            <span class="name">{{cliente.nombre}}</span>
+            <span class="name">{{cliente.nombre}} {{cliente.apellido}}</span>
             <!-- <div class="remove-button"><div>&times;</div></div> -->
           </div>
           <!-- <label id="labelPrincipal" class="mat_number">{{ numero }}</label>
