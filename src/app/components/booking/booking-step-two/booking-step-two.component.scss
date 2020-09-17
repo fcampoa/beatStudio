@@ -169,7 +169,8 @@ mat-card {
 }
 
 .hide_circle {
-  visibility: hidden;
+  // visibility: hidden;
+  display: none;
 }
 
 .title_top_ {
@@ -223,7 +224,7 @@ mat-card {
 
   .col-button {
     width: 12% !important;
-    height: 80px;
+    height: 70px;
   }
 
   .seat-format {

@@ -93,7 +93,8 @@ export class BookingStepTwoComponent implements OnInit {
     switch (disciplina.toLowerCase()) {
       case 'spin':
         // this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
-        this.llenarAsientos([[0, 3, 6], [0, 5], [0, 1, 2, 3, 4], [0, 2, 4, 6]], [0, 3]);
+        this.llenarAsientos([[1, 6], [1, 3, 5], [1], [1, 2, 3, 4, 5], [1, 2, 5, 6]], [1, 3]);
+
         break;
       case 'barre':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
@@ -103,6 +104,9 @@ export class BookingStepTwoComponent implements OnInit {
         break;
       case 'power':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5], []], [0, 0]);
+        break;
+        case 'fairplay':
+          this.llenarAsientos([[0], [], [0, 1, 3, 4], [0, 1], [0, 2], [0]], [0, 0]);
         break;
       default:
         this.llenarAsientos([[0], [0, 1, 2, 3, 4, 5, 6], [0, 1, 2, 3, 4, 5, 6], [0, 1, 2, 3, 4, 5, 6]], [0, 0]);
@@ -218,6 +222,7 @@ export class BookingStepTwoComponent implements OnInit {
   }
 
   addFriend(): void {
+    debugger;
     let a = { lugar: 0, fila: 0, nombre: '' };
     this.amigos.push(a);
     this.invitar = true;
@@ -284,6 +289,7 @@ export class BookingStepTwoComponent implements OnInit {
   }
 
   siguiente() {
+    debugger;
     let r: Reservacion;
     if (this.seleccionado) {
       r = new Reservacion();
@@ -294,7 +300,7 @@ export class BookingStepTwoComponent implements OnInit {
       r.folio = this.cliente.id + this.idHorario + this.seleccion.fila + this.seleccion.numero;
       r.cancelada = false;
       let d: ReservacionDetalle = new ReservacionDetalle();
-      d.nombre = this.cliente.nombre;
+      d.nombre = this.cliente.nombre + ' ' + this.cliente.apellido;
       d.invitado = false;
       d.status = 'published';
       d.lugar = this.seleccion.numero;
@@ -357,4 +363,12 @@ export class BookingStepTwoComponent implements OnInit {
   //         pdf.save('Filename.pdf');   
   //       }); 
   //     }
+
+  checkClass(row: any[]): any {
+    console.log(this.horario);
+    return {
+      "justify-content-center": !(row.length === 2 && row[0].visible === false &&
+         this.horario.disciplina.nombre.toLowerCase() === 'spin')
+    }
+  }
 }

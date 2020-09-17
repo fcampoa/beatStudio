@@ -141,12 +141,14 @@ export class BookingStepThreeComponent implements OnInit {
           this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
             res => {
               if (res.resultado === true) {
+                this.loading = false;
                 this.router.navigate(['dashboard/booking/success']);
               }
             }
           );
       },
       error => {
+        this.loading = false;
         this.notify.errorMessage('Ocurrió un error.');
       }
     );
@@ -158,6 +160,7 @@ export class BookingStepThreeComponent implements OnInit {
   }
 
   verificarReserva(): void {
+    this.loading = true;
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
       response => {
         if (response.creditos >= this.reservaciones.length) {
@@ -165,31 +168,37 @@ export class BookingStepThreeComponent implements OnInit {
             if (res.data && res.data.length > 0) {
               if (res.data.length + this.reservaciones.length <= this.horario.lugares) {
                 if (res.data.length > 0) {
+                  let ocupados = [];
                   this.reservaciones.map(reservacion => {
-                    const ocupados = res.data.filter(reservada => reservacion.lugar === reservada.lugar);
-                    if (ocupados.length > 0) {
-                      this.infoModal('Parece que uno de los lugares elegidos ya fue apartado');
-                    } else {
-                      this.reservar();
-                    }
+                     ocupados = res.data.filter(reservada => reservacion.lugar === reservada.lugar);
                   });
+                  if (ocupados.length > 0) {
+                    this.loading = false;
+                    this.infoModal('Parece que uno de los lugares elegidos ya fue apartado');
+                  } else {
+                    this.reservar();
+                  }
                 } else {
                   this.reservar();
                 }
               } else {
+                this.loading = false;
                 this.infoModal('Ya no hay suficientes lugares para tu reservación');
               }
             } else {
               this.reservar();
             }
           }, error => {
+            this.loading = false;
             this.infoModal('No pudimos hacer tu reservación');
-          })
+          });
         } else {
+          this.loading = false;
           this.infoModal('Parece que no tienes créditos suficientes');
         }
       },
       error => {
+        this.loading = false;
         this.infoModal('No pudimos hacer tu reservación');
       }
     );
