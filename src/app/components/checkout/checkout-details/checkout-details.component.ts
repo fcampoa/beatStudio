@@ -146,47 +146,47 @@ export class CheckoutDetailsComponent implements OnInit {
   pagarConTarjeta(cardData: any): void {
     if (this.tieneTarjeta) {
       this.loading = true;
-      // this.pagar('order_token', this.p.id);
+      this.pagar('order_token', this.p.id);
 
-      var tokenParams = {
-        card: {
-          number: this.p.numero_tarjeta,
-          name: this.p.titular,
-          exp_year: cardData.exp_date_year,
-          exp_month: cardData.exp_date_month,
-          cvc: cardData.ccv
-        }
-      };
+      // var tokenParams = {
+      //   card: {
+      //     number: this.p.numero_tarjeta,
+      //     name: this.p.titular,
+      //     exp_year: cardData.exp_date_year,
+      //     exp_month: cardData.exp_date_month,
+      //     cvc: cardData.ccv
+      //   }
+      // };
 
-      Conekta.Token.create(tokenParams, token => {
+      // Conekta.Token.create(tokenParams, token => {
 
-        let payObject = new cardPayment();
+      //   let payObject = new cardPayment();
 
-        payObject.card_token = token.id;
-        payObject.amount = this.paquete.precio;
-        payObject.client_email = this.cliente.correo;
-        payObject.client_name = `${this.cliente.nombre} ${this.cliente.apellido}`;
-        payObject.client_phone = this.cliente.telefono;
-        payObject.item = this.paquete.nombre;
+      //   payObject.card_token = token.id;
+      //   payObject.amount = this.paquete.precio;
+      //   payObject.client_email = this.cliente.correo;
+      //   payObject.client_name = `${this.cliente.nombre} ${this.cliente.apellido}`;
+      //   payObject.client_phone = this.cliente.telefono;
+      //   payObject.item = this.paquete.nombre;
 
-        this.apiSvc.endPoints.historial_compra.hacerPago()<any>(payObject).subscribe(
-          response => {
-            if (response.error) {
-              this.loading = false;
-              this.notify.errorMessage('Error al procesar el pago.');
-            } else {
-              this.pagar(response.resultado, this.p.id);
-            }
-          },
-          error => {
-            this.loading = false;
-            this.notify.errorMessage('Error al procesar el pago.');
-          });
+      //   this.apiSvc.endPoints.historial_compra.hacerPago()<any>(payObject).subscribe(
+      //     response => {
+      //       if (response.error) {
+      //         this.loading = false;
+      //         this.notify.errorMessage('Error al procesar el pago.');
+      //       } else {
+      //         this.pagar(response.resultado, this.p.id);
+      //       }
+      //     },
+      //     error => {
+      //       this.loading = false;
+      //       this.notify.errorMessage('Error al procesar el pago.');
+      //     });
 
-      }, error => {
-        this.loading = false;
-        this.notify.errorMessage(error.message_to_purchaser);
-      });
+      // }, error => {
+      //   this.loading = false;
+      //   this.notify.errorMessage(error.message_to_purchaser);
+      // });
     } else {
       this.notify.errorMessage('Debe registrar un método de pago.');
     }
@@ -222,8 +222,8 @@ export class CheckoutDetailsComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'MXN',
-      clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
-      // clientId: 'AVJ9WP8qD0yJwMBZkK8UFK0m4OmG1Obk2l-lM0krkhCx_fJM8-PRFQzwWDrV0vUSnjD7fcJsxWxI7SCd',
+      //clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
+      clientId: 'AVJ9WP8qD0yJwMBZkK8UFK0m4OmG1Obk2l-lM0krkhCx_fJM8-PRFQzwWDrV0vUSnjD7fcJsxWxI7SCd',
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
 import { NotificationsService } from '../../../services/notifications.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,8 +23,8 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
   public userGroup: FormGroup;
   matcher = new MyErrorStateMatcher();
   public passwordSecurity = '';
-
-  constructor(private formBuilder: FormBuilder, private notify: NotificationsService) { }
+  public token = '';
+  constructor(private formBuilder: FormBuilder, private notify: NotificationsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.initForm();

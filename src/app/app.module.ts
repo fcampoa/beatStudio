@@ -74,8 +74,9 @@ import { CardModalComponent } from './components/checkout/card-modal/card-modal.
 import { BeatspinComponent } from './components/disciplines/beatspin/beatspin.component';
 import { BeatbarreComponent } from './components/disciplines/beatbarre/beatbarre.component';
 import { BeatyogaComponent } from './components/disciplines/beatyoga/beatyoga.component';
-import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower.component'
+import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower.component';
 import { FileService } from './services/file-service.service';
+import { ChangePasswordComponent } from './components/profile/change-password/change-password.component';
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -118,6 +119,7 @@ import { FileService } from './services/file-service.service';
     // directives
     FixedBarDirective,
     InviteDirective,
+    ChangePasswordComponent,
     // pipes
     CustomDatePipe,
     CreditCardPipe,

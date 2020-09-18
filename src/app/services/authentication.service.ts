@@ -43,4 +43,14 @@ export class AuthenticationService {
   createUser(user: any): Observable<any> {
     return this.globalService.Create(user, config.base_url + 'users');
   }
+
+  changePassword(pass: string) {
+  const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+  debugger;
+  return this.globalService.Patch({ token: currentUser.data.token, password: pass }, config.base_url + 'users/' + currentUser.data.user.id);
+  }
+
+  RequestPasswordChange(mail: string) {
+    return this.globalService.Create({email: mail, reset_url: 'www.beatstudio.com.mx'}, config.base_url + 'auth/password/request');
+  }
 }
