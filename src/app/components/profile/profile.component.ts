@@ -3,7 +3,7 @@ import { UserService } from './../../services/user.service';
 import { Cliente } from './../../model/cliente';
 import { GlobalApiService } from './../../Core/global/global-service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as m from 'moment';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -26,28 +26,36 @@ export class ProfileComponent implements OnInit {
   user: any;
   uId: any;
   id: any;
-  step = 0;
   public opened = false;
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  closeStep() {
+    this.step = 0;
+  }
 
   @Output() recorded: EventEmitter<any>;
 
   filtersLoaded: Promise<boolean>;
-  public cliente: Cliente  = new Cliente();
+  public cliente: Cliente = new Cliente();
   public anhos = [];
   constructor(private formBuilder: FormBuilder,
-              private apiSvc: GlobalApiService,
-              private userSvc: UserService,
-              private notify: NotificationsService) {
+    private apiSvc: GlobalApiService,
+    private userSvc: UserService,
+    private notify: NotificationsService) {
 
-                this.recorded = new EventEmitter<any>();
-               }
+    this.recorded = new EventEmitter<any>();
+  }
 
   ngOnInit() {
     this.initForm();
     this.user = this.userSvc.loggedUser.data.user;
     this.apiSvc.routes.cliente.buscarCorreo(this.user.email)<any>().subscribe(
       response => {
-        if (response.data.length > 0 ) {
+        if (response.data.length > 0) {
           this.cliente = response.data[0];
           this.patchValues();
           this.userSvc.customUser = response.data[0];
@@ -65,31 +73,36 @@ export class ProfileComponent implements OnInit {
   }
 
   saveOrUpdate(): void {
-    this.parseValues();
-    if (this.cliente !== null && this.cliente !== undefined && this.cliente.id > 0) {
-      this.apiSvc.routes.cliente.actualizar(this.cliente.id)<any>(this.cliente).subscribe(
-        response => {
-          this.opened = false;
-          this.userSvc.customUser = response.data;
-          this.id = response.data.id;
-          this.notify.successMessage('Guardado');
-          this.recorded.emit(false);
-        },
-        error => console.log(error)
-      );
-    }
-    else {
-      this.apiSvc.routes.cliente.agregar()<any>(this.cliente).subscribe(
-        response => {
-          this.opened = false;
-          this.userSvc.customUser = response.data;
-          this.id = response.data.id;
-          this.cliente.id = response.data.id;
-          this.notify.successMessage('Guardado');
-          this.recorded.emit(false);
-        },
-        error => console.log(error)
-      );
+    if (this.userGroup.invalid) {
+      this.notify.errorMessage('Verifique los datos ingresados.');
+    } else {
+      this.parseValues();
+      if (this.cliente !== null && this.cliente !== undefined && this.cliente.id > 0) {
+        this.apiSvc.routes.cliente.actualizar(this.cliente.id)<any>(this.cliente).subscribe(
+          response => {
+            this.opened = false;
+            this.userSvc.customUser = response.data;
+            this.id = response.data.id;
+            this.notify.successMessage('Guardado');
+            this.recorded.emit(false);
+            this.step = 0;
+          },
+          error => console.log(error)
+        );
+      }
+      else {
+        this.apiSvc.routes.cliente.agregar()<any>(this.cliente).subscribe(
+          response => {
+            this.opened = false;
+            this.userSvc.customUser = response.data;
+            this.id = response.data.id;
+            this.cliente.id = response.data.id;
+            this.notify.successMessage('Guardado');
+            this.recorded.emit(false);
+          },
+          error => console.log(error)
+        );
+      }
     }
   }
 
@@ -109,14 +122,16 @@ export class ProfileComponent implements OnInit {
   }
 
   initForm(): void {
+    const namePattern = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*$/;
     this.userGroup = this.formBuilder.group({
-      txtName: [''],
-      txtLastName: [''],
-      txtEmail: [''],
-      txtSize: [0],
-      txtPhone: [''],
-      txtContact: [''],
-      birthDate: [new Date()]
+      txtName: ['', [Validators.required, Validators.pattern(namePattern)]],
+      txtLastName: ['', [Validators.required, Validators.pattern(namePattern)]],
+      txtEmail: ['', [Validators.required, Validators.email]],
+      txtSize: [0, [Validators.required, Validators.maxLength(2)]],
+      txtPhone: ['', [Validators.required, Validators.maxLength(10)]],
+      txtContact: ['', [Validators.required, Validators.pattern(namePattern)]],
+      txtContactPhone: ['', [Validators.required, Validators.maxLength(10)]],
+      birthDate: ['', [Validators.required]]
     });
   }
 
@@ -127,6 +142,7 @@ export class ProfileComponent implements OnInit {
     this.cliente.calzado = this.userGroup.get('txtSize').value;
     this.cliente.telefono = this.userGroup.get('txtPhone').value;
     this.cliente.contacto = this.userGroup.get('txtContact').value;
+    this.cliente.telefono_contacto = this.userGroup.get('txtContactPhone').value;
     this.cliente.status = 'published';
     this.cliente.usuario = this.user.id;
     const aux = m(this.userGroup.get('birthDate').value);
@@ -141,7 +157,8 @@ export class ProfileComponent implements OnInit {
       txtSize: this.cliente.calzado,
       txtPhone: this.cliente.telefono,
       txtContact: this.cliente.contacto,
-      birthDate: this.cliente.fecha_nacimiento
+      birthDate: this.cliente.fecha_nacimiento,
+      txtContactPhone: this.cliente.telefono_contacto
     });
   }
 }

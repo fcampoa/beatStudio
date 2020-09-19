@@ -1,118 +1,266 @@
-
-::ng-deep .mat-form-field-underline {
+.mat-form-field-underline {
   display: none;
 }
 
 .front-image {
-cursor: pointer;
+  cursor: pointer;
   width: 100%;
   transition: width 1s;
 }
 
-// .front-image:hover{
-//   width: 40%;
-//   height: 50%;
-// }
-
-.img-size {
-  cursor: pointer;
-  width: 50%;
-  transition: width 500ms;
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+  margin-top: -8px;
 }
 
-.divider-class-hide {
-  display: none;
+mat-icon {
+  @include md-icon-size(32px);
+  margin-right: 10px;
 }
 
-.divider-class-show {
-  border-color: #BDBDBD !important;
-  border-top-width: 2px !important;
-  padding-bottom: 1% !important;
-}
-
-.coach-info-hide{
-  font-size: 0px;
-  transition:font-size 500ms;
-     -moz-transition:font-size 500ms; /* Firefox 4 */
-     -webkit-transition:font-size 500ms; /* Safari and Chrome */
-     -o-transition:font-size 500ms;
-}
-
-
-.coach-info-show{
-  font-size: 14px;
-  transition:font-size 500ms;
-     -moz-transition:font-size 500ms; /* Firefox 4 */
-     -webkit-transition:font-size 500ms; /* Safari and Chrome */
-     -o-transition:font-size 500ms;
-}
-
-
-.coach-info-titles{
+.coach-info-titles {
   font-family: GT-America-Regular;
   letter-spacing: 1px;
   color: #8b8a8a;
 }
 
-.coach-info-text{
-  font-family: GT-America-Light;
+.coach-info-text {
+  font-family: GT-America-Thin;
   color: #ffffff;
+  letter-spacing: -1px;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
-.coach-name-music{
+.coach-name-music {
   color: #ffffff;
-}
 
-.coach{
-}
-
-.coach img{
-  width: 100%;
-  -webkit-transition: width 500ms;
-       -moz-transition: width 500ms;
-         -o-transition: width 500ms;
-            transition: width 500ms;
-}
-
-.coach div:first-child{
-  span{
-    font-size: 0;
-  -webkit-transition: font-size 500ms;
-  -moz-transition: font-size 500ms;
-    -o-transition: font-size 500ms;
-       transition: font-size 500ms;
+  .coach-name {
+    font-family: GT-America-Light;
+    font-size: 24px;
+    letter-spacing: -1px;
   }
-  p{
-    font-size: 0;
-  -webkit-transition: font-size 500ms;
-  -moz-transition: font-size 500ms;
-    -o-transition: font-size 500ms;
-       transition: font-size 500ms;
+
+  .coach-music {
+    padding-top: 5px;
+    font-family: GT-America-Light;
+    font-size: 16px;
   }
 }
 
-.coach mat-divider{
-  width: 0;
-}
 
-.coach:hover{
-  img{
-    width: 50%;
+.coaches {
+  margin: 40px 10px 40px 10px;
+
+  .coach-card {
+    width: 400px;
   }
-  div:first-child{
-    span{
-      font-size: 12px;
+
+  .coach {
+    margin: 40px 30px 40px 30px;
+
+    img {
+      width: 340px;
+      height: 459px;
+      z-index: 1;
+      -webkit-transition: all 500ms;
+      -moz-transition: all 500ms;
+      -o-transition: all 500ms;
+      transition: all 500ms;
     }
-    p{
-      font-size: 20px;
+
+    .divider {
+      margin-top: 10px;
+
+      mat-divider {
+        border-top-color: #ffffff;
+        margin-bottom: 15px;
+      }
+
+      span {
+        font-family: Cedra4FWide;
+        letter-spacing: 2px;
+        font-size: 11px;
+        color: rgb(128, 128, 128);
+      }
+    }
+
+    .hide-info {
+      position: absolute;
+      opacity: 0;
+      top: 55%;
+      z-index: -1;
+      -webkit-transition: opacity 500ms;
+      -moz-transition: opacity 500ms;
+      -o-transition: opacity 500ms;
+      transition: opacity 500ms;
+
+      span {
+        font-size: 10px;
+      }
+
+      p {
+        font-family: GT-America-Thin;
+        font-size: 18px;
+        padding-bottom: 10px;
+      }
     }
   }
-  div:nth-child(4){
-    p{
+
+  .coach div:first-child {
+    position: relative
+  }
+
+  .coach div:nth-child(3) {
+    color: #ffffff;
+    -webkit-transition: all 500ms;
+    -moz-transition: all 500ms;
+    -o-transition: all 500ms;
+    transition: all 500ms;
+  }
+
+  .coach mat-divider {
+    width: 0;
+    -webkit-transition: width 500ms;
+    -moz-transition: width 500ms;
+    -o-transition: width 500ms;
+    transition: width 500ms;
+  }
+
+  .coach:hover {
+    img {
+      height: 229px;
+      width: 170px;
+    }
+
+    .hide-info {
+      opacity: 1;
+    }
+
+    .coach-name-music {
       color: #9865ff;
     }
+
+    mat-divider {
+      width: 100%;
+    }
   }
-  mat-divider{
-    width: 100%;
+}
+
+
+
+.coach-container {
+  height: 459px;
+}
+
+// @media (max-width: 1200px) {
+//   .coach-container {
+//     height: 400px;
+//   }
+// }
+
+// @media (max-width: 1100px) {
+//   .coach-info-text {
+//     margin-bottom: 0;
+//   }
+
+//   .coach-container {
+//     height: 350px;
+
+//     .coach {
+//       .hide-info {
+//         top: 50%;
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 992px) {
+//   .coach-info-text {
+//     margin-bottom: 20px;
+//   }
+
+//   .coaches {
+//     .coach-card {
+//       width: 50%;
+
+//       .coach {
+//         .hide-info {
+//           top: 55%;
+//         }
+//       }
+//     }
+//   }
+
+//   .coach-container {
+//     height: 500px;
+//   }
+// }
+
+// @media (max-width: 850px) {
+//   .coach-info-text {
+//     margin-bottom: 0;
+//   }
+
+//   .coach-container {
+//     height: 420px;
+
+//     .coach {
+//       .hide-info {
+//         top: 50%;
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   .coach-info-text {
+//     margin-bottom: 0;
+//   }
+
+//   .coach-container {
+//     height: 350px;
+
+//     .coach {
+//       .hide-info {
+//         top: 50%;
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 576px) {
+//   .coach-info-text {
+//     margin-bottom: 20px;
+//   }
+
+//   .coaches {
+//     .coach-card {
+//       width: 100%;
+
+//       .coach {
+//         .hide-info {
+//           top: 55%;
+//         }
+//       }
+//     }
+//   }
+
+//   .coach-container {
+//     height: 500px;
+//   }
+// }
+
+@media (max-width: 400px) {
+  .coaches {
+    margin: 40px 0 40px 0;
+    .coach-card {
+      .coach {
+        margin: 20px 0 20px 0;
+      }
+    }
   }
 }

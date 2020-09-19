@@ -3,6 +3,10 @@
   padding-bottom: 5%;
 }
 
+.tab{
+  margin: 10px;
+}
+
 .button-style:hover {
   background: #9865ff !important;
   color: #ffffff !important;
@@ -31,3 +35,8 @@
   padding: 10px !important;
   width: 150px;
 }
+mat-icon{
+  margin-top: -2px;
+  margin-right: -10px;
+}
+

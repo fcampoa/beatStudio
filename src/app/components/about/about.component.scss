@@ -1,27 +1,40 @@
-h1 {
-    font-size: 4rem;
-}
-p {
-    color: gray;
-    font-size: 1.2rem;
-}
-.conoce-mas {
-    font-weight: bold;
-    color: #ffffff;
-    font-size: 1.2rem;
-    text-decoration: underline;
-}
 .mat-icon {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
+
+a:hover {
+    text-decoration: none;
+}
+
+.section1 {
+    padding: 0 4% 0 4%;
+
+    .text-part {
+        padding-left: 65px;
+        padding-top: 150px;
+    }
+
+    img {
+        margin-top: 50px;
+    }
+}
+
+
 .mejores-instalaciones {
-    margin-top: 12rem;
+    margin-top: 120px;
+
+    .text-part {
+        padding-left: 50px;
+        padding-top: 120px;
+    }
+
     .list-group {
         .list-group-item {
             border: none;
             padding: 0;
             color: gray;
             background-color: transparent;
+
             span {
                 color: #11e579;
                 font-size: 1.6rem;
@@ -29,116 +42,216 @@ p {
             }
         }
     }
-    .nosotros-img {
-        position: absolute;
-        left: -5rem;
-        top: -2rem;
-        width: 60%;
-    }
-    .instalaciones-img {
-        margin-top: 10rem;
-    }
 }
-.disciplinas{
-    margin-top: 12rem;
-    margin-bottom: 12rem;
-    .p-relative-left{
+
+.section3 {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.disciplinas {
+    font-family: SharpGroteskSM15R;
+
+    h3 {
+        font-size: 24px;
+    }
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    .p-relative-left {
         position: relative;
         left: 19%;
     }
-    .p-relative-right{
+
+    .p-relative-right {
         position: relative;
         right: 17%;
     }
 }
-.forma-parte{
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+
+.forma-parte {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    .familia-buttons {
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
     background-color: #d8d8d8;
-    h1{
+
+    h1 {
+        margin-top: 10%;
         color: #000000;
         font-weight: bold;
+        font-family: SharpGroteskSM15R;
+        letter-spacing: -2px;
+        font-size: 5rem;
     }
-   
-    img{
+
+    img {
         width: 100%;
-    }
-    .btn{
-        font-weight: bold!important;
-        padding: .8rem 3rem .8rem 3rem;
-    }
-    .btn-outline{
-        color: #000000!important;
-        background-color: transparent!important;
-    }
-    .btn-purple{
-        color: #ffffff!important;
-        background-color: #986dff!important;
-        margin-left: 2rem;
-    }
-}
-.coaches{
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    img{
-        width: 100%;
-    }
-    .bg-coaches{
-        height: 40rem;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    h5{
-        color: #ffffff;
-        margin-top: 5rem;
-    }
-    p{
-        color: gray;
-        margin-top: 2rem;
-        max-width: 30rem;
     }
 }
 
-@media (max-width: 1180px) {
-    .mejores-instalaciones{
-        .nosotros-img{
-            left: -4rem;
-            top: 1rem;
+.familia {
+    font-size: 5rem;
+}
+
+
+@media (max-width: 992px) {
+    .section1 {
+        padding: 0;
+
+        .text-part {
+            padding-left: 0;
+            padding-top: 80px;
+
+            p {
+                width: 100% !important;
+            }
         }
+
+        img {
+            margin-top: 50px;
+        }
+    }
+
+    .mejores-instalaciones {
+        margin-top: 50px;
+
+        .text-part {
+            padding-left: 0;
+            padding-top: 80px;
+
+            p {
+                width: 100% !important;
+            }
+        }
+
+        img {
+            margin-top: 50px;
+            padding-left: 5%;
+        }
+    }
+
+    .familia {
+        font-size: 3rem !important;
+    }
+
+    h3 {
+        font-size: 1rem !important;
     }
 }
 
-@media (max-width: 1104px) {
-    .forma-parte{
-        .btn{
-            padding: 0.8rem 1rem 0.8rem 1rem;
+@media (max-width: 576px) {
+    .section1 {
+        padding: 0;
+
+        .text-part {
+            padding-left: 0;
+            padding-top: 50px;
+
+            p {
+                width: 100% !important;
+            }
         }
-        .btn-purple{
-            //margin-top: 2rem;
-            margin-left: 1rem;
+
+        img {
+            margin-top: 50px;
         }
+    }
+
+    .mejores-instalaciones {
+        margin-top: 50px;
+
+        .text-part {
+            padding-left: 0;
+            padding-top: 50px;
+
+            p {
+                width: 100% !important;
+            }
+        }
+
+        img {
+            margin-top: 50px;
+            padding-left: 10%;
+        }
+    }
+
+    .forma-parte {
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 }
-@media (max-width: 985px) {
-    h1{
-        font-size: 2rem;
-    }
-    h3{
-        font-size: 1rem;
-    }
-    .mejores-instalaciones{
-        .nosotros-img{
-            position: initial;
-            width: 100%;
-        }
-        .instalaciones-img{
-            margin-top: 2rem;
-        }
-    } 
+
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+    line-height: $size;
+    margin-top: -8px;
 }
-@media (max-width: 575px) {
-    .mejores-instalaciones{
-        margin-top: 2rem;
+
+.info-widget {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.middle {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.image-viewer {
+    overflow: hidden;
+}
+
+.next-button {
+    outline: none;
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 0;
+
+    mat-icon {
+        @include md-icon-size(38px);
+        display: inline-flex;
+        vertical-align: top;
+        margin-top: 1px;
+    }
+}
+
+.widget-text {
+    word-wrap: break-word !important;
+    width: 100px !important;
+}
+
+.see-more {
+    mat-icon {
+        @include md-icon-size(32px);
+        display: inline-flex;
+        vertical-align: top;
+        margin-top: 4px;
+    }
+}
+
+
+.phrase-info {
+    width: 100%;
+}
+@media only screen and(max-width: 376px) {
+    .phrase-info {
+        width: 20% !important;
+       p {
+        margin-left: 10%;
+        word-break: break-all;
+       }
     }
 }

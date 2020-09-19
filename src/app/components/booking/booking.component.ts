@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { Disciplina } from 'src/app/model/disciplina';
 import * as m from 'moment';
 import * as $ from 'jquery';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -27,11 +28,16 @@ export class BookingComponent implements OnInit {
   public desde: any;
   public hasta: any;
   public loading = false;
+  loaders = 0;
+  errors = 0;
 
   constructor(private apiSvc: GlobalApiService,
               private router: Router,
               private userSv: UserService,
-              private notify: NotificationsService) {
+              private notify: NotificationsService,
+              private titleService: Title) {
+
+    this.titleService.setTitle('Reservaciones — BeatStudio');
 
     this.seleccion = new BehaviorSubject<Horario>(null);
     this.desde = m().format('YYY-MM-DD');
@@ -51,12 +57,10 @@ export class BookingComponent implements OnInit {
   getDisciplinas(): void {
     this.apiSvc.routes.disciplina.lista()<any>().subscribe(
       response => {
-        this.loading = false;
         this.disciplinas = response.data;
       },
       error => {
         this.notify.errorMessage('Ha ocurrido un error');
-        console.log(error);
         this.loading = false;
       }
     );
@@ -78,13 +82,18 @@ export class BookingComponent implements OnInit {
    * guarda el valor del horario seleccionado en el componente
    * de schedule
    */
- /* asignarSeleccion($event: any): void {
-    this.seleccion.next($event);
-
-  }*/
+  /* asignarSeleccion($event: any): void {
+     this.seleccion.next($event);
+ 
+   }*/
 
   asignarSeleccion($event: any): void {
     this.seleccion.next($event.horario);
+    if (this.user.role === '1') {
+      if (this.horarioElegido.id > 0) {
+        this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+      }
+    }
   }
   /**
    * navega al siguiente componente booking-seatSelection
@@ -93,8 +102,28 @@ export class BookingComponent implements OnInit {
     console.log(this.horarioElegido);
     console.log(this.horarioElegido.id);
     if (this.horarioElegido.id > 0) {
-    this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+      this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
     }
   }
 
+  setLoader(event): void {
+    if (!event.loader) {
+      this.loaders++;
+      if (this.loaders === this.disciplinas.length) {
+        this.loading = event.loader;
+      }
+    }
+    if (event.error) {
+      this.errors++;
+      if (this.errors === this.disciplinas.length) {
+        this.notify.errorMessage(event.error);
+      }
+    }
+  }
+
+  notifyWaitList(event): void {
+    if (event.state) {
+      this.notify.successMessage('Te has registrado a la lista de espera exitosamente.');
+    }
+  }
 }

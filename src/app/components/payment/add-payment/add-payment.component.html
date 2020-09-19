@@ -1,38 +1,123 @@
-<form #form="ngForm" (ngSubmit)="saveOrUpdate()" [formGroup]="group" novalidate>
-  <div class="row d-flex justify-content-center">
-    <div class="col-sm">
-      <mat-form-field>
-        <mat-label>Nombre del titular</mat-label>
-        <input matInput formControlName="txtTitular" type="text" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Número de tarjeta</mat-label>
-        <input matInput formControlName="txtTarjeta" type="text" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Mes</mat-label>
-        <mat-select formControlName="selectMes">
-          <mat-option *ngFor="let m of meses" [value]="m">
-            {{m}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Mes</mat-label>
-        <mat-select formControlName="selectAnho">
-          <mat-option *ngFor="let a of anhos" [value]="a">
-            {{a}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>CVV</mat-label>
-        <input matInput formControlName="txtCVV" type="text" />
-      </mat-form-field>
-      <div class="row">
-        <button class="btn btn-outline app-button" type="submit">Guardar</button>
-        <button class="btn btn-outline app-button" type="button">cancelar</button>
+<!-- <app-view>
+  <div class="row justify-content-center">
+    <h2>Registra tu método de pago</h2>
+  </div>
+  <div class="row">
+  <form #form="ngForm" (ngSubmit)="saveOrUpdate()" [formGroup]="group" novalidate>
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm">
+        <mat-form-field>
+          <mat-label>Nombre del titular</mat-label>
+          <input matInput formControlName="txtTitular" type="text" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Número de tarjeta</mat-label>
+          <input matInput formControlName="txtTarjeta" type="text" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Mes</mat-label>
+          <mat-select formControlName="selectMes">
+            <mat-option *ngFor="let m of meses" [value]="m">
+              {{m}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Mes</mat-label>
+          <mat-select formControlName="selectAnho">
+            <mat-option *ngFor="let a of anhos" [value]="a">
+              {{a}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>CVV</mat-label>
+          <input matInput formControlName="txtCVV" type="text" />
+        </mat-form-field>
+        <div class="row">
+          <button class="btn btn-outline app-button" type="submit">Guardar</button>
+          <button class="btn btn-outline app-button" type="button">cancelar</button>
+        </div>
       </div>
     </div>
+  </form>
+</div>
+</app-view> -->
+
+
+<div class="custom-modal">
+  <div class="row d-flex justify-content-end">
+    <img class="close" style="width: 20px;" (click)="closeModal()" src="../../../../assets/img/SVG/Cruz.svg">
   </div>
-</form>
+  <div class="row justify-content-center">
+    <div class="col-10 col-sm-10 col-md-8 col-lg-7 col-xl-7">
+      <h2 class="part1" style="text-align: center;font-family: GT-America-Medium;">Registra tu método de pago</h2>
+    </div>
+  </div>
+  <div class="modal-card part-2">
+    <form #form="ngForm" class="modal-form" (ngSubmit)="saveOrUpdate()" [formGroup]="group" novalidate>
+      <div class="row">
+        <div class="col-4 align-self-center">
+          <mat-label>Nombre del titular</mat-label>
+        </div>
+        <div class="col-8">
+          <mat-form-field>
+            <input matInput formControlName="txtTitular" type="text" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 align-self-center">
+          <mat-label>Número de tarjeta</mat-label>
+        </div>
+        <div class="col-8">
+          <mat-form-field>
+            <input matInput mask="0000 0000 0000 0000" formControlName="txtTarjeta" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-4 align-self-center">
+          <mat-label>Fecha de vencimiento</mat-label>
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-input" style="padding-left: 15px; padding-right: 2%;">
+              <mat-form-field>
+                <mat-label>Mes</mat-label>
+                <mat-select formControlName="selectMes">
+                  <mat-option *ngFor="let m of meses" [value]="m">
+                    {{m}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-input">
+              <mat-form-field>
+                <mat-label>Año</mat-label>
+                <mat-select formControlName="selectAnho">
+                  <mat-option *ngFor="let a of anhos" [value]="a">
+                    {{a}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-aux"></div>
+            <div class="col-input" style="padding-left: 2%;padding-right: 15px;">
+              <mat-form-field>
+                <input matInput formControlName="txtCVV" type="text" placeholder="CCV" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </form>
+  </div>
+  <div class="row part3">
+    <div class="col-12 d-flex justify-content-center">
+      <button mat-stroked-button class="button-new" style="margin-right: 5%;" type="button"
+        (click)="onNoClick()">CANCELAR</button>
+      <button mat-stroked-button class="button-new" type="button" (click)="saveOrUpdate()">GUARDAR</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="custom-modal">
+    <div class="row d-flex justify-content-end">
+        <img class="close" style="width: 20px;" (click)="closeModal()" src="../../../../assets/img/SVG/Cruz.svg">
+    </div>    
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <h2 class="part1" style="text-align: center;font-family: GT-America-Medium;">
+                ¿Desea eliminar <br> la siguiente forma de pago?
+            </h2>
+        </div>
+    </div>
+    <div class="modal-card">
+        <div class="row">
+            <div class="col-5 d-flex justify-content-center">
+                <img style="height: 35px;width:auto;" *ngIf="data.numero_tarjeta[0] === '5'"
+                    src="../../../assets/img/SVG/MasterCard.svg" />
+                <img style="height: 35px;width:auto;" *ngIf="data.numero_tarjeta[0] === '4'"
+                    src="../../../assets/img/SVG/Visa.svg" />
+            </div>
+            <div class="col-7">
+                <div class="card-info">
+                    {{data.titular}} <br />
+                    {{ data.numero_tarjeta | creditCard }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row part3">
+        <div class="col-12 d-flex justify-content-center">
+            <button mat-stroked-button class="cancel-button" [disabled]="loading" (click)="eliminar()" type="button">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                <span *ngIf="!loading">ELIMINAR</span>
+            </button>
+        </div>
+    </div>
+</div>

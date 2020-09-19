@@ -3,10 +3,11 @@ export class HistorialCompra extends CommonFields {
   public cliente?: number;
   public forma_pago?: any;
   public total?: number;
-  public paquete?: number;
+  public paquete?: any;
   public folio?: string;
   public vigencia?: any;
   public creditos?: number;
+  public id_orden: string;
   public constructor() {
     super();
   }

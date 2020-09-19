@@ -1,28 +1,37 @@
 <mat-card style="background: rgb(27, 27, 27) !important">
-  <mat-card-content>
-    <div *ngIf="horario" class="row">
-      <p class="primary-color">BEAT</p>
-      <p>{{ horario.disciplina.nombre | uppercase }}</p>
+  <div class="pt-4 pb-4 ">
+    <div *ngIf="horario" class="row pl-3">
+      <div class="col-12">
+        <p class="beat-algo" style="letter-spacing: 2px !important;">
+          <span>BEAT</span>{{ horario.disciplina.nombre | uppercase }}</p>
+      </div>
     </div>
-    <div class="row" style="font-size: 10px; color:grey; padding-bottom: 1%;">
-      <div class="col-md-3 col-xs-3 col-3">DIA</div>
-      <div class="col-md-3 col-xs-3 col-3">HORA</div>
-      <div class="col-md-3 col-xs-3 col-3">COACH</div>
-      <div class="col-md-3 col-xs-3 col-3">LUGARES</div>
+    <div class="row table-titles pt-3 pl-3 pr-4">
+      <div class="col-3">DIA</div>
+      <div class="col-3">HORA</div>
+      <div class="col-3">COACH</div>
+      <div class="col-3">LUGARES</div>
     </div>
-    <mat-divider></mat-divider>
-    <div *ngIf="horario" class="row" style="font-size: 14px; padding-top: 2%;">
+    <div class="row d-flex justify-content-center pt-2">
+      <div class="col-11">
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <div *ngIf="horario" class="row pt-3 pl-3 pr-4 table-content">
       <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha | customDate }}</div>
       <div class="col-md-3 col-xs-3 col-3">{{ getHora(horario.fecha) }}</div>
       <div class="col-md-3 col-xs-3 col-3">{{ horario.coach.nombre }}</div>
       <div class="col-md-3 col-xs-3 col-3">
-        <div class="col col-md col-sm col-xs" *ngFor="let r of reservaciones; let i = index">
-          <b [ngStyle]="{'color' : colors[i]}">{{ r.lugar }}</b> {{ r.nombre }}
+        <div class="row pl-3" *ngFor="let r of reservaciones; let i = index">
+          <span [ngStyle]="{'color' : colors[i]}" class="mr-2">{{ r.lugar }}</span> {{ r.nombre }}
         </div>
       </div>
     </div>
-    <div *ngIf="cancel && !reservacion.cancelada" class="row d-flex justify-content-center">
-      <button class="cancel-button" (click)="cancelBooking()">Cancelar</button>
+    <div *ngIf="cancel && !reservacion.cancelada" class="row d-flex justify-content-center pt-5">
+      <button mat-stroked-button class="cancel-button" (click)="cancelarReservacion()">CANCELAR</button>
     </div>
-  </mat-card-content>
+    <div *ngIf="reservacion.cancelada" class="cancel-text row d-flex justify-content-center pt-5">
+      Cancelada.
+    </div>
+  </div>
 </mat-card>

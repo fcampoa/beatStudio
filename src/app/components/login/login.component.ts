@@ -23,15 +23,15 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
 
   constructor(private auth: AuthenticationService,
-              private userSvc: UserService,
-              private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
-              private router: Router,
-              private location: Location,
-              private notify: NotificationsService) {
+    private userSvc: UserService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
+    private notify: NotificationsService) {
 
-                this.loginSuccess = new EventEmitter<boolean>();
-              }
+    this.loginSuccess = new EventEmitter<boolean>();
+  }
 
   ngOnInit() {
     this.initForm();
@@ -39,25 +39,33 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(): void {
-    this.parseValues();
-    this.loginSuccess.emit(true);
-    this.auth.login(this.userName, this.password).subscribe(
-      response => {
-        this.loginSuccess.emit(false);
-        this.router.navigate(['/dashboard/panel']);
-      },
-      error => {
-        this.notify.errorMessage('Usuario o contraseña incorrecto.');
-        this.loginSuccess.emit(false);
-        console.log(error);
-      }
-    );
+    if (this.userGroup.invalid) {
+      this.notify.errorMessage('Verifique los datos ingresados.');
+    } else {
+      this.parseValues();
+      this.loginSuccess.emit(true);
+      this.auth.login(this.userName, this.password).subscribe(
+        response => {
+          this.loginSuccess.emit(false);
+          document.getElementById('custom-popover').style.display = 'none';
+          document.getElementById('sidebar-login').style.maxHeight = '0';
+          this.router.navigate(['/dashboard/panel']);
+        },
+        error => {
+          this.notify.errorMessage('Usuario o contraseña incorrecto.');
+          this.loginSuccess.emit(false);
+          console.log(error);
+        }
+      );
+    }
   }
 
   initForm(): void {
     this.userGroup = this.formBuilder.group({
-      txtEmail: ['', [Validators.required]],
+      txtEmail: ['', [Validators.required, Validators.email]],
+      // txtPassword: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*[.]*"), Validators.minLength(8)]]
       txtPassword: ['', [Validators.required]]
+
     });
   }
 
@@ -66,4 +74,7 @@ export class LoginComponent implements OnInit {
     this.password = this.userGroup.get('txtPassword').value;
   }
 
+  goToRecover(): void {
+    this.router.navigate(['dashboard/recover']);
+  }
 }

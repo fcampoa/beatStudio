@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as m from 'moment';
+import { Title } from "@angular/platform-browser";
+
 @Component({
   selector: 'app-user-panel',
   templateUrl: './user-panel.component.html',
@@ -26,11 +28,13 @@ export class UserPanelComponent implements OnInit {
   creditos = 0;
   registrado = false;
   constructor(private userSvc: UserService,
-    private router: Router,
-    private apiSvc: GlobalApiService,
-    private notify: NotificationsService,
-    public dialog: MatDialog) {
+              private router: Router,
+              private apiSvc: GlobalApiService,
+              private notify: NotificationsService,
+              public dialog: MatDialog,
+              private titleService: Title) {
 
+    this.titleService.setTitle('Perfil — BeatStudio');
     this.desde = m().format('YYYY-MM-DD');
     this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
     this.cliente = new Cliente();

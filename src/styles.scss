@@ -7,11 +7,42 @@ html,
 body {
   height: 100%;
   max-width: 100%;
-    overflow-x: hidden;
+  overflow-x: hidden;
+
+  button {
+    outline: none !important;
+  }
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+.custom-modalbox {
+  .mat-dialog-container {
+    width: 700px;
+    background: rgb(16, 16, 16) !important;
+    top: 100px;
+    border-radius: 0;
+  }
+}
+
+.custom-modalbox-medium {
+  .mat-dialog-container {
+    width: 600px;
+    background: rgb(16, 16, 16) !important;
+    top: 100px;
+    border-radius: 0;
+  }
+}
+
+.custom-modalbox-info {
+  .mat-dialog-container {
+    width: 550px;
+    background: rgb(16, 16, 16) !important;
+    top: 100px;
+    border-radius: 0;
+  }
+}
+
+::ng-deep .mat-ink-bar {
+  background: #ffffff !important;
 }
 
 .fixed-bar {
@@ -19,29 +50,45 @@ body {
   width: 100%;
 }
 
+.custom-container {
+  padding-top: 100px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+// body {
+//   margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+// }
+
+// .fixed-bar {
+//   // position: fixed;
+//   width: 100%;
+// }
+
 // html {
 //   scroll-behavior: smooth;
 // }
+// .popover{
+// }
 
-.popover-header {
-  background: #000000 !important;
-}
+// .popover-header {
+// }
 
-.popover-body {
-  background: #000000;
-}
+// .popover-body {
+// }
 
-.app-background {
-  background: #000000;
-}
+// .app-background {
+// }
 
-.register-button {
-  border-color: rgb(152, 109, 255);
-  color: white;
-  border-style: solid;
-  border-radius: 0;
-  border-width: 2px;
-}
+// .register-button {
+//   border-color: rgb(152, 109, 255);
+//   color: white;
+//   border-style: solid;
+//   border-radius: 0;
+//   border-width: 1px;
+// }
 
 // .app-button {
 //   background: #9865ff;
@@ -51,20 +98,20 @@ body {
 //   border-width: 2px;
 // }
 
-.app-button {
-  background: #000000 !important;
-  border-color: rgb(152, 109, 255) !important;
-  color: #ffffff !important;
-  border-style: solid !important;
-  border-radius: 0 !important;
-  border-width: 2px !important;
-  font-family: Cedra4FWide !important;
-}
+// .app-button {
+//   background: #000000 !important;
+//   border-color: rgb(152, 109, 255) !important;
+//   color: #ffffff !important;
+//   border-style: solid !important;
+//   border-radius: 0 !important;
+//   border-width: 1px !important;
+//   font-family: Cedra4FWide !important;
+// }
 
-.app-button:hover {
-  background: #9865ff !important;
-  color: #ffffff !important;
-}
+// .app-button:hover {
+//   background: #9865ff !important;
+//   color: #ffffff !important;
+// }
 
 .primary-color {
   color: #9865ff;
@@ -73,15 +120,23 @@ body {
 mat-expansion-panel {
   background: rgb(26, 26, 26) !important;
 }
+
 mat-expansion-panel-header {
   background: rgb(26, 26, 26) !important;
 }
+
 mat-panel-description {
   background: rgb(26, 26, 26) !important;
 }
+
 mat-accordion {
   background: rgb(26, 26, 26) !important;
 }
+
+mat-ink-bar {
+  background: #ffffff !important;
+}
+
 // mat-card{
 //   background: rgb(16,16,16) !important;
 // }
@@ -90,15 +145,15 @@ mat-accordion {
 //     width: 53.6em !important;
 // }
 
-@font-face {
-  font-family: "Cedra4F-Wide";
-  src: url("assets/fonts/Cedra\ 4F/Cedra4F-Wide.otf") format("opentype");
-}
+// @font-face {
+//   font-family: "Cedra4F-Wide";
+//   src: url("assets/fonts/Cedra\ 4F/Cedra4F-Wide.otf") format("opentype");
+// }
 
-@font-face {
-  font-family: "Cedra4F-WideItalic";
-  src: url("assets/fonts/Cedra\ 4F/Cedra4F-WideItalic.otf") format("opentype");
-}
+// @font-face {
+//   font-family: "Cedra4F-WideItalic";
+//   src: url("assets/fonts/Cedra\ 4F/Cedra4F-WideItalic.otf") format("opentype");
+// }
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
   background-color: rgb(152, 109, 255) !important;
@@ -110,25 +165,6 @@ mat-accordion {
   background-color: #ffffff !important;
   width: 15px !important;
   height: 15px !important;
-}
-
-.button-new{
-  background-color: #000000 !important;
-  font-family: Cedra4FWide !important;
-  color: #ffffff !important;
-  letter-spacing: 1px !important;
-  font-size: 14px !important;
-  padding-left: 40px !important;
-  padding-right: 40px !important;
-  padding-bottom: 8px !important;
-  padding-top: 8px !important;
-  border-radius: 0px !important;
-  border: 2px solid #976cff !important;
-}
-
-.button-new:hover{
-  background-color: #976cff !important;
-  border: 2px solid #976cff !important;
 }
 
 .mat-slide-toggle-thumb-container {
@@ -170,6 +206,7 @@ mat-slide-toggle-bar {
   font-family: SharpSans-Semibold;
   src: url('./assets/fonts/Sharp\ Sans\ No.1/Sharp\ Sans\ No1\ -\ Semibold.otf');
 }
+
 @font-face {
   font-family: SharpSans-Medium;
   src: url('./assets/fonts/Sharp\ Sans\ No.1/Sharp\ Sans\ No1\ -\ Medium.otf');
@@ -191,18 +228,438 @@ mat-slide-toggle-bar {
 }
 
 @font-face {
+  font-family: GT-America-Thin;
+  src: url('./assets/fonts/GT\ America/GT-America-Thin.otf');
+}
+
+@font-face {
   font-family: Cedra4FWide;
   src: url('./assets/fonts/Cedra\ 4F/Cedra4F-Wide.otf');
 }
 
-.sections-titles{
-  font-family: SharpSans-Semibold;
-  font-size: 62px;
-  padding-bottom: 24px;
+@font-face {
+  font-family: Cedra4FWideUL;
+  src: url('./assets/fonts/Cedra\ 4F/Cedra4F-WideUltraLight.otf');
 }
 
-.sections-info-text{
-  font-family: GT-America-Regular;
-  font-size: 17px;
-  color: #9c9999;
+@font-face {
+  font-family: SharpGroteskSM15R;
+  src: url('./assets/fonts/SharpGrotesk/Semibold/SharpGroteskSmBold15-Regular.ttf');
+}
+
+.dashboard-title {
+  font-size: 6.567em !important;
+  font-family: SharpSans-Semibold !important;
+  letter-spacing: -0.05rem;
+}
+
+.page-title {
+  font-family: SharpSans-Semibold !important;
+  font-size: 4.1rem !important;
+  padding-bottom: 24px !important;
+  letter-spacing: -0.05rem;
+}
+
+.over-title {
+  font-family: Cedra4FWide;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: #9865ff;
+}
+
+.sections-text {
+  font-family: GT-America-Regular !important;
+  font-size: 1.1rem !important;
+  color: #ffffff !important
+}
+
+.sections-titles {
+  font-family: SharpSans-Semibold !important;
+  font-size: 3.5rem !important;
+  padding-bottom: 24px !important;
+  letter-spacing: -1px;
+
+  span {
+    color: #9865ff;
+  }
+
+  max-width: 100%;
+  // letter-spacing: -1px;
+}
+
+.sections-info-text {
+  font-family: GT-America-Regular !important;
+  font-size: 1rem !important;
+  color: #9c9999 !important;
+  letter-spacing: -1px;
+}
+
+.sections-info-title {
+  font-family: GT-America-Medium !important;
+  font-size: 1.4rem !important;
+  color: #ffffff !important;
+}
+
+.section-see-more {
+  font-family: GT-America-Medium !important;
+  color: #ffffff !important;
+  font-size: 1.4rem !important;
+  border-bottom: 2px solid #ffffff;
+  letter-spacing: -1px;
+}
+
+.section-see-more:hover {
+  cursor: pointer;
+}
+
+.beat-algo {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: Cedra4FWide !important;
+
+  span {
+    color: #9865ff !important;
+  }
+}
+
+.play-button {
+  position: absolute !important;
+  width: 100px !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.play-button:hover {
+  cursor: pointer !important;
+}
+
+.button-new {
+  background-color: #000000 !important;
+  font-family: Cedra4FWide !important;
+  color: #ffffff !important;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+  border-radius: 0px !important;
+  border: 1px solid #976cff !important;
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  -ms-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
+
+.button-new:active {
+  border-radius: 0px !important;
+  border: 1px solid #976cff !important;
+  outline: none !important;
+}
+
+.button-new:focus {
+  border-radius: 0px !important;
+  border: 1px solid #976cff !important;
+  outline: none !important;
+}
+
+.button-new:hover {
+  background-color: #976cff !important;
+}
+
+.button-new:disabled {
+  background: #3b3b3b !important;
+  border: 1px solid #797979 !important;
+  color: #bbbbbb;
+  opacity: 0.8;
+}
+
+.cancel-button {
+  background: #ed1c24 !important;
+  color: #806363 !important;
+  border-color: #ed1c24 !important;
+  border: 0px !important;
+  font-family: Cedra4FWide !important;
+  color: #ffffff !important;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+  border-radius: 0px !important;
+}
+
+.button-new-inverted {
+  background-color: #976cff !important;
+  font-family: Cedra4FWide !important;
+  color: #ffffff !important;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+  border-radius: 0px !important;
+  border: 1px solid #976cff !important;
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  -ms-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
+
+.button-new-inverted:hover {
+  background-color: #000000 !important;
+}
+
+.button-new-purple {
+  background-color: #d8d8d8 !important;
+  font-family: Cedra4FWide !important;
+  color: #000000 !important;
+  letter-spacing: 1px !important;
+  font-size: 14px !important;
+  width: 150px !important;
+  padding-bottom: 8px !important;
+  padding-top: 8px !important;
+  border-radius: 0px !important;
+  border: 1px solid #976cff !important;
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  -ms-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
+
+.button-new-purple:hover {
+  background-color: #976cff !important;
+  color: #ffffff !important;
+}
+
+.button-black {
+  width: 100%;
+  padding: 10px 0;
+  letter-spacing: 1px;
+  background-color: black;
+  font-size: 10px;
+  color: white;
+  border: 0;
+  border-radius: 0;
+  font-family: Cedra4FWide;
+  -webkit-transition: background-color 500ms;
+  -moz-transition: background-color 500ms;
+  -o-transition: background-color 500ms;
+  -ms-transition: background-color 500ms;
+  transition: background-color 500ms;
+}
+
+.button-black:hover {
+  background-color: #1d1d1d;
+}
+
+
+@media (max-width: 1120px) {
+  .dashboard-title {
+    font-size: 4em !important;
+  }
+
+  .page-title {
+    font-size: 3.5em !important;
+  }
+
+  .sections-titles {
+    font-size: 2.5em !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 3.5em !important;
+  }
+
+  .page-title {
+    font-size: 3em !important;
+  }
+
+  .sections-text {
+    font-size: 1em !important;
+  }
+
+  .sections-titles {
+    font-size: 1.8em !important;
+  }
+
+  .sections-info-text {
+    font-size: 1em !important;
+  }
+}
+
+@media (max-width: 676px) {
+  .dashboard-title {
+    font-size: 3em !important;
+  }
+
+  .page-title {
+    font-size: 2.5em !important;
+  }
+
+  .sections-titles {
+    font-size: 2em !important;
+  }
+
+  .button-new {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .button-new-purple {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .button-new-inverted {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .custom-container {
+    margin-top: 0;
+  }
+}
+
+
+.custom-radio-button {
+  vertical-align: middle;
+
+  .radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default radio button */
+  .radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgb(24, 24, 24);
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .radio-container:hover input~.checkmark {
+    background-color: rgb(83, 83, 83);
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .radio-container input:checked~.checkmark {
+    background-color: #ffffff;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .radio-container input:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .radio-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 8px;
+    height: 12px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+.custom-modal {
+  .close {
+    color: #aaaaaa;
+    font-size: 40px;
+    transition: color 250ms;
+    margin-right: 15px;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal-card {
+    background: rgb(44, 44, 44) !important;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+
+  .part1 {
+    margin-top: 40px;
+    margin-bottom: 70px;
+  }
+
+  .part2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .part3 {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+
+  .card-info {
+    font-family: GT-America-Thin;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 576px) {
+    .part1 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .part3 {
+      padding-bottom: 10px;
+    }
+
+    .modal-card {
+      background: rgb(44, 44, 44) !important;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding: 15px;
+    }
+  }
 }

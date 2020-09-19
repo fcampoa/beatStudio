@@ -7,6 +7,7 @@ export class Paquete extends CommonFields {
   public precio?: number;
   public tipo?: string;
   public descripcion?: string;
+  public vigenciaDias?: any;
   public constructor() {
     super();
   }

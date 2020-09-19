@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl, Title } from '@angular/platform-browser';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,25 +9,30 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-
+  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
+  @ViewChild('musicWidget1', { read: ElementRef }) public musicWidget1: ElementRef<any>;
+  @ViewChild('musicWidget2', { read: ElementRef }) public musicWidget2: ElementRef<any>;
 
   public covers = [
-    {title: 'SPIN', url: '../../../assets/img/beat_spin.jpg'},
-    {title: 'BARRE', url: '../../../assets/img/beat_barre.png'},
-    {title: 'YOGA', url: '../../../assets/img/beat_yoga.png'},
-    {title: 'TRAIN', url: '../../../assets/img/beat_train.png'},
+    { title: 'SPIN', url: '../../../assets/img/new-images/Clases/Clases_BeatSpin.jpg' },
+    { title: 'BARRE', url: '../../../assets/img/new-images/Clases/Clases_BeatBarre.jpg' },
+    { title: 'YOGA', url: '../../../assets/img/new-images/Clases/Clases_BeatYoka.jpg' },
+    { title: 'POWER', url: '../../../assets/img/new-images/Clases/Clases_BeatPower.jpg' },
   ];
 
   public socialMedia = [
-    {fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png'},
-    {fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png'},
-    {fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png'}
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png' },
+    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png' }
   ];
 
   public semana = [
-    { titulo: 'take me to church', artista: 'Hozier', url: 'https://open.spotify.com/embed/track/3dYD57lRAUcMHufyqn9GcI' },
-    { titulo: 'somebody that i used to know', artista: 'gotye', url: 'https://open.spotify.com/embed/track/4wCmqSrbyCgxEXROQE6vtV' },
-    { titulo: 'shape of you', artista: 'Ed Sheeran', url: 'https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3' }
+    { titulo: 'Take me to church', artista: 'Hozier', url: 'https://open.spotify.com/embed/track/3dYD57lRAUcMHufyqn9GcI' },
+    { titulo: 'Somebody that i used to know', artista: 'Gotye', url: 'https://open.spotify.com/embed/track/4wCmqSrbyCgxEXROQE6vtV' },
+    { titulo: 'Shape of you', artista: 'Ed Sheeran', url: 'https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3' }
   ];
   // public semana = [
   //     { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana1.png' },
@@ -42,7 +47,11 @@ export class DashboardComponent implements OnInit {
     { titulo: 'Hallowed be thy name', artista: 'Iron Maiden', url: 'https://open.spotify.com/embed/track/469rBLYJUZHMJLtq2Wch3h' }
   ];
   constructor(private sanitizer: DomSanitizer,
-              private router: Router) { }
+              private router: Router,
+              private titleService: Title) {
+
+  this.titleService.setTitle('Home — BeatStudio');
+               }
 
   ngOnInit() {
     // this.eventService.getEvent().subscribe(
@@ -55,8 +64,8 @@ export class DashboardComponent implements OnInit {
   }
 
   goToCoaches(): void {
-    window.scroll(0, 0);
-    this.router.navigate(['dashboard/coach']);
+    // window.scroll(0, 0);
+    this.router.navigate(['dashboard/coaches']);
   }
 
   // scrollIntoView(section: any) {
@@ -66,4 +75,42 @@ export class DashboardComponent implements OnInit {
   //   }
   // }
 
+  public scrollRight(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 330), behavior: 'smooth' });
+  }
+
+  public scrollLeft(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 330), behavior: 'smooth' });
+  }
+
+  public scrollMusicWidget1Right(): void {
+    this.musicWidget1.nativeElement.scrollTo({ left: (this.musicWidget1.nativeElement.scrollLeft + 330), behavior: 'smooth' });
+  }
+
+  public scrollMusicWidget1Left(): void {
+    this.musicWidget1.nativeElement.scrollTo({ left: (this.musicWidget1.nativeElement.scrollLeft - 330), behavior: 'smooth' });
+  }
+
+  public scrollMusicWidget2Right(): void {
+    this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft + 330), behavior: 'smooth' });
+  }
+
+  public scrollMusicWidget2Left(): void {
+    this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft - 330), behavior: 'smooth' });
+  }
+
+  goTo(here: string): void {
+    this.router.navigate([`/dashboard/${here}`]);
+  }
+
+  // angular.element($window).bind('scroll', function() {
+
+  //   var offSet = $window.pageYOffset,
+  //       height = $window.innerHeight,
+  //       scrolledPercentage = (offSet / height * 100);
+  //       //console.log(scrolledPercentage);
+  //       if (scrolledPercentage >= 60) {
+  //         console.log(scrolledPercentage + ' over 60');
+  //       }
+  //   });
 }

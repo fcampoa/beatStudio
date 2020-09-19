@@ -1,190 +1,181 @@
-#section1 img {
-  display: block;
-  margin: auto;
-  width: 100%;
-}
 .home-image {
-  background-image: url("../../../assets/img/home_page.png");
+  background-image: url("../../../assets/img/Homepage.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 35.25em;
+  height: 58.25em;
   width: 100%;
 }
 
-.seccion-disciplinas {
+.fondo-claro {
   background: #eeeeee !important;
-  color: #000000;
-  padding-top: 5%;
-}
-.seccion-videos {
-  background: #eeeeee !important;
-  color: #000000;
-  padding-top: 5%;
-  width: 100%;
-}
-.cover-video {
-  background-image: url("../../../assets/img/video.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 35em;
-  width: 90%;
-}
 
-.img-format {
-  cursor: pointer;
-  transition: opacity 0.6s;
-}
-.img-format:hover {
-  opacity: 0.4;
-}
-.div-degradado {
-  background: #ffffff;
-}
-.div-degradado:hover {
-  background: linear-gradient(to top, rgb(255, 255, 255), rgb(152, 109, 255));
-  color: #000000;
-  font-style: bold;
-  cursor: pointer;
-}
-.text-color {
-  color: rgb(152, 109, 255);
-}
-.div-imagen {
-  display: inline-block;
-  position: relative;
-}
-
-.div-imagen > div {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  z-index: -1 !important;
-  padding: 10px !important;
-  margin: 0 !important;
-}
-
-.desvanecer{
-  color: #000000;
-  background: #eeeeee;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-}
-
-.desvanecer img{
-  opacity: 1;
-  width: 100% !important;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  -ms-transition: opacity 500ms;
-  transition: opacity 500ms;
-}
-
-.desvanecer div:nth-child(1){
-  background: rgba(152,101,255,1);
-  background: -moz-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(152,101,255,1)), color-stop(67%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
-  background: -webkit-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
-  background: -o-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
-  background: -ms-linear-gradient(top, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
-  background: linear-gradient(to bottom, rgba(152,101,255,1) 0%, rgba(246,246,246,1) 67%, rgba(255,255,255,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9865ff', endColorstr='#ffffff', GradientType=0 );
-}
-
-.desvanecer div:nth-child(2){
-  position: absolute; 
-  bottom: -5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transition: bottom 500ms;
-  -moz-transition: bottom 500ms;
-  -o-transition: bottom 500ms;
-  -ms-transition: bottom 500ms;
-  transition: bottom 500ms;
-}
-
-.desvanecer:hover {
-  img{
-    opacity: 0.4;
+  .sections-titles {
+    color: black !important;
   }
-  cursor: pointer;
-  span{
-    color:#000000 !important;
+
+  .seccion-disciplinas {
+    padding-top: 50px;
+
+    .part1 {
+      padding-top: 50px;
+    }
+
+    .part2 {
+      padding-top: 60px;
+
+      .see-more {
+        text-align: center;
+        width: 100%;
+        font-size: 0px;
+        transition: font-size 500ms;
+        -moz-transition: font-size 500ms;
+        -webkit-transition: font-size 500ms;
+        -o-transition: font-size 500ms;
+      }
+
+      .desvanecer {
+        color: #000000;
+        background: #eeeeee;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+
+        span {
+          font-size: 32px;
+          font-family: Cedra4FWide;
+          letter-spacing: 1px;
+        }
+      }
+
+      .desvanecer img {
+        opacity: 1;
+        width: 100% !important;
+        -webkit-transition: opacity 500ms;
+        -moz-transition: opacity 500ms;
+        -o-transition: opacity 500ms;
+        -ms-transition: opacity 500ms;
+        transition: opacity 500ms;
+      }
+
+      .desvanecer div:nth-child(1) {
+        background: rgba(152, 101, 255, 1);
+        background: -moz-linear-gradient(top, rgba(152, 101, 255, 1) 0%, rgba(246, 246, 246, 1) 67%, rgba(255, 255, 255, 1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(152, 101, 255, 1)), color-stop(67%, rgba(246, 246, 246, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
+        background: -webkit-linear-gradient(top, rgba(152, 101, 255, 1) 0%, rgba(246, 246, 246, 1) 67%, rgba(255, 255, 255, 1) 100%);
+        background: -o-linear-gradient(top, rgba(152, 101, 255, 1) 0%, rgba(246, 246, 246, 1) 67%, rgba(255, 255, 255, 1) 100%);
+        background: -ms-linear-gradient(top, rgba(152, 101, 255, 1) 0%, rgba(246, 246, 246, 1) 67%, rgba(255, 255, 255, 1) 100%);
+        background: linear-gradient(to bottom, rgba(152, 101, 255, 1) 0%, rgba(246, 246, 246, 1) 67%, rgba(255, 255, 255, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9865ff', endColorstr='#ffffff', GradientType=0);
+      }
+
+      .desvanecer div:nth-child(2) {
+        position: absolute;
+        bottom: -5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transition: bottom 500ms;
+        -moz-transition: bottom 500ms;
+        -o-transition: bottom 500ms;
+        -ms-transition: bottom 500ms;
+        transition: bottom 500ms;
+      }
+
+      .desvanecer div:nth-child(1):hover {
+        img {
+          opacity: 0.4;
+        }
+
+        cursor: pointer;
+
+        span {
+          color: #000000 !important;
+        }
+
+        a {
+          font-size: 20px;
+        }
+
+        div {
+          bottom: 0% !important;
+        }
+      }
+    }
+
+    .part3 {
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
   }
-  a{
-    font-size: 20px;
+
+  .seccion-videos {
+    padding-top: 50px;
+    width: 100%;
+    display: block;
+    margin: auto;
+
+    .cover-video {
+      background-image: url("../../../assets/img/new-images/Home/Home_AntesVideo.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 35em;
+      width: 100%;
+    }
   }
-  div{
-    bottom: 0% !important;
+
+  .seccion-coaches {
+    padding: 100px 50px 100px 50px;
+
+    .text-part {
+      padding-left: 25px;
+      padding-top: 150px;
+
+      p {
+        width: 85%;
+      }
+    }
   }
-}
 
-.seleccion {
-  color: #000000;
-  font-style: bold;
-}
-// .seleccion:hover .text-color .titulo-color {
+  .seccion-rutinas {
+    padding: 120px 50px 100px 50px;
 
-// }
-.contenedor {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-}
+    img {
+      width: 100%;
+    }
 
-.contenedor:hover > div > div > p {
-  color: #000000;
-  font-style: bold;
-}
+    .text-part {
+      padding-left: 60px;
+      padding-top: 100px;
 
-.centrado {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.contenedor:hover .ocultar {
-  display: inline;
-}
-.ocultar {
-  top: 0;
-  // right: 15%;
-  display: none;
-  padding-right: 5px;
-  position: relative;
-  width: 200px;
-}
-
-.cambiar-color:hover > p{
-  color: #000000;
-  font-style: bold;
-}
-.titulo-color {
-  color: #ffffff;
-}
-
-.seccion-rutinas {
-  background: #eeeeee !important;
-  color: #000000;
-}
-.seccion-coaches {
-  background: #eeeeee !important;
-  color: #000000;
-  padding-top: 5%;
+      p {
+        width: 85%;
+      }
+    }
+  }
 }
 
 .seccion-social {
-  background: #000000;
-  color: #ffffff;
-  padding-top: 5%7
+  .part1 {
+    margin-top: 60px;
+    font-size: 11px !important;
+  }
+
+  .part2 {
+    p {
+      color: #ffffff !important;
+      font-size: 20px !important;
+    }
+  }
+
+  .part3 {
+    margin-top: 50px;
+    margin-bottom: 60px;
+  }
 }
 
 .work-section {
-  background-image: url("../../../assets/img/work_cover.png");
+  background-image: url("../../../assets/img/Work hard.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 50%;
@@ -192,44 +183,214 @@
   width: 100%;
 }
 
-.rutinas2-back {
-  background-image: url("../../../assets/img/rutina2.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 43.25em;
-  width: 100%;
-}
-
 .seccion-musica {
-  padding-top: 10%;
-}
+  .part1 {
+    margin-top: 80px;
+  }
 
-mat-tab-group {
-  mat-tab {
-    .mat-tab-header {
-      margin-left: 30%;
+  .part2 {
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+
+  .music {
+    margin-bottom: 50px;
+  }
+
+  .remove-border-bottom ::ng-deep .mat-tab-header {
+    border-bottom: none;
+  }
+
+  .iframe-container {
+    iframe {
+      height: 100px;
     }
   }
 }
 
-@media only screen and(max-width: 840px) {
-  .seccion-coaches > div > div > a {
-    widows: 18em;
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+  margin-top: -8px;
+}
+
+.info-widget {
+  display: inline-block;
+  width: 33.33%;
+
+  .publicacion {
+    margin: 10px;
+    white-space: normal;
+
+    img {
+      width: 100%
+    }
+
+    iframe {
+      width: 100%;
+    }
+  }
+
+
+  a:hover {
+    text-decoration: none;
   }
 }
 
-.sobreponer {
-  position: absolute;
-  margin-top: 55%;
+.middle {
+  // float: left;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.see-more{
-  text-align: center;
-  width: 100%;
-  font-size: 0px;
-  transition:font-size 500ms;
-  -moz-transition:font-size 500ms;
-  -webkit-transition:font-size 500ms;
-  -o-transition:font-size 500ms;
+.image-viewer {
+  overflow: hidden;
+}
+
+.next-button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  outline: none;
+  opacity: 0.5;
+  border: 0;
+  transition: all 500ms;
+  -moz-transition: all 500ms;
+  -webkit-transition: all 500ms;
+  -o-transition: all 500ms;
+
+  mat-icon {
+    @include md-icon-size(38px);
+    display: inline-flex;
+    vertical-align: top;
+    margin-top: 1px;
+  }
+}
+
+.rotar {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.next-button:hover {
+  opacity: 1;
+  background-color: rgb(77, 77, 77);
+}
+
+.widget-text {
+  word-wrap: break-word !important;
+  width: 100px !important;
+}
+
+@media (max-width: 992px) {
+  .fondo-claro {
+    .seccion-coaches {
+      padding: 100px 0 100px 0;
+
+      .text-part {
+        padding-left: 0;
+        padding-top: 200px;
+
+        p {
+          width: 100%;
+        }
+      }
+    }
+
+    .seccion-rutinas {
+      padding: 0 0 100px 0;
+
+      img {
+        margin-top: 50px;
+      }
+
+      .text-part {
+        padding-left: 15px;
+        padding-top: 0;
+
+        p {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .fondo-claro {
+    .seccion-coaches {
+      padding: 100px 0 50px 0;
+
+      .text-part {
+        padding-left: 0;
+        padding-top: 150px;
+
+        p {
+          width: 100%;
+        }
+      }
+    }
+
+    .seccion-rutinas {
+      padding: 0 0 100px 0;
+
+      img {
+        margin-top: 50px;
+      }
+
+      .text-part {
+        padding-left: 15px;
+        padding-top: 0;
+
+        p {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .info-widget {
+    display: inline-block;
+    width: 100%;
+
+    .publicacion {
+      margin: 10px;
+
+      img {
+        width: 100%
+      }
+
+      iframe {
+        width: 100%;
+      }
+    }
+
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+@media only screen and(max-width: 750px) {
+  .part2 {
+    padding: 4% 4% 4% 4%;
+    .desvanecer {
+     span {
+      padding-top: 4% !important;
+      font-size: 16px !important;
+      }
+    }
+  }
+
+  .home-image {
+    // background-image: url("../../../assets/img/Homepage2.jpg");
+  }
 }

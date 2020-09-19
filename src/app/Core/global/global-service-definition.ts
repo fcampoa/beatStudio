@@ -19,7 +19,7 @@ export interface IGlobalServiceDefinition {
   };
   reservacion?: {
     agregar: () => VERBS.IpostCall;
-    actualizar: () => VERBS.IPatchCall;
+    actualizar: (id: number) => VERBS.IPatchCall;
     buscar: () => VERBS.IGetByIdCall;
     lista: () => VERBS.IGetCall;
     buscarClienteRango: (id: number, desde: string, hasta: string) => VERBS.IGetCall;
@@ -74,5 +74,17 @@ export interface IGlobalServiceDefinition {
     buscar: () => VERBS.IGetByIdCall;
     buscarReservacion: (id: number) => VERBS.IGetCall;
     buscarHorario: (id: number) => VERBS.IGetCall;
+    checarOcupado: (lugar: any, horario: any) => VERBS.IGetCall;
+    listaClase: (horario: number) => VERBS.IGetCall;
+  };
+  lista_espera?: {
+    agregar: () => VERBS.IpostCall;
+    actualizar: (id: number) => VERBS.IPatchCall;
+    eliminar: (id: number) => VERBS.IDeleteCall;
+    lista: () => VERBS.IGetCall;
+    buscar: () => VERBS.IGetByIdCall;
+    buscarHorario: (idHorario: number) => VERBS.IGetCall;
+    buscarCliente: (idCliente: number) => VERBS.IGetCall;
+    buscarRepetido: (idCliente: number, idHorario: number) => VERBS.IGetCall;
   };
 }

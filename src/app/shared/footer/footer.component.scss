@@ -23,3 +23,18 @@
   color:rgb(152, 109, 255);
   font-size: 14px;
 }
+
+.link{
+  font-family: GT-America-Regular;
+  width: 100%;
+}
+
+.link:hover{
+  cursor: pointer;
+}
+
+@media only screen and(max-width: 750px) {
+  .footer-text {
+    font-size: 12px;
+  }
+}

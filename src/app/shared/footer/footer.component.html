@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row" style="padding-left:2%;padding-right:2%;">
       <div class="col-12 col-sm-12 col-md-4 col-xl-4" style="padding-top: 5%;padding-bottom: 5%;">
-        <img style="height: 2em; width: 10em;" src="../../../assets/img/logo_negro.png" />
+        <img style="width: 180px;" src="../../../assets/img/SVG/BeatStudio_Logo-01_negro.svg" />
       </div>
       <div class="col-12 col-sm-12 col-md-4 col-xl-4">
       </div>
@@ -11,7 +11,7 @@
           <div class="col-12 col-sm-12 col-md-8 col-xl-8" style="padding-bottom: 5%;">
             <b class="footer-title" style="font-size: 18px;">Contáctanos en redes sociales</b>
           </div>
-          <div class="col-12 col-sm-12 col-md-4 col-xl-4">
+          <div class="col-11 col-sm-11 col-md-4 col-xl-4">
             <div class="row">
               <div class="col-2 col-sm-2 col-md-3 col-xl-3">
                 <img style="width: 1em; height: 1em; margin-left: 2%;" class="icon-color"
@@ -39,23 +39,25 @@
         <div class="footer-title">
           <b>Servicio al cliente</b><br>
         </div>
-        <label class="footer-text">Envíanos un correo a hola@beatstudio.mx</label>
-        <label class="footer-text">Llámanos a 81 83 06 0543</label>
-        <label class="footer-text">Lunes a viernes:9:00 am - 6:00 pm</label>
+        <label class="footer-text">Envíanos un correo a contacto@beatstudio.com.mx</label>
+        <label class="footer-text">Llámanos a 662 215 4609</label>
+        <label class="footer-text">Lunes a viernes: 6:00 AM - 11:00 AM y 4:00 PM a 8:00 PM</label>
       </div>
-      <div class="col-12 col-sm-12 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
+      <div class="col-6 col-sm-6 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
         <div class="footer-title">
           <b>Conócenos</b><br>
         </div>
-        <label class="footer-text">Coaches</label>
-        <label class="footer-text">Workout</label>
-        <label class="footer-text">Instalación y equipo</label>
+        <label class="link footer-text" (click)="goTo('')">Inicio</label>
+        <label class="link footer-text" (click)="goTo('about')">About</label>
+        <label class="link footer-text" (click)="goTo('disciplines')">Clases</label>
+        <label class="link footer-text" (click)="goTo('coach')">Coaches</label>
+        <label class="link footer-text" (click)="goTo('contact')">Contacto</label>
       </div>
-      <div class="col-12 col-sm-12 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
+      <div class="col-6 col-sm-6 col-md-3 col-xl-3" style="padding-top: 5%;padding-bottom: 3%;">
         <div class="footer-title">
           <b>Servicio al cliente</b><br>
         </div>
-        <label class="footer-text">Política de privacidad</label>
+        <label class="footer-text"><a [routerLink]="['privacy']">Política de privacidad</a></label>
         <label class="footer-text">Preguntas frecuentes</label>
         <label class="footer-text">Términos y condiciones</label>
       </div>
@@ -65,34 +67,34 @@
           <b>Certificaciones</b><br>
         </div>
         <div class="row">
-          <div class="col-3 col-sm-3 col-md-3 col-xl-3">
-            <img src="../../../assets/img/master_card.png" />
+          <div class="col-4 col-sm-4 col-md-4 col-xl-4">
+            <img src="../../../assets/img/SVG/Visa.svg" />
           </div>
-          <div class="col-3 col-sm-3 col-md-3 col-xl-3">
-            <img src="../../../assets/img/master_card.png" />
+          <div class="col-4 col-sm-4 col-md-4 col-xl-4">
+            <img src="../../../assets/img/SVG/MasterCard.svg" />
           </div>
-          <div class="col-3 col-sm-3 col-md-3 col-xl-3">
-            <img src="../../../assets/img/master_card.png" />
+          <div class="col-4 col-sm-4 col-md-4 col-xl-4">
+            <img src="../../../assets/img/SVG/PayPal.svg" />
           </div>
         </div>
       </div>
     </div>
     <div class="row" style="padding-left:2%;padding-right:2%;">
       <div class="col-12 col-sm-12 col-md-6 col-xl-6" style="padding-top: 5%;padding-bottom: 3%;">
-        <p style="font-family: SharpSans-Medium;">Copyright 2020 BeatStudio. Todos los derechos reservados</p>
+        <p style="font-family: SharpSans-Medium;">Copyright 2020 BeatStudio. Todos los derechos reservados.</p>
       </div>
       <div class="col-12 col-sm-12 col-md-6 col-xl-6" style="padding-top: 5%;padding-bottom: 3%;">
         <div class="row">
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>SPIN</span>
           </div>
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>BARRE</span>
           </div>
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>YOGA</span>
           </div>
-          <div class="col-4 col-sm-4 col-md-3 col-xl-3">
+          <div class="col-6 col-sm-6 col-md-3 col-xl-3">
             <span class="footer-info">><span class="footer-info-beat">BEAT</span>TRAIN</span>
           </div>
         </div>

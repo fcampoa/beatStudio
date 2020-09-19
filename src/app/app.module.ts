@@ -1,3 +1,4 @@
+import { NgxPayPalModule } from 'ngx-paypal';
 import { MessageModalComponent } from './components/message-modal/message-modal.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { PaymentDetailComponent } from './Core/utilities/payment-detail/payment-detail.component';
@@ -59,6 +60,24 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { DiciplineBeatspinComponent } from './components/dicipline-beatspin/dicipline-beatspin.component';
 import { BookingStepTwoComponent } from './components/booking/booking-step-two/booking-step-two.component';
 import { InviteDirective } from './Core/directives/invites.directive';
+import { PaypalComponent } from './Core/utilities/paypal/paypal.component';
+import { RemovePaymentComponent } from './components/payment/remove-payment/remove-payment.component';
+import { WaitlistComponent } from './components/booking/waitlist/waitlist.component';
+import { CancelClassComponent } from './components/booking-history/cancel-class/cancel-class.component';
+import { ChangeMethodComponent } from './components/checkout/change-method/change-method.component';
+import { InfoModalComponent } from './components/info-modal/info-modal.component';
+import { PasswordRecoveryStepOneComponent } from './components/password-recovery/password-recovery-step-one/password-recovery-step-one.component';
+import { PasswordRecoveryStepTwoComponent } from './components/password-recovery/password-recovery-step-two/password-recovery-step-two.component';
+
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { CardModalComponent } from './components/checkout/card-modal/card-modal.component';
+import { BeatspinComponent } from './components/disciplines/beatspin/beatspin.component';
+import { BeatbarreComponent } from './components/disciplines/beatbarre/beatbarre.component';
+import { BeatyogaComponent } from './components/disciplines/beatyoga/beatyoga.component';
+import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower.component'
+import { FileService } from './services/file-service.service';
+
+// export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [
@@ -95,13 +114,26 @@ import { InviteDirective } from './Core/directives/invites.directive';
     PaymentDetailComponent,
     PaymentHistoryComponent,
     MessageModalComponent,
+    PaypalComponent,
     // directives
     FixedBarDirective,
     InviteDirective,
     // pipes
     CustomDatePipe,
     CreditCardPipe,
-    ScheduleDatePipe
+    ScheduleDatePipe,
+    RemovePaymentComponent,
+    WaitlistComponent,
+    CancelClassComponent,
+    ChangeMethodComponent,
+    InfoModalComponent,
+    PasswordRecoveryStepOneComponent,
+    PasswordRecoveryStepTwoComponent,
+    CardModalComponent,
+    BeatspinComponent,
+    BeatbarreComponent,
+    BeatyogaComponent,
+    BeatpowerComponent
   ],
   imports: [
     BrowserModule,
@@ -120,15 +152,17 @@ import { InviteDirective } from './Core/directives/invites.directive';
     MDBBootstrapModule.forRoot(),
     QuickAppProMaterialModule,
     UtilitiesModule,
+    NgxPayPalModule,
+    NgxMaskModule.forRoot(),
     // AdminModule
   ],
   exports: [
   ],
   providers: [GlobalApiService, UserService, NotificationsService,
-     ParamsService, GenericApiCallService,
+    ParamsService, GenericApiCallService, FileService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: ErrorsHandler}],
+    { provide: ErrorHandler, useClass: ErrorsHandler }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
