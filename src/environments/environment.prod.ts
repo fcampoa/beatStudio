@@ -4,5 +4,5 @@ export const environment = {
   // base_url: 'http://165.22.91.247:8116/beatstudio/'
   // base_url: 'https://165.22.91.247:8116/beatstudio/'
   // base_url: '//165.22.91.247:8116/beatstudio/'
-  base_url: 'www.beatstudio.com.mx/directus/beatstudio/'
+  base_url: 'https://www.beatstudio.com.mx/directus/beatstudio/'
 };
