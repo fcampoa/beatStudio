@@ -34,7 +34,7 @@ export class BookingStepTwoComponent implements OnInit {
     private fileService: FileService) {
     this.cliente = new Cliente();
     this.cliente.nombre = '';
-    
+
     this.user = this.userSv.loggedUser.data.user;
   }
 
@@ -93,8 +93,52 @@ export class BookingStepTwoComponent implements OnInit {
     switch (disciplina.toLowerCase()) {
       case 'spin':
         // this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
-        this.llenarAsientos([[1, 6], [1, 3, 5], [1], [1, 2, 3, 4, 5], [1, 2, 5, 6]], [1, 3]);
-
+        // this.llenarAsientos([[1, 6], [1, 3, 5], [1], [1, 2, 3, 4, 5], [1, 2, 5, 6]], [1, 3]);
+        // console.log(this.asientos);
+        this.asientos = [
+          [
+            { fila: 1, numero: 1, visible: true, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 1, numero: 4, visible: true, ocupado: false, coach: false }
+          ],
+          [
+            { fila: 2, numero: 2, visible: true, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: true },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 2, numero: 5, visible: true, ocupado: false, coach: false }
+          ],
+          [
+            { fila: 3, numero: 3, visible: true, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+          ],
+          [],
+          [
+            { fila: 4, numero: 6, visible: true, ocupado: false, coach: false },
+            { fila: 4, numero: 7, visible: true, ocupado: false, coach: false },
+            { fila: 4, numero: 8, visible: true, ocupado: false, coach: false },
+            { fila: 4, numero: 9, visible: true, ocupado: false, coach: false },
+            { fila: 4, numero: 10, visible: true, ocupado: false, coach: false },
+          ],
+          [
+            { fila: 5, numero: 11, visible: true, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 5, numero: 12, visible: true, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 5, numero: 13, visible: true, ocupado: false, coach: false },
+            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+            { fila: 5, numero: 14, visible: true, ocupado: false, coach: false }
+          ]
+        ];
         break;
       case 'barre':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
@@ -105,13 +149,13 @@ export class BookingStepTwoComponent implements OnInit {
       case 'power':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5], []], [0, 0]);
         break;
-        case 'fairplay':
-          this.llenarAsientos([[0], [], [0, 1, 3, 4], [0, 1], [0, 2], [0]], [0, 0]);
+      case 'fairplay':
+        this.llenarAsientos([[0], [], [0, 2, 6, 8], [0, 2], [0, 6], [0]], [0, 0]);
         break;
       default:
         this.llenarAsientos([[0], [0, 1, 2, 3, 4, 5, 6], [0, 1, 2, 3, 4, 5, 6], [0, 1, 2, 3, 4, 5, 6]], [0, 0]);
         break;
-      }
+    }
     this.obtenerOcupados();
   }
 
@@ -365,10 +409,9 @@ export class BookingStepTwoComponent implements OnInit {
   //     }
 
   checkClass(row: any[]): any {
-    console.log(this.horario);
     return {
       "justify-content-center": !(row.length === 2 && row[0].visible === false &&
-         this.horario.disciplina.nombre.toLowerCase() === 'spin')
+        this.horario.disciplina.nombre.toLowerCase() === 'spin')
     }
   }
 }

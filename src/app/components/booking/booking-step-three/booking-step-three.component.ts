@@ -148,6 +148,8 @@ export class BookingStepThreeComponent implements OnInit {
           );
       },
       error => {
+        console.log(error);
+        
         this.loading = false;
         this.notify.errorMessage('Ocurrió un error.');
       }

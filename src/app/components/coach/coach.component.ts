@@ -23,15 +23,15 @@ export class CoachComponent implements OnInit {
     },
     {
       frase: 'be the energy you want to attract',
-      disciplinas: ': Beatspin y BeatPower',
-      movimiento: ': Pushup & Tapback, Squats & Planks',
+      disciplinas: 'Beatspin y BeatPower',
+      movimiento: 'Pushup & Tapback, Squats & Planks',
       nombre: 'Fer Pereyra',
       url: '../../../assets/img/new-images/Coaches/Coach_Fernanda.jpg',
       musica: 'Hip Hop / Pop / Progressive House'
     },
     {
       frase: 'Nothing worth having ever comes easy',
-      disciplinas: ': BeatSpin y BeatPower',
+      disciplinas: 'BeatSpin y BeatPower',
       movimiento: 'Sprints y push ups, Upper body y squats',
       nombre: 'Pau Cordova',
       url: '../../../assets/img/new-images/Coaches/Coach_PauCordova.jpg',
@@ -56,7 +56,7 @@ export class CoachComponent implements OnInit {
     {
       frase: 'Stop underestimating yourself',
       disciplinas: 'BeatBarre',
-      movimiento: ': Pulsos en barra',
+      movimiento: 'Pulsos en barra',
       nombre: 'Pau Avila',
       url: '../../../assets/img/new-images/Coaches/Coach_PauAvila.jpg',
       musica: 'Pop / remixes de oldies'
@@ -96,6 +96,7 @@ export class CoachComponent implements OnInit {
 
   ];
   constructor(private builder: FormBuilder, private titleService: Title) {
+    window.scrollTo(0,0);
     this.titleService.setTitle('Coaches — BeatStudio');
   }
 
