@@ -64,7 +64,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
       this.logged = (res !== undefined && res !== null);
       if ((res !== undefined && res !== null)) {
-        this.closeSideBar();
+       // this.closeSideBar();
       }
     });
     this.userSvc.getCustomUser().subscribe(
