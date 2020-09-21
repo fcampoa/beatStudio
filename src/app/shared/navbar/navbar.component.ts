@@ -1,6 +1,6 @@
 import { UserService } from './../../services/user.service';
 import { AuthenticationService } from './../../services/authentication.service';
-import { Component, OnInit, ElementRef, Input, OnDestroy, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, OnDestroy, EventEmitter, Output, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { Cliente } from 'src/app/model/cliente';
@@ -49,7 +49,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private router: Router,
     private userSvc: UserService,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private eRef: ElementRef
   ) {
     this.location = location;
     this.login = new EventEmitter<boolean>();
@@ -64,7 +65,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
       this.logged = (res !== undefined && res !== null);
       if ((res !== undefined && res !== null)) {
-       // this.closeSideBar();
+       this.closeSideBar();
       }
     });
     this.userSvc.getCustomUser().subscribe(
@@ -116,39 +117,48 @@ export class NavbarComponent implements OnInit, OnDestroy {
     popover.style.display = 'block';
   }
 
-  openSideBar(): void {
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar.style.right === '' || sidebar.style.right === '-300px') {
-      document.getElementById('sidebar-close').style.width = 'calc(100% - 300px)';
-      sidebar.style.right = '0';
-      this.open = true;
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if (this.eRef.nativeElement.contains(event.target)) {
+      console.log("clicked inside");
     } else {
-      document.getElementById('sidebar-close').style.width = '0';
-      sidebar.style.right = '-300px';
-      this.open = false;
+      console.log("clicked outside");
+      this.openSideBar();
     }
-    // debugger;
-    // const sidebar = document.getElementById("mySidebar");
-    // if (sidebar.style.right === "-300px") {
-    //   sidebar.style.display = "inline";
-    //   sidebar.style.right = "0px";
+  }
+
+  openSideBar(): void {
+    const sidebar = document.getElementById("mySidebar");
+    if (sidebar.style.right === '-300px' || sidebar.style.right === '') {
+      sidebar.style.right = "0px";
+    } else {
+      sidebar.style.right = "-300px";
+
+    }
+    // const sidebar = document.getElementById('sidebar');
+    // if (sidebar.style.right === '' || sidebar.style.right === '-300px') {
+    //   document.getElementById('sidebar-close').style.width = 'calc(100% - 300px)';
+    //   sidebar.style.right = '0';
     //   this.open = true;
     // } else {
-    //   sidebar.style.display = "inline";
-    //   sidebar.style.right = "-300px";
+    //   document.getElementById('sidebar-close').style.width = '0';
+    //   sidebar.style.right = '-300px';
     //   this.open = false;
     // }
+
   }
 
   closeSideBar() {
-    if (this.open === true) {
-    const sidebar = document.getElementById('sidebar');
-    document.getElementById('sidebar-close').style.width = '0';
-    sidebar.style.right = '-300px';
-    this.open = false;
-    }
-    // document.getElementById("mySidebar").style.width = "-300";
-    // this.open = false;
+
+    document.getElementById("mySidebar").style.right = "-300px";
+    
+    // if (this.open === true) {
+    //   const sidebar = document.getElementById('sidebar');
+    //   document.getElementById('sidebar-close').style.width = '0';
+    //   sidebar.style.right = '-300px';
+    //   this.open = false;
+    // }
+
   }
 
   expandDisciplines(): void {
