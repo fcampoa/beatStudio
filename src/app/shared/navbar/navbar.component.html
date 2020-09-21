@@ -53,8 +53,11 @@
 
 <ng-template #elseBlock class="custom-navbar-item">
   <div class="align-self-center ml-auto mr-4">
-    <button *ngIf="logged" class="my-auto navbar-user-button" (click)="goToProfile()"><img
-        src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
+    <!-- <button *ngIf="logged" class="my-auto navbar-user-button" (click)="goToProfile()"><img
+        src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button> -->
+        <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" [ngbPopover]="popLogoutContent" autoClose="outside"><img
+          src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
+      <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
     <svg (click)="openSideBar()" viewBox="0 0 100 80" width="40" height="24" style="fill: #9865ff">
       <rect width="80" height="8"></rect>
       <rect y="30" width="80" height="8"></rect>
@@ -87,6 +90,11 @@
             (click)="openLoginSidebar()">INICIAR
             SESIÓN</button>
         </div>
+        <!-- <div *ngIf="logged" class="row justify-content-center mr-4">
+          <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" [ngbPopover]="popLogoutContent" autoClose="outside"><img
+              src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
+          <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
+        </div> -->
 
         <div class="sidebar-login-menu" id="sidebar-login">
           <div class="sidebar-login">
@@ -101,7 +109,8 @@
 </ng-template>
 <ng-template #popLogoutContent>
   <div class="container-fluid">
-    <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()"><span>Cerrar
+    <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()">
+      <span>Cerrar
         sesión</span></div>
   </div>
 </ng-template>

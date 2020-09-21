@@ -139,4 +139,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
   }
+
+  openLogoutSidebar(): void {
+    var panel = document.getElementById('sidebar-login');
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
 }

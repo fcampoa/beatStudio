@@ -143,6 +143,7 @@ export class ScheduleComponent implements OnInit {
     //   }
     //   semana[cont - 1].horarios.push({ horario: x, selected: false });
     // });
+    debugger;
     let semana = [];
     let actual: any;
     let cont = 0;

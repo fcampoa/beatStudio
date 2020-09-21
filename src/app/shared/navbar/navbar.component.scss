@@ -200,4 +200,23 @@ a {
       padding: 30px;
     }
   }
+
+  .sidebar-logout {
+    .content {
+      position: relative;
+      width: 100%;
+      background-color: #ffffff;
+      padding: 30px;
+    }
+  }
+}
+
+.sidebar-actions {
+  display: none;
+}
+
+@media only screen and(max-width: 992px) {
+  .sidebar-actions {
+    display: inline;
+  }
 }
