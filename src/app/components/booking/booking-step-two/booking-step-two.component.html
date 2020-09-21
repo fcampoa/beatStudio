@@ -57,13 +57,13 @@
           coach
         </div>
       </div> -->
-      <div class="mt-4 mb-4">
+      <div class="py-5">
         <div *ngFor="let row of asientos">
           <div class="row d-flex" [ngClass]="checkClass(row)">
-            <div class="col-button d-flex" *ngFor="let item of row">
+            <div class="col-button d-flex d-flex justify-content-center" *ngFor="let item of row">
               <div *ngIf="item.coach" class="coach-seat align-self-center">
               </div>
-              <button *ngIf="!item.coach" mat-mini-fab class="seat-format align-self-center"
+              <button *ngIf="!item.coach" mat-mini-fab class="seat-format align-self-center m-sm-1 m-md-2 my-1"
                 id="{{'btn' + item.numero}}" [ngClass]="{hide_circle: !item.visible}" (mouseenter)="hover(item.numero)"
                 (mouseleave)="leave(item.numero)" [disabled]="item.ocupado" (click)="checarOcupado(item)">
                 {{ item.numero }}

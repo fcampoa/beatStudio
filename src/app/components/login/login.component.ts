@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.userName, this.password).subscribe(
         response => {
           this.loginSuccess.emit(false);
+          document.getElementById('custom-popover').style.display = 'none';
+          document.getElementById('sidebar-login').style.maxHeight = '0';
           this.router.navigate(['/dashboard/panel']);
         },
         error => {
@@ -61,8 +63,8 @@ export class LoginComponent implements OnInit {
   initForm(): void {
     this.userGroup = this.formBuilder.group({
       txtEmail: ['', [Validators.required, Validators.email]],
-     // txtPassword: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*[.]*"), Validators.minLength(8)]]
-     txtPassword: ['', [Validators.required]]
+      // txtPassword: ['', [Validators.required, Validators.pattern("[a-zA-Z]+[0-9]*[.]*"), Validators.minLength(8)]]
+      txtPassword: ['', [Validators.required]]
 
     });
   }

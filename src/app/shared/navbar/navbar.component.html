@@ -1,17 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-trans navbar-expand-sm" style="background: #000000;">
-  <a class="navbar-brand ml-xl-4" href="#">
-    <img style="width: 180px;" src="../../../assets/img/SVG/BeatStudio_Logo-03_blanco.svg" />
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse w-100 dual-collapse2 order-1 order-xl-0" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mx-auto text-center">
-      <li class="nav-item active" *ngFor="let i of sections">
-
+<div #navbar class="py-2 custom-navbar">
+  <div class="row my-auto">
+    <div class="float-left ml-3 ml-xl-5">
+      <a class="navbar-brand ml-1 ml-xl-4" href="#">
+        <img style="width: 180px;" src="../../../assets/img/SVG/BeatStudio_Logo-03_blanco.svg" />
+      </a>
+    </div>
+    <div *ngIf="navbar.offsetWidth>992;else elseBlock"
+      class="mr-auto ml-auto align-self-center d-flex justify-content-center">
+      <div *ngFor="let i of sections" class="sections">
         <div *ngIf="i.sublinks" class="dropdown">
-          <a class="link-format ml-lg-1 mr-lg-1 ml-xl-4 mr-xl-4" (click)="navigate(i.url)">
+          <a class="link-format ml-lg-3 mr-lg-3 ml-xl-4 mr-xl-4" (click)="navigate(i.url)">
             <mat-icon>expand_more</mat-icon>
             {{i.nombre}}
           </a>
@@ -23,51 +21,96 @@
         <a *ngIf="!i.sublinks" class="link-format ml-lg-1 mr-lg-1 ml-xl-4 mr-xl-4" (click)="navigate(i.url)">
           {{i.nombre}}
         </a>
-      </li>
-    </ul>
-    <form class="form-inline">
+      </div>
+    </div>
+    <div *ngIf="navbar.offsetWidth>992" class="mr-3 mr-xl-5 align-self-center">
       <div *ngIf="logged" class="mr-4">
         <button class="my-2 my-sm-0 navbar-user-button" [ngbPopover]="popLogoutContent" autoClose="outside"><img
             src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
         <button class="my-2 my-sm-0 navbar-user-button" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
       </div>
-      <div *ngIf="!logged">
-        <button style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
-          class="button-new my-2 my-sm-0 mr-xl-4 button-padding" (click)="navigate('dashboard/registro')">CREAR
+      <div *ngIf="!logged" class="pr-3">
+        <button
+          style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
+          class="button-new my-2 my-sm-0 mr-4 button-padding" (click)="navigate('dashboard/registro')">CREAR
           CUENTA</button>
-        <!-- <button mat-stroked-button style="padding-left: 1rem !important;padding-right: 1rem !important;"
-          class="button-new my-2 my-sm-0" [ngbPopover]="popLoginContent" autoClose="outside">INICIAR
-          SESIÓN</button> -->
-        <button style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
+        <button
+          style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
           class="button-new my-2 my-sm-0 button-padding" id="login-button" (click)="openCustomPopover()">INICIAR
           SESIÓN</button>
-        <div class="custom-popover">
-          <div class="fondo" id="custom-popover">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="custom-popover">
+  <div class="fondo" id="custom-popover">
+    <div class="content">
+      <app-login (loginSuccess)="checkLogin($event)"></app-login>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock class="custom-navbar-item">
+  <div class="align-self-center ml-auto mr-4">
+    <!-- <button *ngIf="logged" class="my-auto navbar-user-button" (click)="goToProfile()"><img
+        src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button> -->
+        <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" [ngbPopover]="popLogoutContent" autoClose="outside"><img
+          src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
+      <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
+    <svg (click)="openSideBar()" viewBox="0 0 100 80" width="40" height="24" style="fill: #9865ff">
+      <rect width="80" height="8"></rect>
+      <rect y="30" width="80" height="8"></rect>
+      <rect y="60" width="80" height="8"></rect>
+    </svg>
+  </div>
+  <div class="sidebar-window">
+    <div class="fondo" id="sidebar-close">
+      <div class="sidebar" id="sidebar">
+        <div *ngFor="let i of sections" class="sections">
+          <div *ngIf="i.sublinks">
+            <a class="link-format" (click)="expandDisciplines()">
+              {{i.nombre}}<mat-icon>expand_more</mat-icon>
+            </a>
+            <div class="disciplines-menu" id="disciplines-list">
+              <a class="beat-algo" *ngFor="let sub of i.sublinks"
+                (click)="navigate(sub.url)"><span>BEAT</span>{{sub.name}}</a>
+              <a (click)="navigate(i.url)">TODAS LAS DISCIPLINAS</a>
+            </div>
+          </div>
+          <a *ngIf="!i.sublinks" class="link-format ml-lg-1 mr-lg-1 ml-xl-4 mr-xl-4" (click)="navigate(i.url)">
+            {{i.nombre}}
+          </a>
+        </div>
+        <div *ngIf="!logged" style="margin: 10px 28px 30px 28px;">
+          <button class="button-new btn-block" style="background: transparent !important;" mat-stroked-button
+            (click)="navigate('dashboard/registro')">CREAR
+            CUENTA</button>
+          <button class="button-new btn-block" style="background: transparent !important;" mat-stroked-button
+            (click)="openLoginSidebar()">INICIAR
+            SESIÓN</button>
+        </div>
+        <!-- <div *ngIf="logged" class="row justify-content-center mr-4">
+          <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" [ngbPopover]="popLogoutContent" autoClose="outside"><img
+              src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
+          <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
+        </div> -->
+
+        <div class="sidebar-login-menu" id="sidebar-login">
+          <div class="sidebar-login">
             <div class="content">
               <app-login (loginSuccess)="checkLogin($event)"></app-login>
             </div>
           </div>
         </div>
-
       </div>
-    </form>
+    </div>
   </div>
-</nav>
-
-<!-- <ng-template #popLoginContent>
-  <app-login (loginSuccess)="checkLogin($event)"></app-login>
 </ng-template>
-<ng-template #popLoginTitle><b>Iniciar Sesión</b></ng-template>
-
-<ng-template #popRegisterContent>
-  <app-register (registerSuccess)="checkLogin($event)"></app-register>
-</ng-template>
-<ng-template #popRegisterTitle><b>Registro de usuario</b></ng-template> -->
-
 <ng-template #popLogoutContent>
   <div class="container-fluid">
-    <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()"><span>Cerrar
+    <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()">
+      <span>Cerrar
         sesión</span></div>
   </div>
 </ng-template>
-<!-- <ng-template #popLogoutTitle></ng-template> -->

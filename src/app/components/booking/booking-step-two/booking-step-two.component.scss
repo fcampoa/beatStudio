@@ -8,6 +8,7 @@ button {
   margin-bottom: 25px;
   font-family: GT-America-Regular;
   letter-spacing: -1px;
+
   .sit-number {
     position: absolute;
     top: 0;
@@ -17,10 +18,11 @@ button {
   .name {
     margin-left: 30px;
     font-size: 14px;
-    input[type="text"]{
+
+    input[type="text"] {
       width: 90%;
       background: transparent;
-      border:none;
+      border: none;
       outline: none;
       color: white;
     }
@@ -41,6 +43,7 @@ button {
     -o-transition: background-color 500ms;
     -ms-transition: background-color 500ms;
     transition: background-color 500ms;
+
     div {
       color: red;
       text-align: center;
@@ -55,7 +58,7 @@ button {
   }
 }
 
-.add-friend{
+.add-friend {
   width: 100%;
   border: 0;
   outline: none;
@@ -72,13 +75,13 @@ button {
   transition: background-color 500ms;
 }
 
-.add-friend:hover{
+.add-friend:hover {
   background-color: #616161;
 }
 
 .coach-seat {
-  width: 44px;
-  height: 44px;
+  width: 44px !important;
+  height: 44px !important;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -223,8 +226,7 @@ mat-card {
   margin-right: 2%;
 
   .col-button {
-    width: 12% !important;
-    height: 70px;
+    width: 10% !important;
   }
 
   .seat-format {
@@ -250,6 +252,12 @@ mat-card {
 }
 
 @media (max-width: 576px) {
+  .coach-seat {
+    width: 32px !important;
+    height: 32px !important;
+    background: #ffffff;
+  }
+
   .col-asientos {
     width: 100%;
     padding-left: 5%;

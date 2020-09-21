@@ -1,7 +1,7 @@
 <div style="width: 100%;">
-  <div class="home-image mt-3 w-100">
+  <div class="home-image w-100">
     <!-- Secciòn principal -->
-    <div class="row d-flex justify-content-center text-center" style="background: transparent !important;">
+    <div class="row d-flex justify-content-center text-center pt-5" style="background: transparent !important;">
       <div class="col-12">
         <h1 class="dashboard-title">
           Ride. Tone. Stretch.</h1>
@@ -32,9 +32,9 @@
       <div class="row d-flex justify-content-center part2">
         <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
           <div class="row d-flex justify-content-center">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 desvanecer" (click)="goTo('disciplines/beat'+i.title.toLowerCase())"
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 desvanecer"
               *ngFor="let i of covers; let x = index" style="margin-bottom: 25px;">
-              <div>
+              <div (click)="goTo('disciplines/beat'+i.title.toLowerCase())">
                 <div>
                   <img [src]="i.url" />
                 </div>

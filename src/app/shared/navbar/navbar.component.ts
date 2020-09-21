@@ -110,4 +110,42 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let popover = document.getElementById('custom-popover');
     popover.style.display = 'block';
   }
+
+  openSideBar(): void {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar.style.right === '' || sidebar.style.right === '-300px') {
+      document.getElementById('sidebar-close').style.width = 'calc(100% - 300px)';
+      sidebar.style.right = '0';
+    } else {
+      document.getElementById('sidebar-close').style.width = '0';
+      sidebar.style.right = '-300px';
+    }
+  }
+
+  expandDisciplines(): void {
+    var panel = document.getElementById('disciplines-list');
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
+
+  openLoginSidebar(): void {
+    var panel = document.getElementById('sidebar-login');
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
+
+  openLogoutSidebar(): void {
+    var panel = document.getElementById('sidebar-login');
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  }
 }
