@@ -127,6 +127,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
       sidebar.style.right = '-300px';
       this.open = false;
     }
+    // debugger;
+    // const sidebar = document.getElementById("mySidebar");
+    // if (sidebar.style.right === "-300px") {
+    //   sidebar.style.display = "inline";
+    //   sidebar.style.right = "0px";
+    //   this.open = true;
+    // } else {
+    //   sidebar.style.display = "inline";
+    //   sidebar.style.right = "-300px";
+    //   this.open = false;
+    // }
   }
 
   closeSideBar() {
@@ -136,6 +147,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     sidebar.style.right = '-300px';
     this.open = false;
     }
+    // document.getElementById("mySidebar").style.width = "-300";
+    // this.open = false;
   }
 
   expandDisciplines(): void {

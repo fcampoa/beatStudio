@@ -61,9 +61,9 @@
       <rect y="60" width="80" height="8"></rect>
     </svg>
   </div>
-  <div class="sidebar-window">
-    <div class="fondo" id="sidebar-close">
-      <div class="sidebar" id="sidebar">
+  <div class="sidebar-window" id="sidebar-window">
+    <div class="fondo" id="sidebar-close" >
+      <div id="sidebar" class="sidebar">
         <div *ngFor="let i of sections" class="sections">
           <div *ngIf="i.sublinks">
             <a class="link-format" (click)="expandDisciplines()">
