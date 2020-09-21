@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public name = '';
   public cliente: Cliente;
   mySubscription: any;
+  open = false;
 
   @Output() login: EventEmitter<boolean>;
 
@@ -120,16 +121,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (sidebar.style.right === '' || sidebar.style.right === '-300px') {
       document.getElementById('sidebar-close').style.width = 'calc(100% - 300px)';
       sidebar.style.right = '0';
+      this.open = true;
     } else {
       document.getElementById('sidebar-close').style.width = '0';
       sidebar.style.right = '-300px';
+      this.open = false;
     }
   }
 
   closeSideBar() {
+    if (this.open === true) {
     const sidebar = document.getElementById('sidebar');
     document.getElementById('sidebar-close').style.width = '0';
     sidebar.style.right = '-300px';
+    this.open = false;
+    }
   }
 
   expandDisciplines(): void {
