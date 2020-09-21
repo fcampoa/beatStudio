@@ -62,6 +62,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.name = this.user.first_name;
       }
       this.logged = (res !== undefined && res !== null);
+      if ((res !== undefined && res !== null)) {
+        this.closeSideBar();
+      }
     });
     this.userSvc.getCustomUser().subscribe(
       cu => {
@@ -78,6 +81,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.auth.logout();
+    this.closeSideBar();
   }
 
   goToProfile(): void {
@@ -120,6 +124,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       document.getElementById('sidebar-close').style.width = '0';
       sidebar.style.right = '-300px';
     }
+  }
+
+  closeSideBar() {
+    const sidebar = document.getElementById('sidebar');
+    document.getElementById('sidebar-close').style.width = '0';
+    sidebar.style.right = '-300px';
   }
 
   expandDisciplines(): void {
