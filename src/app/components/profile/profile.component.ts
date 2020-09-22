@@ -169,11 +169,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  cambiarPass() {
-    debugger;
-    const dialogRef = this.dialog.open(ChangePasswordComponent, {
-      panelClass: 'custom-modalbox-info',
-      data: { mail: this.user.email }
-    });
-  }
+  // cambiarPass() {
+  //   const dialogRef = this.dialog.open(ChangePasswordComponent, {
+  //     panelClass: 'custom-modalbox-info',
+  //     data: { mail: this.user.email }
+  //   });
+  // }
 }

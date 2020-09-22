@@ -4,6 +4,8 @@ import { Component, OnInit, ElementRef, Input, OnDestroy, EventEmitter, Output, 
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { Cliente } from 'src/app/model/cliente';
+import { ChangePasswordComponent } from 'src/app/components/profile/change-password/change-password.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -50,7 +52,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private userSvc: UserService,
     private auth: AuthenticationService,
-    private eRef: ElementRef
+    private eRef: ElementRef,
+    public dialog: MatDialog
   ) {
     this.location = location;
     this.login = new EventEmitter<boolean>();
@@ -116,16 +119,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let popover = document.getElementById('custom-popover');
     popover.style.display = 'block';
   }
-
-  @HostListener('document:click', ['$event'])
-  clickout(event) {
-    if (this.eRef.nativeElement.contains(event.target)) {
-      console.log("clicked inside");
-    } else {
-      console.log("clicked outside");
-      this.openSideBar();
-    }
-  }
+ 
 
   openSideBar(): void {
     const sidebar = document.getElementById("mySidebar");
@@ -186,5 +180,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
+  }
+
+  cambiarPass() {
+    this.openSideBar();
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      panelClass: 'custom-modalbox-info',
+      data: { mail: this.user.email }
+    });
   }
 }

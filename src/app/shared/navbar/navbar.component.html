@@ -140,6 +140,10 @@
       <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="logout()">SALIR</button>
     </div>
 
+    <div *ngIf="logged" class="row justify-content-center mr-4" style="margin: 10px 28px 30px 28px;">
+      <button class="button-new btn-block" style="background: transparent !important;" mat-stroked-button type="button" (click)="cambiarPass()">Cambiar contraseña</button>
+    </div>
+
     <div class="sidebar-login-menu" id="sidebar-login">
       <div class="sidebar-login">
         <div class="content">
@@ -148,7 +152,7 @@
       </div>
     </div>
   </div>
-  
+
 </ng-template>
 
 <ng-template #popLogoutContent>
