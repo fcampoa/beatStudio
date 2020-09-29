@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   public semana = [
     { titulo: 'Take me to church', artista: 'Hozier', url: 'https://open.spotify.com/embed/track/3dYD57lRAUcMHufyqn9GcI' },
     { titulo: 'Somebody that i used to know', artista: 'Gotye', url: 'https://open.spotify.com/embed/track/4wCmqSrbyCgxEXROQE6vtV' },
-    { titulo: 'Shape of you', artista: 'Ed Sheeran', url: 'https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3' }
+    { titulo: 'Shape of you', artista: 'Ed Sheeran', url: 'https://open.spotify.com/embed/track/7qiZfU4dY1lWllzX7mPBI3' },
   ];
   // public semana = [
   //     { titulo: 'take me to church', artista: 'Hozier', url: '../../../assets/img/semana1.png' },
@@ -47,11 +47,11 @@ export class DashboardComponent implements OnInit {
     { titulo: 'Hallowed be thy name', artista: 'Iron Maiden', url: 'https://open.spotify.com/embed/track/469rBLYJUZHMJLtq2Wch3h' }
   ];
   constructor(private sanitizer: DomSanitizer,
-              private router: Router,
-              private titleService: Title) {
+    private router: Router,
+    private titleService: Title) {
 
-  this.titleService.setTitle('Home — BeatStudio');
-               }
+    this.titleService.setTitle('Home — BeatStudio');
+  }
 
   ngOnInit() {
     // this.eventService.getEvent().subscribe(
@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
   goToCoaches(): void {
     // window.scroll(0, 0);
-    this.router.navigate(['dashboard/coaches']);
+    this.router.navigate(['/coaches']);
   }
 
   // scrollIntoView(section: any) {
@@ -75,32 +75,38 @@ export class DashboardComponent implements OnInit {
   //   }
   // }
 
-  public scrollRight(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 330), behavior: 'smooth' });
+  public scrollRight(width: number): void {
+    const scroll = width > 575 ? (width * 0.3333) : width;
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + scroll), behavior: 'smooth' });
   }
 
-  public scrollLeft(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 330), behavior: 'smooth' });
+  public scrollLeft(width: number): void {
+    const scroll = width > 575 ? (width * 0.3333) : width;
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - scroll), behavior: 'smooth' });
   }
 
-  public scrollMusicWidget1Right(): void {
-    this.musicWidget1.nativeElement.scrollTo({ left: (this.musicWidget1.nativeElement.scrollLeft + 330), behavior: 'smooth' });
+  public scrollMusicWidget1Right(width: number): void {
+    const scroll = width > 575 ? (width * 0.3333) : width;
+    this.musicWidget1.nativeElement.scrollTo({ left: (this.musicWidget1.nativeElement.scrollLeft + scroll), behavior: 'smooth' });
   }
 
-  public scrollMusicWidget1Left(): void {
-    this.musicWidget1.nativeElement.scrollTo({ left: (this.musicWidget1.nativeElement.scrollLeft - 330), behavior: 'smooth' });
+  public scrollMusicWidget1Left(width: number): void {
+    const scroll = width > 575 ? (width * 0.3333) : width;
+    this.musicWidget1.nativeElement.scrollTo({ left: (this.musicWidget1.nativeElement.scrollLeft - scroll), behavior: 'smooth' });
   }
 
-  public scrollMusicWidget2Right(): void {
-    this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft + 330), behavior: 'smooth' });
+  public scrollMusicWidget2Right(width: number): void {
+    const scroll = width > 575 ? (width * 0.3333) : width;
+    this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft + scroll), behavior: 'smooth' });
   }
 
-  public scrollMusicWidget2Left(): void {
-    this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft - 330), behavior: 'smooth' });
+  public scrollMusicWidget2Left(width: number): void {
+    const scroll = width > 575 ? (width * 0.3333) : width;
+    this.musicWidget2.nativeElement.scrollTo({ left: (this.musicWidget2.nativeElement.scrollLeft - scroll), behavior: 'smooth' });
   }
 
   goTo(here: string): void {
-    this.router.navigate([`/dashboard/${here}`]);
+    this.router.navigate([`/${here}`]);
   }
 
   // angular.element($window).bind('scroll', function() {

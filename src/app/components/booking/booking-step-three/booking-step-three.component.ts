@@ -142,7 +142,7 @@ export class BookingStepThreeComponent implements OnInit {
             res => {
               if (res.resultado === true) {
                 this.loading = false;
-                this.router.navigate(['dashboard/booking/success']);
+                this.router.navigate(['/booking/success']);
               }
             }
           );

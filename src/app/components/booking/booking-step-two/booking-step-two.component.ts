@@ -366,7 +366,7 @@ export class BookingStepTwoComponent implements OnInit {
         detalles: this.reservaciones
       };
       this.userSv.aux = custom;
-      this.router.navigate(['dashboard/booking/summary/' + this.idHorario]);
+      this.router.navigate(['/booking/summary/' + this.idHorario]);
     }
   }
 

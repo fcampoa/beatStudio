@@ -63,7 +63,7 @@ export class UserPanelComponent implements OnInit {
    */
   goToBooking(): void {
     if (this.registrado) {
-      this.router.navigate(['/dashboard/booking']);
+      this.router.navigate(['/booking']);
     }
   }
   /**
@@ -71,7 +71,7 @@ export class UserPanelComponent implements OnInit {
    */
   goToBuy(): void {
     if (this.registrado) {
-      this.router.navigate(['/dashboard/checkout']);
+      this.router.navigate(['/checkout']);
     }
   }
   /**

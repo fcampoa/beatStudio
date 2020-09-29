@@ -122,12 +122,12 @@
     </div>
     <div class="row d-flex justify-content-center part3">
       <div class="col-1 d-flex justify-content-center">
-        <button class="next-button align-self-center primary-color" (click)="scrollLeft()">
+        <button class="next-button align-self-center primary-color" (click)="scrollLeft(instagram.clientWidth)">
           <mat-icon class="rotar" svgIcon="black_arrow"></mat-icon>
         </button>
       </div>
       <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-8">
-        <div class="image-viewer">
+        <div class="image-viewer" #instagram>
           <div #widgetsContent class="middle">
             <div class="info-widget" *ngFor="let i of socialMedia">
               <div class="publicacion text-center">
@@ -162,7 +162,7 @@
         </div>
       </div>
       <div class="col-1 d-flex justify-content-center">
-        <button class="next-button align-self-center primary-color" (click)="scrollRight()">
+        <button class="next-button align-self-center primary-color" (click)="scrollRight(instagram.clientWidth)">
           <mat-icon svgIcon="black_arrow"></mat-icon>
         </button>
       </div>
@@ -234,12 +234,13 @@
             <div class="row d-flex justify-content-center music" style="max-width: 100%;
             overflow-x: hidden; margin-top: 50px;">
               <div class="col-1 d-flex justify-content-center">
-                <button class="next-button align-self-center primary-color" (click)="scrollMusicWidget1Left()">
+                <button class="next-button align-self-center primary-color"
+                  (click)="scrollMusicWidget1Left(music1.clientWidth)">
                   <mat-icon class="rotar" svgIcon="black_arrow"></mat-icon>
                 </button>
               </div>
               <div class="col-9 col-sm-9 col-md-8 col-lg-7 col-xl-7">
-                <div class="image-viewer">
+                <div class="image-viewer" #music1>
                   <div #musicWidget1 class="middle">
                     <div class="info-widget" *ngFor="let s of semana">
                       <div class="publicacion">
@@ -255,7 +256,8 @@
                 </div>
               </div>
               <div class="col-1 d-flex justify-content-center">
-                <button class="next-button align-self-center primary-color" (click)="scrollMusicWidget1Right()">
+                <button class="next-button align-self-center primary-color"
+                  (click)="scrollMusicWidget1Right(music1.clientWidth)">
                   <mat-icon svgIcon="black_arrow"></mat-icon>
                 </button>
               </div>
@@ -280,12 +282,13 @@
             <div class="row d-flex justify-content-center music" style="max-width: 100%;
             overflow-x: hidden; margin-top: 50px;">
               <div class="col-1 d-flex justify-content-center">
-                <button class="next-button align-self-center primary-color" (click)="scrollMusicWidget2Left()">
+                <button class="next-button align-self-center primary-color"
+                  (click)="scrollMusicWidget2Left(music2.clientWidth)">
                   <mat-icon class="rotar" svgIcon="black_arrow"></mat-icon>
                 </button>
               </div>
               <div class="col-9 col-sm-9 col-md-8 col-lg-7 col-xl-7">
-                <div class="image-viewer">
+                <div class="image-viewer" #music2>
                   <div #musicWidget2 class="middle">
                     <div class="info-widget" *ngFor="let s of favoritas">
                       <div class="publicacion">
@@ -301,7 +304,8 @@
                 </div>
               </div>
               <div class="col-1 d-flex justify-content-center">
-                <button class="next-button align-self-center primary-color" (click)="scrollMusicWidget2Right()">
+                <button class="next-button align-self-center primary-color"
+                  (click)="scrollMusicWidget2Right(music2.clientWidth)">
                   <mat-icon svgIcon="black_arrow"></mat-icon>
                 </button>
               </div>

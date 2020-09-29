@@ -12,6 +12,6 @@ export class FooterComponent {
     test: Date = new Date();
     constructor(private router: Router) { }
     goTo(here: string): void {
-        this.router.navigate([`/dashboard/${here}`]);
+        this.router.navigate([`/${here}`]);
     }
 }

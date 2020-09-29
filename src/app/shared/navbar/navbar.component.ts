@@ -28,17 +28,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   @Output() login: EventEmitter<boolean>;
 
   public sections = [
-    { nombre: 'ABOUT', url: 'dashboard/about' },
+    { nombre: 'ABOUT', url: '/about' },
     {
-      nombre: 'CLASES', url: 'dashboard/disciplines', sublinks: [
-        { name: 'SPIN', url: 'dashboard/disciplines/beatspin' },
-        { name: 'BARRE', url: 'dashboard/disciplines/beatbarre' },
-        { name: 'YOGA', url: 'dashboard/disciplines/beatyoga' },
-        { name: 'POWER', url: 'dashboard/disciplines/beatpower' }]
+      nombre: 'CLASES', url: '/disciplines', sublinks: [
+        { name: 'SPIN', url: '/disciplines/beatspin' },
+        { name: 'BARRE', url: '/disciplines/beatbarre' },
+        { name: 'YOGA', url: '/disciplines/beatyoga' },
+        { name: 'POWER', url: '/disciplines/beatpower' }]
     },
-    { nombre: 'COACHES', url: 'dashboard/coaches' },
+    { nombre: 'COACHES', url: '/coaches' },
     // { nombre: 'ONLINE WORKOUTS', url: '' },
-    { nombre: 'CONTACTO', url: 'dashboard/contact' }
+    { nombre: 'CONTACTO', url: '/contact' }
   ];
 
   // Inputs
@@ -68,7 +68,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
       this.logged = (res !== undefined && res !== null);
       if ((res !== undefined && res !== null)) {
-       this.closeSideBar();
+        this.closeSideBar();
       }
     });
     this.userSvc.getCustomUser().subscribe(
@@ -90,18 +90,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   goToProfile(): void {
-    this.router.navigate(['dashboard/panel']);
+    this.router.navigate(['/panel']);
   }
 
   navigate(s: string): void {
-    console.log(s);
-
-    if (s.indexOf('dashboard') < 0) {
-      this.scroll(s);
-    } else {
-      window.scroll(0, 0);
-      this.router.navigate([s]);
-    }
+    window.scroll(0, 0);
+      this.router.navigate([`/${s}`]);
   }
 
   scroll(url: string): void {
@@ -119,7 +113,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     let popover = document.getElementById('custom-popover');
     popover.style.display = 'block';
   }
- 
+
 
   openSideBar(): void {
     const sidebar = document.getElementById("mySidebar");
@@ -145,7 +139,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   closeSideBar() {
 
     document.getElementById("mySidebar").style.right = "-300px";
-    
+
     // if (this.open === true) {
     //   const sidebar = document.getElementById('sidebar');
     //   document.getElementById('sidebar-close').style.width = '0';

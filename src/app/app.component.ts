@@ -1,6 +1,7 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { Component, HostListener } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
+import { Router, Event } from '@angular/router'
 
 declare var $: any;
 
@@ -10,10 +11,10 @@ declare var $: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'beatStudio';
+  title = 'beatStudio'; public loading = false;
 
   constructor(private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer) {
+    private domSanitizer: DomSanitizer, private router: Router) {
     this.matIconRegistry
       .addSvgIcon('remove', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Basura_rojo.svg'))
       .addSvgIcon('menu_user', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/Usuario(menu)-01.svg'))
@@ -31,9 +32,15 @@ export class AppComponent {
       .addSvgIcon('logo_negro', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/BeatStudio_Logo-negro.svg'))
       .addSvgIcon('logo_morado', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/img/SVG/BeatStudio_Logo-morado.svg'))
       ;
+    this.router.events.subscribe((e: Event) => {
+      window.scrollTo(0,0);
+      document.getElementById("mySidebar").style.right = "-300px";
+    })
   }
 
-
+  public loader($event: boolean): void {
+    this.loading = $event;
+  }
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     let popover = document.getElementById('custom-popover');

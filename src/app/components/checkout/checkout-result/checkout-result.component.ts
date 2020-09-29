@@ -54,10 +54,10 @@ export class CheckoutResultComponent implements OnInit {
   }
 
   panel(): void {
-    this.router.navigate(['dashboard/panel']);
+    this.router.navigate(['/panel']);
   }
 
   reservar(): void {
-    this.router.navigate(['dashboard/booking']);
+    this.router.navigate(['/booking']);
   }
 }
