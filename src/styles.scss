@@ -335,7 +335,7 @@ mat-slide-toggle-bar {
 }
 
 .button-new {
-  background-color: #000000 !important;
+  background-color: transparent !important;
   font-family: Cedra4FWide !important;
   color: #ffffff !important;
   letter-spacing: 1px !important;
@@ -488,26 +488,15 @@ mat-slide-toggle-bar {
   }
 
   .sections-titles {
-    font-size: 1.8em !important;
+    font-size: 2.4em !important;
   }
 
   .sections-info-text {
-    font-size: 1em !important;
+    font-size: 1.1em !important;
   }
 }
 
 @media (max-width: 676px) {
-  .dashboard-title {
-    font-size: 3em !important;
-  }
-
-  .page-title {
-    font-size: 2.5em !important;
-  }
-
-  .sections-titles {
-    font-size: 2em !important;
-  }
 
   .button-new {
     padding-left: 20px !important;

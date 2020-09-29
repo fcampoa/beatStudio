@@ -324,9 +324,31 @@
 }
 
 @media (max-width: 576px) {
+  .beat-algo{
+    font-size: 1rem !important; 
+  }
+  .seccion-social {
+    .part3 {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+  }
   .fondo-claro {
+    .seccion-disciplinas {
+      padding-top: 0;
+
+      .part2 {
+        padding-top: 20px;
+      }
+    }
+
+    .seccion-videos {
+      .cover-video {height: 18em;
+      }
+    }
+
     .seccion-coaches {
-      padding: 100px 0 50px 0;
+      padding: 100px 0 0 0;
 
       .text-part {
         padding-left: 0;
@@ -339,10 +361,10 @@
     }
 
     .seccion-rutinas {
-      padding: 0 0 100px 0;
+      padding: 0 0 50px 0;
 
       img {
-        margin-top: 50px;
+        margin-bottom: 50px;
       }
 
       .text-part {
@@ -382,15 +404,16 @@
 @media only screen and(max-width: 750px) {
   .part2 {
     padding: 4% 4% 4% 4%;
+
     .desvanecer {
-     span {
-      padding-top: 4% !important;
-      font-size: 16px !important;
+      span {
+        padding-top: 4% !important;
+        font-size: 16px !important;
       }
     }
   }
 
-  .home-image {
+  // .home-image {
     // background-image: url("../../../assets/img/Homepage2.jpg");
-  }
+  // }
 }
