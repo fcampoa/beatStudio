@@ -6,6 +6,7 @@ import { UserService } from '../../../services/user.service';
 import { GlobalApiService } from '../../../Core/global/global-service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-waitlist',
@@ -43,6 +44,10 @@ export class WaitlistComponent implements OnInit {
     const dia = this.dias[dateObject.getDay()];
     const month = this.meses[dateObject.getMonth()];
     return `${dia} ${dateObject.getDate()} ${month}, ${dateObject.getFullYear()}`;
+  }
+
+  getHora(f: string): string {
+    return moment(f).format('h:mm a');;
   }
 
   formatAMPM(fecha: string) {

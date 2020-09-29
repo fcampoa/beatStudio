@@ -85,8 +85,9 @@ export class ScheduleComponent implements OnInit {
    * @param d fecha
    */
   getFecha(d: string): string {
-    const aux = new Date(d);
-    return (aux.getDate() + 1).toString();
+    // const aux = new Date(d);
+    const aux = m(d);
+    return (aux.date()).toString();
   }
   /**
    * Regresa el día de la semana
@@ -101,8 +102,9 @@ export class ScheduleComponent implements OnInit {
    * @param d fecha
    */
   getMes(d: string): string {
-    const aux = new Date(d);
-    return this.meses[aux.getMonth()];
+    // const aux = new Date(d);
+    const aux = m(d);
+    return this.meses[aux.month()];
   }
   /**
    * Método custom para culcalar formato de 12 horas
@@ -143,7 +145,6 @@ export class ScheduleComponent implements OnInit {
     //   }
     //   semana[cont - 1].horarios.push({ horario: x, selected: false });
     // });
-    debugger;
     let semana = [];
     let actual: any;
     let cont = 0;
