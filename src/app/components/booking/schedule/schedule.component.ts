@@ -214,4 +214,8 @@ export class ScheduleComponent implements OnInit {
       this.WaitList.emit(result);
     });
   }
+
+  // classActive(dia: any, h: any): boolan {
+
+  // }
 }
