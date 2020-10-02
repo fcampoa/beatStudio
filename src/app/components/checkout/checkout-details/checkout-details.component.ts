@@ -50,7 +50,7 @@ export class CheckoutDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    Conekta.setPublicKey("key_eYvWV7gSDkNYXsmr");
+    Conekta.setPublicKey("key_V1c6mfy2hHjiHN8V2JUtRzg");
     Conekta.setLanguage("es");
     this.route.params.subscribe(
       params => {

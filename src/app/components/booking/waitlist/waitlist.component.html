@@ -14,8 +14,8 @@
             <p class="beat-algo"><span>BEAT</span>{{horario.disciplina.nombre}}</p>
             <div class="sections-info-text">
                 <div>{{horario.coach.nombre}}</div>
-                <div>{{castFecha(horario.fecha)}}</div>
-                <div>{{formatAMPM(horario.fecha)}}</div>
+                <div>{{ horario.fecha | customDate }}</div>
+                <div>{{getHora(horario.fecha)}}</div>
             </div>
         </div>
     </div>

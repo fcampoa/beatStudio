@@ -85,8 +85,9 @@ export class ScheduleComponent implements OnInit {
    * @param d fecha
    */
   getFecha(d: string): string {
-    const aux = new Date(d);
-    return (aux.getDate() + 1).toString();
+    // const aux = new Date(d);
+    const aux = m(d);
+    return (aux.date()).toString();
   }
   /**
    * Regresa el día de la semana
@@ -101,8 +102,9 @@ export class ScheduleComponent implements OnInit {
    * @param d fecha
    */
   getMes(d: string): string {
-    const aux = new Date(d);
-    return this.meses[aux.getMonth()];
+    // const aux = new Date(d);
+    const aux = m(d);
+    return this.meses[aux.month()];
   }
   /**
    * Método custom para culcalar formato de 12 horas
@@ -143,7 +145,6 @@ export class ScheduleComponent implements OnInit {
     //   }
     //   semana[cont - 1].horarios.push({ horario: x, selected: false });
     // });
-    debugger;
     let semana = [];
     let actual: any;
     let cont = 0;
@@ -178,7 +179,11 @@ export class ScheduleComponent implements OnInit {
     h.selected = !h.selected;
     // deselecciona el que estaba seleccionado antes
     // d.horarios.forEach(x => x.selected && x.horario.id !== h.id ? false : x.selected);
+    const aux = m();
+    const res = m.duration(m(h.fecha).diff(aux)).as('hours');
+    if (res > 0) {
     this.Seleccion.emit(h);
+    }
   }
 
   seleccionar2(d: CustomHorario, h: any) {
@@ -213,4 +218,8 @@ export class ScheduleComponent implements OnInit {
       this.WaitList.emit(result);
     });
   }
+
+  // classActive(dia: any, h: any): boolan {
+
+  // }
 }
