@@ -179,7 +179,11 @@ export class ScheduleComponent implements OnInit {
     h.selected = !h.selected;
     // deselecciona el que estaba seleccionado antes
     // d.horarios.forEach(x => x.selected && x.horario.id !== h.id ? false : x.selected);
+    const aux = m();
+    const res = m.duration(m(h.fecha).diff(aux)).as('hours');
+    if (res > 0) {
     this.Seleccion.emit(h);
+    }
   }
 
   seleccionar2(d: CustomHorario, h: any) {
