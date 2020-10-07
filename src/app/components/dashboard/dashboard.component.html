@@ -130,20 +130,27 @@
         <div class="image-viewer" #instagram>
           <div #widgetsContent class="middle">
             <div class="info-widget" *ngFor="let i of socialMedia">
-              <div class="publicacion text-center">
-                <img [src]="i.imageUrl" />
-                <div class="primary-color"
-                  style="font-family: Cedra4FWide;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
-                  {{ i.fecha | date:"longDate" }}
+              <div class="publicacion">
+                <div class="row">
+                  <img [src]="i.imageUrl" />
                 </div>
-                <p class="sections-info-text" style="color: #ffffff !important;">
-                  {{ i.descripcion }}
-                </p>
-                <a class="section-see-more"
-                  style="font-size: 13px !important; border-bottom: 1px solid #ffffff !important;"
-                  [href]="i.profileUrl">
-                  {{ i.usuario }}
-                </a>
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <div class="primary-color"
+                      style="font-family: Cedra4FWide;;letter-spacing: 1px; font-size: 12px;text-transform: uppercase; margin-top: 20px;">
+                      {{ i.fecha }}
+                    </div>
+                    <p class="sections-info-text" style="color: #ffffff !important;">
+                      {{ i.descripcion }}
+                    </p>
+                    <a class="section-see-more"
+                      style="font-size: 13px !important; border-bottom: 1px solid #ffffff !important;"
+                      [href]="i.profileUrl" target="_blank">
+                      {{ i.usuario }}
+                    </a>
+                  </div>
+                </div>
+
                 <!-- <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/CC1YXaBJy_T/?utm_source=ig_embed&amp;utm_campaign=loading"
                  data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                  <div style="padding:16px;">

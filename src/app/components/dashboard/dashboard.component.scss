@@ -221,11 +221,11 @@
   width: 33.33%;
 
   .publicacion {
-    margin: 10px;
+    margin: 10px 40px;
     white-space: normal;
 
     img {
-      width: 100%
+      max-width: 100%
     }
 
     iframe {
@@ -290,6 +290,11 @@
 }
 
 @media (max-width: 992px) {
+  .info-widget {
+    width: 50%;
+  }
+
+
   .fondo-claro {
     .seccion-coaches {
       padding: 100px 0 100px 0;
@@ -382,25 +387,7 @@
   }
 
   .info-widget {
-    display: inline-block;
     width: 100%;
-
-    .publicacion {
-      margin: 10px;
-
-      img {
-        width: 100%
-      }
-
-      iframe {
-        width: 100%;
-      }
-    }
-
-
-    a:hover {
-      text-decoration: none;
-    }
   }
 }
 

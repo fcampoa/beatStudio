@@ -10,30 +10,37 @@
 // ::ng-deep .mat-radio-content {
 //   width: 100% !important;
 // }
-.remove-icon{
+.remove-icon {
   width: 40px;
   height: 40px;
   margin-left: 20%;
 }
+
 .remove-icon:hover {
   cursor: pointer;
-  background: rgb(39, 39 ,39);
+  background: rgb(39, 39, 39);
 }
 
-.add-new{
+.add-new {
   font-size: 20px;
   font-family: GT-America-Medium;
 }
 
-.options{
+.options {
   width: 33%;
   position: absolute;
   left: calc(100% - 27%);
 }
 
-.card-info{
+.card-info {
   font-family: GT-America-Regular;
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
+}
+
+@media (max-width: 575px) {
+  .remove-icon {
+    margin: 0;
+  }
 }

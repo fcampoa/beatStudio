@@ -21,12 +21,27 @@ export class DashboardComponent implements OnInit {
   ];
 
   public socialMedia = [
-    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png' },
-    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png' },
-    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png' },
-    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social1.png' },
-    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social2.png' },
-    { fecha: new Date(), descripcion: 'los lunes no son lunes en @BeatStudio #beat..', usuario: '@karenGarcia', profileUrl: '', imageUrl: '../../../assets/img/social3.png' }
+    {
+      fecha: '30 de septiembre',
+      descripcion: '¡BeatStudio es más de lo que imaginas! Visítanos esta semana y asiste a nuestras clases gratuitas de Barre, el ejercicio que combina lo mejor de Ballet-Yoga-Pilates. #BeatWithUs #TakeTheChallenge #NeverGiveUp',
+      usuario: '@beatstudiomx',
+      profileUrl: 'https://www.instagram.com/beatstudiomx/',
+      imageUrl: '../../../assets/img/new-images/Instagram/BS-Ale-Soria.jpg'
+    },
+    {
+      fecha: '29 de septiembre',
+      descripcion: 'Esta es tu oportunidad para probar la intensidad de BeatBarre. ¡Tenemos clases gratis solo por esta semana! #BeatWithUs #TakeTheChallenge #NeverGiveUp',
+      usuario: '@beatstudiomx',
+      profileUrl: 'https://www.instagram.com/beatstudiomx/',
+      imageUrl: '../../../assets/img/new-images/Instagram/BS-PauAvila.jpg'
+    },
+    {
+      fecha: '28 de septiembre',
+      descripcion: 'En BeatStudio celebramos nuestra semana BeatBarre. Te invitamos a nuestras clases completamente GRATIS, envíanos un DM para conocer más información y recuerda, puedes venir acompañado. #BeatWithUs',
+      usuario: '@beatstudiomx',
+      profileUrl: 'https://www.instagram.com/beatstudiomx/',
+      imageUrl: '../../../assets/img/new-images/Instagram/BS-CaroHdz.jpg'
+    },
   ];
 
   public semana = [
@@ -76,12 +91,12 @@ export class DashboardComponent implements OnInit {
   // }
 
   public scrollRight(width: number): void {
-    const scroll = width > 575 ? (width * 0.3333) : width;
+    const scroll = width < 992 && width > 575 ? (width * 0.5) : width > 576 ? (width * 0.3333) : width;
     this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + scroll), behavior: 'smooth' });
   }
 
   public scrollLeft(width: number): void {
-    const scroll = width > 575 ? (width * 0.3333) : width;
+    const scroll = width < 992 && width > 575 ? (width * 0.5) : width > 576 ? (width * 0.3333) : width;
     this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - scroll), behavior: 'smooth' });
   }
 
