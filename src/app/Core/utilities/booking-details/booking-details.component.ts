@@ -75,6 +75,28 @@ export class BookingDetailsComponent implements OnInit {
       );
       }
     });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result === true) {
+    //   this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>(null).subscribe(
+    //     response => {
+    //       console.log(response);
+    //       this.cancel = true;
+    //       this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => {
+    //         let arr = Array<string>();
+    //         res.data.forEach(element => {
+    //           arr.push(element.cliente.correo);
+    //         });
+    //         const body = {correos: arr, disciplina: this.horario.disciplina.nombre};
+    //         this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
+    //           window.location.reload();
+    //         });
+    //       });
+    //       window.location.reload();
+    //     }
+    //   );
+    //   }
+    // });
   }
 
 
