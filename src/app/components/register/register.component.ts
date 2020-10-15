@@ -58,7 +58,8 @@ export class RegisterComponent implements OnInit {
       email: this.cliente.correo,
       password: this.group.get('password').value,
       role: 3,
-      status: 'active'
+      status: 'active',
+      timezone: 'US/Arizona'
     };
 
     this.apiSvc.routes.cliente.buscarCorreo(this.cliente.correo)<any>().subscribe(
