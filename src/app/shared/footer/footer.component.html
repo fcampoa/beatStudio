@@ -1,35 +1,19 @@
-<div style="background: #ffffff; color: #000000;">
+<div style="background: #ffffff; color: #000000;" #footer>
   <div class="container-fluid">
-    <div class="row" style="padding-left:2%;padding-right:2%;">
-      <div class="col-12 col-sm-12 col-md-4 col-xl-4" style="padding-top: 5%;padding-bottom: 5%;">
-        <img style="width: 180px;" src="../../../assets/img/SVG/BeatStudio_Logo-01_negro.svg" />
+    <div class="row justify-content-between" style="padding-left:2%;padding-right:2%;">
+      <div class="col-6 col-sm-12 col-md-4 col-xl-4" style="padding-top: 5%;padding-bottom: 5%;">
+        <img style="width: 100%;max-width: 180px;" src="../../../assets/img/SVG/BeatStudio_Logo-01_negro.svg" />
       </div>
-      <div class="col-12 col-sm-12 col-md-4 col-xl-4">
-      </div>
-      <div class="col-12 col-sm-12 col-md-4 col-xl-4" style="padding-top: 5%;">
-        <div class="row" style="padding-bottom: 10%;">
-          <div class="col-12 col-sm-12 col-md-8 col-xl-8" style="padding-bottom: 5%;">
+      <div class="col-6 col-lg-4 mt-2 mt-md-0" style="padding-top: 5%;">
+        <div class="row d-flex" [ngClass]="(footer.clientWidth>575)?'justify-content-between':'justify-content-center'" style="padding-bottom: 10%;">
+          <div class="col-12 col-sm-12 col-md-8 col-xl-8" style="padding-bottom: 5%;" *ngIf="footer.clientWidth>575">
             <b class="footer-title" style="font-size: 18px;">Contáctanos en redes sociales</b>
           </div>
-          <div class="col-11 col-sm-11 col-md-4 col-xl-4">
-            <div class="row">
-              <div class="col-2 col-sm-2 col-md-3 col-xl-3">
-                <img style="width: 1em; height: 1em; margin-left: 2%;" class="icon-color"
-                  src="../../../assets/img/twitter.png" />
-              </div>
-              <div class="col-2 col-sm-2 col-md-3 col-xl-3">
-                <img style="width: 1em; height: 1em; margin-left: 2%;" class="icon-color"
-                  src="../../../assets/img/instagram.png" />
-              </div>
-              <div class="col-2 col-sm-2 col-md-3 col-xl-3">
-                <img style="width: 0.6em; height: 1em; margin-left: 2%;" class="icon-color"
-                  src="../../../assets/img/facebook.png" />
-              </div>
-              <div class="col-2 col-sm-2 col-md-3 col-xl-3">
-                <img style="width: 1em; height: 1em; margin-left: 2%;" class="icon-color"
-                  src="../../../assets/img/whatsapp.png" />
-              </div>
-            </div>
+          <div class="col-11 col-sm-11 col-md-4 col-xl-4 d-flex justify-content-between">
+            <img style="width: 1em; height: 1em;" class="icon-color" src="../../../assets/img/twitter.png" />
+            <img style="width: 1em; height: 1em;" class="icon-color" src="../../../assets/img/instagram.png" />
+            <img style="width: 0.6em; height: 1em;" class="icon-color" src="../../../assets/img/facebook.png" />
+            <img style="width: 1em; height: 1em;" class="icon-color" src="../../../assets/img/whatsapp.png" />
           </div>
         </div>
       </div>
@@ -57,7 +41,7 @@
         <div class="footer-title">
           <b>Servicio al cliente</b><br>
         </div>
-        <label class="footer-text"><a [routerLink]="['privacy']">Política de privacidad</a></label>
+        <label class="link footer-text" (click)="goTo('privacy')">Política de privacidad</label>
         <label class="footer-text">Preguntas frecuentes</label>
         <label class="footer-text">Términos y condiciones</label>
       </div>
@@ -81,7 +65,8 @@
     </div>
     <div class="row" style="padding-left:2%;padding-right:2%;">
       <div class="col-12 col-sm-12 col-md-6 col-xl-6" style="padding-top: 5%;padding-bottom: 3%;">
-        <p style="font-family: SharpSans-Medium;">Copyright 2020 BeatStudio. Todos los derechos reservados.</p>
+        <p style="font-family: SharpSans-Medium; color: darkgrey;">&#169; Copyright 2020 BeatStudio. Todos los derechos
+          reservados.</p>
       </div>
       <div class="col-12 col-sm-12 col-md-6 col-xl-6" style="padding-top: 5%;padding-bottom: 3%;">
         <div class="row">

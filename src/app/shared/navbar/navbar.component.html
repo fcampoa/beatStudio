@@ -32,7 +32,7 @@
       <div *ngIf="!logged" class="pr-3">
         <button
           style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
-          class="button-new my-2 my-sm-0 mr-4 button-padding" (click)="navigate('dashboard/registro')">CREAR
+          class="button-new my-2 my-sm-0 mr-4 button-padding" (click)="navigate('registro')">CREAR
           CUENTA</button>
         <button
           style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
@@ -61,9 +61,9 @@
       <rect y="60" width="80" height="8"></rect>
     </svg>
   </div>
-  <div class="sidebar-window">
-    <div class="fondo" id="sidebar-close">
-      <div class="sidebar" id="sidebar">
+  <!-- <div class="sidebar-window" id="sidebar-window">
+    <div class="fondo" id="sidebar-close" (click)="openSideBar()" >
+      <div id="sidebar" class="sidebar">
         <div *ngFor="let i of sections" class="sections">
           <div *ngIf="i.sublinks">
             <a class="link-format" (click)="expandDisciplines()">
@@ -87,6 +87,14 @@
             (click)="openLoginSidebar()">INICIAR
             SESIÓN</button>
         </div>
+        <div *ngIf="logged" class="row justify-content-center mr-4">
+          <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" [ngbPopover]="popLogoutContent" autoClose="outside"><img
+              src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
+          <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
+        </div>
+        <div *ngIf="logged" class="row justify-content-center mr-4">
+          <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="logout()">SALIR</button>
+        </div>
 
         <div class="sidebar-login-menu" id="sidebar-login">
           <div class="sidebar-login">
@@ -97,11 +105,65 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+  <div id="mySidebar" class="sidebar">
+    <div *ngFor="let i of sections" class="sections">
+      <div *ngIf="i.sublinks">
+        <a class="link-format" (click)="expandDisciplines()">
+          {{i.nombre}}<mat-icon>expand_more</mat-icon>
+        </a>
+        <div class="disciplines-menu" id="disciplines-list">
+          <a class="beat-algo" *ngFor="let sub of i.sublinks"
+            (click)="navigate(sub.url)"><span>BEAT</span>{{sub.name}}</a>
+          <a (click)="navigate(i.url)">TODAS LAS DISCIPLINAS</a>
+        </div>
+      </div>
+      <a *ngIf="!i.sublinks" class="link-format ml-lg-1 mr-lg-1 ml-xl-4 mr-xl-4" (click)="navigate(i.url)">
+        {{i.nombre}}
+      </a>
+    </div>
+    <div *ngIf="!logged" style="margin: 10px 28px 30px 28px;">
+      <button class="button-new btn-block" style="background: transparent !important;" mat-stroked-button
+        (click)="navigate('registro')">CREAR
+        CUENTA</button>
+      <button class="button-new btn-block" style="background: transparent !important;" mat-stroked-button
+        (click)="openLoginSidebar()">INICIAR
+        SESIÓN</button>
+    </div>
+    <div *ngIf="logged" style="margin: 10px 28px;">
+      <!-- <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" [ngbPopover]="popLogoutContent" autoClose="outside"><img
+          src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
+      <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="goToProfile()">{{ name.toUpperCase() }}</button> -->
+      <h4 class="primary-color beat-algo">{{ name.toUpperCase() }}</h4>
+      <h6 class="primary-color" (click)="logout()">Cerrar sesión</h6>
+      <h6 class="primary-color" (click)="cambiarPass()">Cambiar contraseña</h6>
+    </div>
+    <!-- <div *ngIf="logged" class="row justify-content-center mr-4">
+      <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;"
+        (click)="logout()">SALIR</button>
+    </div>
+
+    <div *ngIf="logged" class="row justify-content-center mr-4" style="margin: 10px 28px 30px 28px;">
+      <button class="button-new btn-block" style="background: transparent !important;" mat-stroked-button type="button"
+        (click)="cambiarPass()">Cambiar contraseña</button>
+    </div> -->
+
+    <div class="sidebar-login-menu" id="sidebar-login">
+      <div class="sidebar-login">
+        <div class="content">
+          <app-login (loginSuccess)="checkLogin($event)"></app-login>
+        </div>
+      </div>
+    </div>
   </div>
+
 </ng-template>
+
 <ng-template #popLogoutContent>
   <div class="container-fluid">
-    <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()"><span>Cerrar
+    <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()">
+      <span>Cerrar
         sesión</span></div>
   </div>
 </ng-template>

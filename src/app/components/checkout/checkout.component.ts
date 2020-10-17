@@ -31,7 +31,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   comprarPaquete(p: Paquete) {
-    this.route.navigate(['dashboard/checkout-details/' + p.id]);
+    this.route.navigate(['/checkout-details/' + p.id]);
   }
 
   checaCreditos(p: Paquete): string {
@@ -39,6 +39,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   regresar(): void {
-    this.route.navigate(['dashboard/panel']);
+    this.route.navigate(['/panel']);
   }
 }

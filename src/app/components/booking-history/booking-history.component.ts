@@ -24,7 +24,7 @@ export class BookingHistoryComponent implements OnInit {
   }
 
   obtenerReservaciones(): void {
-    this.apiSvc.routes.reservacion.buscarCliente(this.cliente, 10)<any>().subscribe(
+    this.apiSvc.routes.reservacion.buscarCliente(this.cliente, 100)<any>().subscribe(
       response => {
         this.reservaciones = response.data;
       },

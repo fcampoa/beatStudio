@@ -23,7 +23,7 @@ export class AboutComponent implements OnInit {
    }
 
   goTo(here: string): void {
-    this.router.navigate([`/dashboard/${here}`]);
+    this.router.navigate([`/${here}`]);
 }
   ngOnInit() {
   }

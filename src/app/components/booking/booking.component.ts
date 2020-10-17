@@ -91,7 +91,7 @@ export class BookingComponent implements OnInit {
     this.seleccion.next($event.horario);
     if (this.user.role === '1') {
       if (this.horarioElegido.id > 0) {
-        this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+        this.router.navigate(['/booking/select/' + this.horarioElegido.id]);
       }
     }
   }
@@ -102,7 +102,7 @@ export class BookingComponent implements OnInit {
     console.log(this.horarioElegido);
     console.log(this.horarioElegido.id);
     if (this.horarioElegido.id > 0) {
-      this.router.navigate(['dashboard/booking/select/' + this.horarioElegido.id]);
+      this.router.navigate(['/booking/select/' + this.horarioElegido.id]);
     }
   }
 

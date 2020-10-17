@@ -14,11 +14,11 @@ export class BookingConfirmationComponent implements OnInit {
   }
 
   reservar(): void {
-    this.router.navigate(['dashboard/booking']);
+    this.router.navigate(['/booking']);
   }
 
   inicio(): void {
-    this.router.navigate(['dashboard/panel']);
+    this.router.navigate(['/panel']);
 
   }
 }

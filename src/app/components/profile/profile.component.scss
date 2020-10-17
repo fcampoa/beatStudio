@@ -71,3 +71,29 @@ p {
     height: 120px !important;
   }
 }
+
+.name {
+  margin-left: 30px;
+  font-size: 14px;
+  input[type="text"]{
+    width: 90%;
+    background: transparent;
+    border:none;
+    outline: none;
+    color: white;
+  }
+}
+
+.div-personas {
+  padding-bottom: 5px;
+  border-bottom: 2px solid #9865ff;
+  margin-bottom: 25px;
+  font-family: GT-America-Regular;
+  letter-spacing: -1px;
+  .sit-number {
+    position: absolute;
+    top: 0;
+    left: 20px
+  }
+}
+

@@ -58,7 +58,8 @@ export class RegisterComponent implements OnInit {
       email: this.cliente.correo,
       password: this.group.get('password').value,
       role: 3,
-      status: 'active'
+      status: 'active',
+      timezone: 'US/Arizona'
     };
 
     this.apiSvc.routes.cliente.buscarCorreo(this.cliente.correo)<any>().subscribe(
@@ -69,6 +70,10 @@ export class RegisterComponent implements OnInit {
               this.cliente.usuario = response.data.id;
               this.apiSvc.routes.cliente.agregar()<any>(this.cliente).subscribe(
                 c => {
+                  // this.apiSvc.endPoints.enviar_correo.registro()<any>({email: this.cliente.correo}).subscribe(
+                  //   () => {
+                  //   }
+                  // );
                   this.registered = true;
                   this.loading = false;
                   // this.auth.login(u.email, u.password).subscribe(

@@ -8,6 +8,9 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as m from 'moment';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { PickDateAdapter, PICK_FORMATS } from 'src/app/Core/adapters/pick-date-adaptar';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @Component({
   selector: 'app-profile',
@@ -28,6 +31,8 @@ export class ProfileComponent implements OnInit {
   id: any;
   public opened = false;
   step = 0;
+  public password = '';
+  public password2 = '';
 
   setStep(index: number) {
     this.step = index;
@@ -43,9 +48,11 @@ export class ProfileComponent implements OnInit {
   public cliente: Cliente = new Cliente();
   public anhos = [];
   constructor(private formBuilder: FormBuilder,
-    private apiSvc: GlobalApiService,
-    private userSvc: UserService,
-    private notify: NotificationsService) {
+              private apiSvc: GlobalApiService,
+              private userSvc: UserService,
+              private notify: NotificationsService,
+              private authService: AuthenticationService,
+              public dialog: MatDialog) {
 
     this.recorded = new EventEmitter<any>();
   }
@@ -161,4 +168,11 @@ export class ProfileComponent implements OnInit {
       txtContactPhone: this.cliente.telefono_contacto
     });
   }
+
+  // cambiarPass() {
+  //   const dialogRef = this.dialog.open(ChangePasswordComponent, {
+  //     panelClass: 'custom-modalbox-info',
+  //     data: { mail: this.user.email }
+  //   });
+  // }
 }

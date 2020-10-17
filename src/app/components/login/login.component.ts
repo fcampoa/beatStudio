@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           this.loginSuccess.emit(false);
           document.getElementById('custom-popover').style.display = 'none';
           document.getElementById('sidebar-login').style.maxHeight = '0';
-          this.router.navigate(['/dashboard/panel']);
+          this.router.navigate(['/panel']);
         },
         error => {
           this.notify.errorMessage('Usuario o contraseña incorrecto.');
@@ -75,6 +75,6 @@ export class LoginComponent implements OnInit {
   }
 
   goToRecover(): void {
-    this.router.navigate(['dashboard/recover']);
+    this.router.navigate(['/recover']);
   }
 }

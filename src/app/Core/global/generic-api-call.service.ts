@@ -27,6 +27,10 @@ public Delete(id: number, url: string): Observable<any> {
   .pipe(catchError(this.handleError));
 }
 
+public Patch(entity: any, url: string): Observable<any> {
+  return this.http.patch<any>(url, entity, { headers: this.options }).pipe(catchError(this.handleError));
+}
+
 public Get(url: string): Observable<any> {
   const res = this.http.get<any>(url, { headers: this.options })
   .pipe(catchError(this.handleError));

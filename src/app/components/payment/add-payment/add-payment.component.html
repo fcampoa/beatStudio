@@ -57,20 +57,20 @@
   <div class="modal-card part-2">
     <form #form="ngForm" class="modal-form" (ngSubmit)="saveOrUpdate()" [formGroup]="group" novalidate>
       <div class="row">
-        <div class="col-4 align-self-center">
+        <div class="col-5 align-self-center">
           <mat-label>Nombre del titular</mat-label>
         </div>
-        <div class="col-8">
+        <div class="col-7">
           <mat-form-field>
             <input matInput formControlName="txtTitular" type="text" />
           </mat-form-field>
         </div>
       </div>
       <div class="row">
-        <div class="col-4 align-self-center">
+        <div class="col-5 align-self-center">
           <mat-label>Número de tarjeta</mat-label>
         </div>
-        <div class="col-8">
+        <div class="col-7">
           <mat-form-field>
             <input matInput mask="0000 0000 0000 0000" formControlName="txtTarjeta" />
           </mat-form-field>
