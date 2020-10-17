@@ -21,9 +21,9 @@ export class PaymentComponent implements OnInit {
 
 
   constructor(public dialog: MatDialog,
-    private apiSvc: GlobalApiService,
-    private userSvc: UserService,
-    private notify: NotificationsService) { }
+              private apiSvc: GlobalApiService,
+              private userSvc: UserService,
+              private notify: NotificationsService) { }
 
   ngOnInit() {
     this.userSvc.getCustomUser().subscribe(
@@ -100,7 +100,7 @@ export class PaymentComponent implements OnInit {
       response => {
         this.formasPago = response.data;
         console.log(response.data);
-        
+
       },
       error => console.log(error)
     );

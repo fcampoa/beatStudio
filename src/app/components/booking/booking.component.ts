@@ -28,6 +28,7 @@ export class BookingComponent implements OnInit {
   public desde: any;
   public hasta: any;
   public loading = false;
+  public nextText = 'Siguiente';
   loaders = 0;
   errors = 0;
 
@@ -46,7 +47,15 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.user = this.userSv.loggedUser.data.user;
+    this.userSv.getUser().subscribe(u => {
+      this.nextText = u !== undefined && u !== null ? 'SIGUIENTE' : 'INGRESAR';
+      if (u !== undefined && u !== null) {
+      this.user = this.userSv.loggedUser.data.user;
+      } else {
+        this.user = null;
+      }
+    });
+    this.nextText = this.user !== undefined && this.user !== null ? 'SIGUIENTE' : 'INGRESAR';
     this.getDisciplinas();
     this.seleccion.subscribe(h => this.horarioElegido = h);
   }
@@ -84,7 +93,7 @@ export class BookingComponent implements OnInit {
    */
   /* asignarSeleccion($event: any): void {
      this.seleccion.next($event);
- 
+
    }*/
 
   asignarSeleccion($event: any): void {
@@ -99,8 +108,11 @@ export class BookingComponent implements OnInit {
    * navega al siguiente componente booking-seatSelection
    */
   siguientePaso(): void {
-    console.log(this.horarioElegido);
-    console.log(this.horarioElegido.id);
+   // console.log(this.horarioElegido);
+   // console.log(this.horarioElegido.id);
+    if (this.user === null) {
+      this.router.navigate(['/dashboard']);
+    }
     if (this.horarioElegido.id > 0) {
       this.router.navigate(['/booking/select/' + this.horarioElegido.id]);
     }

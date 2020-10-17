@@ -46,7 +46,6 @@ export class AuthenticationService {
 
   changePassword(pass: string) {
   const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-  debugger;
   return this.globalService.Patch({ token: currentUser.data.token, password: pass }, config.base_url + 'users/' + currentUser.data.user.id);
   }
 

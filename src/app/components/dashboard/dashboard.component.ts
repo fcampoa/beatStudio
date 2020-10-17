@@ -121,7 +121,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goTo(here: string): void {
-    this.router.navigate([`/${here}`]);
+    this.router.navigate(['/' + here]);
   }
 
   // angular.element($window).bind('scroll', function() {

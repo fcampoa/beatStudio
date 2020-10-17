@@ -55,6 +55,9 @@
     </div>
   </div>
   <div class="row d-flex justify-content-center" style="padding: 5%">
-    <button mat-stroked-button class="button-new" (click)="regresar()"> &lt; REGRESAR</button>
+    <button mat-stroked-button class="button-new" (click)="regresar()"> &lt; {{backText}}</button>
+  </div>
+  <div *ngIf="user !== undefined && user !== null" class="row d-flex justify-content-center" style="padding: 5%">
+    <p class="sections-info-text">Ingresa o registrate para adquirar tus créditos y empieza a reservar.</p>
   </div>
 </div>

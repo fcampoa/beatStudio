@@ -34,13 +34,6 @@ export class ProfileComponent implements OnInit {
   public password = '';
   public password2 = '';
 
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  closeStep() {
-    this.step = 0;
-  }
 
   @Output() recorded: EventEmitter<any>;
 
@@ -55,6 +48,15 @@ export class ProfileComponent implements OnInit {
               public dialog: MatDialog) {
 
     this.recorded = new EventEmitter<any>();
+  }
+
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  closeStep() {
+    this.step = 0;
   }
 
   ngOnInit() {

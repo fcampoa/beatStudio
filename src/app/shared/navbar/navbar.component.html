@@ -24,12 +24,12 @@
       </div>
     </div>
     <div *ngIf="navbar.offsetWidth>992" class="mr-3 mr-xl-5 align-self-center">
-      <div *ngIf="logged" class="mr-4">
+      <div *ngIf="logged === true" class="mr-4">
         <button class="my-2 my-sm-0 navbar-user-button" [ngbPopover]="popLogoutContent" autoClose="outside"><img
             src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
         <button class="my-2 my-sm-0 navbar-user-button" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
       </div>
-      <div *ngIf="!logged" class="pr-3">
+      <div *ngIf="logged === false" class="pr-3">
         <button
           style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
           class="button-new my-2 my-sm-0 mr-4 button-padding" (click)="navigate('registro')">CREAR
@@ -53,7 +53,7 @@
 
 <ng-template #elseBlock class="custom-navbar-item">
   <div class="align-self-center ml-auto mr-4">
-    <button *ngIf="logged" class="my-auto navbar-user-button" (click)="goToProfile()"><img
+    <button *ngIf="logged === true" class="my-auto navbar-user-button" (click)="goToProfile()"><img
         src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
     <svg (click)="openSideBar()" viewBox="0 0 100 80" width="40" height="24" style="fill: #9865ff">
       <rect width="80" height="8"></rect>
@@ -123,7 +123,7 @@
         {{i.nombre}}
       </a>
     </div>
-    <div *ngIf="!logged" style="margin: 10px 28px 30px 28px;">
+    <div *ngIf="logged === false" style="margin: 10px 28px 30px 28px;">
       <button class="button-new btn-block" style="background: transparent !important;" mat-stroked-button
         (click)="navigate('registro')">CREAR
         CUENTA</button>
@@ -131,7 +131,7 @@
         (click)="openLoginSidebar()">INICIAR
         SESIÓN</button>
     </div>
-    <div *ngIf="logged" style="margin: 10px 28px;">
+    <div *ngIf="logged === true" style="margin: 10px 28px;">
       <!-- <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" [ngbPopover]="popLogoutContent" autoClose="outside"><img
           src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
       <button class="my-2 my-sm-0 navbar-user-button" style="background: transparent !important;" (click)="goToProfile()">{{ name.toUpperCase() }}</button> -->

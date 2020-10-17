@@ -266,7 +266,6 @@ export class BookingStepTwoComponent implements OnInit {
   }
 
   addFriend(): void {
-    debugger;
     let a = { lugar: 0, fila: 0, nombre: '' };
     this.amigos.push(a);
     this.invitar = true;
@@ -333,7 +332,6 @@ export class BookingStepTwoComponent implements OnInit {
   }
 
   siguiente() {
-    debugger;
     let r: Reservacion;
     if (this.seleccionado) {
       r = new Reservacion();
@@ -398,14 +396,14 @@ export class BookingStepTwoComponent implements OnInit {
   }
   // exportAsPDF()
   //     {
-  //       let data = document.getElementById('MyDIv');  
+  //       let data = document.getElementById('MyDIv');
   //       html2canvas(data).then(canvas => {
-  //         const contentDataURL = canvas.toDataURL('image/png')  
+  //         const contentDataURL = canvas.toDataURL('image/png')
   //         let pdf = new jsPDF('l', 'cm', 'a4'); //Generates PDF in landscape mode
   //         // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
-  //         pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);  
-  //         pdf.save('Filename.pdf');   
-  //       }); 
+  //         pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);
+  //         pdf.save('Filename.pdf');
+  //       });
   //     }
 
   checkClass(row: any[]): any {
