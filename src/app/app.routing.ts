@@ -53,6 +53,6 @@ export const AppRoutes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'registro', component: RegisterComponent },
   { path: 'recover', component: PasswordRecoveryStepOneComponent },
-  { path: 'newpassword', component: PasswordRecoveryStepTwoComponent },
+  { path: 'newpassword/:idUsuario', component: PasswordRecoveryStepTwoComponent },
   { path: 'paypal', component: PaypalComponent }
 ];

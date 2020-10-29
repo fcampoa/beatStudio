@@ -95,50 +95,36 @@ export class BookingStepThreeComponent implements OnInit {
   }
 
   reservar(): void {
-    // if (this.creditos >= this.reservaciones.length) {
-
-    // } else {
-    //   this.notify.errorMessage('No tienes créditos suficientes');
-    // }
-    // this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(
-    //   o => {
-    //     o.forEach(element => {
-    //       this.custom.detalles.forEach(d => {
-    //         if (element.lugar === d.lugar) {
-    //           this.ocupados ++;
-    //         }
-    //       });
-    //       if (this.ocupados === 0) {
-    //       this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
-    //         response => {
-    //           console.log(response);
-    //           this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
-    //             this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
-    //               res => {
-    //                 if (res.resultado === true) {
-    //                   this.router.navigate(['dashboard/booking/success']);
-    //                 }
-    //               }
-    //             );
-    //         },
-    //         error => {
-    //           this.notify.errorMessage('Ocurrió un error.');
+  
+    // this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
+    //   response => {
+    //     this.apiSvc.endPoints.enviar_correo.reservacion()<any>({reservacion: this.custom.reservacion, detalles: this.custom.detalles, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
+    //       () => {}
+    //     );
+    //     console.log(response);
+    //     this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
+    //       this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
+    //         res => {
+    //           if (res.resultado === true) {
+    //             this.loading = false;
+    //             this.router.navigate(['/booking/success']);
+    //           }
     //         }
     //       );
-    //       }
-    //       else {
-    //         this.notify.errorMessage('Uno o varios de tus lugares ya fueron reservados. Elige uno nuevo.');
-    //         this.regresar();
-    //       }
+    //   },
+    //   error => {
+    //     console.log(error);
+        
+    //     this.loading = false;
+    //     this.notify.errorMessage('Ocurrió un error.');
+    //   }
+    // );
 
-    //     });
-    // });
-    // if (this.ocupados === 0) {
     this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
       response => {
-        // this.apiSvc.endPoints.enviar_correo.reservacion()<any>({reservacion: this.custom.reservacion, detalles: this.custom.detalles, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
-        //   () => {}
-        // );
+        this.apiSvc.endPoints.enviar_correo.reservacion()<any>({reservacion: this.custom.reservacion, detalles: this.custom.detalles, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
+          () => {}
+        );
         console.log(response);
         this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
           this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
@@ -157,11 +143,6 @@ export class BookingStepThreeComponent implements OnInit {
         this.notify.errorMessage('Ocurrió un error.');
       }
     );
-    // }
-    // else {
-    //   this.notify.errorMessage('Uno o varios de tus lugares ya fueron reservados. Elige uno nuevo.');
-    //   this.regresar();
-    // }
   }
 
   verificarReserva(): void {

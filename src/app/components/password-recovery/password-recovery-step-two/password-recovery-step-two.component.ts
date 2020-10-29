@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, Ng
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import { NotificationsService } from '../../../services/notifications.service';
+// import 'rxjs/add/operator/filter';
+import { GlobalApiService } from 'src/app/Core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -24,9 +27,22 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   public passwordSecurity = '';
   public token = '';
-  constructor(private formBuilder: FormBuilder, private notify: NotificationsService, private route: ActivatedRoute) { }
+  public id;
+  constructor(private formBuilder: FormBuilder,
+              private notify: NotificationsService,
+              private route: ActivatedRoute,
+              private apiSvc: GlobalApiService,
+              private auth: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+     // this.token = params.token;
+     this.id = params.idUsuario;
+    //  if (this.id !== undefined && this.id !== null) {
+      
+    //  }
+    });
+
     this.initForm();
   }
 
@@ -90,7 +106,7 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
   samePassword(group: FormGroup) {
     let pass = group.get('password').value;
     let confirmPass = group.get('passwordConfirmation').value;
-    return pass === confirmPass ? null : { notSame: true }
+    return pass === confirmPass ? null : { notSame: true };
   }
 
   initForm(): void {
@@ -108,7 +124,12 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
     if (this.userGroup.invalid) {
       this.notify.errorMessage('Verifique los datos ingresados.');
     } else {
-      this.enviado = true;
+      this.auth.passwordRecovery(this.id, {password: this.userGroup.get('password').value}).subscribe(
+        () => {
+          this.enviado = true;
+        },
+        error => console.log(error)
+      );
     }
   }
 }

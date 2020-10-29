@@ -52,4 +52,13 @@ export class AuthenticationService {
   RequestPasswordChange(mail: string) {
     return this.globalService.Create({email: mail, reset_url: 'www.beatstudio.com.mx'}, config.base_url + 'auth/password/request');
   }
+
+  passwordRecovery(idUsuario: number, data: any) {
+    debugger;
+    return this.globalService.Patch(data, config.base_url + 'users/' + idUsuario);
+  }
+
+  getUser(email: string) {
+    return this.globalService.Get(config.base_url + 'users?filter[email]=' + email);
+  }
 }
