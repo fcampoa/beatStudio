@@ -29,6 +29,7 @@ export class PasswordRecoveryStepOneComponent implements OnInit {
   }
 
   recover(): void {
+    debugger;
     if (this.userGroup.invalid) {
       this.notify.errorMessage('Debe ingresar una dirección de correo válida.');
     } else {
@@ -36,9 +37,10 @@ export class PasswordRecoveryStepOneComponent implements OnInit {
       this.auth.getUser(this.email).subscribe(
         response => {
           this.apiSvc.endPoints.enviar_correo.cambio_pass()<any>({id: response.data.id, email: this.email}).subscribe(
-            () => {}
+            () => {
+              this.enviado = true;
+            }
           );
-          this.enviado = true;
         }
       );
       

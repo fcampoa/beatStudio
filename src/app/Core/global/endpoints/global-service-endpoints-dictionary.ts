@@ -16,8 +16,8 @@ export const GLOBAL_SERVICE_ENDPOINTS_DEFINITION: any = {
   enviar_correo: {
     registro: { method: GlobalServiceMethodType.POST, url: '/registro' },
     reservacion: { method: GlobalServiceMethodType.POST, url: '/reservacion' },
-    compra: { method: GlobalServiceMethodType.POST, url: 'compra' },
-    cambio_pass: { method: GlobalServiceMethodType.POST, url: 'cambio-pass' },
-    lista_espera: { method: GlobalServiceMethodType.POST, url: 'lista-espera' }
+    compra: { method: GlobalServiceMethodType.POST, url: '/compra' },
+    cambio_pass: { method: GlobalServiceMethodType.POST, url: '/cambio-pass' },
+    lista_espera: { method: GlobalServiceMethodType.POST, url: '/lista-espera' }
   }
 };
