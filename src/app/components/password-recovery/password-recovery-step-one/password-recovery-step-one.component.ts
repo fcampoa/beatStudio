@@ -36,9 +36,10 @@ export class PasswordRecoveryStepOneComponent implements OnInit {
       this.email = this.userGroup.get('txtEmail').value;
       this.auth.getUser(this.email).subscribe(
         response => {
-          this.apiSvc.endPoints.enviar_correo.cambio_pass()<any>({id: response.data.id, email: this.email}).subscribe(
-            () => {
+          this.apiSvc.endPoints.enviar_correo.cambio_pass()<any>({id: response.data[0].id, email: this.email}).subscribe(
+            res => {
               this.enviado = true;
+              console.log(res);
             }
           );
         }
