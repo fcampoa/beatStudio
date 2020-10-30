@@ -1,5 +1,5 @@
 <div class="row d-flex justify-content-center" style="margin-bottom: 4%;" *ngFor="let r of reservaciones">
   <div class="col-12 col-sm-11 col-md-10">
-    <app-booking-details [reservacion]="r"></app-booking-details>
+    <app-booking-details [reservacion]="r" (recargar)="recargar($event)"></app-booking-details>
   </div>
 </div>

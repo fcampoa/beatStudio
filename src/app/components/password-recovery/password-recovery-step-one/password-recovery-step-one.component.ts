@@ -13,6 +13,7 @@ export class PasswordRecoveryStepOneComponent implements OnInit {
   public enviado: boolean = false;
   public userGroup: FormGroup;
   public email: string = '';
+  public loading = false;
   constructor(private formBuilder: FormBuilder,
               private notify: NotificationsService,
               private auth: AuthenticationService,
@@ -29,17 +30,22 @@ export class PasswordRecoveryStepOneComponent implements OnInit {
   }
 
   recover(): void {
-    debugger;
     if (this.userGroup.invalid) {
       this.notify.errorMessage('Debe ingresar una dirección de correo válida.');
     } else {
+      this.loading = true;
       this.email = this.userGroup.get('txtEmail').value;
       this.auth.getUser(this.email).subscribe(
         response => {
           this.apiSvc.endPoints.enviar_correo.cambio_pass()<any>({id: response.data[0].id, email: this.email}).subscribe(
             res => {
               this.enviado = true;
+              this.loading = false;
               console.log(res);
+            },
+            error => {
+              this.notify.errorMessage('No se podido enviar el correo');
+              this.loading = false;
             }
           );
         }

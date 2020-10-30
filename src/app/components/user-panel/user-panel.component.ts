@@ -98,4 +98,10 @@ export class UserPanelComponent implements OnInit {
       data: { message: 'Necesitas completar tu información para continuar.' }
     });
   }
+
+  recargar($event) {
+    if ($event === true) {
+      this.totalCreditos();
+    }
+  }
 }

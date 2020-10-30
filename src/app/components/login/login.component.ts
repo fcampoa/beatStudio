@@ -46,9 +46,13 @@ export class LoginComponent implements OnInit {
       this.loginSuccess.emit(true);
       this.auth.login(this.userName, this.password).subscribe(
         response => {
+          debugger;
           this.loginSuccess.emit(false);
           document.getElementById('custom-popover').style.display = 'none';
-          document.getElementById('sidebar-login').style.maxHeight = '0';
+          const el = document.getElementById('sidebar-login');
+          if (el !== undefined && el !== null) {
+            document.getElementById('sidebar-login').style.maxHeight = '0';
+          }
           this.router.navigate(['/panel']);
         },
         error => {

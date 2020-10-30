@@ -137,8 +137,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   closeSideBar() {
-
+    const el = document.getElementById("mySidebar");
+    if (el !== undefined && el !== null){
     document.getElementById("mySidebar").style.right = "-300px";
+    }
 
     // if (this.open === true) {
     //   const sidebar = document.getElementById('sidebar');

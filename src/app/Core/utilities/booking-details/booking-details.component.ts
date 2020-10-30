@@ -3,7 +3,7 @@ import { GlobalApiService } from './../../global/global-service';
 import { Reservacion } from 'src/app/model/reservacion';
 import { Horario } from './../../../model/horario';
 import { ReservacionDetalle } from './../../../model/reservacion-detalle';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CancelClassComponent } from '../../../components/booking-history/cancel-class/cancel-class.component';
 import * as m from 'moment';
@@ -18,6 +18,7 @@ export class BookingDetailsComponent implements OnInit {
 
 
   @Input() reservacion: Reservacion;
+  @Output() recargar: EventEmitter<boolean> = new EventEmitter<boolean>();
   public reservaciones: ReservacionDetalle[] = [];
   public horario: Horario;
   public cancel = false;
@@ -95,10 +96,12 @@ export class BookingDetailsComponent implements OnInit {
               });
               const body = { correos: arr, disciplina: this.horario.disciplina.nombre };
               this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
-                window.location.reload(true);
+               // window.location.reload(true);
+               this.recargar.emit(true);
               },
               error => {
-                window.location.reload(true);
+               // window.location.reload(true);
+               this.recargar.emit(true);
               });
             });
            // window.location.reload(true);

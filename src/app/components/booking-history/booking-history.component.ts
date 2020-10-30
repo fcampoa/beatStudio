@@ -1,6 +1,6 @@
 import { Reservacion } from 'src/app/model/reservacion';
 import { GlobalApiService } from './../../Core/global/global-service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as m from 'moment';
 @Component({
   selector: 'app-booking-history',
@@ -15,6 +15,8 @@ export class BookingHistoryComponent implements OnInit {
       this.obtenerReservaciones();
     }
   }
+
+  @Output() recargarDatos: EventEmitter<boolean> = new EventEmitter<boolean>();
   cliente: number;
   reservaciones: Reservacion[] = [];
 
@@ -30,5 +32,10 @@ export class BookingHistoryComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+  recargar($event) {
+    if ($event === true) {
+      this.recargarDatos.emit(true);
+    }
   }
 }
