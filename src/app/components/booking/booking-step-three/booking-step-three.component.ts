@@ -119,20 +119,26 @@ export class BookingStepThreeComponent implements OnInit {
     //     this.notify.errorMessage('Ocurrió un error.');
     //   }
     // );
-
-    this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>(this.custom).subscribe(
+    debugger;
+    this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
+      this.desde, this.hasta, this.reservaciones.length)<any>(null).subscribe(
       response => {
-        this.apiSvc.endPoints.enviar_correo.reservacion()<any>({reservacion: this.custom.reservacion, detalles: this.custom.detalles, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
-          () => {}
-        );
         console.log(response);
-        this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
-          this.desde, this.hasta, this.reservaciones.length)<any>(this.cliente.id).subscribe(
+        let aux = this.custom.detalles;
+        let paquetes = response.paquetes;
+        for (let i = 0; i < paquetes.length; i ++) {
+          aux[i].paquete = paquetes[i];
+        }
+        this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({reservacion: this.custom.reservacion, detalles: aux}).subscribe(
             res => {
-              if (res.resultado === true) {
-                this.loading = false;
+              // this.apiSvc.endPoints.enviar_correo.reservacion()<any>({reservacion: this.custom.reservacion, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
+              //   () => {}
+              // );
+              // if (res.resultado === true) {
+              //   this.loading = false;
+              //   this.router.navigate(['/booking/success']);
+              // }
                 this.router.navigate(['/booking/success']);
-              }
             }
           );
       },

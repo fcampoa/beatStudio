@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CancelClassComponent } from '../../../components/booking-history/cancel-class/cancel-class.component';
 import * as m from 'moment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-booking-details',
@@ -30,8 +31,9 @@ export class BookingDetailsComponent implements OnInit {
   ];
 
   constructor(private apiSvc: GlobalApiService,
-    private notify: NotificationsService,
-    public dialog: MatDialog) { }
+              private notify: NotificationsService,
+              public dialog: MatDialog,
+              private location: Location) { }
 
   ngOnInit() {
     this.horario = this.reservacion.horario;
@@ -78,23 +80,30 @@ export class BookingDetailsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-      this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>(null).subscribe(
-        response => {
-          console.log(response);
-          this.cancel = true;
-          this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => {
-            let arr = Array<string>();
-            res.data.forEach(element => {
-              arr.push(element.cliente.correo);
+        let aux = Array();
+        this.reservaciones.forEach(d => {
+          aux.push({ cantidad: 1, paquete: d.paquete });
+        });
+        this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux }).subscribe(
+          response => {
+            console.log(response);
+            this.cancel = true;
+            this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => {
+              let arr = Array<string>();
+              res.data.forEach(element => {
+                arr.push(element.cliente.correo);
+              });
+              const body = { correos: arr, disciplina: this.horario.disciplina.nombre };
+              this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
+                window.location.reload(true);
+              },
+              error => {
+                window.location.reload(true);
+              });
             });
-            const body = {correos: arr, disciplina: this.horario.disciplina.nombre};
-            this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
-              window.location.reload();
-            });
-          });
-          window.location.reload();
-        }
-      );
+           // window.location.reload(true);
+          }
+        );
       }
     });
   }

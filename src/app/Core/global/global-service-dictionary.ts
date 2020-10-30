@@ -85,5 +85,10 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     buscarHorario: { method: GlobalServiceMethodType.GET, url: '?filter[horario.id]=$idHorario&fields=*,cliente.correo' },
     buscarCliente: { method: GlobalServiceMethodType.GET, url: '?filter[cliente.id]=$idCliente&fields=*,cliente.correo' },
     buscarRepetido: { method: GlobalServiceMethodType.GET, url: '?filter[cliente]=$idCliente&filter[horario]=$idHorario&fields=*' }
+  },
+  error_log: {
+    agregar: { method: GlobalServiceMethodType.POST, url: '' },
+    lista: { method: GlobalServiceMethodType.GET, url: ' ' },
+    buscar_modulo: { method: GlobalServiceMethodType.GET, url: '?filter[seccion]=$modulo' }
   }
 };
