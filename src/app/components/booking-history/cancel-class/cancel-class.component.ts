@@ -3,6 +3,7 @@ import { Reservacion } from 'src/app/model/reservacion';
 import { Horario } from './../../../model/horario';
 import { GlobalApiService } from '../../../Core/global/global-service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import * as m from 'moment';
 
 @Component({
   selector: 'app-cancel-class',
@@ -32,22 +33,23 @@ export class CancelClassComponent implements OnInit {
   }
 
   castFecha(fecha: string): string {
-    const dateObject = new Date(fecha);
-    const dia = this.dias[dateObject.getDay()];
-    const month = this.meses[dateObject.getMonth()];
-    return `${dia} ${dateObject.getDate()} ${month}, ${dateObject.getFullYear()}`;
+    const dateObject = m(fecha);
+    const dia = this.dias[dateObject.day()];
+    const month = this.meses[dateObject.month()];
+    return `${dia} ${dateObject.date()} ${month}, ${dateObject.year}`;
   }
 
   formatAMPM(fecha: string) {
-    const date = new Date(fecha);
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    minutes = minutes < 10 ? Number('0' + minutes) : minutes;
-    const strTime = hours + ':' + minutes + ' ' + ampm;
-    return strTime;
+    return m(fecha).format('h:mm a');
+    // const date = new Date(fecha);
+    // let hours = date.getHours();
+    // let minutes = date.getMinutes();
+    // const ampm = hours >= 12 ? 'PM' : 'AM';
+    // hours = hours % 12;
+    // hours = hours ? hours : 12;
+    // minutes = minutes < 10 ? Number('0' + minutes) : minutes;
+    // const strTime = hours + ':' + minutes + ' ' + ampm;
+    // return strTime;
   }
 
   cancelBooking(): void {

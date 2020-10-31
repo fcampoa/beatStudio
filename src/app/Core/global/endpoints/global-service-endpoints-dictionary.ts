@@ -18,6 +18,7 @@ export const GLOBAL_SERVICE_ENDPOINTS_DEFINITION: any = {
     reservacion: { method: GlobalServiceMethodType.POST, url: '/reservacion' },
     compra: { method: GlobalServiceMethodType.POST, url: '/compra' },
     cambio_pass: { method: GlobalServiceMethodType.POST, url: '/cambio-pass' },
-    lista_espera: { method: GlobalServiceMethodType.POST, url: '/lista-espera' }
+    lista_espera: { method: GlobalServiceMethodType.POST, url: '/lista-espera' },
+    cancelacion: { method: GlobalServiceMethodType.POST, url: 'cancelacion-exitosa' }
   }
 };

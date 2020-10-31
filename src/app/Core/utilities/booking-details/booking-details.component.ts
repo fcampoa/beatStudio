@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CancelClassComponent } from '../../../components/booking-history/cancel-class/cancel-class.component';
 import * as m from 'moment';
 import { Location } from '@angular/common';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-booking-details',
@@ -22,6 +23,7 @@ export class BookingDetailsComponent implements OnInit {
   public reservaciones: ReservacionDetalle[] = [];
   public horario: Horario;
   public cancel = false;
+  public user;
 
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
@@ -34,9 +36,10 @@ export class BookingDetailsComponent implements OnInit {
   constructor(private apiSvc: GlobalApiService,
               private notify: NotificationsService,
               public dialog: MatDialog,
-              private location: Location) { }
+              private userSvc: UserService) { }
 
   ngOnInit() {
+    this.user = this.userSvc.loggedUser;
     this.horario = this.reservacion.horario;
     this.obtenerDetalles(this.reservacion.id);
     this.showCancel();
@@ -94,17 +97,28 @@ export class BookingDetailsComponent implements OnInit {
               res.data.forEach(element => {
                 arr.push(element.cliente.correo);
               });
-              const body = { correos: arr, disciplina: this.horario.disciplina.nombre };
-              this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
-               // window.location.reload(true);
-               this.recargar.emit(true);
-              },
-              error => {
-               // window.location.reload(true);
-               this.recargar.emit(true);
-              });
+              if (arr.length > 0) {
+                const body = { correos: arr, disciplina: this.horario.disciplina.nombre };
+                this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
+                  // window.location.reload(true);
+                  // this.recargar.emit(true);
+                },
+                  error => {
+                    // window.location.reload(true);
+                    this.recargar.emit(true);
+                  });
+              }
+              this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
+                () => {
+                  this.recargar.emit(true);
+                },
+                error => {
+                  this.notify.errorMessage('No se ha enviado el correo de verificación');
+                  this.recargar.emit(true);
+                }
+              );
             });
-           // window.location.reload(true);
+            // window.location.reload(true);
           }
         );
       }

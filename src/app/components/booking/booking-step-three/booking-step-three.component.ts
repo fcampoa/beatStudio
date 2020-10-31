@@ -39,12 +39,12 @@ export class BookingStepThreeComponent implements OnInit {
   ];
 
   constructor(private apiSvc: GlobalApiService,
-    private userSvc: UserService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private notify: NotificationsService,
-    private location: Location,
-    public dialog: MatDialog) {
+              private userSvc: UserService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private notify: NotificationsService,
+              private location: Location,
+              public dialog: MatDialog) {
 
     this.desde = m().format('YYYY-MM-DD');
     this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
@@ -131,12 +131,13 @@ export class BookingStepThreeComponent implements OnInit {
         }
         this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({reservacion: this.custom.reservacion, detalles: aux}).subscribe(
             res => {
-              this.apiSvc.endPoints.enviar_correo.reservacion()<any>({reservacion: this.custom.reservacion, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
+              this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: this.custom.reservacion, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
                 () => {
                   this.router.navigate(['/booking/success']);
                 },
                 error => {
                   this.notify.errorMessage('Ha ocurrido un error, no hemod podido enviar tu correo');
+                  this.apiSvc.routes.error_log.agregar()<any>({error: error, seccion: 'reservaciones', cliente: this.cliente.id})
                   this.router.navigate(['/booking/success']);
                 }
               );

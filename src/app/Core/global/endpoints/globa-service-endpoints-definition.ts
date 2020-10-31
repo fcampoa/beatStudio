@@ -20,5 +20,6 @@ export interface IGlobalServiceEndPointsDefinition {
     compra: () => VERBS.IpostCall;
     cambio_pass: () => VERBS.IpostCall;
     lista_espera: () => VERBS.IpostCall;
+    cancelacion: () => VERBS.IpostCall;
   };
 }
