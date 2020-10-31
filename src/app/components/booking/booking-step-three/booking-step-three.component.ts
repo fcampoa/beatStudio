@@ -146,6 +146,24 @@ export class BookingStepThreeComponent implements OnInit {
               //   this.router.navigate(['/booking/success']);
               // }
                 this.router.navigate(['/booking/success']);
+            }, 
+            error => {
+              // this.notify.errorMessage('ha ocurrido un error al agendar tu reservación');
+              // this.loading = false;
+              let aux2 = Array();
+              aux.forEach(d => {
+                aux2.push({ cantidad: 1, paquete: d.paquete });
+              });
+              this.apiSvc.endPoints.historial_compra.regresarCreditos(this.cliente.id,this.desde, aux.length)<any>({creditos: aux2}).subscribe(
+                r => {
+                  this.notify.errorMessage('ha ocurrido un error al agendar tu reservación');
+                  this.loading = false;
+                },
+                error => {
+                  this.notify.errorMessage('ha ocurrido un error al agendar tu reservación');
+                  this.loading = false;
+                }
+              );
             }
           );
       },

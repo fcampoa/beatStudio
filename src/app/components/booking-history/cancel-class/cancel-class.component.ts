@@ -36,7 +36,9 @@ export class CancelClassComponent implements OnInit {
     const dateObject = m(fecha);
     const dia = this.dias[dateObject.day() - 1];
     const month = this.meses[dateObject.month()];
-    return `${dia} ${dateObject.date()} ${month}, ${dateObject.year()}`;
+   // return `${dia} ${dateObject.date()} ${month}, ${dateObject.year()}`;
+    return `${dateObject.date()} ${month}, ${dateObject.year()}`;
+
   }
 
   formatAMPM(fecha: string) {
