@@ -113,7 +113,7 @@ export class CheckoutDetailsComponent implements OnInit {
     this.apiSvc.routes.historial_compra.agregar()<any>(hp).subscribe(
       response => {
         const pago = response.data;
-       this.apiSvc.endPoints.enviar_correo.compra()<any>({paquete: this.paquete, email: this.cliente.correo}).subscribe();
+      // this.apiSvc.endPoints.enviar_correo.compra()<any>({paquete: this.paquete, email: this.cliente.correo}).subscribe();
         this.router.navigate(['/checkout-result/' + pago.id]);
       },
       error => console.log(error)

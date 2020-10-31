@@ -54,7 +54,6 @@ export class AuthenticationService {
   }
 
   passwordRecovery(idUsuario: number, data: any) {
-    debugger;
     return this.globalService.Patch(data, config.base_url + 'users/' + idUsuario);
   }
 

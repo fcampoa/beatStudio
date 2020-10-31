@@ -34,22 +34,22 @@ export class CancelClassComponent implements OnInit {
 
   castFecha(fecha: string): string {
     const dateObject = m(fecha);
-    const dia = this.dias[dateObject.day()];
+    const dia = this.dias[dateObject.day() - 1];
     const month = this.meses[dateObject.month()];
-    return `${dia} ${dateObject.date()} ${month}, ${dateObject.year}`;
+    return `${dia} ${dateObject.date()} ${month}, ${dateObject.year()}`;
   }
 
   formatAMPM(fecha: string) {
-    return m(fecha).format('h:mm a');
-    // const date = new Date(fecha);
-    // let hours = date.getHours();
-    // let minutes = date.getMinutes();
-    // const ampm = hours >= 12 ? 'PM' : 'AM';
-    // hours = hours % 12;
-    // hours = hours ? hours : 12;
-    // minutes = minutes < 10 ? Number('0' + minutes) : minutes;
-    // const strTime = hours + ':' + minutes + ' ' + ampm;
-    // return strTime;
+    // return m(fecha).format('h:mm a');
+    const date = new Date(fecha);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? Number('0' + minutes) : minutes;
+    const strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
   }
 
   cancelBooking(): void {

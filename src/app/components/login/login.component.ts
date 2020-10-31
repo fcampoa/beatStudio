@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
       this.loginSuccess.emit(true);
       this.auth.login(this.userName, this.password).subscribe(
         response => {
-          debugger;
           this.loginSuccess.emit(false);
           document.getElementById('custom-popover').style.display = 'none';
           const el = document.getElementById('sidebar-login');
