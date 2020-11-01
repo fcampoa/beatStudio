@@ -130,23 +130,23 @@ export class BookingStepThreeComponent implements OnInit {
         }
         this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({reservacion: this.custom.reservacion, detalles: aux}).subscribe(
             res => {
-              // this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: this.custom.reservacion, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
-              //   () => {
-              //     this.router.navigate(['/booking/success']);
-              //   },
-              //   error => {
-              //     this.notify.errorMessage('Ha ocurrido un error, no hemod podido enviar tu correo');
-              //     this.apiSvc.routes.error_log.agregar()<any>({error: error, seccion: 'reservaciones', cliente: this.cliente.id})
-              //     this.router.navigate(['/booking/success']);
-              //     this.loading = false;
-              //   }
-              // );
-              // if (res.resultado === true) {
-              //   this.loading = false;
-              //   this.router.navigate(['/booking/success']);
-              // }
+              this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: res, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
+                () => {
+                  this.router.navigate(['/booking/success']);
+                },
+                error => {
+                  this.notify.errorMessage('Ha ocurrido un error, no hemod podido enviar tu correo');
+                  this.apiSvc.routes.error_log.agregar()<any>({error: error, seccion: 'reservaciones', cliente: this.cliente.id}).subscribe();
+                  this.router.navigate(['/booking/success']);
+                  this.loading = false;
+                }
+              );
+              if (res.resultado === true) {
+                this.loading = false;
                 this.router.navigate(['/booking/success']);
-            }, 
+              }
+                // this.router.navigate(['/booking/success']);
+            },
             error => {
               // this.notify.errorMessage('ha ocurrido un error al agendar tu reservación');
               // this.loading = false;
@@ -154,6 +154,7 @@ export class BookingStepThreeComponent implements OnInit {
               aux.forEach(d => {
                 aux2.push({ cantidad: 1, paquete: d.paquete });
               });
+              debugger;
               this.apiSvc.endPoints.historial_compra.regresarCreditos(this.cliente.id,this.desde, aux.length)<any>({creditos: aux2}).subscribe(
                 r => {
                   this.notify.errorMessage('ha ocurrido un error al agendar tu reservación');

@@ -93,32 +93,33 @@ export class BookingDetailsComponent implements OnInit {
             console.log(response);
             this.cancel = true;
             this.recargar.emit(true);
-            // this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => {
-            //   let arr = Array<string>();
-            //   res.data.forEach(element => {
-            //     arr.push(element.cliente.correo);
-            //   });
-            //   if (arr.length > 0) {
-            //     const body = { correos: arr, disciplina: this.horario.disciplina.nombre };
-            //     this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
-            //       // window.location.reload(true);
-            //       // this.recargar.emit(true);
-            //     },
-            //       error => {
-            //         // window.location.reload(true);
-            //         this.recargar.emit(true);
-            //       });
-            //   }
-            //   this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
-            //     () => {
-            //       this.recargar.emit(true);
-            //     },
-            //     error => {
-            //       this.notify.errorMessage('No se ha enviado el correo de verificación');
-            //       this.recargar.emit(true);
-            //     }
-            //   );
-            // });
+            this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => {
+              let arr = Array<string>();
+              res.data.forEach(element => {
+                arr.push(element.cliente.correo);
+              });
+              if (arr.length > 0) {
+                const body = { correos: arr, disciplina: this.horario.disciplina.nombre };
+                this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
+                  // window.location.reload(true);
+                  // this.recargar.emit(true);
+                },
+                  error => {
+                    // window.location.reload(true);
+                    this.recargar.emit(true);
+                  });
+              }
+              debugger;
+              this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
+                () => {
+                  this.recargar.emit(true);
+                },
+                error => {
+                  this.notify.errorMessage('No se ha enviado el correo de verificación');
+                  this.recargar.emit(true);
+                }
+              );
+            });
             // window.location.reload(true);
           }
         );
