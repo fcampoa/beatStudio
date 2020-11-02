@@ -109,7 +109,7 @@ export class BookingDetailsComponent implements OnInit {
                     this.recargar.emit(true);
                   });
               }
-              debugger;
+              // debugger;
               this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
                 () => {
                   this.recargar.emit(true);
