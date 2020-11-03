@@ -61,7 +61,7 @@ export class BookingDetailsComponent implements OnInit {
   showCancel(): void {
     const aux = m();
     const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
-    this.cancel = res >= 2;
+    this.cancel = res >= 1;
   }
 
   cancelarReservacion(): void {

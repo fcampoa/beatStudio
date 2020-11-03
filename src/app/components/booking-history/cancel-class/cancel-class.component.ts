@@ -31,7 +31,7 @@ export class CancelClassComponent implements OnInit {
   ngOnInit(): void {
     this.horario = this.content.horario;
     this.reservacion = this.content.reservacion;
-    this.detalles = this.content.detalles;
+   // this.detalles = this.content.detalles;
   }
 
   checarVencidos() {
