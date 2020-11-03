@@ -122,7 +122,7 @@ export class BookingStepThreeComponent implements OnInit {
     this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
       this.desde, this.hasta, this.reservaciones.length)<any>(null).subscribe(
       response => {
-        console.log(response);
+        console.log(response);        
         let aux = this.custom.detalles;
         let paquetes = response.paquetes;
         for (let i = 0; i < paquetes.length; i ++) {
@@ -131,22 +131,22 @@ export class BookingStepThreeComponent implements OnInit {
         // debugger;
         this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({reservacion: this.custom.reservacion, detalles: aux}).subscribe(
             res => {
-              this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: res.resultado, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
-                () => {
-                  this.router.navigate(['/booking/success']);
-                },
-                error => {
-                  this.notify.errorMessage('Ha ocurrido un error, no hemod podido enviar tu correo');
-                //  this.apiSvc.routes.error_log.agregar()<any>({error: error, seccion: 'reservaciones', cliente: this.cliente.id}).subscribe();
-                  this.router.navigate(['/booking/success']);
-                  this.loading = false;
-                }
-              );
-              if (res.resultado === true) {
-                this.loading = false;
-                this.router.navigate(['/booking/success']);
-              }
-                // this.router.navigate(['/booking/success']);
+              // this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: res.resultado, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
+              //   () => {
+              //     this.router.navigate(['/booking/success']);
+              //   },
+              //   error => {
+              //     this.notify.errorMessage('Ha ocurrido un error, no hemod podido enviar tu correo');
+              //   //  this.apiSvc.routes.error_log.agregar()<any>({error: error, seccion: 'reservaciones', cliente: this.cliente.id}).subscribe();
+              //     this.router.navigate(['/booking/success']);
+              //     this.loading = false;
+              //   }
+              // );
+              // if (res.resultado === true) {
+              //   this.loading = false;
+              //   this.router.navigate(['/booking/success']);
+              // }
+               this.router.navigate(['/booking/success']);
             },
             error => {
               // this.notify.errorMessage('ha ocurrido un error al agendar tu reservación');
