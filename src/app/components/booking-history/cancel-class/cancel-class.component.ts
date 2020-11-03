@@ -42,16 +42,16 @@ export class CancelClassComponent implements OnInit {
   }
 
   formatAMPM(fecha: string) {
-    // return m(fecha).format('h:mm a');
-    const date = new Date(fecha);
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    minutes = minutes < 10 ? Number('0' + minutes) : minutes;
-    const strTime = hours + ':' + minutes + ' ' + ampm;
-    return strTime;
+    return m(new Date(fecha)).format('h:mm a');
+    // const date = new Date(fecha);
+    // let hours = date.getHours();
+    // let minutes = date.getMinutes();
+    // const ampm = hours >= 12 ? 'PM' : 'AM';
+    // hours = hours % 12;
+    // hours = hours ? hours : 12;
+    // minutes = minutes < 10 ? Number('0' + minutes) : minutes;
+    // const strTime = hours + ':' + minutes + ' ' + ampm;
+    // return strTime;
   }
 
   cancelBooking(): void {
