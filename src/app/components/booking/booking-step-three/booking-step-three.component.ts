@@ -131,17 +131,17 @@ export class BookingStepThreeComponent implements OnInit {
         // debugger;
         this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({reservacion: this.custom.reservacion, detalles: aux}).subscribe(
             res => {
-              // this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: res.resultado, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
-              //   () => {
-              //     this.router.navigate(['/booking/success']);
-              //   },
-              //   error => {
-              //     this.notify.errorMessage('Ha ocurrido un error, no hemod podido enviar tu correo');
-              //   //  this.apiSvc.routes.error_log.agregar()<any>({error: error, seccion: 'reservaciones', cliente: this.cliente.id}).subscribe();
-              //     this.router.navigate(['/booking/success']);
-              //     this.loading = false;
-              //   }
-              // );
+              this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: res.resultado, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina}).subscribe(
+                () => {
+                  this.router.navigate(['/booking/success']);
+                },
+                error => {
+                  this.notify.errorMessage('Ha ocurrido un error, no hemod podido enviar tu correo');
+                //  this.apiSvc.routes.error_log.agregar()<any>({error: error, seccion: 'reservaciones', cliente: this.cliente.id}).subscribe();
+                  this.router.navigate(['/booking/success']);
+                  this.loading = false;
+                }
+              );
               // if (res.resultado === true) {
               //   this.loading = false;
               //   this.router.navigate(['/booking/success']);
