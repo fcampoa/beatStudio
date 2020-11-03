@@ -34,9 +34,9 @@ export class BookingDetailsComponent implements OnInit {
   ];
 
   constructor(private apiSvc: GlobalApiService,
-              private notify: NotificationsService,
-              public dialog: MatDialog,
-              private userSvc: UserService) { }
+    private notify: NotificationsService,
+    public dialog: MatDialog,
+    private userSvc: UserService) { }
 
   ngOnInit() {
     this.user = this.userSvc.loggedUser;
@@ -109,17 +109,17 @@ export class BookingDetailsComponent implements OnInit {
                     this.recargar.emit(true);
                   });
               }
-              // debugger;
-              this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
-                () => {
-                  this.recargar.emit(true);
-                },
-                error => {
-                  this.notify.errorMessage('No se ha enviado el correo de verificación');
-                  this.recargar.emit(true);
-                }
-              );
             });
+            // debugger;
+            this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
+              () => {
+                this.recargar.emit(true);
+              },
+              error => {
+                this.notify.errorMessage('No se ha enviado el correo de verificación');
+                this.recargar.emit(true);
+              }
+            );
             // window.location.reload(true);
           }
         );
