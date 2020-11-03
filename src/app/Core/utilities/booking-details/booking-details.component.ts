@@ -110,15 +110,15 @@ export class BookingDetailsComponent implements OnInit {
                   });
               }
               // debugger;
-              this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
-                () => {
-                  this.recargar.emit(true);
-                },
-                error => {
-                  this.notify.errorMessage('No se ha enviado el correo de verificación');
-                  this.recargar.emit(true);
-                }
-              );
+              // this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email }).subscribe(
+              //   () => {
+              //     this.recargar.emit(true);
+              //   },
+              //   error => {
+              //     this.notify.errorMessage('No se ha enviado el correo de verificación');
+              //     this.recargar.emit(true);
+              //   }
+              // );
             });
             // window.location.reload(true);
           }
