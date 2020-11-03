@@ -110,7 +110,7 @@ export class BookingDetailsComponent implements OnInit {
                   });
               }
             });
-            // debugger;
+             // debugger;
             this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email, reservacion: this.reservacion.id, detalles: this.reservaciones, horario: this.horario, coach: this.horario.coach, disciplina: this.horario.disciplina }).subscribe(
               () => {
                 this.recargar.emit(true);

@@ -146,7 +146,7 @@ export class BookingStepThreeComponent implements OnInit {
               //   this.loading = false;
               //   this.router.navigate(['/booking/success']);
               // }
-               this.router.navigate(['/booking/success']);
+              // this.router.navigate(['/booking/success']);
             },
             error => {
               // this.notify.errorMessage('ha ocurrido un error al agendar tu reservación');
