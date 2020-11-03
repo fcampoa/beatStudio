@@ -67,7 +67,7 @@ export class BookingDetailsComponent implements OnInit {
   cancelarReservacion(): void {
     const dialogRef = this.dialog.open(CancelClassComponent, {
       panelClass: 'custom-modalbox-info',
-      data: { horario: this.horario, reservacion: this.reservacion }
+      data: { horario: this.horario, reservacion: this.reservacion, detalles: this.reservaciones }
     });
 
     // dialogRef.afterClosed().subscribe(result => {

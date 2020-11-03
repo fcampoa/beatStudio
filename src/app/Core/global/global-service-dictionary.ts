@@ -49,7 +49,7 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
   },
   paquete: {
     lista: { method: GlobalServiceMethodType.GET, url: '' },
-    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' }
+    buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '/' },
   },
   historial_compra: {
     lista: { method: GlobalServiceMethodType.GET, url: '' },
