@@ -8,6 +8,11 @@
         <form #form="ngForm" novalidate (ngSubmit)="validate()" [formGroup]="group">
           <h1 class="page-title">Regístrate</h1>
           <div class="box pt-5 pb-5 pr-3 pl-3 pr-md-5 pl-md-5">
+            <div class="col-12 mt-4">
+              <label style="margin-left: 30px; text-align: left !important;">
+                <b>* Todos los campos son obligatorios</b>
+              </label>
+            </div>
             <div class="row p-md-3">
               <div class="col-12 col-sm-6">
                 <mat-form-field>
@@ -87,13 +92,19 @@
   </div>
   <div class="exitoso text-center" *ngIf="registered">
     <div class="row d-flex justify-content-center pb-3">
-      <div class="col-11"><h5 class="beat-algo" style="font-size: 1rem !important;"><span>¡LISTO!</span></h5></div>
+      <div class="col-11">
+        <h5 class="beat-algo" style="font-size: 1rem !important;"><span>¡LISTO!</span></h5>
+      </div>
     </div>
     <div class="row d-flex justify-content-center pb-3">
-      <div class="col-11"><h1 class="sections-titles">Tu registro fue exitoso</h1></div>
+      <div class="col-11">
+        <h1 class="sections-titles">Tu registro fue exitoso</h1>
+      </div>
     </div>
     <div class="row d-flex justify-content-center pb-5">
-      <div class="col-11"><p class="sections-info-text pb-5">Hemos enviado un correo de confirmación a {{cliente.correo}}</p></div>
+      <div class="col-11">
+        <p class="sections-info-text pb-5">Hemos enviado un correo de confirmación a {{cliente.correo}}</p>
+      </div>
     </div>
   </div>
 </div>
