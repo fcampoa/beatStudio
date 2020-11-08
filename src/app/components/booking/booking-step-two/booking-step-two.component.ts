@@ -359,6 +359,7 @@ export class BookingStepTwoComponent implements OnInit {
         this.reservaciones.push(d);
 
       });
+      r.total_personas = this.reservaciones.length;
       const custom: Custom = {
         reservacion: r,
         detalles: this.reservaciones
