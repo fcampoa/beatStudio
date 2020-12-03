@@ -2,11 +2,6 @@
     <div class="row d-flex justify-content-end">
         <img class="close" style="width: 20px;" (click)="closeModal()" src="../../../../assets/img/SVG/Cruz.svg">
     </div>
-    <!-- <div *ngIf="vencidos > 0" class="row justify-content-center">
-        <div class="col-12">
-            Uno o mas créditos de esta reservación estan vencidos y no se podrán recuperar.
-        </div>
-    </div> -->
     <div class="row justify-content-center">
         <div class="col-12">
             <h2 class="part1" style="text-align: center;font-family: GT-America-Medium;">
@@ -22,6 +17,11 @@
                 <div>{{castFecha(horario.fecha)}}</div>
                 <div>{{formatAMPM(horario.fecha)}}</div>
             </div>
+        </div>
+    </div>
+    <div *ngIf="vencidos > 0" class="row justify-content-center">
+        <div class="col-12">
+            Uno o mas créditos de esta reservación estan vencidos y no se podrán recuperar.
         </div>
     </div>
     <div class="row d-flex justify-content-center part3">

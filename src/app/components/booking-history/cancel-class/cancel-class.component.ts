@@ -31,20 +31,24 @@ export class CancelClassComponent implements OnInit {
   ngOnInit(): void {
     this.horario = this.content.horario;
     this.reservacion = this.content.reservacion;
-   // this.detalles = this.content.detalles;
+    this.detalles = this.content.detalles;
+    this.checarVencidos();
   }
 
   checarVencidos() {
     this.detalles.forEach(e => {
-      this.apiSvc.routes.paquete.buscar()<any>(e.paquete).subscribe(
-        response => {
-          const aux = new Date(response.data.vigencia);
-          if (m(aux).isBefore(this.hoy)) {
-            this.vencidos++;
+      if (e.paquete !== undefined && e.paquete !== null) {
+        this.apiSvc.routes.historial_compra.buscar()<any>(e.paquete).subscribe(
+          response => {
+            const aux = new Date(response.data.vigencia);
+            if (m(aux).isBefore(this.hoy)) {
+              this.vencidos++;
+            }
           }
-        }
-      );
+        );
+      }
     });
+
   }
 
   closeModal(): void {
@@ -55,7 +59,7 @@ export class CancelClassComponent implements OnInit {
     const dateObject = m(fecha);
     const dia = this.dias[dateObject.day() - 1];
     const month = this.meses[dateObject.month()];
-   // return `${dia} ${dateObject.date()} ${month}, ${dateObject.year()}`;
+    // return `${dia} ${dateObject.date()} ${month}, ${dateObject.year()}`;
     return `${dateObject.date()} ${month}, ${dateObject.year()}`;
 
   }
