@@ -180,7 +180,7 @@ export class ScheduleComponent implements OnInit {
     // deselecciona el que estaba seleccionado antes
     // d.horarios.forEach(x => x.selected && x.horario.id !== h.id ? false : x.selected);
     const aux = m();
-    const res = m.duration(m(h.horario.fecha).diff(aux)).as('hours');
+    const res = m.duration(m(h.horario.fecha).diff(aux)).as('minutes');
     
     if (res > 0) {
     this.Seleccion.emit(h);
@@ -188,6 +188,8 @@ export class ScheduleComponent implements OnInit {
   }
 
   seleccionar2(d: CustomHorario, h: any) {
+    const aux = m();
+    const res = m.duration(m(h.horario.fecha).diff(aux)).as('minutes');
     this.Seleccion.emit(h);
   }
 
@@ -218,6 +220,12 @@ export class ScheduleComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.WaitList.emit(result);
     });
+  }
+
+  mostrar(h: Horario): boolean {
+    const aux = m();
+    const res = m.duration(m(h.fecha).diff(aux)).as('minutes');
+    return res > 0;
   }
 
   // classActive(dia: any, h: any): boolan {

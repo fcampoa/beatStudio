@@ -11,28 +11,30 @@
       <div class="row d-flex justify-content-center pt-3">
         <div class="col-10" *ngFor="let h of dia.horarios; let i = index"
           style="border-right: 1px solid gray !important; height: 100%;">
-          <mat-divider></mat-divider>
-          <div class="pt-4 pb-4">
-            <div class="row" (click)="seleccionar2(dia, h)">
-              <div class="col-12 d-flex justify-content-center">
-                <div class="coach-name">
-                  {{h.horario.coach.nombre}}
+          <div *ngIf="mostrar(h.horario)">
+            <mat-divider></mat-divider>
+            <div class="pt-4 pb-4">
+              <div class="row" (click)="seleccionar2(dia, h)">
+                <div class="col-12 d-flex justify-content-center">
+                  <div class="coach-name">
+                    {{h.horario.coach.nombre}}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row pt-2" *ngIf="!h.horario.lleno">
-              <div class="col-12 d-flex justify-content-center">
-                <div class="button-style d-flex justify-content-center hour onMouse hourly"
-                  [ngClass]="h.selected ? 'selected': ''" (click)="seleccionar(dia, h)">
-                  {{getHora(h.horario.fecha)}}
+              <div class="row pt-2" *ngIf="!h.horario.lleno">
+                <div class="col-12 d-flex justify-content-center">
+                  <div class="button-style d-flex justify-content-center hour onMouse hourly"
+                    [ngClass]="h.selected ? 'selected': ''" (click)="seleccionar(dia, h)">
+                    {{getHora(h.horario.fecha)}}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row pt-2" *ngIf="h.horario.lleno">
-              <div class="col-12 d-flex justify-content-center">
-                <div class="wait-list">
-                  {{getHora(h.horario.fecha)}} <br>
-                  <span style="cursor: pointer;" (click)="entrarWaitlist(h.horario)">LISTA DE ESPERA</span>
+              <div class="row pt-2" *ngIf="h.horario.lleno">
+                <div class="col-12 d-flex justify-content-center">
+                  <div class="wait-list">
+                    {{getHora(h.horario.fecha)}} <br>
+                    <span style="cursor: pointer;" (click)="entrarWaitlist(h.horario)">LISTA DE ESPERA</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -50,7 +52,7 @@
     <mat-tab *ngFor="let dia of semana">
       <ng-template mat-tab-label *ngIf="dia.horarios.length > 0">
         <div class="col-12 justify-content-center">
-          <div class="date-day">{{getDia(dia.fecha)}}  {{getFecha(dia.fecha)}} {{getMes(dia.fecha)}}</div>
+          <div class="date-day">{{getDia(dia.fecha)}} {{getFecha(dia.fecha)}} {{getMes(dia.fecha)}}</div>
           <!-- <div class="date-day"></div>
           <div class="date-month pt-2"></div> -->
         </div>
@@ -69,27 +71,29 @@
               <div class="col-6 col-sm-6 col-xs-6" *ngFor="let h of dia.horarios; let i = index"
                 style="border-right: 1px solid gray !important; height: 100%;">
                 <mat-divider></mat-divider>
-                <div class="pt-4 pb-4">
-                  <div class="row" (click)="seleccionar2(dia, h)">
-                    <div class="col-12 d-flex justify-content-center">
-                      <div class="coach-name">
-                        {{h.horario.coach.nombre}}
+                <div *ngIf="mostrar(h.horario)">
+                  <div class="pt-4 pb-4">
+                    <div class="row" (click)="seleccionar2(dia, h)">
+                      <div class="col-12 d-flex justify-content-center">
+                        <div class="coach-name">
+                          {{h.horario.coach.nombre}}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row pt-2" *ngIf="!h.horario.lleno">
-                    <div class="col-12 d-flex justify-content-center">
-                      <div class="button-style d-flex justify-content-center hour onMouse hourly"
-                        [ngClass]="h.selected ? 'selected': ''" (click)="seleccionar(dia, h)">
-                        {{getHora(h.horario.fecha)}}
+                    <div class="row pt-2" *ngIf="!h.horario.lleno">
+                      <div class="col-12 d-flex justify-content-center">
+                        <div class="button-style d-flex justify-content-center hour onMouse hourly"
+                          [ngClass]="h.selected ? 'selected': ''" (click)="seleccionar(dia, h)">
+                          {{getHora(h.horario.fecha)}}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="row pt-2" *ngIf="h.horario.lleno">
-                    <div class="col-12 d-flex justify-content-center">
-                      <div class="wait-list">
-                        {{getHora(h.horario.fecha)}} <br>
-                        <span style="cursor: pointer;" (click)="entrarWaitlist(h.horario)">LISTA DE ESPERA</span>
+                    <div class="row pt-2" *ngIf="h.horario.lleno">
+                      <div class="col-12 d-flex justify-content-center">
+                        <div class="wait-list">
+                          {{getHora(h.horario.fecha)}} <br>
+                          <span style="cursor: pointer;" (click)="entrarWaitlist(h.horario)">LISTA DE ESPERA</span>
+                        </div>
                       </div>
                     </div>
                   </div>
