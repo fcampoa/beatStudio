@@ -21,6 +21,13 @@
                   </div>
                 </div>
               </div>
+              <div class="row" *ngIf="h.horario.class_type">
+                <div class="col-12 d-flex justify-content-center">
+                  <div class="coach-name">
+                    {{h.horario.class_type}}
+                  </div>
+                </div>
+              </div>
               <div class="row pt-2" *ngIf="!h.horario.lleno">
                 <div class="col-12 d-flex justify-content-center">
                   <div class="button-style d-flex justify-content-center hour onMouse hourly"
