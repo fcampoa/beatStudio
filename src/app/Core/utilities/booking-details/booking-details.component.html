@@ -8,8 +8,9 @@
     </div>
     <div class="row table-titles pt-3 pl-3 pr-4">
       <div class="col-3">DIA</div>
-      <div class="col-3">HORA</div>
-      <div class="col-3">COACH</div>
+      <div class="col-2">HORA</div>
+      <div class="col-2">COACH</div>
+      <div class="col-2">TIPO</div>
       <div class="col-3">LUGARES</div>
     </div>
     <div class="row d-flex justify-content-center pt-2">
@@ -19,8 +20,9 @@
     </div>
     <div *ngIf="horario" class="row pt-3 pl-3 pr-4 table-content">
       <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha | customDate }}</div>
-      <div class="col-md-3 col-xs-3 col-3">{{ getHora(horario.fecha) }}</div>
-      <div class="col-md-3 col-xs-3 col-3">{{ horario.coach.nombre }}</div>
+      <div class="col-md-2 col-xs-2 col-2">{{ getHora(horario.fecha) }}</div>      
+      <div class="col-md-2 col-xs-2 col-2">{{ horario.coach.nombre }}</div>
+      <div class="col-md-2 col-xs-2 col-2">{{ horario.class_type ? (horario.class_type | uppercase) : '-' }}</div>
       <div class="col-md-3 col-xs-3 col-3">
         <div class="row pl-3" *ngFor="let r of reservaciones; let i = index">
           <span [ngStyle]="{'color' : colors[i]}" class="mr-2">{{ r.lugar }}</span> {{ r.nombre }}

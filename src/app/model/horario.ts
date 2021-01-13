@@ -5,6 +5,7 @@ export class Horario extends CommonFields{
   public coach?: any;
   public lugares?: number;
   public lleno?: boolean;
+  public class_type?:string
   public constructor() {
     super();
   }
