@@ -25,7 +25,6 @@ export class AuthenticationService {
           sessionStorage.setItem('currentUser', JSON.stringify(user));
           // localStorage.setItem('currentUser', JSON.stringify(user));
           this.userSvc.user = user;
-
         }
         return user;
       }));

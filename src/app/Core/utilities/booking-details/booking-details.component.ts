@@ -16,8 +16,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./booking-details.component.scss']
 })
 export class BookingDetailsComponent implements OnInit {
-
-
   @Input() reservacion: Reservacion;
   @Output() recargar: EventEmitter<boolean> = new EventEmitter<boolean>();
   public reservaciones: ReservacionDetalle[] = [];
@@ -54,7 +52,7 @@ export class BookingDetailsComponent implements OnInit {
       response => {
         this.reservaciones = response.data;
       },
-      error => console.log(error)
+      error => this.notify.errorMessage('¡Reservación no encontrada!')
     );
   }
 
@@ -68,71 +66,73 @@ export class BookingDetailsComponent implements OnInit {
     const aux = m();
     const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
     this.cancel = res >= 2;
+    
     if (res >= 2) {
-    const dialogRef = this.dialog.open(CancelClassComponent, {
-      panelClass: 'custom-modalbox-info',
-      data: { horario: this.horario, reservacion: this.reservacion, detalles: this.reservaciones }
-    });
+      const dialogRef = this.dialog.open(CancelClassComponent, {
+        panelClass: 'custom-modalbox-info',
+        data: { horario: this.horario, reservacion: this.reservacion, detalles: this.reservaciones }
+      });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result === true) {
-    //   this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>(null).subscribe(
-    //     response => {
-    //       console.log(response);
-    //       this.cancel = true;
-    //       window.location.reload();
-    //     }
-    //   );
-    //   }
-    // });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        let aux = Array();
-        this.reservaciones.forEach(d => {
-          aux.push({ cantidad: 1, paquete: d.paquete });
-        });
-        this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux }).subscribe(
-          response => {
-            console.log(response);
-            this.cancel = true;
-            this.recargar.emit(true);
-            this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => {
-              let arr = Array<string>();
-              res.data.forEach(element => {
-                arr.push(element.cliente.correo);
-              });
-              if (arr.length > 0) {
-                const body = { correos: arr, disciplina: this.horario.disciplina.nombre };
-                this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(r => {
-                  // window.location.reload(true);
-                  // this.recargar.emit(true);
-                },
-                  error => {
-                    // window.location.reload(true);
-                    this.recargar.emit(true);
-                  });
-              }
+      dialogRef.afterClosed().subscribe(result => 
+        {
+          if (result === true) 
+          {
+            let aux = Array();
+            this.reservaciones.forEach(d => {
+              aux.push({ cantidad: 1, paquete: d.paquete });
             });
-             // debugger;
-            this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email, reservacion: this.reservacion.id, detalles: this.reservaciones, horario: this.horario, coach: this.horario.coach, disciplina: this.horario.disciplina }).subscribe(
-              () => {
+            
+            this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux })
+            .subscribe( response => 
+              {
+                this.cancel = true;
+                this.recargar.emit(true);
+                this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => 
+                  {
+                    let arr = Array<string>();
+                    res.data.forEach(element => {
+                    arr.push(element.cliente.correo);
+                  }                ,
+                  error => {
+                      this.notify.errorMessage('Algo salió mal!'+ error );
+                      this.recargar.emit(true);
+                  }
+                );   
+                if (arr.length > 0) 
+                {
+                  const body = { correos: arr, disciplina: this.horario.disciplina.nombre, coach: this.horario.coach.nombre, fecha: this.horario.fecha };
+                  
+                  this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(() => 
+                    {
+                    },
+                    error => {
+                      this.recargar.emit(true);
+                    }
+                  );
+                }
+              },error => 
+              {
+                this.notify.errorMessage('Los creditos no fueron devueltos por alguna razón: por favor contacte a su administrador.');
+              }
+            );
+            this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email, reservacion: this.reservacion.id, detalles: this.reservaciones, horario: this.horario, coach: this.horario.coach, disciplina: this.horario.disciplina })
+            .subscribe(() => 
+              {
                 this.recargar.emit(true);
               },
               error => {
-                this.notify.errorMessage('No se ha enviado el correo de verificación');
+                this.notify.errorMessage('¡Algo salió mal! y usted eno recibió nuestro crreo de cancelación: '+error);
                 this.recargar.emit(true);
               }
             );
-            // window.location.reload(true);
+            });
           }
-        );
-      }
-    });
-  } else {
-    this.cancel = false;
-    this.notify.errorMessage('No puedes cancelar esta reservación con menos de 2 horas de anticipación');
-  }
+        }
+      );
+    } else {
+      this.cancel = false;
+      this.notify.errorMessage('No puedes cancelar esta reservación con menos de 2 horas de anticipación');
+    }
 
   }
 

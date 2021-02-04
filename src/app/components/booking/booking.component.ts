@@ -91,10 +91,6 @@ export class BookingComponent implements OnInit {
    * guarda el valor del horario seleccionado en el componente
    * de schedule
    */
-  /* asignarSeleccion($event: any): void {
-     this.seleccion.next($event);
-
-   }*/
 
   asignarSeleccion($event: any): void {
     this.seleccion.next($event.horario);
@@ -108,8 +104,6 @@ export class BookingComponent implements OnInit {
    * navega al siguiente componente booking-seatSelection
    */
   siguientePaso(): void {
-   // console.log(this.horarioElegido);
-   // console.log(this.horarioElegido.id);
     if (this.user === null) {
       this.router.navigate(['/dashboard']);
     }

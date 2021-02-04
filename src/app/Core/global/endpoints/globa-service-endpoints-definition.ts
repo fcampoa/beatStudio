@@ -14,6 +14,7 @@ export interface IGlobalServiceEndPointsDefinition {
   horario?: {
     lugaresOcupados: (idHorario) => VERBS.IGetCall;
   };
+  
   enviar_correo?: {
     registro: () => VERBS.IpostCall;
     reservacion: () => VERBS.IpostCall;

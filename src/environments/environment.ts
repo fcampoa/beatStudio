@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-    base_url: 'http://localhost/directus/public/beatstudio/'
- // base_url: 'http://165.22.91.247:8116/beatstudio/'
- // base_url: 'https://www.beatstudio.com.mx/directus/beatstudio/'
+  base_url: 'http://localhost/beatstudio/beatstudio-directus/public/beatstudio/',
+  paypal_key : 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX'
 };
 
 /*
