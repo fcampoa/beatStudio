@@ -74,6 +74,7 @@ export class PaymentComponent implements OnInit {
   openAddDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
       panelClass: 'custom-modalbox',
+      disableClose: true,
       data: { fp: f, id: this.cliente.id }
     });
 
@@ -85,6 +86,7 @@ export class PaymentComponent implements OnInit {
   openRemoveDialog(f: any): void {
     const dialogRef = this.dialog.open(RemovePaymentComponent, {
       panelClass: 'custom-modalbox-info',
+      disableClose: true,
       data: { tarjeta: f }
     });
 

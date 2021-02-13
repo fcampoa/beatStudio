@@ -107,7 +107,6 @@ export class CheckoutDetailsComponent implements OnInit {
     hp.creditos = this.paquete.creditos;
     hp.id_orden = idOrden;
     const d = new Date();
-    hp.vigencia = m(d).add(this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30, 'days').format('YYYY-MM-DD');
     hp.vigencia_dias = this.paquete.vigenciaDias;
     this.apiSvc.routes.historial_compra.agregar()<any>(hp).subscribe(
       response => {
@@ -130,7 +129,8 @@ export class CheckoutDetailsComponent implements OnInit {
   openCardModal(): void {
     if (this.tieneTarjeta) {
       const dialogRef = this.dialog.open(CardModalComponent, {
-        panelClass: 'custom-modalbox-info'
+        panelClass: 'custom-modalbox-info',
+        disableClose: true
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
@@ -145,7 +145,7 @@ export class CheckoutDetailsComponent implements OnInit {
   pagarConTarjeta(cardData: any): void {
     if (this.tieneTarjeta) {
       this.loading = true;
-      // this.pagar('order_token', this.p.id);
+     // this.pagar('order_token', this.p.id);
 
       var tokenParams = {
         card: {
@@ -194,6 +194,7 @@ export class CheckoutDetailsComponent implements OnInit {
   cambiarForma(): void {
     const dialogRef = this.dialog.open(ChangeMethodComponent, {
       panelClass: 'custom-modalbox-medium',
+      disableClose: true,
       data: { idCliente: this.cliente.id }
     });
 
@@ -205,6 +206,7 @@ export class CheckoutDetailsComponent implements OnInit {
   openDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
       panelClass: 'custom-modalbox',
+      disableClose: true,
       data: { fp: f, id: this.cliente.id }
     });
 

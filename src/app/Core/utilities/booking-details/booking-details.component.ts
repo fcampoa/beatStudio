@@ -4,7 +4,7 @@ import { Reservacion } from 'src/app/model/reservacion';
 import { Horario } from './../../../model/horario';
 import { ReservacionDetalle } from './../../../model/reservacion-detalle';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CancelClassComponent } from '../../../components/booking-history/cancel-class/cancel-class.component';
 import * as m from 'moment';
 import { Location } from '@angular/common';
@@ -66,15 +66,16 @@ export class BookingDetailsComponent implements OnInit {
     const aux = m();
     const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
     this.cancel = res >= 2;
-    
     if (res >= 2) {
       const dialogRef = this.dialog.open(CancelClassComponent, {
         panelClass: 'custom-modalbox-info',
+        disableClose: true,
         data: { horario: this.horario, reservacion: this.reservacion, detalles: this.reservaciones }
       });
 
       dialogRef.afterClosed().subscribe(result => 
         {
+
           if (result === true) 
           {
             let aux = Array();
@@ -110,9 +111,6 @@ export class BookingDetailsComponent implements OnInit {
                     }
                   );
                 }
-              },error => 
-              {
-                this.notify.errorMessage('Los creditos no fueron devueltos por alguna razón: por favor contacte a su administrador.');
               }
             );
             this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email, reservacion: this.reservacion.id, detalles: this.reservaciones, horario: this.horario, coach: this.horario.coach, disciplina: this.horario.disciplina })

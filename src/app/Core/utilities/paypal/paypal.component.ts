@@ -73,9 +73,7 @@ export class PaypalComponent implements OnInit {
       });
     },
     onClientAuthorization: (data) => {
-      console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-     // this.showSuccess = true;
-     // this.resultado.emit(data);
+
       this.notify.successMessage('autorizado');
 
     },
@@ -86,9 +84,7 @@ export class PaypalComponent implements OnInit {
       console.log('OnError', err);
     },
     onClick: (data, actions) => {
-      console.log('onClick', data, actions);
       if (data.fundingSource === 'card') {
-      // this.loadCreditCardData();
       }
     },
   };
