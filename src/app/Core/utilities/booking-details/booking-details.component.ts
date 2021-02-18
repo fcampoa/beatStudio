@@ -83,7 +83,7 @@ export class BookingDetailsComponent implements OnInit {
               aux.push({ cantidad: 1, paquete: d.paquete });
             });
             
-            this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux })
+            this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux, horario: this.horario, reservacion: this.reservacion })
             .subscribe( response => 
               {
                 this.cancel = true;
