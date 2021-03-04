@@ -8,12 +8,11 @@
         <form #form="ngForm" novalidate (ngSubmit)="validate()" [formGroup]="group">
           <h1 class="page-title">Regístrate</h1>
           <div class="box pt-5 pb-5 pr-3 pl-3 pr-md-5 pl-md-5">
-            <div class="col-12 mt-4">
-              <label style="margin-left: 310px; text-align: left !important;">
-                <b>* Todos los campos son obligatorios</b>
-              </label>
-            </div>
+
             <div class="row p-md-3">
+              <div class="col-12">
+                <p style="width:100%; text-align:left"><b>* Todos los campos son obligatorios</b></p>
+              </div>
               <div class="col-12 col-sm-6">
                 <mat-form-field>
                   <mat-label>Nombre</mat-label>
@@ -50,7 +49,7 @@
               </div>
               <div class="col-12 col-sm-6">
                 <mat-form-field>
-                  <mat-label>Contacto de emergencia</mat-label>
+                  <mat-label>Nombre de contacto de emergencia</mat-label>
                   <input matInput type="text" formControlName="txtContact">
                 </mat-form-field>
               </div>
@@ -79,9 +78,9 @@
                   <input type="checkbox" formControlName="terms">
                   <span class="checkmark"></span>
                 </label>
-                <label style="margin-left: 40px; text-align: left !important;">He leído y acepto los <a>Términos y
-                    condiciones</a> y el <a>Aviso de
-                    privacidad</a></label>
+                <p style="margin-left: 40px; text-align: left !important;">
+                  He leído y acepto el <a href="https://www.beatstudio.com.mx/#/privacy" target="_blank">Aviso de
+                    privacidad</a></p>
               </div>
             </div>
           </div>
