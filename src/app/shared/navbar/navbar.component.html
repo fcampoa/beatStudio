@@ -27,7 +27,7 @@
       <div *ngIf="logged === true" class="mr-4" style="height: 60px">
         <div (click)="goToProfile()" class="loggedArea" style="height: 60px">
           <img src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" />
-          <div (mouseover)="showMenu=true" class="loggedAreaUser">
+          <div class="loggedAreaUser">
             <span style="align-self: center;">{{ name.toUpperCase() }}</span>
             <mat-icon style="margin-left:4px;align-self: center;">expand_more</mat-icon>
             <div class="popover__content">
