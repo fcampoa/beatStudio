@@ -77,6 +77,7 @@ import { BeatyogaComponent } from './components/disciplines/beatyoga/beatyoga.co
 import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower.component';
 import { FileService } from './services/file-service.service';
 import { ChangePasswordComponent } from './components/profile/change-password/change-password.component';
+import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -135,7 +136,8 @@ import { ChangePasswordComponent } from './components/profile/change-password/ch
     BeatspinComponent,
     BeatbarreComponent,
     BeatyogaComponent,
-    BeatpowerComponent
+    BeatpowerComponent,
+    RegisterSuccessComponent
   ],
   imports: [
     BrowserModule,
