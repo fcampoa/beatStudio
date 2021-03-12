@@ -2,7 +2,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Component, HostListener } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Router, Event } from '@angular/router'
-
 declare var $: any;
 
 @Component({
@@ -12,7 +11,7 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'beatStudio'; public loading = false;
-
+  
   constructor(private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer, private router: Router) {
     this.matIconRegistry
@@ -36,6 +35,7 @@ export class AppComponent {
       window.scrollTo(0,0);
       document.getElementById("mySidebar").style.right = "-300px";
     })
+
   }
 
   public loader($event: boolean): void {

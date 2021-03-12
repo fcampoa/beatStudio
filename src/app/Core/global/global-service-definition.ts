@@ -87,7 +87,9 @@ export interface IGlobalServiceDefinition {
     buscarCliente: (idCliente: number) => VERBS.IGetCall;
     buscarRepetido: (idCliente: number, idHorario: number) => VERBS.IGetCall;
   };
-
+  errorlog?: {
+    agregar: () => VERBS.IpostCall;
+  };
   error_log?: {
     agregar: () => VERBS.IpostCall;
     lista: () => VERBS.IGetCall;

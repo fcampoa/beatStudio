@@ -14,10 +14,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (err.status === 401 || err.status === 404 || (err.status === 0)) {
                 // auto logout if 401 response returned from api
                 this.authenticationService.logout();
-                // this.notify.errorMessage('Usuario o contraseña incorrectos.');
-               // location.reload(true);
             }
-
             const error = err.error.message || err.statusText;
             return throwError(error);
         }));

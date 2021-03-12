@@ -92,7 +92,7 @@ export class CheckoutDetailsComponent implements OnInit {
   getCreditos(): void {
     this.apiSvc.routes.paquete.buscar()<any>(this.id).subscribe(
       response => this.paquete = response,
-      error => console.log(error)
+      error =>  this.notify.errorMessage('Algo salió mal!'+ error )
     );
   }
 
@@ -107,16 +107,14 @@ export class CheckoutDetailsComponent implements OnInit {
     hp.creditos = this.paquete.creditos;
     hp.id_orden = idOrden;
     const d = new Date();
-    // d.setDate(d.getDate() + this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30);
-    hp.vigencia = m(d).add(this.paquete.vigenciaDias !== undefined && this.paquete.vigenciaDias !== null ? this.paquete.vigenciaDias : 30, 'days').format('YYYY-MM-DD');
-    // hp.vigencia = m(d).format('YYYY-MM-DD');
+    hp.vigencia_dias = this.paquete.vigenciaDias;
     this.apiSvc.routes.historial_compra.agregar()<any>(hp).subscribe(
       response => {
         const pago = response.data;
-      // this.apiSvc.endPoints.enviar_correo.compra()<any>({paquete: this.paquete, email: this.cliente.correo}).subscribe();
+        this.notify.errorMessage('¡Pago procesado exitosamente! Redireccionando ... ' );
         this.router.navigate(['/checkout-result/' + pago.id]);
       },
-      error => console.log(error)
+      error =>  this.notify.errorMessage('Algo salió mal! '+ error )
     );
   }
 
@@ -131,7 +129,8 @@ export class CheckoutDetailsComponent implements OnInit {
   openCardModal(): void {
     if (this.tieneTarjeta) {
       const dialogRef = this.dialog.open(CardModalComponent, {
-        panelClass: 'custom-modalbox-info'
+        panelClass: 'custom-modalbox-info',
+        disableClose: true
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
@@ -146,7 +145,7 @@ export class CheckoutDetailsComponent implements OnInit {
   pagarConTarjeta(cardData: any): void {
     if (this.tieneTarjeta) {
       this.loading = true;
-      // this.pagar('order_token', this.p.id);
+     // this.pagar('order_token', this.p.id);
 
       var tokenParams = {
         card: {
@@ -180,7 +179,7 @@ export class CheckoutDetailsComponent implements OnInit {
           },
           error => {
             this.loading = false;
-            this.notify.errorMessage('Error al procesar el pago.');
+            this.notify.errorMessage('Error al procesar el pago: ' + error);
           });
 
       }, error => {
@@ -195,6 +194,7 @@ export class CheckoutDetailsComponent implements OnInit {
   cambiarForma(): void {
     const dialogRef = this.dialog.open(ChangeMethodComponent, {
       panelClass: 'custom-modalbox-medium',
+      disableClose: true,
       data: { idCliente: this.cliente.id }
     });
 
@@ -206,6 +206,7 @@ export class CheckoutDetailsComponent implements OnInit {
   openDialog(f: any): void {
     const dialogRef = this.dialog.open(AddPaymentComponent, {
       panelClass: 'custom-modalbox',
+      disableClose: true,
       data: { fp: f, id: this.cliente.id }
     });
 
@@ -260,24 +261,22 @@ export class CheckoutDetailsComponent implements OnInit {
         layout: 'vertical'
       },
       onApprove: (data, actions) => {
-        console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then(details => {
-          console.log('onApprove - you can get full order details inside onApprove: ', details);
+          this.notify.errorMessage('Transacción aprobada más no autorizada! '+ details );
         });
       },
       onClientAuthorization: (data) => {
         this.loading = true;
         this.pagar(data.id, null);
+        this.notify.successMessage('¡Transacción Exitosa!');
       },
       onCancel: (data, actions) => {
-        console.log('OnCancel', data, actions);
+        this.notify.errorMessage('¡Transacción cancelada!');
       },
       onError: err => {
-        console.log('OnError', err);
         this.notify.errorMessage('Error al procesar el pago: ' + err);
       },
       onClick: (data, actions) => {
-        console.log('onClick', data, actions);
         if (data.fundingSource === 'card') {
           // this.loadCreditCardData();
         }

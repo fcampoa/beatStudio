@@ -88,6 +88,7 @@ export class CancelClassComponent implements OnInit {
       },
       error => {
         console.log(error);
+        this.dialogRef.close(true);
       }
     );
   }

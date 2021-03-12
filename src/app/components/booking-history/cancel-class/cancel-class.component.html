@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center part3">
-        <button mat-stroked-button class="cancel-button" type="button" (click)="cancelBooking()"> CANCELAR
+        <button mat-stroked-button class="cancel-button" [disabled]="this.reservacion.cancelada" type="button" (click)="cancelBooking()"> CANCELAR
         </button>
     </div>
 </div>
