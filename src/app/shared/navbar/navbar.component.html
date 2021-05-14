@@ -1,5 +1,5 @@
-<div #navbar class="py-2 custom-navbar">
-  <div class="row my-auto">
+<div #navbar class="custom-navbar d-flex">
+  <div class="row align-self-center" style="width:100%">
     <div class="float-left ml-3 ml-xl-5">
       <a class="navbar-brand ml-1 ml-xl-4" href="#">
         <img style="width: 180px;" src="../../../assets/img/SVG/BeatStudio_Logo-03_blanco.svg" />
@@ -23,13 +23,20 @@
         </a>
       </div>
     </div>
-    <div *ngIf="navbar.offsetWidth>992" class="mr-3 mr-xl-5 align-self-center">
-      <div *ngIf="logged === true" class="mr-4">
-        <button class="my-2 my-sm-0 navbar-user-button" [ngbPopover]="popLogoutContent" autoClose="outside"><img
-            src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
-        <button class="my-2 my-sm-0 navbar-user-button" (click)="goToProfile()">{{ name.toUpperCase() }}</button>
+    <div *ngIf="navbar.offsetWidth>992" class="mr-3 mr-xl-5" style="height: 60px; display: flex;">
+      <div *ngIf="logged === true" class="mr-4" style="height: 60px">
+        <div (click)="goToProfile()" class="loggedArea" style="height: 60px">
+          <img src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" />
+          <div class="loggedAreaUser">
+            <span style="align-self: center;">{{ name.toUpperCase() }}</span>
+            <mat-icon style="margin-left:4px;align-self: center;">expand_more</mat-icon>
+            <div class="popover__content">
+              <span (click)="logout()" style="color: #000;">Cerrar sesión</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div *ngIf="logged === false" class="pr-3">
+      <div *ngIf="logged === false" class="pr-3" class="align-self-center">
         <button
           style="width: 145px !important; height: 30px !important; font-size: 11px !important; padding:0 !important"
           class="button-new my-2 my-sm-0 mr-4 button-padding" (click)="navigate('registro')">CREAR
@@ -52,7 +59,7 @@
 </div>
 
 <ng-template #elseBlock class="custom-navbar-item">
-  <div class="align-self-center ml-auto mr-4">
+  <div class="align-self-center ml-auto">
     <button *ngIf="logged === true" class="my-auto navbar-user-button" (click)="goToProfile()"><img
         src="../../../assets/img/SVG/Usuario(menu)-01.svg" style="height: 35px;position: inline;" /></button>
     <svg (click)="openSideBar()" viewBox="0 0 100 80" width="40" height="24" style="fill: #9865ff">
@@ -163,7 +170,7 @@
 <ng-template #popLogoutContent>
   <div class="container-fluid">
     <div class="row text-center" style="font-size: 12px; cursor: pointer; width: 70px;" (click)="logout()">
-      <span>Cerrar
-        sesión</span></div>
+      <span>Cerrar sesión</span>
+    </div>
   </div>
 </ng-template>

@@ -25,6 +25,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PasswordRecoveryStepOneComponent } from './components/password-recovery/password-recovery-step-one/password-recovery-step-one.component';
 import { PasswordRecoveryStepTwoComponent } from './components/password-recovery/password-recovery-step-two/password-recovery-step-two.component';
 import { PaypalComponent } from './Core/utilities/paypal/paypal.component';
+import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 
 export const AppRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -52,6 +53,7 @@ export const AppRoutes: Routes = [
   { path: 'disciplines/beatpower', component: BeatpowerComponent, children: [] },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'registro', component: RegisterComponent },
+  { path: 'registroExitoso', component: RegisterSuccessComponent },
   { path: 'recover', component: PasswordRecoveryStepOneComponent },
   { path: 'newpassword/:idUsuario', component: PasswordRecoveryStepTwoComponent },
   { path: 'paypal', component: PaypalComponent }

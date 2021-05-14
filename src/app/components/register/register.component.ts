@@ -70,12 +70,15 @@ export class RegisterComponent implements OnInit {
               this.cliente.usuario = response.data.id;
               this.apiSvc.routes.cliente.agregar()<any>(this.cliente).subscribe(
                 c => {
-                  this.apiSvc.endPoints.enviar_correo.registro()<any>({email: this.cliente.correo}).subscribe(
-                    () => {
-                    }
-                  );
                   this.registered = true;
                   this.loading = false;
+                  this.router.navigate(['registroExitoso'], { queryParams: { mailTo: this.cliente.correo } });
+                  
+                  // this.apiSvc.endPoints.enviar_correo.registro()<any>({ email: this.cliente.correo }).subscribe(
+                  //   () => {
+
+                  //   }
+                  // );
                   // this.auth.login(u.email, u.password).subscribe(
                   //   res => {
                   //     this.registerSuccess.emit(false);
