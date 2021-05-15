@@ -95,50 +95,7 @@ export class BookingStepTwoComponent implements OnInit {
         // this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
         // this.llenarAsientos([[1, 6], [1, 3, 5], [1], [1, 2, 3, 4, 5], [1, 2, 5, 6]], [1, 3]);
         // console.log(this.asientos);
-        this.asientos = [
-          [
-            { fila: 1, numero: 1, visible: true, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 1, numero: 4, visible: true, ocupado: false, coach: false }
-          ],
-          [
-            { fila: 2, numero: 2, visible: true, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: true },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 2, numero: 5, visible: true, ocupado: false, coach: false }
-          ],
-          [
-            { fila: 3, numero: 3, visible: true, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-          ],
-          [],
-          [
-            { fila: 4, numero: 6, visible: true, ocupado: false, coach: false },
-            { fila: 4, numero: 7, visible: true, ocupado: false, coach: false },
-            { fila: 4, numero: 8, visible: true, ocupado: false, coach: false },
-            { fila: 4, numero: 9, visible: true, ocupado: false, coach: false },
-            { fila: 4, numero: 10, visible: true, ocupado: false, coach: false },
-          ],
-          [
-            { fila: 5, numero: 11, visible: true, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 5, numero: 12, visible: true, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 5, numero: 13, visible: true, ocupado: false, coach: false },
-            { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-            { fila: 5, numero: 14, visible: true, ocupado: false, coach: false }
-          ]
-        ];
+        this.llenaAsientosSpin();
         break;
       case 'barre':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
@@ -412,5 +369,138 @@ export class BookingStepTwoComponent implements OnInit {
       "justify-content-center": !(row.length === 2 && row[0].visible === false &&
         this.horario.disciplina.nombre.toLowerCase() === 'spin')
     }
+  }
+
+  llenaAsientosSpin(): void {
+    this.asientos = [
+      [
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 1, numero: 2, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: true },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 1, numero: 6, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
+      ],
+      [
+        { fila: 2, numero: 1, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 2, numero: 7, visible: true, ocupado: false, coach: false }
+      ],
+      [
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 3, numero: 3, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 3, numero: 8, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
+      ],
+      [
+        { fila: 4, numero: 4, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 4, numero: 9, visible: true, ocupado: false, coach: false }
+      ],
+      [
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 5, numero: 5, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
+      ],
+      [
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 6, numero: 10, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 6, numero: 11, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 6, numero: 12, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 6, numero: 13, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 6, numero: 14, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
+      ],
+      [
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 7, numero: 15, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 7, numero: 16, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 7, numero: 17, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 7, numero: 18, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 7, numero: 19, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
+      ],
+      [
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 8, numero: 20, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 8, numero: 21, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 8, numero: 22, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 8, numero: 23, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 8, numero: 24, visible: true, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
+        { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
+      ],
+    ];
   }
 }
