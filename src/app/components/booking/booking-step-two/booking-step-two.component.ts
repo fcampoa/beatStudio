@@ -375,7 +375,7 @@ export class BookingStepTwoComponent implements OnInit {
     this.asientos = [
       [
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-        { fila: 1, numero: 2, visible: true, ocupado: false, coach: false },
+        { fila: 1, numero: 1, visible: true, ocupado: false, coach: false },
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
@@ -390,7 +390,7 @@ export class BookingStepTwoComponent implements OnInit {
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
       ],
       [
-        { fila: 2, numero: 1, visible: true, ocupado: false, coach: false },
+        { fila: 2, numero: 2, visible: true, ocupado: false, coach: false },
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
