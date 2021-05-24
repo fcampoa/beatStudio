@@ -5,6 +5,7 @@ import { GlobalApiService } from '../../../Core/global/global-service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as m from 'moment';
 import { ReservacionDetalle } from 'src/app/model/reservacion-detalle';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-cancel-class',
@@ -22,11 +23,12 @@ export class CancelClassComponent implements OnInit {
   public vencidos = 0;
   public detalles: ReservacionDetalle[];
   public hoy = new Date();
-
+  public loading = false;
 
   constructor(private apiSvc: GlobalApiService,
-    public dialogRef: MatDialogRef<CancelClassComponent>,
-    @Inject(MAT_DIALOG_DATA) public content: any) { }
+              private notify: NotificationsService,
+              public dialogRef: MatDialogRef<CancelClassComponent>,
+              @Inject(MAT_DIALOG_DATA) public content: any) { }
 
   ngOnInit(): void {
     this.horario = this.content.horario;
@@ -78,18 +80,25 @@ export class CancelClassComponent implements OnInit {
   }
 
   cancelBooking(): void {
+    this.loading = true;
     this.reservacion.cancelada = true;
     this.reservacion.cliente = this.reservacion.cliente.id;
     this.reservacion.horario = this.reservacion.horario.id;
     this.apiSvc.routes.reservacion.actualizar(this.reservacion.id)<any>(this.reservacion).subscribe(
       response => {
         this.reservacion = response;
+        this.loading = false;
         this.dialogRef.close(true);
       },
       error => {
         console.log(error);
+        this.notify.errorMessage(error);
+        this.loading = false;
         this.dialogRef.close(true);
       }
     );
+  }
+  cancelAction() {
+    this.dialogRef.close(false);
   }
 }
