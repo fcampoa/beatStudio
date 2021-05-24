@@ -108,7 +108,6 @@ export class BookingStepThreeComponent implements OnInit {
         for (let i = 0; i < paquetes.length; i ++) {
           aux[i].paquete = paquetes[i];
         }
-        // debugger;
         this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({reservacion: this.custom.reservacion, detalles: aux})
         .subscribe(
           res => 
@@ -130,7 +129,6 @@ export class BookingStepThreeComponent implements OnInit {
             aux.forEach(d => {
               aux2.push({ cantidad: 1, paquete: d.paquete });
             });
-              // debugger;
             this.apiSvc.endPoints.historial_compra.regresarCreditos(this.cliente.id,this.desde, aux.length)<any>({creditos: aux2}).subscribe(
               r => 
               {

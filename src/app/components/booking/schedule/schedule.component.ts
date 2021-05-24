@@ -124,27 +124,6 @@ export class ScheduleComponent implements OnInit {
    * Separa los horarios por dias de la semana
    */
   splitHorarios(horarios: Array<Horario>): void {
-    // let semana = [
-    //   { fecha: '', horarios: [] },
-    //   { fecha: '', horarios: [] },
-    //   { fecha: '', horarios: [] },
-    //   { fecha: '', horarios: [] },
-    //   { fecha: '', horarios: [] },
-    //   { fecha: '', horarios: [] },
-    //   { fecha: '', horarios: [] }
-    // ];
-    // let actual: any;
-    // let cont = 0;
-    // horarios.forEach(x => {
-    //   // this.checarLleno(x);
-    //   const aux = m(x.fecha).format('YYYY-MM-DD');
-    //   if (actual !== aux) {
-    //     cont++;
-    //     actual = aux;
-    //     semana[cont - 1].fecha = m(actual).format('YYYY-MM-DD');
-    //   }
-    //   semana[cont - 1].horarios.push({ horario: x, selected: false });
-    // });
     let semana = [];
     let actual: any;
     let cont = 0;

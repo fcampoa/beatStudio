@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChangeMethodComponent } from '../change-method/change-method.component';
 import { CardModalComponent } from '../card-modal/card-modal.component';
 import { cardPayment } from '../../../model/cardPayment';
+import { environment as config } from '../../../../environments/environment';
 
 declare let Conekta: any;
 
@@ -50,7 +51,7 @@ export class CheckoutDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    Conekta.setPublicKey("key_V1c6mfy2hHjiHN8V2JUtRzg");
+    Conekta.setPublicKey(config.conekta_key);
     Conekta.setLanguage("es");
     this.route.params.subscribe(
       params => {
@@ -223,8 +224,7 @@ export class CheckoutDetailsComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'MXN',
-      clientId: 'ATZZ8eWH5anWQNtSfGM7nXtCSxDtbPKK8eLrpVF6yKlKjV4P_YruqhJnXyavN2GnMh1nLHOvxhuimsDX',
-      // clientId: 'AVJ9WP8qD0yJwMBZkK8UFK0m4OmG1Obk2l-lM0krkhCx_fJM8-PRFQzwWDrV0vUSnjD7fcJsxWxI7SCd',
+      clientId: config.paypal_key,
       createOrderOnClient: (data) => <ICreateOrderRequest>{
         intent: 'CAPTURE',
         purchase_units: [

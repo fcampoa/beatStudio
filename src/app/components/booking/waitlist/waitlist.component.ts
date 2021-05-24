@@ -72,13 +72,14 @@ export class WaitlistComponent implements OnInit {
       if (response.data && response.data.length > 0) {
         this.notify.infoMessage('Usted ya se encuentra en lista de espera para este horario.');
         this.loading = false;
+        this.dialogRef.close({ state: false });
       } else {
         let waitlistObject: listaEspera = {
           cliente: this.id_cliente,
           horario: this.horario.id
         };
         this.apiSvc.routes.lista_espera.agregar()<any>(waitlistObject).subscribe(response => {
-          this.dialogRef.close({ state: 'success' });
+          this.dialogRef.close({ state: true });
         }, error => {
           this.notify.errorMessage('Ocurrió un error, intentalo de nuevo.');
           this.loading = false;

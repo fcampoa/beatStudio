@@ -22,6 +22,7 @@ export class BookingDetailsComponent implements OnInit {
   public horario: Horario;
   public cancel = false;
   public user;
+  public loading = false;
 
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
@@ -76,8 +77,9 @@ export class BookingDetailsComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => 
         {
 
-          if (result === true) 
+          if (result) 
           {
+            this.loading = true;
             let aux = Array();
             this.reservaciones.forEach(d => {
               aux.push({ cantidad: 1, paquete: d.paquete });
@@ -88,6 +90,7 @@ export class BookingDetailsComponent implements OnInit {
               {
                 this.cancel = true;
                 this.recargar.emit(true);
+                this.loading = false;
                 this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => 
                   {
                     let arr = Array<string>();
@@ -121,6 +124,7 @@ export class BookingDetailsComponent implements OnInit {
               error => {
                 this.notify.errorMessage('¡Algo salió mal! y usted eno recibió nuestro crreo de cancelación: '+error);
                 this.recargar.emit(true);
+                this.loading = false;
               }
             );
             });
