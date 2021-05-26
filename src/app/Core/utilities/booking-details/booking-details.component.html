@@ -6,7 +6,7 @@
     <div *ngIf="horario" class="row pl-3">
       <div class="col-12">
         <p class="beat-algo" style="letter-spacing: 2px !important;">
-          <span>BEAT</span>{{ horario.disciplina.nombre | uppercase }}</p>
+          <span>BEAT</span>{{ horario.disciplina.nombre ? (horario.disciplina.nombre | uppercase) : '-' }}</p>
       </div>
     </div>
     <div class="row table-titles pt-3 pl-3 pr-4">
@@ -22,9 +22,9 @@
       </div>
     </div>
     <div *ngIf="horario" class="row pt-3 pl-3 pr-4 table-content">
-      <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha | customDate }}</div>
-      <div class="col-md-2 col-xs-2 col-2">{{ getHora(horario.fecha) }}</div>      
-      <div class="col-md-2 col-xs-2 col-2">{{ horario.coach.nombre }}</div>
+      <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha ? (horario.fecha | customDate) : '-' }}</div>
+      <div class="col-md-2 col-xs-2 col-2">{{ horario.fecha ? (getHora(horario.fecha)) : '-' }}</div>      
+      <div class="col-md-2 col-xs-2 col-2">{{ horario.coach?.nombre ? horario.coach.nombre : '-'}}</div>
       <div class="col-md-2 col-xs-2 col-2">{{ horario.class_type ? (horario.class_type | uppercase) : '-' }}</div>
       <div class="col-md-3 col-xs-3 col-3">
         <div class="row pl-3" *ngFor="let r of reservaciones; let i = index">
@@ -32,10 +32,10 @@
         </div>
       </div>
     </div>
-    <div *ngIf="cancel && !reservacion.cancelada" class="row d-flex justify-content-center pt-5">
+    <div *ngIf="cancel && !_reservacion.cancelada" class="row d-flex justify-content-center pt-5">
       <button mat-stroked-button class="cancel-button" (click)="cancelarReservacion()">CANCELAR</button>
     </div>
-    <div *ngIf="reservacion.cancelada" class="cancel-text row d-flex justify-content-center pt-5">
+    <div *ngIf="_reservacion.cancelada" class="cancel-text row d-flex justify-content-center pt-5">
       Cancelada.
     </div>
   </div>

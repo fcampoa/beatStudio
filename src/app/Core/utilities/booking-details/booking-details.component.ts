@@ -16,13 +16,19 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./booking-details.component.scss']
 })
 export class BookingDetailsComponent implements OnInit {
-  @Input() reservacion: Reservacion;
+  @Input() set reservacion(r: Reservacion) {
+    if (r) {
+      this._reservacion = r;
+      this.horario = this._reservacion.horario;
+    }
+  };
   @Output() recargar: EventEmitter<boolean> = new EventEmitter<boolean>();
   public reservaciones: ReservacionDetalle[] = [];
   public horario: Horario;
   public cancel = false;
   public user;
   public loading = false;
+  _reservacion: Reservacion;
 
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
@@ -39,8 +45,8 @@ export class BookingDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.userSvc.loggedUser;
-    this.horario = this.reservacion.horario;
-    this.obtenerDetalles(this.reservacion.id);
+    // this.horario = this.reservacion.horario;
+    this.obtenerDetalles(this._reservacion.id);
     this.showCancel();
   }
 
@@ -59,8 +65,13 @@ export class BookingDetailsComponent implements OnInit {
 
   showCancel(): void {
     const aux = m();
+    if (this.horario && this.horario.fecha) {
     const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
     this.cancel = res >= 2;
+    }
+    else {
+      this.cancel = false;
+    }
   }
 
   cancelarReservacion(): void {
@@ -71,7 +82,7 @@ export class BookingDetailsComponent implements OnInit {
       const dialogRef = this.dialog.open(CancelClassComponent, {
         panelClass: 'custom-modalbox-info',
         disableClose: true,
-        data: { horario: this.horario, reservacion: this.reservacion, detalles: this.reservaciones }
+        data: { horario: this.horario, reservacion: this._reservacion, detalles: this.reservaciones }
       });
 
       dialogRef.afterClosed().subscribe(result => 
@@ -85,13 +96,13 @@ export class BookingDetailsComponent implements OnInit {
               aux.push({ cantidad: 1, paquete: d.paquete });
             });
             
-            this.apiSvc.endPoints.historial_compra.regresarCreditos(this.reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux, horario: this.horario, reservacion: this.reservacion })
+            this.apiSvc.endPoints.historial_compra.regresarCreditos(this._reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux, horario: this.horario, reservacion: this.reservacion })
             .subscribe( response => 
               {
                 this.cancel = true;
                 this.recargar.emit(true);
                 this.loading = false;
-                this.apiSvc.routes.lista_espera.buscarHorario(this.reservacion.horario.id)<any>().subscribe(res => 
+                this.apiSvc.routes.lista_espera.buscarHorario(this._reservacion.horario.id)<any>().subscribe(res => 
                   {
                     let arr = Array<string>();
                     res.data.forEach(element => {
@@ -116,7 +127,7 @@ export class BookingDetailsComponent implements OnInit {
                 }
               }
             );
-            this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email, reservacion: this.reservacion.id, detalles: this.reservaciones, horario: this.horario, coach: this.horario.coach, disciplina: this.horario.disciplina })
+            this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email, reservacion: this._reservacion.id, detalles: this.reservaciones, horario: this.horario, coach: this.horario.coach, disciplina: this.horario.disciplina })
             .subscribe(() => 
               {
                 this.recargar.emit(true);

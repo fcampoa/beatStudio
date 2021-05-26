@@ -14,7 +14,7 @@
     </div>
     <div class="row d-flex justify-content-center">
         <div class="col-12 text-center">
-            <p class="beat-algo"><span>BEAT</span>{{horario.disciplina.nombre}}</p>
+            <p class="beat-algo" *ngIf="horario.disciplina.nombre"><span>BEAT</span>{{horario.disciplina.nombre}}</p>
             <div class="sections-info-text">
                 <div>{{horario.coach.nombre}}</div>
                 <div>{{castFecha(horario.fecha)}}</div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center m-4" style="margin-top: 15px;">
-        <button mat-stroked-button class="cancel-class common-format" [disabled]="this.reservacion.cancelada" type="button" (click)="cancelBooking()">SI, CANCELAR CLASE
+        <button mat-stroked-button class="cancel-button-modal" [disabled]="this.reservacion.cancelada" type="button" (click)="cancelBooking()">SI, CANCELAR CLASE
         </button>
     </div>
         <div class="row d-flex justify-content-center m-4">

@@ -21,3 +21,48 @@
     border-radius: 0px !important;
     width: 60% !important;
   }
+
+  .cancel-button-modal {
+    background: #ed1c24 !important;
+    color: #806363 !important;
+    border-color: #ed1c24 !important;
+    border: 0px !important;
+    font-family: Cedra4FWide !important;
+    color: #ffffff !important;
+    letter-spacing: 1px !important;
+    font-size: 14px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    padding-bottom: 5px !important;
+    padding-top: 5px !important;
+    border-radius: 0px !important;
+  }
+
+  @media only screen and(max-width:768px) {
+    .cancel-button-modal {
+      background: #ed1c24 !important;
+      color: #806363 !important;
+      border-color: #ed1c24 !important;
+      border: 0px !important;
+      font-family: Cedra4FWide !important;
+      color: #ffffff !important;
+      letter-spacing: 1px !important;
+      font-size: 14px !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      padding-bottom: 5px !important;
+      padding-top: 5px !important;
+      border-radius: 0px !important;
+    }
+
+    .common-format {
+      letter-spacing: 1px !important;
+      font-size: 14px !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      padding-bottom: 5px !important;
+      padding-top: 5px !important;
+      border-radius: 0px !important;
+      width: 100% !important;
+    }
+  }
