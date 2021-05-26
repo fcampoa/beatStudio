@@ -33,7 +33,10 @@ export class AppComponent {
       ;
     this.router.events.subscribe((e: Event) => {
       window.scrollTo(0,0);
+      let sideBar = document.getElementById("mySidebar");
+      if (sideBar) {
       document.getElementById("mySidebar").style.right = "-300px";
+      }
     })
 
   }

@@ -22,21 +22,21 @@
       <div class="row">
         <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
           <h5 class="title_top_">DÍA</h5>
-          <label class="title_down_">{{horario.fecha | customDate}}</label>
+          <label class="title_down_" *ngIf="horario">{{horario.fecha | customDate}}</label>
         </div>
         <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
               <h5 class="title_top_">HORARIO</h5>
-              <label class="title_down_">{{horario.fecha | date:'mediumTime'}}</label>
+              <label class="title_down_" *ngIf="horario">{{horario.fecha | date:'mediumTime'}}</label>
             </div>
             <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
               <h5 class="title_top_">COACH</h5>
-              <label class="title_down_">{{horario.coach.nombre}}</label>
+              <label class="title_down_" *ngIf="horario">{{horario.coach.nombre}}</label>
             </div>
             <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
               <h5 class="title_top_">TU CLASE</h5>
-              <label class="title_down_"><span>Beat</span> {{horario.disciplina.nombre}}</label>
+              <label class="title_down_" *ngIf="horario"><span>Beat</span> {{horario.disciplina.nombre}}</label>
             </div>
             <!--Boton para imprimir-->
             <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" *ngIf="user.role === '1'">
@@ -51,12 +51,6 @@
   </div>
   <div class="row d-flex justify-content-center">
     <div class="col-asientos">
-
-      <!-- <div class="row d-flex justify-content-center mt-3 mb-5">
-        <div class="coach-title">
-          coach
-        </div>
-      </div> -->
       <div class="py-5">
         <div *ngFor="let row of asientos">
           <div class="row d-flex" [ngClass]="checkClass(row)">
@@ -79,11 +73,7 @@
           <div class="div-personas" id="nombrePrincipal" [ngStyle]="{'border-bottom': '2px solid ' + colors[0]}">
             <span [hidden]="numero === 0" id="labelPrincipal" class="sit-number mat_number">{{numero}}</span>
             <span class="name">{{cliente.nombre}} {{cliente.apellido}}</span>
-            <!-- <div class="remove-button"><div>&times;</div></div> -->
           </div>
-          <!-- <label id="labelPrincipal" class="mat_number">{{ numero }}</label>
-          <input class="form-control mat_input" [(ngModel)]="cliente.nombre" />
-          <label class="border_mat col-12" id="nombrePrincipal"></label> -->
         </div>
       </div>
       <div class="row" *ngFor="let a of amigos; let i = index">
@@ -99,38 +89,10 @@
           </div>
         </div>
       </div>
-      <!-- <div class="row mt-1 mb-2" [attr.disabled]="seleccionado">
-        <div class="col-12">
-          <button mat-mini-fab color="accent" (click)="agregarAmigo()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-      </div> -->
-      <!-- <div class="row justify-content-center pt-5 pb-5" [attr.disabled]="seleccionado" (click)="agregarAmigo()">
-        <div class="row d-flex justify-content-center primary-color add-new"
-          style="cursor: pointer;font-size: 20px;">
-          <mat-icon style="margin-top: 3px;">add</mat-icon> Agregar Amigo
-        </div>
-      </div> -->
-      <!-- <div class="row" *ngFor="let a of amigos">
-        <div class="col-12">
-          <label appInvite [estilo]="['color', colors[totalInvitados]]" id="{{a.lugar + 'numero'}}"
-            class="mat_number">{{a.lugar}}</label>
-          <input class="form-control mat_input" placeholder="Escribe el nombre de tu amigo" [(ngModel)]="a.nombre" />
-          <label appInvite [estilo]="['background-color', colors[totalInvitados]]" class="border_mat col-md-12"
-            id="{{a.lugar + 'nombre'}}"></label>
-        </div>
-      </div> -->
       <div class="row mt-1 mb-2" [attr.disabled]="seleccionado">
         <div class="col-12">
           <button class="add-friend" [disabled]="!seleccionado || !seleccionado_amigo" (click)="addFriend()">Invitar un
             amigo +</button>
-          <!-- <mat-slide-toggle [(ngModel)]="invitados" >Invitar Amigos</mat-slide-toggle> -->
-          <!-- <label class="switch">
-            <input type="checkbox" [disabled]="!seleccionado" [(ngModel)]="invitados">
-            <span class="slider round"></span>
-          </label>
-          <label class="pl-3 pb-2" style="font-family: GT-America-Medium;font-size: 18px;">Invitar amigos</label> -->
         </div>
       </div>
 

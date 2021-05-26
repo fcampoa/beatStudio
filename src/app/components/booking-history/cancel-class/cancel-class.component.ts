@@ -13,8 +13,8 @@ import { NotificationsService } from 'src/app/services/notifications.service';
   styleUrls: ['./cancel-class.component.scss']
 })
 export class CancelClassComponent implements OnInit {
-  reservacion: Reservacion;
-  horario: Horario;
+  public reservacion: Reservacion;
+  public horario: Horario;
   private dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
   private meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -26,14 +26,15 @@ export class CancelClassComponent implements OnInit {
   public loading = false;
 
   constructor(private apiSvc: GlobalApiService,
-              private notify: NotificationsService,
-              public dialogRef: MatDialogRef<CancelClassComponent>,
-              @Inject(MAT_DIALOG_DATA) public content: any) { }
-
-  ngOnInit(): void {
+    private notify: NotificationsService,
+    public dialogRef: MatDialogRef<CancelClassComponent>,
+    @Inject(MAT_DIALOG_DATA) public content: any) {
     this.horario = this.content.horario;
     this.reservacion = this.content.reservacion;
     this.detalles = this.content.detalles;
+  }
+
+  ngOnInit() {
     this.checarVencidos();
   }
 
