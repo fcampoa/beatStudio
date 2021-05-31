@@ -100,7 +100,7 @@ export class UserPanelComponent implements OnInit {
   }
 
   recargar($event) {
-    if ($event === true) {
+    if ($event) {
       this.totalCreditos();
     }
   }

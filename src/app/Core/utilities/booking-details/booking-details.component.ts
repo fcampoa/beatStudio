@@ -9,6 +9,7 @@ import { CancelClassComponent } from '../../../components/booking-history/cancel
 import * as m from 'moment';
 import { Location } from '@angular/common';
 import { UserService } from 'src/app/services/user.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-booking-details',
@@ -30,6 +31,9 @@ export class BookingDetailsComponent implements OnInit {
   public loading = false;
   _reservacion: Reservacion;
 
+  public desde: any;
+  public hasta: any;
+
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
     '#F0FF00', '#FF009E', '#8000FF', '#00FFC9', '#B9C6A3',
@@ -41,7 +45,12 @@ export class BookingDetailsComponent implements OnInit {
   constructor(private apiSvc: GlobalApiService,
     private notify: NotificationsService,
     public dialog: MatDialog,
-    private userSvc: UserService) { }
+    private userSvc: UserService) {
+
+    this.desde = m().format('YYYY-MM-DD');
+    this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
+
+  }
 
   ngOnInit() {
     this.user = this.userSvc.loggedUser;
@@ -66,8 +75,8 @@ export class BookingDetailsComponent implements OnInit {
   showCancel(): void {
     const aux = m();
     if (this.horario && this.horario.fecha) {
-    const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
-    this.cancel = res >= 2;
+      const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
+      this.cancel = res >= 2;
     }
     else {
       this.cancel = false;
@@ -85,62 +94,72 @@ export class BookingDetailsComponent implements OnInit {
         data: { horario: this.horario, reservacion: this._reservacion, detalles: this.reservaciones }
       });
 
-      dialogRef.afterClosed().subscribe(result => 
-        {
+      dialogRef.afterClosed().subscribe(result => {
 
-          if (result) 
-          {
-            this.loading = true;
-            let aux = Array();
-            this.reservaciones.forEach(d => {
-              aux.push({ cantidad: 1, paquete: d.paquete });
-            });
-            
-            this.apiSvc.endPoints.historial_compra.regresarCreditos(this._reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux, horario: this.horario, reservacion: this.reservacion })
-            .subscribe( response => 
-              {
+        if (result) {
+          this._reservacion.cancelada = true;
+          this._reservacion.cliente = this._reservacion.cliente.id;
+          this._reservacion.horario = this.horario.id;
+          this.loading = true;
+          let aux = Array();
+          this.reservaciones.forEach(d => {
+            aux.push({ cantidad: 1, paquete: d.paquete });
+          });
+
+          forkJoin({
+            reservacion: this.apiSvc.routes.reservacion.actualizar(this._reservacion.id)<any>(this._reservacion),
+            creditos: this.apiSvc.endPoints.historial_compra.regresarCreditos(this._reservacion.cliente, m().format('YYYY-MM-DD'), this.reservaciones.length)<any>({ creditos: aux, horario: this.horario, reservacion: this.reservacion }),
+            horario: this.apiSvc.routes.lista_espera.buscarHorario(this._reservacion.id)<any>()
+          }).subscribe(
+            ({ reservacion, creditos, horario }) => {
+              if (reservacion && creditos) {
+                this._reservacion = reservacion.data;
                 this.cancel = true;
                 this.recargar.emit(true);
                 this.loading = false;
-                this.apiSvc.routes.lista_espera.buscarHorario(this._reservacion.horario.id)<any>().subscribe(res => 
-                  {
-                    let arr = Array<string>();
-                    res.data.forEach(element => {
-                    arr.push(element.cliente.correo);
-                  }                ,
+
+                let arr = Array<string>();
+                horario.data.forEach(element => {
+                  arr.push(element.cliente.correo);
+                },
                   error => {
-                      this.notify.errorMessage('Algo salió mal!'+ error );
-                      this.recargar.emit(true);
+                    this.notify.errorMessage('Algo salió mal!' + error);
+                    this.recargar.emit(true);
                   }
-                );   
-                if (arr.length > 0) 
-                {
+                );
+                if (arr.length > 0) {
                   const body = { correos: arr, disciplina: this.horario.disciplina.nombre, coach: this.horario.coach.nombre, fecha: this.horario.fecha };
-                  
-                  this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(() => 
-                    {
-                    },
+
+                  this.apiSvc.endPoints.enviar_correo.lista_espera()<any>(body).subscribe(() => {
+                  },
                     error => {
                       this.recargar.emit(true);
                     }
                   );
                 }
               }
-            );
-            this.apiSvc.endPoints.enviar_correo.cancelacion()<any>({ email: this.user.data.user.email, reservacion: this._reservacion.id, detalles: this.reservaciones, horario: this.horario, coach: this.horario.coach, disciplina: this.horario.disciplina })
-            .subscribe(() => 
-              {
-                this.recargar.emit(true);
-              },
-              error => {
-                this.notify.errorMessage('¡Algo salió mal! y usted eno recibió nuestro crreo de cancelación: '+error);
-                this.recargar.emit(true);
-                this.loading = false;
-              }
-            );
-            });
-          }
+            }, error => {
+              this.loading = false;
+              this.notify.errorMessage('Algo salió mal!' + error);
+              this._reservacion.cancelada = false;
+              this.loading = true;
+              forkJoin({
+                reservacion: this.apiSvc.routes.reservacion.actualizar(this._reservacion.id)<any>(this._reservacion),
+                creditos: this.apiSvc.endPoints.historial_compra.actualizarCreditos(this._reservacion.cliente.id,
+                  this.desde, this.hasta, this.reservaciones.length)<any>(null)}).subscribe(
+                    ({reservacion, creditos}) => {
+                      this._reservacion = reservacion.data;
+                      this.loading = false;
+                      this.recargar.emit(true);
+                    }, error => {
+                     this.notify.errorMessage('Algo salió mal!!');
+                     this.loading = false; 
+                    }
+                  );
+            }
+          );
         }
+      }
       );
     } else {
       this.cancel = false;
