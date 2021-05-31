@@ -81,23 +81,23 @@ export class CancelClassComponent implements OnInit {
   }
 
   cancelBooking(): void {
-    this.loading = true;
-    this.reservacion.cancelada = true;
-    this.reservacion.cliente = this.reservacion.cliente.id;
-    this.reservacion.horario = this.reservacion.horario.id;
-    this.apiSvc.routes.reservacion.actualizar(this.reservacion.id)<any>(this.reservacion).subscribe(
-      response => {
-        this.reservacion = response;
-        this.loading = false;
-        this.dialogRef.close(true);
-      },
-      error => {
-        console.log(error);
-        this.notify.errorMessage(error);
-        this.loading = false;
-        this.dialogRef.close(true);
-      }
-    );
+    //   this.loading = true;
+    //   this.reservacion.cancelada = true;
+    //   this.reservacion.cliente = this.reservacion.cliente.id;
+    //   this.reservacion.horario = this.reservacion.horario.id;
+    //   this.apiSvc.routes.reservacion.actualizar(this.reservacion.id)<any>(this.reservacion).subscribe(
+    //     response => {
+    //       this.reservacion = response;
+    //       this.loading = false;
+    this.dialogRef.close(true);
+    //     },
+    //     error => {
+    //       console.log(error);
+    //       this.notify.errorMessage(error);
+    //       this.loading = false;
+    //       this.dialogRef.close(true);
+    //     }
+    //   );
   }
   cancelAction() {
     this.dialogRef.close(false);
