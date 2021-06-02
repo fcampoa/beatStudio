@@ -1,6 +1,6 @@
 <div *ngIf="loading">
     <app-loader></app-loader>
-  </div>
+</div>
 <div class="custom-modal">
     <div class="row d-flex justify-content-end">
         <img class="close" style="width: 20px;" (click)="closeModal()" src="../../../../assets/img/SVG/Cruz.svg">
@@ -12,14 +12,19 @@
             </h2>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center" *ngIf="horario">
         <div class="col-12 text-center">
             <p class="beat-algo" *ngIf="horario.disciplina.nombre"><span>BEAT</span>{{horario.disciplina.nombre}}</p>
             <div class="sections-info-text">
-                <div>{{horario.coach.nombre}}</div>
-                <div>{{castFecha(horario.fecha)}}</div>
-                <div>{{formatAMPM(horario.fecha)}}</div>
+                <div *ngIf="horario.coach">{{horario.coach.nombre ? horario.coach.nombre : '-'}}</div>
+                <div *ngIf="horario.fecha">{{castFecha(horario.fecha)}}</div>
+                <div *ngIf="horario.fecha">{{formatAMPM(horario.fecha)}}</div>
             </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center" *ngIf="!horario">
+        <div class="col-12 text-center">
+            No es posible mostrar la información de tu reservación en este momento. Por favor, cierra tu sesión e inicia de nuevo para volver a intentar.
         </div>
     </div>
     <div *ngIf="vencidos > 0" class="row justify-content-center">
@@ -28,10 +33,12 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center m-4" style="margin-top: 15px;">
-        <button mat-stroked-button class="cancel-button-modal" [disabled]="this.reservacion.cancelada" type="button" (click)="cancelBooking()">SI, CANCELAR CLASE
+        <button mat-stroked-button class="cancel-button-modal" [disabled]="this.reservacion.cancelada" type="button"
+            (click)="cancelBooking()">SI, CANCELAR CLASE
         </button>
     </div>
-        <div class="row d-flex justify-content-center m-4">
-        <button mat-stroked-button class="cancel-action common-format" type="button" (click)="cancelAction()">NO, REGRESAR</button>
+    <div class="row d-flex justify-content-center m-4">
+        <button mat-stroked-button class="cancel-action common-format" type="button" (click)="cancelAction()">NO,
+            REGRESAR</button>
     </div>
 </div>
