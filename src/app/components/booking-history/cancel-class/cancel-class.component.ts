@@ -89,7 +89,8 @@ export class CancelClassComponent implements OnInit {
     //     response => {
     //       this.reservacion = response;
     //       this.loading = false;
-    this.dialogRef.close(true);
+    this.horario ? this.dialogRef.close(true) : this.dialogRef.close(false);
+  
     //     },
     //     error => {
     //       console.log(error);
