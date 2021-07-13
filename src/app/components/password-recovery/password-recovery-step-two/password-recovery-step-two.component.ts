@@ -111,7 +111,7 @@ export class PasswordRecoveryStepTwoComponent implements OnInit {
 
   initForm(): void {
     this.userGroup = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\\#\\$\\%\\&\\,\\.\\-\\_]+$/), Validators.minLength(8)]],
+      password: ['', [Validators.required]],
       passwordConfirmation: ['', [Validators.required]]
     }, { validator: this.samePassword });
   }
