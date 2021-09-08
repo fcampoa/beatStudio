@@ -104,7 +104,7 @@ export class BookingStepTwoComponent implements OnInit {
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4], []], [0, 0]);
         break;
       case 'power':
-        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5], []], [0, 0]);
+        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
         break;
       case 'fairplay':
         this.llenarAsientos([[0], [], [0, 2, 6, 8], [0, 2], [0, 6], [0]], [0, 0]);
