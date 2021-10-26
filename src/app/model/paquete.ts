@@ -8,6 +8,7 @@ export class Paquete extends CommonFields {
   public tipo?: string;
   public descripcion?: string;
   public vigenciaDias?: any;
+  public titulo?: any;
   public constructor() {
     super();
   }

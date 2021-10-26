@@ -58,6 +58,7 @@ export interface IGlobalServiceDefinition {
     agregar: () => VERBS.IpostCall;
     buscarCliente: (id: number) => VERBS.IGetCall;
     creditosCliente: (id: number, desde: string, hasta: string) => VERBS.IGetCall;
+    buscarReciente:(id: number) => VERBS.IGetCall;
   };
   forma_pago?: {
     lista: () => VERBS.IGetCall;

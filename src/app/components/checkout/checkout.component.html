@@ -14,14 +14,31 @@
       <div class="row">
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let p of paquetes">
           <mat-card class="mb-3" style="background: rgb(24, 24, 24)">
-            <div class="row d-flex justify-content-center pt-3" style="height: 100px;" *ngIf="p.creditos > 0; else elseDiv">
+            <div class="row d-flex justify-content-center pt-3" style="height: 100px;">
               <div class="col-12">
-                <div class="credits">{{ p.creditos }}</div>
-                <div class="pack-name" *ngIf="p.creditos === 1">Crédito</div>
-                <div class="pack-name" *ngIf="p.creditos > 1">Créditos</div>
+                <div *ngIf="p.creditos > 0; else elseDiv">
+                  <div class="credits">{{ p.creditos }}</div>
+                  <div class="pack-name" *ngIf="p.creditos === 1">Crédito</div>
+                  <div class="pack-name" *ngIf="p.creditos > 1">Créditos</div>
+                </div>
+                <!-- <ng-template #elseDiv>
+                  <div class="credits">{{ p.titulo }}</div>
+                </ng-template> -->
+                <ng-template #elseDiv>
+                  <div class="row d-flex justify-content-center pt-4" style="height: 100px;">
+                    <div class="col-12 pt-4">
+                      <div class="unlimited">
+                        {{ p.titulo }}
+                      </div>
+                      <!-- <div class="pack-name">
+                        Workout
+                      </div> -->
+                    </div>
+                  </div>
+                </ng-template>
               </div>
             </div>
-            <ng-template #elseDiv>
+            <!-- <ng-template #elseDiv>
               <div class="row d-flex justify-content-center pt-4" style="height: 100px;">
                 <div class="col-12 pt-4">
                   <div class="pack-name">
@@ -32,7 +49,7 @@
                   </div>
                 </div>
               </div>
-            </ng-template>
+            </ng-template> -->
             <div class="row d-flex justify-content-center">
               <div class="col-12">
                 <p class="pack-price pt-4">MXN {{ p.precio }}</p>
@@ -41,7 +58,7 @@
             <div class="row d-flex justify-content-center pt-5">
               <div class="col-12">
                 <p class="pack-desc">{{ p.descripcion }}</p>
-                <p class="pack-desc">Vigencia de {{ p.vigenciaDias }} dias</p>
+                <p class="pack-desc">Vigencia de {{ p.vigenciaDias }} días</p>
               </div>
             </div>
             <div class="row d-flex justify-content-center mb-2">

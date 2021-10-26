@@ -12,6 +12,10 @@ import { Cliente } from 'src/app/model/cliente';
 import { MatDialog } from '@angular/material/dialog';
 import { InfoModalComponent } from '../../info-modal/info-modal.component';
 
+export enum TipoPaquete {
+  ilimitado = 'ilimitado',
+  suscripcion = 'suscripcion'
+}
 @Component({
   selector: 'app-booking-step-three',
   templateUrl: './booking-step-three.component.html',
@@ -39,12 +43,12 @@ export class BookingStepThreeComponent implements OnInit {
   ];
 
   constructor(private apiSvc: GlobalApiService,
-              private userSvc: UserService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private notify: NotificationsService,
-              private location: Location,
-              public dialog: MatDialog) {
+    private userSvc: UserService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private notify: NotificationsService,
+    private location: Location,
+    public dialog: MatDialog) {
 
     this.desde = m().format('YYYY-MM-DD');
     this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
@@ -89,7 +93,7 @@ export class BookingStepThreeComponent implements OnInit {
     let promise = this.apiSvc.routes.reservacion_detalle.checarOcupado(lugar.numero, this.idHorario)<any>().toPromise();
     await promise.then(response => {
       if (response.data && response.data.length > 0) {
-        this.ocupados ++;
+        this.ocupados++;
       }
     }).catch(err => {
       this.notify.errorMessage('¡Algo salió mal!');
@@ -98,74 +102,72 @@ export class BookingStepThreeComponent implements OnInit {
     return res;
   }
 
-  reservar(): void {
+  reservar() {
+
     this.apiSvc.endPoints.historial_compra.actualizarCreditos(this.cliente.id,
-    this.desde, this.hasta, this.reservaciones.length)<any>(null).subscribe(
-      response => 
-      {     
-        let aux = this.custom.detalles;
-        let paquetes = response.paquetes;
-        for (let i = 0; i < paquetes.length; i ++) {
-          aux[i].paquete = paquetes[i];
-        }
-        this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({reservacion: this.custom.reservacion, detalles: aux})
-        .subscribe(
-          res => 
-          {
-            this.apiSvc.endPoints.enviar_correo.reservacion()<any>({email: this.cliente.correo, reservacion: res.resultado, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina, horario: this.horario}).subscribe(
-              () => 
-              {
-                this.router.navigate(['/booking/success']);
+      this.desde, this.hasta, this.reservaciones.length)<any>(null).subscribe(
+        response => {
+          let aux = this.custom.detalles;
+          let paquetes = response.paquetes;
+          if (Array.isArray(paquetes)) {
+            for (let i = 0; i < paquetes.length; i++) {
+              aux[i].paquete = paquetes[i];
+            }
+          } else {
+            aux.forEach(x => x.paquete = paquetes);
+          }
+          this.apiSvc.endPoints.reservacion.agregarReservaciones()<any>({ reservacion: this.custom.reservacion, detalles: aux })
+            .subscribe(
+              res => {
+                this.apiSvc.endPoints.enviar_correo.reservacion()<any>({ email: this.cliente.correo, reservacion: res.resultado, detalles: aux, coach: this.horario.coach, disciplina: this.horario.disciplina, horario: this.horario }).subscribe(
+                  () => {
+                    this.router.navigate(['/booking/success']);
+                  },
+                  error => {
+                    this.notify.errorMessage('Ha ocurrido un error, no hemos podido enviar tu correo de confirmación. Redireccionando ...');
+                    this.router.navigate(['/booking/success']);
+                    this.loading = false;
+                  }
+                );
               },
               error => {
-                this.notify.errorMessage('Ha ocurrido un error, no hemos podido enviar tu correo de confirmación. Redireccionando ...');
-                this.router.navigate(['/booking/success']);
-                this.loading = false;
+                let aux2 = Array();
+                aux.forEach(d => {
+                  aux2.push({ cantidad: 1, paquete: d.paquete });
+                });
+                this.apiSvc.endPoints.historial_compra.regresarCreditos(this.cliente.id, this.desde, aux.length)<any>({ creditos: aux2 }).subscribe(
+                  r => {
+                    this.notify.infoMessage('Hubo un error al agendar tu reservación, tus creditos fueron devueltos exitosamente. Vuelve a intenar reservar por favor.');
+                    this.loading = false;
+                  },
+                  error => {
+                    this.notify.errorMessage('¡Algo salió mal! Y hubo un error al regresar tus creditos, por favor contacte al administrador del sitio. ');
+                    this.loading = false;
+                  }
+                );
               }
             );
-          },
-          error => {
-            let aux2 = Array();
-            aux.forEach(d => {
-              aux2.push({ cantidad: 1, paquete: d.paquete });
-            });
-            this.apiSvc.endPoints.historial_compra.regresarCreditos(this.cliente.id,this.desde, aux.length)<any>({creditos: aux2}).subscribe(
-              r => 
-              {
-                this.notify.infoMessage('Hubo un error al agendar tu reservación, tus creditos fueron devueltos exitosamente. Vuelve a intenar reservar por favor.');
-                this.loading = false;
-              },
-              error => {
-                this.notify.errorMessage('¡Algo salió mal! Y hubo un error al regresar tus creditos, por favor contacte al administrador del sitio. ');
-                this.loading = false;
-              }              
-            );
-          }
-        );
-      },
-      error => {
-        this.loading = false;
-        this.notify.errorMessage('Error al ralizar la reservación, vuelva a intentarlo, si el problema persiste por favor contacte a su administrador.');
-      }
-    );
+        },
+        error => {
+          this.loading = false;
+          this.notify.errorMessage('Error al ralizar la reservación, vuelva a intentarlo, si el problema persiste por favor contacte a su administrador.');
+        }
+      );
   }
 
   verificarReserva(): void {
     this.loading = true;
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
-      response => 
-      {
-        if (response.creditos >= this.reservaciones.length) 
-        {
+      response => {
+        if (response.creditos >= this.reservaciones.length) {
           this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(
-            res => 
-            {
+            res => {
               if (res.data && res.data.length > 0) {
                 if (res.data.length + this.reservaciones.length <= this.horario.lugares) {
                   if (res.data.length > 0) {
                     let ocupados = [];
                     this.reservaciones.map(reservacion => {
-                       ocupados = res.data.filter(reservada => reservacion.lugar === reservada.lugar);
+                      ocupados = res.data.filter(reservada => reservacion.lugar === reservada.lugar);
                     });
                     if (ocupados.length > 0) {
                       this.loading = false;
@@ -182,10 +184,9 @@ export class BookingStepThreeComponent implements OnInit {
                 }
               } else {
                 this.reservar();
-             }
-            }, 
-            error => 
-            {
+              }
+            },
+            error => {
               this.loading = false;
               this.infoModal('No pudimos hacer tu reservación');
             }

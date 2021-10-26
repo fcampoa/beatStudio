@@ -27,6 +27,7 @@ export class UserPanelComponent implements OnInit {
   nombre = '';
   creditos = 0;
   registrado = false;
+  ilimitados = false;
   constructor(private userSvc: UserService,
               private router: Router,
               private apiSvc: GlobalApiService,
@@ -80,8 +81,8 @@ export class UserPanelComponent implements OnInit {
   totalCreditos(): void {
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
       response => {
-        //  response.data.forEach(x => this.creditos += x.creditos);
         this.creditos = response.creditos;
+        this.ilimitados = response.ilimitados;
       },
       error => console.log(error)
     );
