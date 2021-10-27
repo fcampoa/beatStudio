@@ -15,7 +15,7 @@
             PAQUETE/PRODUCTO
           </div>
           <div class="p-name">
-            {{ paquete.creditos }} créditos.<br />
+            {{ paquete.tipo === 'ilimitado' ? 'Ilimitados' : paquete.creditos }} {{ paquete.tipo === 'ilimitado' ? '' : 'Créditos' }}.<br />
             <p>Expira en {{ paquete.vigenciaDias }} dias.</p>
           </div>
         </div>

@@ -7,7 +7,7 @@
     </div>
     <div class="row pt-2 pl-3 pr-3" *ngIf="compra !== undefined && compra !== null">
       <div class="col-12 d-flex justify-content-between">
-        <h1>{{compra.paquete.creditos}} Créditos</h1>
+        <h1>{{compra.paquete.tipo === 'ilimitado' ? 'Ilimitados' : compra.paquete.creditos}} {{ compra.paquete.tipo === 'ilimitado' ? '' : 'Créditos' }}</h1>
         <span class="primary-color pt-3">MEX {{compra.total | currency}}</span>
       </div>
     </div>
