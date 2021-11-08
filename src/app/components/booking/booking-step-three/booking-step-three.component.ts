@@ -159,7 +159,7 @@ export class BookingStepThreeComponent implements OnInit {
     this.loading = true;
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.desde, this.hasta)<any>().subscribe(
       response => {
-        if (response.creditos >= this.reservaciones.length) {
+        if (response.creditos >= this.reservaciones.length || response.ilimitados) {
           this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(
             res => {
               if (res.data && res.data.length > 0) {
