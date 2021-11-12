@@ -69,36 +69,10 @@ export class CancelClassComponent implements OnInit {
 
   formatAMPM(fecha: string) {
     return m(new Date(fecha)).format('h:mm a');
-    // const date = new Date(fecha);
-    // let hours = date.getHours();
-    // let minutes = date.getMinutes();
-    // const ampm = hours >= 12 ? 'PM' : 'AM';
-    // hours = hours % 12;
-    // hours = hours ? hours : 12;
-    // minutes = minutes < 10 ? Number('0' + minutes) : minutes;
-    // const strTime = hours + ':' + minutes + ' ' + ampm;
-    // return strTime;
   }
 
   cancelBooking(): void {
-    //   this.loading = true;
-    //   this.reservacion.cancelada = true;
-    //   this.reservacion.cliente = this.reservacion.cliente.id;
-    //   this.reservacion.horario = this.reservacion.horario.id;
-    //   this.apiSvc.routes.reservacion.actualizar(this.reservacion.id)<any>(this.reservacion).subscribe(
-    //     response => {
-    //       this.reservacion = response;
-    //       this.loading = false;
     this.horario ? this.dialogRef.close(true) : this.dialogRef.close(false);
-  
-    //     },
-    //     error => {
-    //       console.log(error);
-    //       this.notify.errorMessage(error);
-    //       this.loading = false;
-    //       this.dialogRef.close(true);
-    //     }
-    //   );
   }
   cancelAction() {
     this.dialogRef.close(false);

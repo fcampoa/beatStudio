@@ -16,9 +16,9 @@
         <div class="col-12 text-center">
             <p class="beat-algo" *ngIf="horario.disciplina.nombre"><span>BEAT</span>{{horario.disciplina ? horario.disciplina.nombre : '-'}}</p>
             <div class="sections-info-text">
-                <div *ngIf="horario.coach">{{horario.coach ? horario.coach.nombre : '-'}}</div>
-                <div *ngIf="horario.fecha">{{horario.fecha ? castFecha(horario.fecha) : '-'}}</div>
-                <div *ngIf="horario.fecha">{{horario.fecha ? formatAMPM(horario.fecha) : '-'}}</div>
+                <div *ngIf="horario.coach">{{ horario ? (horario.coach ? horario.coach.nombre : '-') : '-' }}</div>
+                <div *ngIf="horario.fecha">{{ horario ? (horario.fecha ? castFecha(horario.fecha) : '-') : '-' }}</div>
+                <div *ngIf="horario.fecha">{{ horario ? (horario.fecha ? formatAMPM(horario.fecha) : '-') : '-' }}</div>
             </div>
         </div>
     </div>

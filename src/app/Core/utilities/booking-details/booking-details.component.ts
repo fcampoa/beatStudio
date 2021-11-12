@@ -95,7 +95,6 @@ export class BookingDetailsComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-
         if (result) {
           this._reservacion.cancelada = true;
           this._reservacion.cliente = this._reservacion.cliente.id;
