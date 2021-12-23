@@ -49,7 +49,7 @@ import { ErrorInterceptor } from './services/error-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutes } from './app.routing';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ParamsService } from './Core/global/params-service.service';
 import { GenericApiCallService } from './Core/global/generic-api-call.service';
 import { ErrorsHandler } from './services/errors-handler.service';
@@ -162,7 +162,7 @@ import { RegisterSuccessComponent } from './components/register-success/register
   ],
   exports: [
   ],
-  providers: [GlobalApiService, UserService, NotificationsService,
+  providers: [GlobalApiService, UserService, NotificationsService, DatePipe,
     ParamsService, GenericApiCallService, FileService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

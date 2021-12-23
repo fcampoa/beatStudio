@@ -1,4 +1,4 @@
-import { Location } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 import { Cliente } from './../../../model/cliente';
 import { Component, OnInit } from '@angular/core';
 import { GlobalApiService } from 'src/app/Core';
@@ -15,6 +15,8 @@ import { InfoModalComponent } from '../../info-modal/info-modal.component';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { FileService } from 'src/app/services/file-service.service';
+import { Paquete } from 'src/app/model/paquete';
+import { FasDirective } from 'angular-bootstrap-md';
 
 
 @Component({
@@ -31,13 +33,18 @@ export class BookingStepTwoComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private notify: NotificationsService,
-    private fileService: FileService) {
+    private fileService: FileService,
+    public datepipe: DatePipe) {
     this.cliente = new Cliente();
     this.cliente.nombre = '';
 
     this.user = this.userSv.loggedUser.data.user;
+
+    this.desde = m().format('YYYY-MM-DD');
+    this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
   }
 
+  public ilimitados = false;
   public numero = 0;
   user: any;
   cliente: Cliente;
@@ -49,6 +56,8 @@ export class BookingStepTwoComponent implements OnInit {
   amigos: any[] = [];
   public invitar = false;
   public loading = true;
+  public desde: any;
+  public hasta: any;
 
   public colors: any[] = [
     '#9865ff', '#0AD2F3', '#11E478', '#D55EB9', '#FF0800',
@@ -126,6 +135,17 @@ export class BookingStepTwoComponent implements OnInit {
     );
   }
 
+  obtenerPaquete() {
+    this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.datepipe.transform(this.desde, 'yyyy-MM-dd'), this.datepipe.transform(this.hasta, 'yyyy-MM-dd'))<any>().subscribe(
+      response => {
+        this.ilimitados = response.ilimitados;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
   obtenerOcupados(): void {
     this.apiSvc.routes.reservacion_detalle.buscarHorario(this.idHorario)<any>().subscribe(
       response => {
@@ -144,9 +164,12 @@ export class BookingStepTwoComponent implements OnInit {
       }
     );
   }
-  async buscarCliente() {
-    await this.apiSvc.routes.cliente.buscarUsuario(this.user.id)<any>().subscribe(
-      response => this.cliente = response.data[0]
+   buscarCliente() {
+   this.apiSvc.routes.cliente.buscarUsuario(this.user.id)<any>().subscribe(
+    response => {
+         this.cliente = response.data[0];
+         this.obtenerPaquete();
+      }
     );
   }
 

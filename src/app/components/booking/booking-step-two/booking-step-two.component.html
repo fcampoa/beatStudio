@@ -89,7 +89,7 @@
           </div>
         </div>
       </div>
-      <div class="row mt-1 mb-2" [attr.disabled]="seleccionado">
+      <div *ngIf="!ilimitados" class="row mt-1 mb-2" [attr.disabled]="seleccionado">
         <div class="col-12">
           <button class="add-friend" [disabled]="!seleccionado || !seleccionado_amigo" (click)="addFriend()">Invitar un
             amigo +</button>
