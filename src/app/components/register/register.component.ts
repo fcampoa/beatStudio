@@ -72,8 +72,13 @@ export class RegisterComponent implements OnInit {
                 c => {
                   this.registered = true;
                   this.loading = false;
-                  this.router.navigate(['registroExitoso'], { queryParams: { mailTo: this.cliente.correo } });
-                  
+                  this.apiSvc.endPoints.enviar_correo.registro()<any>({ email: this.cliente.correo }).subscribe(
+                    () => {
+                      this.router.navigate(['registroExitoso'], { queryParams: { mailTo: this.cliente.correo } });
+                    }
+                  );
+                  // this.router.navigate(['registroExitoso'], { queryParams: { mailTo: this.cliente.correo } });
+
                   // this.apiSvc.endPoints.enviar_correo.registro()<any>({ email: this.cliente.correo }).subscribe(
                   //   () => {
 
