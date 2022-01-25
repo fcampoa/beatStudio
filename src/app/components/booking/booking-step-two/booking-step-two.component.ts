@@ -26,24 +26,6 @@ import { FasDirective } from 'angular-bootstrap-md';
 })
 export class BookingStepTwoComponent implements OnInit {
 
-  constructor(private apiSvc: GlobalApiService,
-    public dialog: MatDialog,
-    private router: Router,
-    private userSv: UserService,
-    private route: ActivatedRoute,
-    private location: Location,
-    private notify: NotificationsService,
-    private fileService: FileService,
-    public datepipe: DatePipe) {
-    this.cliente = new Cliente();
-    this.cliente.nombre = '';
-
-    this.user = this.userSv.loggedUser.data.user;
-
-    this.desde = m().format('YYYY-MM-DD');
-    this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
-  }
-
   public ilimitados = false;
   public numero = 0;
   user: any;
@@ -70,6 +52,34 @@ export class BookingStepTwoComponent implements OnInit {
   public asientos = [];
 
   public idHorario: any;
+
+  constructor(private apiSvc: GlobalApiService,
+    public dialog: MatDialog,
+    private router: Router,
+    private userSv: UserService,
+    private route: ActivatedRoute,
+    private location: Location,
+    private notify: NotificationsService,
+    private fileService: FileService,
+    public datepipe: DatePipe) {
+    this.cliente = new Cliente();
+    this.cliente.nombre = '';
+
+    this.user = this.userSv.loggedUser.data.user;
+
+    this.desde = m().format('YYYY-MM-DD');
+    this.hasta = m(this.desde).add('days', 30).format('YYYY-MM-DD');
+  }
+
+  ngOnInit() {
+    this.buscarCliente();
+    this.route.params.subscribe(
+      params => {
+        this.idHorario = params.idHorario;
+        this.getHorario();
+      }
+    );
+  }
 
   lugarObject = { fila: 0, numero: 0, visible: false, ocupado: false, coach: false };
 
@@ -101,9 +111,6 @@ export class BookingStepTwoComponent implements OnInit {
   mostrarAsientosSpin(disciplina: string): void {
     switch (disciplina.toLowerCase()) {
       case 'spin':
-        // this.llenarAsientos([[0, 2, 4], [0, 6], [0, 1, 2, 3, 4], [0, 2]], [0, 2]);
-        // this.llenarAsientos([[1, 6], [1, 3, 5], [1], [1, 2, 3, 4, 5], [1, 2, 5, 6]], [1, 3]);
-        // console.log(this.asientos);
         this.llenaAsientosSpin();
         break;
       case 'barre':
@@ -125,16 +132,6 @@ export class BookingStepTwoComponent implements OnInit {
     this.obtenerOcupados();
   }
 
-  ngOnInit() {
-    this.buscarCliente();
-    this.route.params.subscribe(
-      params => {
-        this.idHorario = params.idHorario;
-        this.getHorario();
-      }
-    );
-  }
-
   obtenerPaquete() {
     this.apiSvc.endPoints.historial_compra.creditosCliente(this.cliente.id, this.datepipe.transform(this.desde, 'yyyy-MM-dd'), this.datepipe.transform(this.hasta, 'yyyy-MM-dd'))<any>().subscribe(
       response => {
@@ -152,10 +149,8 @@ export class BookingStepTwoComponent implements OnInit {
         if (response.data && response.data.length > 0) {
           this.asientos.forEach((r: any[]) => {
             r.forEach(s => {
-              response.data.forEach(o => {
-                if (s.numero === o.lugar) {
-                  s.ocupado = true;
-                }
+              response.data.forEach((o: any) => {
+                  s.ocupado = s.numero === o.lugar;
               });
             });
           });
@@ -375,17 +370,6 @@ export class BookingStepTwoComponent implements OnInit {
   imprimir(): void {
     this.fileService.imprimirListaClase(this.horario);
   }
-  // exportAsPDF()
-  //     {
-  //       let data = document.getElementById('MyDIv');
-  //       html2canvas(data).then(canvas => {
-  //         const contentDataURL = canvas.toDataURL('image/png')
-  //         let pdf = new jsPDF('l', 'cm', 'a4'); //Generates PDF in landscape mode
-  //         // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
-  //         pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);
-  //         pdf.save('Filename.pdf');
-  //       });
-  //     }
 
   checkClass(row: any[]): any {
     return {
@@ -508,22 +492,6 @@ export class BookingStepTwoComponent implements OnInit {
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
         { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
       ],
-      // [
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 8, numero: 20, visible: true, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 8, numero: 21, visible: true, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 8, numero: 22, visible: true, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 8, numero: 23, visible: true, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 8, numero: 24, visible: true, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false },
-      //   { fila: 0, numero: 0, visible: false, ocupado: false, coach: false }
-      // ],
     ];
   }
 }

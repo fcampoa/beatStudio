@@ -1,8 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { GlobalApiService } from '../Core';
 import { Horario } from '../model/horario';
+import * as m  from 'moment';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Injectable()
@@ -13,21 +15,13 @@ export class FileService {
         this.apiSvc.routes.reservacion_detalle.listaClase(horario.id)<any>().subscribe(
             response => {
                 const lista = response.data;
-                this.exportAsPDF(this.crearTablaLista(lista, horario));
+                this.exportAsPDF(this.crearTablaLista(lista, horario), 'lista de clase ' + horario.disciplina.nombre + '  hora: ' + m(horario.fecha).format('h:mm a'));
             }
         );
     }
 
     private crearTablaLista(lista: any, horario: Horario): any {
         return {
-            // content: 'lista de clase ' + horario.disciplina.nombre + '  hora:' + horario.fecha ,
-            // {
-            //     text: 'clase: ' + horario.disciplina.nombre + '  hora:' + horario.fecha + '  coach: ' + horario.coach.nombre,
-            //     bold: true,
-            //     fontSize: 20,
-            //     alignment: 'center',
-            //     margin: [0, 0, 0, 20]
-            // },
             table: {
                 widths: ['*', '*', '*'],
                 body: [
@@ -53,9 +47,13 @@ export class FileService {
 
     }
 
-    exportAsPDF(data: any) {
-        const documentDefinition = { content: data };
-        pdfMake.createPdf(documentDefinition).download();
+    exportAsPDF(data: any, title: string) {
+        const documentDefinition = {  info: {
+            title: title,
+            author: 'BeatStudio',
+          },
+           content: data };
+        pdfMake.createPdf(documentDefinition).download(title + '.pdf');
     }
 
 }
