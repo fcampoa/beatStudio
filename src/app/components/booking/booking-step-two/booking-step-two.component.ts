@@ -150,7 +150,9 @@ export class BookingStepTwoComponent implements OnInit {
           this.asientos.forEach((r: any[]) => {
             r.forEach(s => {
               response.data.forEach((o: any) => {
-                  s.ocupado = s.numero === o.lugar;
+                if( s.numero === o.lugar) {
+                  s.ocupado = true;
+                }
               });
             });
           });
