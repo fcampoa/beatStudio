@@ -16,18 +16,18 @@ export class DashboardComponent implements OnInit {
   public covers = [
     { title: 'SPIN', url: '../../../assets/img/new-images/Clases/Clases_BeatSpin.jpg' },
     { title: 'BARRE', url: '../../../assets/img/new-images/Clases/Clases_BeatBarre.jpg' },
-    { title: 'YOGA', url: '../../../assets/img/new-images/Clases/Clases_BeatYoka.jpg' },
+    // { title: 'YOGA', url: '../../../assets/img/new-images/Clases/Clases_BeatYoka.jpg' },
     { title: 'POWER', url: '../../../assets/img/new-images/Clases/Clases_BeatPower.jpg' },
   ];
 
   public socialMedia = [
-    {
-      fecha: '30 de septiembre',
-      descripcion: '¡BeatStudio es más de lo que imaginas! Visítanos esta semana y asiste a nuestras clases gratuitas de Barre, el ejercicio que combina lo mejor de Ballet-Yoga-Pilates. #BeatWithUs #TakeTheChallenge #NeverGiveUp',
-      usuario: '@beatstudiomx',
-      profileUrl: 'https://www.instagram.com/beatstudiomx/',
-      imageUrl: '../../../assets/img/new-images/Instagram/BS-Ale-Soria.jpg'
-    },
+    // {
+    //   fecha: '30 de septiembre',
+    //   descripcion: '¡BeatStudio es más de lo que imaginas! Visítanos esta semana y asiste a nuestras clases gratuitas de Barre, el ejercicio que combina lo mejor de Ballet-Yoga-Pilates. #BeatWithUs #TakeTheChallenge #NeverGiveUp',
+    //   usuario: '@beatstudiomx',
+    //   profileUrl: 'https://www.instagram.com/beatstudiomx/',
+    //   imageUrl: '../../../assets/img/new-images/Instagram/BS-Ale-Soria.jpg'
+    // },
     {
       fecha: '29 de septiembre',
       descripcion: 'Esta es tu oportunidad para probar la intensidad de BeatBarre. ¡Tenemos clases gratis solo por esta semana! #BeatWithUs #TakeTheChallenge #NeverGiveUp',

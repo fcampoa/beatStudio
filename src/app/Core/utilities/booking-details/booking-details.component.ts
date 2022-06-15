@@ -76,7 +76,7 @@ export class BookingDetailsComponent implements OnInit {
     const aux = m();
     if (this.horario && this.horario.fecha) {
       const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
-      this.cancel = res >= 2;
+      this.cancel = res >= 4;
     }
     else {
       this.cancel = false;
@@ -86,7 +86,7 @@ export class BookingDetailsComponent implements OnInit {
   cancelarReservacion(): void {
     const aux = m();
     const res = m.duration(m(this.horario.fecha).diff(aux)).as('hours');
-    this.cancel = res >= 2;
+    this.cancel = res >= 4;
     if (res >= 2) {
       const dialogRef = this.dialog.open(CancelClassComponent, {
         panelClass: 'custom-modalbox-info',
@@ -162,7 +162,7 @@ export class BookingDetailsComponent implements OnInit {
       );
     } else {
       this.cancel = false;
-      this.notify.errorMessage('No puedes cancelar esta reservación con menos de 2 horas de anticipación');
+      this.notify.errorMessage('No puedes cancelar esta reservación con menos de 4 horas de anticipación');
     }
 
   }

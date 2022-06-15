@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       nombre: 'CLASES', url: '/disciplines', sublinks: [
         { name: 'SPIN', url: '/disciplines/beatspin' },
         { name: 'BARRE', url: '/disciplines/beatbarre' },
-        { name: 'YOGA', url: '/disciplines/beatyoga' },
+       // { name: 'YOGA', url: '/disciplines/beatyoga' },
         { name: 'POWER', url: '/disciplines/beatpower' }]
     },
     { nombre: 'COACHES', url: '/coaches' },

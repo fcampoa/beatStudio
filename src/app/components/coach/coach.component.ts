@@ -37,14 +37,14 @@ export class CoachComponent implements OnInit {
       url: '../../../assets/img/new-images/Coaches/Coach_PauCordova.jpg',
       musica: 'Pop / oldies / rock / Un poquito de todos los estilos'
     },
-    {
-      frase: 'Never, never, never give up',
-      disciplinas: 'BeatBarre',
-      movimiento: 'Desplantes y planchas',
-      nombre: 'Ale Soria',
-      url: '../../../assets/img/new-images/Coaches/Coach_Ale.jpg',
-      musica: 'Indie rock'
-    },
+    // {
+    //   frase: 'Never, never, never give up',
+    //   disciplinas: 'BeatBarre',
+    //   movimiento: 'Desplantes y planchas',
+    //   nombre: 'Ale Soria',
+    //   url: '../../../assets/img/new-images/Coaches/Coach_Ale.jpg',
+    //   musica: 'Indie rock'
+    // },
     {
       frase: 'Never, never, never give up',
       disciplinas: 'BeatBarre',
@@ -85,14 +85,14 @@ export class CoachComponent implements OnInit {
       url: '../../../assets/img/new-images/Coaches/Coach_Carolina.jpg',
       musica: 'Reggaeton / Pop'
     },
-    {
-      frase: 'Whatever you do, do it well',
-      disciplinas: 'BeatBarre',
-      movimiento: 'Squats',
-      nombre: 'Marie',
-      url: '../../../assets/img/new-images/Coaches/Coach_Marielena.jpg',
-      musica: 'Oldies'
-    },
+    // {
+    //   frase: 'Whatever you do, do it well',
+    //   disciplinas: 'BeatBarre',
+    //   movimiento: 'Squats',
+    //   nombre: 'Marie',
+    //   url: '../../../assets/img/new-images/Coaches/Coach_Marielena.jpg',
+    //   musica: 'Oldies'
+    // },
     {
       frase: 'No one is you and that is your power',
       disciplinas: 'BeatSpin',

@@ -114,7 +114,7 @@ export class BookingStepTwoComponent implements OnInit {
         this.llenaAsientosSpin();
         break;
       case 'barre':
-        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6], []], [0, 0]);
+        this.llenarAsientos([[0], [], [0, 1, 2, 3, 4, 5, 6, 7], []], [0, 0]);
         break;
       case 'yoga':
         this.llenarAsientos([[0], [], [0, 1, 2, 3, 4], []], [0, 0]);
