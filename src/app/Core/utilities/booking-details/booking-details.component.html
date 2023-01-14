@@ -13,7 +13,7 @@
       <div class="col-3">DIA</div>
       <div class="col-2">HORA</div>
       <div class="col-2">COACH</div>
-      <div class="col-2">TIPO</div>
+      <!-- <div class="col-2">TIPO</div> -->
       <div class="col-3">LUGARES</div>
     </div>
     <div class="row d-flex justify-content-center pt-2">
@@ -25,7 +25,7 @@
       <div class="col-md-3 col-xs-3 col-3">{{ horario.fecha ? (horario.fecha | customDate) : '-' }}</div>
       <div class="col-md-2 col-xs-2 col-2">{{ horario.fecha ? (getHora(horario.fecha)) : '-' }}</div>      
       <div class="col-md-2 col-xs-2 col-2">{{ horario.coach ? horario.coach.nombre : '-'}}</div>
-      <div class="col-md-2 col-xs-2 col-2">{{ horario.class_type ? (horario.class_type | uppercase) : '-' }}</div>
+      <!-- <div class="col-md-2 col-xs-2 col-2">{{ horario.class_type ? (horario.class_type | uppercase) : '-' }}</div> -->
       <div class="col-md-3 col-xs-3 col-3">
         <div class="row pl-3" *ngFor="let r of reservaciones; let i = index">
           <span [ngStyle]="{'color' : colors[i]}" class="mr-2">{{ r.lugar }}</span> {{ r.nombre }}
