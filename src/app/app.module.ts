@@ -78,6 +78,7 @@ import { BeatpowerComponent } from './components/disciplines/beatpower/beatpower
 import { FileService } from './services/file-service.service';
 import { ChangePasswordComponent } from './components/profile/change-password/change-password.component';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -117,6 +118,7 @@ import { RegisterSuccessComponent } from './components/register-success/register
     PaymentHistoryComponent,
     MessageModalComponent,
     PaypalComponent,
+    AdminPanelComponent,
     // directives
     FixedBarDirective,
     InviteDirective,

@@ -16,6 +16,8 @@ export interface IGlobalServiceDefinition {
     lista: () => VERBS.IGetCall;
     buscarCorreo: (correo: string) => VERBS.IGetCall;
     buscarUsuario: (id: number) => VERBS.IGetCall;
+    exportarClientes: () => VERBS.IGetCall;
+    cumpleanosMes:(desde: string, hasta: string) => VERBS.IGetCall;
   };
   reservacion?: {
     agregar: () => VERBS.IpostCall;

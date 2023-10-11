@@ -75,6 +75,17 @@
             <app-payment></app-payment>
           </app-view>
         </mat-tab>
+        <mat-tab *ngIf="user.data.user.role === '1'">
+          <ng-template mat-tab-label>
+            <p class="primary-color tab">admin panel</p>
+          </ng-template>
+          <app-view>
+            <div style="padding-top: 5%; padding-bottom: 5%;" class="d-flex justify-content-center">
+              <h3 class="table-title">admin panel</h3>
+            </div>
+            <app-admin-panel></app-admin-panel>
+          </app-view>
+        </mat-tab>
       </mat-tab-group>
     </div>
   </div>

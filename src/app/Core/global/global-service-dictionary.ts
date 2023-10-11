@@ -13,7 +13,9 @@ export const GLOBAL_SERVICE_DEFINITION: any = {
     buscar: { method: GlobalServiceMethodType.GET_BY_ID, url: '' },
     lista: { method: GlobalServiceMethodType.GET, url: '' },
     buscarCorreo: { method: GlobalServiceMethodType.GET, url: '?filter[correo][eq]=$correo' },
-    buscarUsuario: { method: GlobalServiceMethodType.GET, url: '?filter[usuario.id][eq]=$id' }
+    buscarUsuario: { method: GlobalServiceMethodType.GET, url: '?filter[usuario.id][eq]=$id' },
+    exportarClientes: { method: GlobalServiceMethodType.GET, uri: '?fields=cliente.nombre,cliente.apellido,cliente.fecha_nacimiento' },
+    cumpleanosMes: { method: GlobalServiceMethodType.GET, uri: '?filter[cliente.fecha_nacimiento]=$desde,$hasta&fields=cliente.nombre,cliente.apellido,cliente.fecha_nacimiento' }
   },
   reservacion: {
     agregar: { method: GlobalServiceMethodType.POST, url: '' },
