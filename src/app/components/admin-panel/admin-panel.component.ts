@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { GlobalApiService } from 'src/app/Core';
-import { FileService } from 'src/app/services/file-service.service';
-import * as m from 'moment';
+import { GenericApiCallService } from 'src/app/Core/global/generic-api-call.service';
+import { environment as config } from '../../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss']
 })
-export class AdminPanelComponent implements OnInit {
+export class AdminPanelComponent implements OnInit, AfterViewInit {
 
   dataSource = [];
   displayedColumns: string[] = ['nombre', 'fechaNacimiento'];
@@ -16,18 +17,28 @@ export class AdminPanelComponent implements OnInit {
   primerDia = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
   ultimoDia = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
 
-constructor(private apiSvc: GlobalApiService, private fileService: FileService) { }
+constructor(private apiSvc: GlobalApiService, private _client: HttpClient) { }
 
 ngOnInit() {
-  // this.apiSvc.routes.cliente.cumpleanosMes(m(this.primerDia).format('YYYY-MM-DD'), m(this.ultimoDia).format('YYYY-MM-DD'))<any>()
-  // .subscribe(response => {
-  //   debugger;
-  //   this.dataSource = response.data;
-  // });
+
+}
+
+ngAfterViewInit() {
+this._client.get<any>(config.absolute_url + "cumpleanos-mes.php")
+.subscribe(
+  response => {
+    console.log("llego al response");
+    console.log(response);
+    this.dataSource = response;
+  },
+  error => {
+    console.log("error");
+  }
+);
 }
 
 exportarCliente() {
-  this.fileService.exportarClientes();
+  document.location.href = config.absolute_url + "exportar-clientes.php";
 }
 
 }

@@ -6,6 +6,7 @@ export interface IGlobalServiceEndPointsDefinition {
     actualizarCreditos: (id: number, desde: string, hasta: string, creditos: number) => VERBS.IPatchCall;
     hacerPago: () => VERBS.IpostCall;
     regresarCreditos: (id: number, desde: string, creditos: number) => VERBS.IPatchCall;
+    cumpleanosMes:() => VERBS.IGetCall;
   };
   reservacion?: {
     reservacionesHorario: (id: number) => VERBS.IGetCall;
@@ -23,4 +24,9 @@ export interface IGlobalServiceEndPointsDefinition {
     lista_espera: () => VERBS.IpostCall;
     cancelacion: () => VERBS.IpostCall;
   };
+
+  cliente?: {
+    exportarClientes: () => VERBS.IGetCall;
+    cumpleanosMes:(desde: string, hasta: string) => VERBS.IGetCall;
+  }
 }

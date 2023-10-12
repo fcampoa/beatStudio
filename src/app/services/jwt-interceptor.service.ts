@@ -12,7 +12,7 @@ export class JwtInterceptor implements HttpInterceptor {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     //  if (currentUser !== null) {
-    if (currentUser && currentUser.data.token) {
+    if (!request.url.includes("functions") && currentUser && currentUser.data.token) {
       this.userSvc.user = currentUser;
       request = request.clone({
         setHeaders: {

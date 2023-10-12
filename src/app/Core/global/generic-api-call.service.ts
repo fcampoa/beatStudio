@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
+import { environment as config } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +31,8 @@ public Patch(entity: any, url: string): Observable<any> {
   return this.http.patch<any>(url, entity, { headers: this.options }).pipe(catchError(this.handleError));
 }
 
-public Get(url: string): Observable<any> {
-  const res = this.http.get<any>(url, { headers: this.options })
+public Get(url: string, headers: HttpHeaders = null): Observable<any> {
+  const res = this.http.get<any>(url, { headers })
   .pipe(catchError(this.handleError));
   return res;
 }

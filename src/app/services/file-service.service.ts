@@ -58,9 +58,8 @@ export class FileService {
     }
 
     exportarClientes() {
-        this.apiSvc.routes.cliente.exportarClientes()<any>().subscribe(response => {
-            debugger;
-            this.crearExcel(response.data);
+        this.apiSvc.endPoints.cliente.exportarClientes()<any>().subscribe(response => {
+           // this.crearExcel(response.data);
         })
     }
 
